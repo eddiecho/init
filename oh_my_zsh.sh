@@ -10,4 +10,5 @@ apt install zsh -y
 # also can't pipe in yes, since it asks for password
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# change ZSH_THEME="af-magic"
 
