@@ -70,7 +70,7 @@
                 "hidden": false,
                 "name": "Ubuntu-20.04",
                 "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "%USERPROFILE%"
+                "startingDirectory": "\\\\wsl$\\Ubuntu-20.04\\home\\eddie"
             }
         ]
     },
