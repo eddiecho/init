@@ -82,7 +82,7 @@ function install_nvim {
     echo ""
   else
     mkdir -p ~/.config
-    ln -s $CURR_DIR/nvim ~/.config/nvim
+    ln -s $CURR_DIR/nvimconf ~/.config/nvim
   fi
 }
 
