@@ -24,7 +24,7 @@ return require("packer").startup(
         use "lewis6991/gitsigns.nvim"
         -- Tab/buffers on the top
         -- TODO - evaluate romgrk/barbar.nvim
-        use "akinsho/nvim-bufferline.lua"
+        use "akinsho/bufferline.nvim"
         -- Statusline replacement
         use "glepnir/galaxyline.nvim"
         -- Syntax highlighting

@@ -6,8 +6,6 @@ local g = vim.g
 
 g.nvim_tree_side = "left"
 g.nvim_tree_width = 25
-g.nvim_tree_quit_on_open = 0
-g.nvim_tree_indent_markers = 1
 g.nvim_tree_git_hl = 1
 g.nvim_tree_root_folder_modifier = ":~"
 g.nvim_tree_allow_resize = 1
@@ -80,8 +78,6 @@ nvim_bindings = {
 }
 
 require'nvim-tree'.setup {
-  auto_close = false,
-  auto_open = false,
   filters = {
     dotfiles = false,
     custom = {}
@@ -90,6 +86,16 @@ require'nvim-tree'.setup {
     mappings = {
       custom_only = false,
       list = nvim_bindings,
+    }
+  },
+  actions = {
+    open_file = {
+      quit_on_open = false
+    }
+  },
+  renderer = {
+    indent_markers = {
+      enable = true
     }
   }
 }
