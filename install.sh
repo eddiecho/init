@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -x
 
 CURR_DIR=$(pwd)
 TOOLS_DIR=$HOME/tools
@@ -31,7 +31,7 @@ function install_deps {
 
   if [[ -z $(which brew) ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/eddie/.profile
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/$USER/.profile
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 
@@ -39,7 +39,8 @@ function install_deps {
   brew install tree
   brew install cloc
   brew install zsh
-  brew install python
+  brew install rg
+  brew install zig --HEAD
 }
 
 function install_zsh {

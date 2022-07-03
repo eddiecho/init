@@ -2,37 +2,6 @@ vim.cmd [[packadd nvim-tree.lua]]
 
 vim.o.termguicolors = true
 
-local g = vim.g
-
-g.nvim_tree_side = "left"
-g.nvim_tree_width = 25
-g.nvim_tree_git_hl = 1
-g.nvim_tree_root_folder_modifier = ":~"
-g.nvim_tree_allow_resize = 1
-
-g.nvim_tree_show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1
-}
-
-g.nvim_tree_icons = {
-    default = " ",
-    symlink = " ",
-    git = {
-        unstaged = "✗",
-        staged = "✓",
-        unmerged = "",
-        renamed = "➜",
-        untracked = "★"
-    },
-    folder = {
-        default = "",
-        open = "",
-        symlink = ""
-    }
-}
-
 local get_lua_cb = function(cb_name)
     return string.format(":lua require'nvim-tree'.on_keypress('%s')<CR>", cb_name)
 end
@@ -83,6 +52,8 @@ require'nvim-tree'.setup {
     custom = {}
   },
   view = {
+    side = 'left',
+    width = 25,
     mappings = {
       custom_only = false,
       list = nvim_bindings,
@@ -94,8 +65,28 @@ require'nvim-tree'.setup {
     }
   },
   renderer = {
+    root_folder_modifier = ':~',
+    highlight_git = true,
     indent_markers = {
       enable = true
+    },
+    icons = {
+      glyphs = {
+        default = " ",
+        symlink = " ",
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★"
+        },
+        folder = {
+          default = "",
+          open = "",
+          symlink = ""
+        }
+      }
     }
   }
 }

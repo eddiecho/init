@@ -76,7 +76,6 @@ return require("packer").startup(
         use "junegunn/vim-peekaboo"
         -- Highlight yanks
         use "machakann/vim-highlightedyank"
-        -- view lsp symbols in file
         -- use "simrat39/symbols-outline.nvim"
         use "bfredl/nvim-luadev"
 
