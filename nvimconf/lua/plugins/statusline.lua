@@ -187,19 +187,29 @@ gls.right[4] = {
 }
 
 gls.right[5] = {
-    PerCent = {
-        provider = "LinePercent",
-        separator = " ",
-        separator_highlight = {colors.red, colors.red},
-        highlight = {colors.bg, colors.fg}
-    }
-}
-
-gls.right[6] = {
     rightRounded = {
         provider = function()
             return ""
         end,
-        highlight = {colors.fg, colors.bg}
+        separator_highlight = {colors.bg, colors.bg},
+        highlight = {colors.red, colors.bg}
     }
 }
+
+gls.right[6] = {
+  LineColumn = {
+        provider = "LineColumn",
+        separator = " ",
+        separator_highlight = {colors.bg, colors.fg},
+        highlight = {colors.bg, colors.fg}
+  }
+}
+
+gls.right[7] = {
+    PerCent = {
+        provider = "LinePercent",
+        separator = " ",
+        highlight = {colors.bg, colors.fg}
+    }
+}
+

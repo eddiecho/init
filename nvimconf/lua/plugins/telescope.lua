@@ -35,8 +35,10 @@ require("telescope").setup({
       results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
       preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
     },
-
+    path_display = {"smart"},
+    file_ignore_patterns = {".git/", "node_modules", "build"},
     buffer_previewer_maker = new_buffer_maker,
+
     vimgrep_arguments = {
       "rg",
       "--color=never",
