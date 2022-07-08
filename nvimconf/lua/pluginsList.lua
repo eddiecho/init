@@ -78,6 +78,7 @@ return require("packer").startup(
         use "machakann/vim-highlightedyank"
         -- use "simrat39/symbols-outline.nvim"
         use "bfredl/nvim-luadev"
+        use "mg979/vim-visual-multi"
 
 	if packer_bootstrap then
 	    require('packer').sync()

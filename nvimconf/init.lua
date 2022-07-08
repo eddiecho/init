@@ -108,5 +108,3 @@ cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
 
 cmd "hi clear CursorLine"
 cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
-
-
