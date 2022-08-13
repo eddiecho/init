@@ -12,8 +12,6 @@ return require("packer").startup(
         -- Shows indentation
         use "lukas-reineke/indent-blankline.nvim"
         -- Theme helper
-        use "norcalli/nvim-base16.lua"
-        use "nekonako/xresources-nvim"
         use "sainnhe/sonokai"
         -- File icons
         use "kyazdani42/nvim-web-devicons"
@@ -29,7 +27,6 @@ return require("packer").startup(
         use "glepnir/galaxyline.nvim"
         -- Syntax highlighting
         use "nvim-treesitter/nvim-treesitter"
-        use "nvim-treesitter/playground"
         -- Highlight hex colors
         use "norcalli/nvim-colorizer.lua"
         -- Code formatting
@@ -55,7 +52,7 @@ return require("packer").startup(
         -- Auto pair some stuff
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
-        -- Profile startup time for bottlenecks
+        -- Profile startup time for bottlenecks use with :StartupTime
         use "tweekmonster/startuptime.vim"
         -- Fuzzy finder
         use "nvim-telescope/telescope.nvim"

@@ -33,6 +33,11 @@ wezterm.on("ctrl-c-custom-event", function(window, pane)
   end
 end)
 
+local wsl_domains = wezterm.default_wsl_domains()
+for idx, dom in ipairs(wsl_domains) do
+  dom.default_cwd = "/home/eddie"
+end
+
 return {
   default_domain = "WSL:Ubuntu-20.04",
   font = wezterm.font_with_fallback({
@@ -53,6 +58,7 @@ return {
     {key="v", mods="CTRL", action=wezterm.action{PasteFrom="Clipboard"}},
     {key="c", mods="CTRL", action=wezterm.action{EmitEvent="ctrl-c-custom-event"}},
   },
+
   skip_close_confirmation_for_processes_named = {
         "bash",
         "sh",
@@ -65,9 +71,13 @@ return {
         "powershell.exe",
         "wsl.exe"
   },
+  window_close_confirmation = "NeverPrompt",
 
   color_schemes = {
      ["Onenord"] = colorscheme_onenord
   },
   color_scheme = "Onenord",
+  check_for_update = false,
+  wsl_domains = wsl_domains,
 }
+
