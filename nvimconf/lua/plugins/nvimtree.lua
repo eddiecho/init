@@ -2,7 +2,7 @@ vim.cmd [[packadd nvim-tree.lua]]
 
 vim.o.termguicolors = true
 
-local get_lua_cb = function(cb_name)
+local get_lua_action = function(cb_name)
     return string.format(":lua require'nvim-tree'.on_keypress('%s')<CR>", cb_name)
 end
 
@@ -19,31 +19,31 @@ vim.api.nvim_set_keymap(
 )
 
 nvim_bindings = {
-  { key = "<CR>",               cb = get_lua_cb("edit")},
-  { key = "o",                  cb = get_lua_cb("edit")},
-  { key = "<2-LeftMouse>",      cb = get_lua_cb("edit")},
-  { key = "<2-RightMouse>",     cb = get_lua_cb("cd")},
-  { key = "<C->",               cb = get_lua_cb("cd")},
-  { key = "w",                  cb = get_lua_cb("vsplit")},
-  { key = "W",                  cb = get_lua_cb("split")},
-  { key = "<C-t>",              cb = get_lua_cb("tabnew")},
-  { key = "<BS>",               cb = get_lua_cb("close_node")},
-  { key = "<S-CR>",             cb = get_lua_cb("close_node")},
-  { key = "<Tab>",              cb = get_lua_cb("preview")},
-  { key = "I",                  cb = get_lua_cb("toggle_ignored")},
-  { key = "H",                  cb = get_lua_cb("toggle_dotfiles")},
-  { key = "R",                  cb = get_lua_cb("refresh")},
-  { key = "a",                  cb = get_lua_cb("create")},
-  { key = "d",                  cb = get_lua_cb("remove")},
-  { key = "r",                  cb = get_lua_cb("rename")},
-  { key = "<C-r>",              cb = get_lua_cb("full_rename")},
-  { key = "x",                  cb = get_lua_cb("cut")},
-  { key = "c",                  cb = get_lua_cb("copy")},
-  { key = "p",                  cb = get_lua_cb("paste")},
-  { key = "[c",                 cb = get_lua_cb("prev_git_item")},
-  { key = "]c",                 cb = get_lua_cb("next_git_item")},
-  { key = "-",                  cb = get_lua_cb("dir_up")},
-  { key = "q",                  cb = get_lua_cb("close")},
+  { key = "<CR>",               action = "edit"},
+  { key = "o",                  action = "edit"},
+  { key = "<2-LeftMouse>",      action = "edit"},
+  { key = "<2-RightMouse>",     action = "cd"},
+  { key = "<C->",               action = "cd"},
+  { key = "w",                  action = "vsplit"},
+  { key = "W",                  action = "split"},
+  { key = "<C-t>",              action = "tabnew"},
+  { key = "<BS>",               action = "close_node"},
+  { key = "<S-CR>",             action = "close_node"},
+  { key = "<Tab>",              action = "preview"},
+  { key = "I",                  action = "toggle_ignored"},
+  { key = "H",                  action = "toggle_dotfiles"},
+  { key = "R",                  action = "refresh"},
+  { key = "a",                  action = "create"},
+  { key = "d",                  action = "remove"},
+  { key = "r",                  action = "rename"},
+  { key = "<C-r>",              action = "full_rename"},
+  { key = "x",                  action = "cut"},
+  { key = "c",                  action = "copy"},
+  { key = "p",                  action = "paste"},
+  { key = "[c",                 action = "prev_git_item"},
+  { key = "]c",                 action = "next_git_item"},
+  { key = "-",                  action = "dir_up"},
+  { key = "q",                  action = "close"},
 }
 
 require'nvim-tree'.setup {
