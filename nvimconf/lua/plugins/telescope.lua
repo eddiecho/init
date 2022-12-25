@@ -21,6 +21,13 @@ local new_buffer_maker = function(filepath, bufnr, opts)
   }):sync()
 end
 
+local borderchars = {
+  { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+  prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+  results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+  preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+}
+
 require("telescope").setup({
   defaults = {
     winblend = 20,
@@ -29,14 +36,8 @@ require("telescope").setup({
     prompt_title = '',
     results_title = '',
     preview_title = '',
-    borderchars = {
-      { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-      prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-      results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-      preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-    },
     path_display = {"smart"},
-    file_ignore_patterns = {".git/", "node_modules", "build"},
+    file_ignore_patterns = {".git/", "node_modules", "build", "out"},
     buffer_previewer_maker = new_buffer_maker,
 
     vimgrep_arguments = {

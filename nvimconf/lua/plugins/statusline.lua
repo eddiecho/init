@@ -196,18 +196,9 @@ gls.right[5] = {
     }
 }
 
-gls.right[6] = {
-  LineColumn = {
-        provider = "LineColumn",
-        separator = " ",
-        separator_highlight = {colors.bg, colors.fg},
-        highlight = {colors.bg, colors.fg}
-  }
-}
-
 gls.right[7] = {
     PerCent = {
-        provider = "LinePercent",
+        provider = {"LineColumn", "LinePercent"},
         separator = " ",
         highlight = {colors.bg, colors.fg}
     }

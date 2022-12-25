@@ -25,14 +25,36 @@ return require("packer").startup(
         use "akinsho/bufferline.nvim"
         -- Statusline replacement
         use "glepnir/galaxyline.nvim"
+
         -- Syntax highlighting
-        use "nvim-treesitter/nvim-treesitter"
+        use {
+          "nvim-treesitter/nvim-treesitter",
+          run = function()
+            pcall(require('nvim-treesitter.install').update { with_sync = true })
+          end,
+        }
+        use {
+          'nvim-treesitter/nvim-treesitter-textobjects',
+          after = 'nvim-treesitter',
+        }
+
         -- Highlight hex colors
         use "norcalli/nvim-colorizer.lua"
         -- Code formatting
         use "sbdchd/neoformat"
+
         -- Language server
-        use "neovim/nvim-lspconfig"
+        use {
+          "neovim/nvim-lspconfig",
+          requires = {
+            -- LSP status updates
+            'j-hui/fidget.nvim',
+
+            -- LSP completions for neovim configs
+            'folke/neodev.nvim',
+          },
+        }
+
         use "onsails/lspkind-nvim"
         use "ray-x/lsp_signature.nvim"
         use "simrat39/rust-tools.nvim"
@@ -48,19 +70,27 @@ return require("packer").startup(
           },
         }
         -- Auto completion
-        use "hrsh7th/nvim-compe"
+        use {
+          'hrsh7th/nvim-cmp',
+          requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+        }
+
         -- Auto pair some stuff
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
         -- Profile startup time for bottlenecks use with :StartupTime
         use "tweekmonster/startuptime.vim"
+
         -- Fuzzy finder
-        use "nvim-telescope/telescope.nvim"
-        use "nvim-telescope/telescope-media-files.nvim"
+        use {
+          "nvim-telescope/telescope.nvim",
+          requires = {
+            use "nvim-lua/plenary.nvim",
+            use "nvim-telescope/telescope-media-files.nvim"
+          }
+        }
         -- Popup windows
         use "nvim-lua/popup.nvim"
-        -- Used by other plugins as helper functions
-        use "nvim-lua/plenary.nvim"
         -- Highlight trailing whitespace
         use "ntpeters/vim-better-whitespace"
         -- Live preview for search and replace
@@ -74,7 +104,6 @@ return require("packer").startup(
         -- Highlight yanks
         use "machakann/vim-highlightedyank"
         -- use "simrat39/symbols-outline.nvim"
-        use "bfredl/nvim-luadev"
         use "mg979/vim-visual-multi"
 
 	if packer_bootstrap then

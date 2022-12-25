@@ -11,7 +11,7 @@ require "plugins/statusline"
 require("colorizer").setup()
 
 -- lsp
-require "plugins/compe"
+require "plugins/cmp"
 
 local cmd = vim.cmd
 local g = vim.g
@@ -97,6 +97,9 @@ require "lsp_signature".on_attach({
     border = "single"
   }
 })
+
+require('neodev').setup()
+require('fidget').setup()
 
 -- hide line numbers in terminal windows
 vim.api.nvim_exec([[
