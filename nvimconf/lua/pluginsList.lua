@@ -106,6 +106,8 @@ return require("packer").startup(
         -- use "simrat39/symbols-outline.nvim"
         use "mg979/vim-visual-multi"
 
+        use {"kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async"}
+
 	if packer_bootstrap then
 	    require('packer').sync()
 	end

@@ -90,7 +90,7 @@ require("lspkind").init(
     }
 )
 
-require "lsp_signature".on_attach({
+require("lsp_signature").on_attach({
   bind = true,
   floating_window = true,
   handler_opts = {
@@ -111,3 +111,5 @@ cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
 
 cmd "hi clear CursorLine"
 cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
+
+require "plugins/ufo"
