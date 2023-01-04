@@ -17,15 +17,10 @@ local cmd = vim.cmd
 local g = vim.g
 
 -- colorscheme related stuff
+vim.cmd([[colorscheme monokai-pro]])
 
 cmd "syntax enable"
 cmd "syntax on"
-g.sonokai_style = "andromeda"
-g.sonokai_enable_italic = 1
-cmd "colorscheme sonokai"
-
--- local base16 = require "base16"
--- base16(base16.themes["monokai"], true)
 
 -- blankline
 local indent = 2

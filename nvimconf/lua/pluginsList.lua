@@ -11,15 +11,30 @@ return require("packer").startup(
 
         -- Shows indentation
         use "lukas-reineke/indent-blankline.nvim"
-        -- Theme helper
-        use "sainnhe/sonokai"
+
+        -- Color scheme
+        use {
+          "loctvl842/monokai-pro.nvim",
+          requires = {
+            "MunifTanjim/nui.nvim"
+          }
+        }
+
         -- File icons
         use "kyazdani42/nvim-web-devicons"
         use "ryanoasis/vim-devicons"
         -- File explorer, go back to ChadTree?
         use "kyazdani42/nvim-tree.lua"
         -- Show changes in the gutter
-        use "lewis6991/gitsigns.nvim"
+        use {
+          "lewis6991/gitsigns.nvim",
+          config = function()
+            require("plugins/monokai")
+          end,
+          requires = {
+            "nvim-lua/plenary.nvim",
+          }
+        }
         -- Tab/buffers on the top
         -- TODO - evaluate romgrk/barbar.nvim
         use "akinsho/bufferline.nvim"
@@ -85,8 +100,8 @@ return require("packer").startup(
         use {
           "nvim-telescope/telescope.nvim",
           requires = {
-            use "nvim-lua/plenary.nvim",
-            use "nvim-telescope/telescope-media-files.nvim"
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-media-files.nvim"
           }
         }
         -- Popup windows
@@ -106,7 +121,12 @@ return require("packer").startup(
         -- use "simrat39/symbols-outline.nvim"
         use "mg979/vim-visual-multi"
 
-        use {"kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async"}
+        use {
+          "kevinhwang91/nvim-ufo",
+          requires = {
+            "kevinhwang91/promise-async"
+          }
+        }
 
 	if packer_bootstrap then
 	    require('packer').sync()
