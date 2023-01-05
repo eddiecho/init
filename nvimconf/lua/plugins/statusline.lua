@@ -63,7 +63,6 @@ gls.left[5] = {
         provider = function()
             return ""
         end,
-        separator = " ",
         highlight = {colors.lightbg, colors.bg}
     }
 }
@@ -89,7 +88,7 @@ gls.left[7] = {
     DiffModified = {
         provider = "DiffModified",
         condition = checkwidth,
-        icon = " ",
+        icon = "  ",
         highlight = {colors.orange, colors.line_bg}
     }
 }
@@ -98,7 +97,7 @@ gls.left[8] = {
     DiffRemove = {
         provider = "DiffRemove",
         condition = checkwidth,
-        icon = " ",
+        icon = "  ",
         highlight = {colors.red, colors.line_bg}
     }
 }
