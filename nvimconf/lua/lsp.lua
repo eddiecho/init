@@ -1,6 +1,5 @@
 
 vim.cmd [[packadd nvim-lspconfig]]
-vim.cmd [[packadd nvim-compe]]
 
 vim.lsp.set_log_level('debug')
 

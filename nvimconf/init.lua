@@ -20,7 +20,7 @@ local g = vim.g
 
 cmd "syntax enable"
 cmd "syntax on"
-g.sonokai_style = "andromeda"
+g.sonokai_style = "contrast"
 g.sonokai_enable_italic = 1
 cmd "colorscheme sonokai"
 
