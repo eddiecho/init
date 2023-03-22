@@ -23,6 +23,7 @@ return require("packer").startup(
         -- File icons
         use "kyazdani42/nvim-web-devicons"
         use "ryanoasis/vim-devicons"
+        use "yamatsum/nvim-nonicons"
         -- File explorer, go back to ChadTree?
         use "kyazdani42/nvim-tree.lua"
         -- Show changes in the gutter
