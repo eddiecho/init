@@ -19,13 +19,6 @@ local g = vim.g
 -- colorscheme related stuff
 vim.cmd([[colorscheme monokai-pro]])
 
-cmd "syntax enable"
-cmd "syntax on"
-
-g.sonokai_style = "contrast"
-g.sonokai_enable_italic = 1
-cmd "colorscheme sonokai"
-
 -- blankline
 local indent = 2
 
