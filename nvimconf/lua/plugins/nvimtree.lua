@@ -1,5 +1,7 @@
 vim.cmd [[packadd nvim-tree.lua]]
 
+local nonicons_extention = require("nvim-nonicons.extentions.nvim-tree")
+
 vim.o.termguicolors = true
 
 local get_lua_action = function(cb_name)
@@ -71,6 +73,8 @@ require'nvim-tree'.setup {
       enable = true
     },
     icons = {
+      glyphs = nonicons_extention.glyphs,
+      --[[
       glyphs = {
         default = " ",
         symlink = " ",
@@ -87,6 +91,7 @@ require'nvim-tree'.setup {
           symlink = ""
         }
       }
+      ]]--
     }
   }
 }
