@@ -6,11 +6,7 @@ CURR_DIR=$(pwd)
 TOOLS_DIR=$HOME/tools
 [ -d $TOOLS_DIR ] || mkdir -p $TOOLS_DIR
 
-if [[ $USER == "edcho" ]]; then
-  git config --global user.email "edcho@amazon.com"
-else
-  git config --global user.email "eunseocho@gmail.com"
-fi
+git config --global user.email "eunseocho@gmail.com"
 git config --global user.name "Edward Cho"
 git config --global --replace-all core.pager "less -F -X"
 git config --global core.editor "nvim"
@@ -99,11 +95,16 @@ function install_tmux {
   fi
 }
 
+function install_dots {
+  find $(pwd)/dotfiles -name ".*" -exec ln -s {} ~/ \;
+}
+
 install_deps
 install_zsh
 install_nvim
 install_npm
 install_rust
+install_tmux
 
 echo "yay done"
 echo "things to do after:"
