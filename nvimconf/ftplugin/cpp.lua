@@ -12,16 +12,3 @@ require"lspconfig".clangd.setup {
     })
   }
 }
-
---[[
-require('lv-utils').define_augroups {
-  _clang_autoformat = {
-    { "BufWritePre *.c lua vim.lsp.buf.formatting_sync(nil, 1000)" },
-    { "BufWritePre *.h lua vim.lsp.buf.formatting_sync(nil, 1000)" },
-    { "BufWritePre *.cpp lua vim.lsp.buf.formatting_sync(nil, 1000)" },
-    { "BufWritePre *.hpp lua vim.lsp.buf.formatting_sync(nil, 1000)" },
-  }
-}
---]]
---
---
