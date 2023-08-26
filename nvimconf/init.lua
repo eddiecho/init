@@ -18,8 +18,6 @@ require "plugins/colorscheme"
 cmd.colorscheme "catppuccin"
 
 -- blankline
-local indent = 2
-
 g.indentLine_enabled = 1
 g.indent_blankline_char = "▏"
 

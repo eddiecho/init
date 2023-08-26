@@ -121,7 +121,7 @@ return require("packer").startup(
     use "machakann/vim-highlightedyank"
     -- use "simrat39/symbols-outline.nvim"
     use "mg979/vim-visual-multi"
-
+    -- better folds
     use {
       "kevinhwang91/nvim-ufo",
       requires = {
