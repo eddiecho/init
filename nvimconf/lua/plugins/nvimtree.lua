@@ -20,35 +20,34 @@ vim.api.nvim_set_keymap(
     }
 )
 
-nvim_bindings = {
-  { key = "<CR>",               action = "edit"},
-  { key = "o",                  action = "edit"},
-  { key = "<2-LeftMouse>",      action = "edit"},
-  { key = "<2-RightMouse>",     action = "cd"},
-  { key = "<C->",               action = "cd"},
-  { key = "w",                  action = "vsplit"},
-  { key = "W",                  action = "split"},
-  { key = "<C-t>",              action = "tabnew"},
-  { key = "<BS>",               action = "close_node"},
-  { key = "<S-CR>",             action = "close_node"},
-  { key = "<Tab>",              action = "preview"},
-  { key = "I",                  action = "toggle_ignored"},
-  { key = "H",                  action = "toggle_dotfiles"},
-  { key = "R",                  action = "refresh"},
-  { key = "a",                  action = "create"},
-  { key = "d",                  action = "remove"},
-  { key = "r",                  action = "rename"},
-  { key = "<C-r>",              action = "full_rename"},
-  { key = "x",                  action = "cut"},
-  { key = "c",                  action = "copy"},
-  { key = "p",                  action = "paste"},
-  { key = "[c",                 action = "prev_git_item"},
-  { key = "]c",                 action = "next_git_item"},
-  { key = "-",                  action = "dir_up"},
-  { key = "q",                  action = "close"},
-}
+local function on_attach(bufnr)
+  local api = require('nvim-tree.api')
+
+  local function opts(desc)
+    return {
+      desc = 'nvim-tree: ' .. desc,
+      buffer = bufnr,
+      noremap = true,
+      silent = true,
+      nowait = true,
+    }
+  end
+
+  -- custom keybinds
+  vim.keymap.set('n', '<CR>',  api.node.open.edit,             opts("Open"))
+  vim.keymap.set('n', '<BS>',  api.node.navigate.parent_close, opts("Close directory"))
+  vim.keymap.set('n', 'a',     api.fs.create,                  opts('Create'))
+  vim.keymap.set('n', 'd',     api.fs.remove,                  opts('Delete'))
+  vim.keymap.set('n', 'e',     api.tree.expand_all,            opts("Expand all"))
+  vim.keymap.set('n', 'r',     api.fs.rename,                  opts("Rename"))
+  vim.keymap.set('n', 'w',     api.node.open.vertical,         opts("Open: vertical split"))
+  vim.keymap.set('n', 'W',     api.node.open.horizontal,       opts("Open: horizontal split"))
+  vim.keymap.set('n', 'y',     api.fs.copy.filename,           opts('Copy Name'))
+  vim.keymap.set('n', 'Y',     api.fs.copy.absolute_path,      opts('Copy Absolute Path'))
+end
 
 require'nvim-tree'.setup {
+  on_attach = on_attach,
   filters = {
     dotfiles = false,
     custom = {}
@@ -70,24 +69,6 @@ require'nvim-tree'.setup {
     },
     icons = {
       glyphs = nonicons_extention.glyphs,
-      --[[
-      glyphs = {
-        default = " ",
-        symlink = " ",
-        git = {
-          unstaged = "✗",
-          staged = "✓",
-          unmerged = "",
-          renamed = "➜",
-          untracked = "★"
-        },
-        folder = {
-          default = "",
-          open = "",
-          symlink = ""
-        }
-      }
-      ]]--
     }
   }
 }

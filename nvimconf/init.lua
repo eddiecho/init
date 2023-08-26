@@ -14,15 +14,7 @@ require "plugins/cmp"
 local cmd = vim.cmd
 local g = vim.g
 
-require("catppuccin").setup({
-  flavour = "mocha",
-  integrations = {
-    cmp = true,
-    gitsigns = true,
-    nvimtree = true,
-    treesitter = true,
-  }
-})
+require "plugins/colorscheme"
 cmd.colorscheme "catppuccin"
 
 -- blankline
