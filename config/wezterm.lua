@@ -1,29 +1,6 @@
 local wezterm = require 'wezterm';
 local string = require'string';
 
-local colorscheme_onenord = {
-  background = "#2E3440",
-  black = "#4C566A",
-  blue = "#81A1C1",
-  brightBlack = "#3B4252",
-  brightBlue = "#81A1C1",
-  brightCyan = "#88C0D0",
-  brightGreen = "#A3BE8C",
-  brightPurple =  "#B988B0",
-  brightRed = "#BF616A",
-  brightWhite = "#E5E9F0",
-  brightYellow = "#EBCB8B",
-  cursorColor = "#81A1C1",
-  cyan = "#8FBCBB",
-  foreground = "#C8D0E0",
-  green = "#A3BE8C",
-  purple = "#B988B0",
-  red = "#BF616A",
-  selectionBackground = "#434C5E",
-  white = "#ECEFF4",
-  yellow = "#EBCB8B",
-}
-
 wezterm.on("ctrl-c-custom-event", function(window, pane)
   local sel = window:get_selection_text_for_pane(pane)
   if string.len(sel) >= 1 then
@@ -40,8 +17,12 @@ end
 
 return {
   default_domain = "WSL:Ubuntu-20.04",
+
+  color_scheme = "Catppuccin Mocha",
+
   font = wezterm.font_with_fallback({
     {family="SFMono Nerd Font", weight="Bold"},
+    "nonicons"
   }),
   keys = {
     {key="t", mods="CTRL", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
@@ -60,24 +41,20 @@ return {
   },
 
   skip_close_confirmation_for_processes_named = {
-        "bash",
-        "sh",
-        "zsh",
-        "fish",
-        "tmux",
-        "nu",
-        "cmd.exe",
-        "pwsh.exe",
-        "powershell.exe",
-        "wsl.exe"
+    "bash",
+    "sh",
+    "zsh",
+    "fish",
+    "tmux",
+    "nu",
+    "cmd.exe",
+    "pwsh.exe",
+    "powershell.exe",
+    "wsl.exe"
   },
   window_close_confirmation = "NeverPrompt",
 
-  color_schemes = {
-     ["Onenord"] = colorscheme_onenord
-  },
-  color_scheme = "Onenord",
-  check_for_update = false,
+  show_update_window = false,
   wsl_domains = wsl_domains,
 }
 
