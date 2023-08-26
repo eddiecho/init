@@ -9,15 +9,21 @@ require "plugins/bufferline"
 require "plugins/statusline"
 
 require("colorizer").setup()
-
--- lsp
 require "plugins/cmp"
 
 local cmd = vim.cmd
 local g = vim.g
 
--- colorscheme related stuff
-vim.cmd([[colorscheme monokai-pro]])
+require("catppuccin").setup({
+  flavour = "mocha",
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    nvimtree = true,
+    treesitter = true,
+  }
+})
+cmd.colorscheme "catppuccin"
 
 -- blankline
 local indent = 2
@@ -33,53 +39,20 @@ g.indent_blankline_buftype_exclude = {"terminal"}
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
 
-require("plugins/treesitter")
-
--- highlights --
-cmd "hi LineNr guifg=#42464e guibg=NONE"
-cmd "hi Comment guifg=#42464e"
-
-cmd "hi SignColumn guibg=NONE"
-cmd "hi VertSplit guibg=NONE guifg=#2a2e36"
-cmd "hi EndOfBuffer guifg=#1e222a"
-cmd "hi PmenuSel guibg=#98c379"
-cmd "hi Pmenu  guibg=#282c34"
-
--- telescope stuff and popupmenu
+require "plugins/treesitter"
 require "plugins/telescope"
-
-cmd "hi TelescopeBorder   guifg=#2a2e36"
-cmd "hi TelescopePromptBorder   guifg=#2a2e36"
-cmd "hi TelescopeResultsBorder  guifg=#2a2e36"
-cmd "hi TelescopePreviewBorder  guifg=#525865"
-
---  nvim tree color for folder name and icon
 require "plugins/nvimtree"
-
-cmd "hi NvimTreeFolderIcon guifg = #61afef"
-cmd "hi NvimTreeFolderName guifg = #61afef"
-cmd "hi NvimTreeIndentMarker guifg=#383c44"
-
--- cmd "hi Normal guibg=NONE ctermbg=NONE"
-cmd "hi Normal ctermbg=NONE"
-cmd "hi nonText ctermbg=NONE"
-
--- git signs
 require "plugins/gitsigns"
-
-cmd "hi DiffAdd guifg=#81A1C1 guibg = none"
-cmd "hi DiffChange guifg =#3A3E44 guibg = none"
-cmd "hi DiffModified guifg = #81A1C1 guibg = none"
 
 require("nvim-autopairs").setup()
 
 require("lspkind").init(
-    {
-        mode = "symbol_text",
-        symbol_map = {
-            Folder = ""
-        }
+  {
+    mode = "symbol_text",
+    symbol_map = {
+      Folder = ""
     }
+  }
 )
 
 require("lsp_signature").on_attach({

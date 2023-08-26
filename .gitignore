@@ -1,3 +1,4 @@
 tmp
 !tmp/.gitkeep
 *packer_compiled.lua
+tmuxconf/plugins

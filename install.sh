@@ -35,12 +35,15 @@ function install_deps {
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
   brew install tldr
   brew install tree
   brew install cloc
   brew install zsh
   brew install rg
   brew install zig --HEAD
+  brew install tmux
 }
 
 function install_zsh {
@@ -84,6 +87,15 @@ function install_nvim {
   else
     mkdir -p ~/.config
     ln -s $CURR_DIR/nvimconf ~/.config/nvim
+  fi
+}
+
+function install_tmux {
+  if [[ -h ~/.config/tmux ]]; then
+    echo ""
+  else
+    mkdir -p ~/.config
+    ln -s $CURR_DIR/tmuxconf ~/.config/tmux
   fi
 }
 

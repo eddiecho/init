@@ -56,10 +56,6 @@ require'nvim-tree'.setup {
   view = {
     side = 'left',
     width = 25,
-    mappings = {
-      custom_only = false,
-      list = nvim_bindings,
-    }
   },
   actions = {
     open_file = {
