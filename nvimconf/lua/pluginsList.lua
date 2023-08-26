@@ -4,7 +4,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
--- using { } when using a different branch of the plugin or loading the plugin with certain commands
 return require("packer").startup(
   function(use)
     use "wbthomason/packer.nvim"
@@ -25,9 +24,6 @@ return require("packer").startup(
     -- Show changes in the gutter
     use {
       "lewis6991/gitsigns.nvim",
-      config = function()
-        require("plugins/monokai")
-      end,
       requires = {
         "nvim-lua/plenary.nvim",
       }
@@ -135,6 +131,10 @@ return require("packer").startup(
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
 
+    -- use {
+    --  "ggandor/leap.nvim",
+    --  requires = { "tpope/vim-repeat" }
+    -- }
     if packer_bootstrap then
       require('packer').sync()
     end
