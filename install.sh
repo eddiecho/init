@@ -70,7 +70,7 @@ function install_nvim {
   if [[ -d $TOOLS_DIR/neovim ]]; then
     echo "skipping neovim install"
   else
-    git clone https://github.com/neovim/neovim.git $TOOLS_DIR/neovim
+    git clone --depth 1 https://github.com/neovim/neovim.git $TOOLS_DIR/neovim
 
     pushd $TOOLS_DIR/neovim
     make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=/usr/local
@@ -105,6 +105,7 @@ install_nvim
 install_npm
 install_rust
 install_tmux
+install_dots
 
 echo "yay done"
 echo "things to do after:"

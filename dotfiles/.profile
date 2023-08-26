@@ -36,8 +36,17 @@ alias vi=nvim
 alias vim=nvim
 alias python=python3
 alias pip=pip3
+alias nvimswaps="pushd; cd ~/.local/state/nvim/swap"
+
 source "$HOME/.cargo/env"
 
 export WIN_HOME_DIR='/mnt/c/Users/photo'
 alias cdwin='cd /mnt/c/Users/photo'
 if [ -e /home/eddie/.nix-profile/etc/profile.d/nix.sh ]; then . /home/eddie/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source "$HOME/.cargo/env"
+
