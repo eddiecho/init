@@ -5,19 +5,19 @@ local nonicons_extention = require("nvim-nonicons.extentions.nvim-tree")
 vim.o.termguicolors = true
 
 local get_lua_action = function(cb_name)
-    return string.format(":lua require'nvim-tree'.on_keypress('%s')<CR>", cb_name)
+  return string.format(":lua require'nvim-tree'.on_keypress('%s')<CR>", cb_name)
 end
 
 -- Mappings for nvimtree
 
 vim.api.nvim_set_keymap(
-    "n",
-    "<Leader><Space>",
-    ":NvimTreeToggle<CR>",
-    {
-        noremap = true,
-        silent = true
-    }
+  "n",
+  "<Leader><Space>",
+  ":NvimTreeToggle<CR>",
+  {
+    noremap = true,
+    silent = true
+  }
 )
 
 local function on_attach(bufnr)
