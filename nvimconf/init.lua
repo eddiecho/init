@@ -14,9 +14,6 @@ require "plugins/cmp"
 local cmd = vim.cmd
 local g = vim.g
 
-require "plugins/colorscheme"
-cmd.colorscheme "catppuccin"
-
 -- blankline
 g.indentLine_enabled = 1
 g.indent_blankline_char = "▏"
@@ -54,7 +51,11 @@ require("lsp_signature").on_attach({
 })
 
 require('neodev').setup()
-require('fidget').setup()
+require('fidget').setup({
+  window = {
+    blend = 0,
+  }
+})
 
 -- hide line numbers in terminal windows
 vim.api.nvim_exec([[
@@ -68,3 +69,9 @@ cmd "hi clear CursorLine"
 cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
 
 require "plugins/ufo"
+
+-- keep it at the bottom,
+-- has dependencies on other plugin settings
+require "plugins/colorscheme"
+cmd.colorscheme "catppuccin"
+
