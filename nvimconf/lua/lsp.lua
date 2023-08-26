@@ -1,37 +1,51 @@
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "rust_analyzer",
+    "pyright",
+    "zls",
+    "clangd",
+    "tsserver"
+  },
 
-vim.cmd [[packadd nvim-lspconfig]]
+  automatic_installation = true,
+})
+
+-- vim.cmd [[packadd nvim-lspconfig]]
 
 vim.lsp.set_log_level('debug')
+
+vim.keymap.set('n', ']d',       vim.diagnostic.goto_next)
+vim.keymap.set('n', '[d',       vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    vim.keymap.set("n", "gD",        vim.lsp.buf.declaration, opts)
+    vim.keymap.set("n", "gd",        vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gi",        vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "gr",        vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "<C-k>",     vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "<space>D",  vim.lsp.buf.type_definition, opts)
+    vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+
+    vim.keymap.set("n", "<space>wl", function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set("n", "<space>f", function()
+      vim.lsp.buf.format {async = true}
+    end, opts)
+  end,
+})
 
 local lsp_config = require'lspconfig'
 
 local lsp = {}
-
-function lsp.common_on_attach(client)
-  local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(0, ...)
-  end
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(0, ...)
-  end
-
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  -- Mappings.
-  local opts = {noremap = true, silent = true}
-  buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-  buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-  buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-end
 
 function lsp.root_dir(root_files)
   return function(filename)

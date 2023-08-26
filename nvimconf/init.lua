@@ -2,6 +2,7 @@
 require "pluginsList"
 require "plugins/fileicons"
 
+require "lsp"
 require "mappings"
 require "options"
 require "utils"

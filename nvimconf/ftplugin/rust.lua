@@ -89,7 +89,6 @@ local opts = {
   -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
   server = {
     cmd = {"rust-analyzer"},
-    on_attach = require'lsp'.common_on_attach,
     filetypes = { "rust" },
     root_dir = rust_root_dir,
   } -- rust-analyser options

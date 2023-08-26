@@ -21,7 +21,6 @@ return require("packer").startup(
     use "kyazdani42/nvim-web-devicons"
     use "ryanoasis/vim-devicons"
     use "yamatsum/nvim-nonicons"
-    -- File explorer, go back to ChadTree?
     use "kyazdani42/nvim-tree.lua"
     -- Show changes in the gutter
     use {
@@ -130,6 +129,11 @@ return require("packer").startup(
     }
 
     use "christoomey/vim-tmux-navigator"
+    -- highlights cursor after a jump
+    use "DanilaMihailov/beacon.nvim"
+    -- lsp manager
+    use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
 
     if packer_bootstrap then
       require('packer').sync()
