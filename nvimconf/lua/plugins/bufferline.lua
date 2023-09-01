@@ -6,7 +6,7 @@ end
 
 require "bufferline".setup {
   options = {
-    numbers = numbers,
+    numbers = "both",
     buffer_close_icon = "✗",
     offsets = {{filetype = "NvimTree", text = "Explorer", highlight = "Directory" }},
     modified_icon = "●",

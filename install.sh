@@ -38,7 +38,6 @@ function install_deps {
   brew install cloc
   brew install zsh
   brew install rg
-  brew install zig --HEAD
   brew install tmux
 }
 
