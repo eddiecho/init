@@ -4,11 +4,12 @@ require("mason-lspconfig").setup({
     "rust_analyzer",
     "pyright",
     "zls",
-    "clangd",
     "tsserver"
   },
 
-  automatic_installation = true,
+  -- this means automatically install new servers when visiting a new file type
+  -- not worth for me, since I need clangtools available in nix-path
+  automatic_installation = false,
 })
 
 vim.lsp.set_log_level('debug')
