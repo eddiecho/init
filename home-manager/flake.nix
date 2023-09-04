@@ -8,9 +8,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-    };
+#    neovim-nightly-overlay = {
+#      url = "github:nix-community/neovim-nightly-overlay";
+#    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }:
@@ -19,9 +19,9 @@
       # pkgs = nixpkgs.legacyPackages.${system};
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [
-          (inputs.neovim-nightly-overlay.overlay)
-        ];
+#        overlays = [
+#          (inputs.neovim-nightly-overlay.overlay)
+#        ];
       };
     in {
       defaultPackage.${system} = home-manager.defaultPackage.${system};

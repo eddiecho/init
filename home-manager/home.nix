@@ -36,6 +36,10 @@
       zsh
 
       # I guess I'm not supposed to add it here? So confused.
+      # We're going to manage it manually, since nvim moves so fast
+      # it breaks plugins all the time.
+      # Also the nightly overlay makes it build from scratch everytime
+      # I update any piece of my setup.
       # neovim
 
       # lots of nvim stuff need it
