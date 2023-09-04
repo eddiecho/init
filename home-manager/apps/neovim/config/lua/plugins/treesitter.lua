@@ -11,7 +11,9 @@ ts_config.setup {
     "rust",
     "lua",
     "python",
-    "help"
+    "vimdoc",
+    "nix",
+    "cmake",
   },
   highlight = {
     enable = true,
