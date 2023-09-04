@@ -7,7 +7,7 @@
     userEmail = "eunseocho@gmail.com";
     extraConfig = {
       core = {
-        editor = "vi";
+        editor = "nvim";
         pager = "less -X -F";
       };
     };

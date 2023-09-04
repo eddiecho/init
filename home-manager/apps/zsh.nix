@@ -8,6 +8,7 @@
       hms = "home-manager switch --flake ~/.config/home-manager --show-trace";
       nixgc = "nix-collect-garbage";
 
+      sudo = "nixsudo";
       vi = "nvim";
       vim = "nvim";
       vimdiff = "nvim -d";

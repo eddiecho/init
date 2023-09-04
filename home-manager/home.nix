@@ -45,14 +45,23 @@
       # lots of nvim stuff need it
       nodejs_20
 
+      cmake
+      gnumake
+      gettext
       clang_16
       clang-tools_16
+
       # # You can also create simple shell scripts directly inside your
       # # configuration. For example, this adds a command 'my-hello' to your
       # # environment:
       # (pkgs.writeShellScriptBin "my-hello" ''
       #   echo "Hello, ${config.home.username}!"
       # '')
+      (pkgs.writeShellScriptBin "nixsudo" ''
+        cmd=$(which $1)
+        shift
+        sudo "$cmd" $@
+      '')
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage

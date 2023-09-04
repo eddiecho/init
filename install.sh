@@ -10,3 +10,10 @@ nix-shell '<home-manager>' -A install
 # setup zsh
 which zsh | sudo tee -A /etc/shells
 chsh -s $(which zsh)
+
+# install neovim
+git clone --depth 1 git@github.com:neovim/neovim
+pushd neovim
+make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=/usr/local
+sudo make install
+popd
