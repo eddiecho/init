@@ -13,6 +13,7 @@
 
       plugins = [
         "git"
+        "marlonrichert/zsh-autocomplete"
       ];
     };
   };
