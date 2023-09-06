@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
-with pkgs;
-
-{
+# i have no idea why this works with the imports section
+with pkgs; {
   programs.tmux = {
     enable = true;
 

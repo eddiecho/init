@@ -8,9 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-#    neovim-nightly-overlay = {
-#      url = "github:nix-community/neovim-nightly-overlay";
-#    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }:
@@ -21,13 +18,9 @@
             system = "x86_64-linux";
           };
 
-          # Specify your home configuration modules here, for example,
           modules = [
             ./home.nix
           ];
-
-          # Optionally use extraSpecialArgs
-          # to pass through arguments to home.nix
         };
         "Eddie.Cho" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {

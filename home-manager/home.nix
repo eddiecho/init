@@ -34,7 +34,9 @@ in {
     file = {
       nvim = {
         recursive = true;
+        # relative path from current directory
         source = ./apps/neovim/config;
+        # relative path from home directory
         target = ".config/nvim";
       };
     };

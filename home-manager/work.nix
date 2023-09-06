@@ -20,12 +20,6 @@ in {
     # The home.packages option allows you to install Nix packages into your
     # environment.
     packages = with pkgs; basePackages ++ [
-      cmake
-      gnumake
-      gettext
-      clang_16
-      clang-tools_16
-
       go
       gopls
     ];
@@ -35,7 +29,9 @@ in {
     file = {
       nvim = {
         recursive = true;
+        # relative path from current directory
         source = ./apps/neovim/config;
+        # relative path from home directory
         target = ".config/nvim";
       };
       alacritty = {
@@ -58,7 +54,6 @@ in {
       # EDITOR = "emacs";
     };
   };
-
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

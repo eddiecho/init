@@ -6,8 +6,6 @@
 with pkgs; [
   cloc
   ripgrep
-  # needed for nvim stuff
-  unzip
   tldr
   tmux
   tree
@@ -27,6 +25,7 @@ with pkgs; [
 
   # lots of nvim stuff need it
   nodejs_20
+  unzip
 
   # # You can also create simple shell scripts directly inside your
   # # configuration. For example, this adds a command 'my-hello' to your
@@ -34,6 +33,8 @@ with pkgs; [
   # (pkgs.writeShellScriptBin "my-hello" ''
   #   echo "Hello, ${config.home.username}!"
   # '')
+  # sudo has a more limited PATH by default
+  # this is technically unsafe but.....
   (writeShellScriptBin "nixsudo" ''
     cmd=$(which $1)
     shift
