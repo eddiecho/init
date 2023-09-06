@@ -3,13 +3,11 @@
 let
   basePackages = import ./base_packages.nix pkgs;
 in {
-  targets.genericLinux.enable = true;
-
   home = {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
-    username = "eddie";
-    homeDirectory = "/home/eddie";
+    username = "Eddie.Cho";
+    homeDirectory = "/Users/Eddie.Cho";
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
     # introduces backwards incompatible changes.
@@ -27,6 +25,9 @@ in {
       gettext
       clang_16
       clang-tools_16
+
+      go
+      gopls
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -36,6 +37,10 @@ in {
         recursive = true;
         source = ./apps/neovim/config;
         target = ".config/nvim";
+      };
+      alacritty = {
+        source = ../config/alacritty.yml;
+        target = ".config/alacritty/alacritty.yml";
       };
     };
 

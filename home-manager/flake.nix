@@ -14,21 +14,12 @@
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }:
-    let
-      system = "x86_64-linux";
-      # pkgs = nixpkgs.legacyPackages.${system};
-      pkgs = import nixpkgs {
-        inherit system;
-#        overlays = [
-#          (inputs.neovim-nightly-overlay.overlay)
-#        ];
-      };
-    in {
-      defaultPackage.${system} = home-manager.defaultPackage.${system};
-
+    {
       homeConfigurations = {
         eddie = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+          };
 
           # Specify your home configuration modules here, for example,
           modules = [
@@ -37,6 +28,15 @@
 
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
+        };
+        "Eddie.Cho" = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = "aarch64-darwin";
+          };
+
+          modules = [
+            ./work.nix
+          ];
         };
       };
     };

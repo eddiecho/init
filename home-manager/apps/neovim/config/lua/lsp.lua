@@ -12,7 +12,7 @@ require("mason-lspconfig").setup({
   automatic_installation = false,
 })
 
-vim.lsp.set_log_level('debug')
+vim.lsp.set_log_level('info')
 
 vim.keymap.set('n', ']d',       vim.diagnostic.goto_next)
 vim.keymap.set('n', '[d',       vim.diagnostic.goto_prev)

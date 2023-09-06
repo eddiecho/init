@@ -67,8 +67,8 @@ require'nvim-tree'.setup {
     indent_markers = {
       enable = true
     },
-    icons = {
-      glyphs = nonicons_extention.glyphs,
-    }
+--    icons = {
+--      glyphs = nonicons_extention.glyphs,
+--    }
   }
 }
