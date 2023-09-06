@@ -21,6 +21,10 @@
           modules = [
             ./home.nix
           ];
+
+          extraSpecialArgs = {
+            email = "eunseocho@gmail.com";
+          };
         };
         "Eddie.Cho" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
@@ -30,6 +34,10 @@
           modules = [
             ./work.nix
           ];
+
+          extraSpecialArgs = {
+            email = "eddie.cho@rubrik.com";
+          };
         };
       };
     };

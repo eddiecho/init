@@ -23,7 +23,6 @@ in {
     # environment.
     packages = with pkgs; basePackages ++ [
       cmake
-      gnumake
       gettext
       clang_16
       clang-tools_16

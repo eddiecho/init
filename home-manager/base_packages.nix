@@ -9,6 +9,10 @@ with pkgs; [
   tldr
   tmux
   tree
+  gnumake
+  fd
+  awscli2
+  jq
 
   # home-manager can install zsh, but can't set it as default shell
   # need to do it manually...
