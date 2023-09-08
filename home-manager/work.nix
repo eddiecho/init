@@ -21,7 +21,7 @@ in {
     # environment.
     packages = with pkgs; basePackages ++ [
       terraform
-      go
+      direnv
       gopls
     ];
 
