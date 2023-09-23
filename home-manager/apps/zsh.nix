@@ -5,6 +5,7 @@
       nvimswaps = "pushd; cd ~/.local/state/nvim/swap";
       hms = "home-manager switch --flake ~/.config/home-manager --show-trace";
       nixgc = "nix-collect-garbage";
+      nixsearch = "nix search nixpkgs";
 
       sudo = "nixsudo";
       vi = "nvim";

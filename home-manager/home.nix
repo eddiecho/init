@@ -26,6 +26,15 @@ in {
       gettext
       clang_16
       clang-tools_16
+
+      # raylib and its dependencies
+      #raylib
+      #mesa
+      #alsa-lib
+      #xorg.xorgproto.out
+      #xorg.libX11.dev
+      #xorg.libXft
+      #xorg.libXinerama
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -51,7 +60,7 @@ in {
     #
     # if you don't want to manage your shell through Home Manager.
     sessionVariables = {
-      # EDITOR = "emacs";
+      gcc = "clang";
     };
   };
 
