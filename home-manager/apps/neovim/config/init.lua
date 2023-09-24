@@ -3,6 +3,8 @@ require "pluginsList"
 require "plugins/fileicons"
 
 require "lsp"
+require "lspconfigd"
+
 require "mappings"
 require "options"
 require "utils"
