@@ -61,6 +61,7 @@ in {
     # if you don't want to manage your shell through Home Manager.
     sessionVariables = {
       gcc = "clang";
+      WIN_HOME_DIR = "/mnt/c/Users/photo";
     };
   };
 
