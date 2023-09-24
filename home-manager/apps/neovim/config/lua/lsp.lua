@@ -12,6 +12,62 @@ require("mason-lspconfig").setup({
   automatic_installation = false,
 })
 
+local lsp_config = require'lspconfig'
+
+-- Why don't we have these in ftplugin files?
+-- Something about Packer probably messes up the load order
+-- The first file you enter doesn't get LSP working
+local clangd_flags = { "--background-index" }
+lsp_config.clangd.setup {
+  cmd = { "clangd", unpack(clangd_flags) },
+  handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = { spacing = 0, prefix = " " },
+      signs = true,
+      underline = true,
+      update_in_insert = true,
+    })
+  }
+}
+
+lsp_config.gopls.setup {}
+
+local python_root_files = {
+  "setup.py",
+  "pyproject.toml",
+  "setup.cfg",
+  "requirements.txt",
+  ".git",
+}
+lsp_config.pyright.setup {
+  cmd = {
+    "pyright-langserver",
+    "--stdio"
+  },
+  filetypes = { "python" },
+  root_dir = lsp.root_dir(python_root_files),
+  handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics,
+      {
+        virtual_text = {spacing = 0, prefix = " "},
+        signs = true,
+        underline = true,
+        update_in_insert = true
+      }
+    )
+  },
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "basic",
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+      }
+    }
+  }
+}
+
 vim.lsp.set_log_level('info')
 
 vim.keymap.set('n', ']d',       vim.diagnostic.goto_next)
@@ -41,8 +97,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
-
-local lsp_config = require'lspconfig'
 
 local lsp = {}
 
