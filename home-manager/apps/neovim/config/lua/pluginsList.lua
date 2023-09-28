@@ -17,10 +17,22 @@ return require("packer").startup(
     }
 
     -- File icons
+    --[[
     use "kyazdani42/nvim-web-devicons"
     use "ryanoasis/vim-devicons"
-    use "yamatsum/nvim-nonicons"
     use "kyazdani42/nvim-tree.lua"
+    --]]
+    use {
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v3.x",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
+        "yamatsum/nvim-nonicons"
+      }
+    }
+
     -- Show changes in the gutter
     use {
       "lewis6991/gitsigns.nvim",

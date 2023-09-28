@@ -31,7 +31,7 @@ in {
       #raylib
       #mesa
       #alsa-lib
-      #xorg.xorgproto.out
+      #xorg.xorgproto
       #xorg.libX11.dev
       #xorg.libXft
       #xorg.libXinerama

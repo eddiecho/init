@@ -1,4 +1,5 @@
 local lsp_config = require"lspconfig"
+local lsp = require"lsp"
 
 local python_root_files = {
   "setup.py",

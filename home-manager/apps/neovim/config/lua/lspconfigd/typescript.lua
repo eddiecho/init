@@ -1,4 +1,5 @@
 local lsp_config = require"lspconfig"
+local lsp = require"lsp"
 
 local js_root_files = {
   "package.json",

@@ -31,7 +31,8 @@ g.indent_blankline_show_first_indent_level = false
 
 require "plugins/treesitter"
 require "plugins/telescope"
-require "plugins/nvimtree"
+--require "plugins/nvimtree"
+require "plugins/neotree"
 require "plugins/gitsigns"
 
 require("nvim-autopairs").setup()
