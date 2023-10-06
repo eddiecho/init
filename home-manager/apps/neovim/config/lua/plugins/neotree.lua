@@ -1,3 +1,8 @@
+local open_and_center = function(state)
+  local node = state.tree:get_node()
+  print(vim.inspect(state))
+end
+
 require("neo-tree").setup({
   close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "rounded",
@@ -98,10 +103,13 @@ require("neo-tree").setup({
       nowait = true,
     },
     mappings = {
+      --[[
       ["<space>"] = {
           "toggle_node",
           nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
       },
+      --]]
+      ["<Space>"] = open_and_center,
       ["<2-LeftMouse>"] = "open",
       ["<cr>"] = "open",
       ["<esc>"] = "cancel", -- close preview or floating neo-tree window
@@ -118,7 +126,7 @@ require("neo-tree").setup({
       --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
       ["C"] = "close_node",
       -- ['C'] = 'close_all_subnodes',
-      ["z"] = "close_all_nodes",
+      ["Z"] = "close_all_nodes",
       --["Z"] = "expand_all_nodes",
       ["a"] = {
         "add",

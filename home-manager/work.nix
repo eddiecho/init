@@ -21,7 +21,6 @@ in {
     # environment.
     packages = with pkgs; basePackages ++ [
       terraform
-      direnv
       gopls
       protobuf
     ];

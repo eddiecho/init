@@ -2,6 +2,8 @@
 require "pluginsList"
 require "plugins/fileicons"
 
+require("neodev").setup({})
+
 require "lsp"
 require "lspconfigd"
 
@@ -31,8 +33,8 @@ g.indent_blankline_show_first_indent_level = false
 
 require "plugins/treesitter"
 require "plugins/telescope"
---require "plugins/nvimtree"
-require "plugins/neotree"
+require "plugins/nvimtree"
+--require "plugins/neotree"
 require "plugins/gitsigns"
 
 require("nvim-autopairs").setup()
@@ -54,7 +56,6 @@ require("lsp_signature").on_attach({
   }
 })
 
-require('neodev').setup()
 require('fidget').setup({
   window = {
     blend = 0,
@@ -73,6 +74,11 @@ cmd "hi clear CursorLine"
 cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
 
 require "plugins/ufo"
+
+require("bufdel").setup({
+  next = "tabs",
+  quit = false,
+})
 
 -- keep it at the bottom,
 -- has dependencies on other plugin settings

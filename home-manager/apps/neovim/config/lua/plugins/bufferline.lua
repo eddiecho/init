@@ -65,8 +65,10 @@ local opt = {silent = true}
 vim.api.nvim_command "com -nargs=? -complete=file_in_path New badd <args> | blast"
 vim.api.nvim_set_keymap("n", "<S-b>", ":New ", opt)
 
---removing a buffer
-vim.api.nvim_set_keymap("n", "<C-w>", [[<Cmd>bdelete<CR>]], opt)
+-- remove the buffer
+vim.api.nvim_set_keymap("n", "<C-w>", [[<Cmd>BufDel<CR>]], opt)
+-- remove the buffer and delete the window
+vim.api.nvim_set_keymap("n", "<C-q>", [[<Cmd>q<CR>]], opt)
 
 -- tabnew and tabprev
 vim.api.nvim_set_keymap("n", "<Tab>", [[<Cmd>BufferLineCycleNext<CR>]], opt)

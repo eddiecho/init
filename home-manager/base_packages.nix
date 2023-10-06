@@ -13,6 +13,7 @@ with pkgs; [
   fd
   awscli2
   jq
+  direnv
 
   # home-manager can install zsh, but can't set it as default shell
   # need to do it manually...

@@ -16,12 +16,15 @@ return require("packer").startup(
       as = "catppuccin"
     }
 
-    -- File icons
+    use {
+      "nvim-tree/nvim-tree.lua",
+      requires = {
+        "nvim-tree/nvim-web-devicons",
+        "ryanoasis/vim-devicons",
+        "yamatsum/nvim-nonicons"
+      }
+    }
     --[[
-    use "kyazdani42/nvim-web-devicons"
-    use "ryanoasis/vim-devicons"
-    use "kyazdani42/nvim-tree.lua"
-    --]]
     use {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",
@@ -32,6 +35,7 @@ return require("packer").startup(
         "yamatsum/nvim-nonicons"
       }
     }
+    --]]
 
     -- Show changes in the gutter
     use {
@@ -143,6 +147,7 @@ return require("packer").startup(
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
 
+    use "ojroques/nvim-bufdel"
     -- use {
     --  "ggandor/leap.nvim",
     --  requires = { "tpope/vim-repeat" }

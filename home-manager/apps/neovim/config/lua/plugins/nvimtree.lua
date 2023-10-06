@@ -53,6 +53,7 @@ require'nvim-tree'.setup {
     custom = {}
   },
   view = {
+    centralize_selection = true,
     side = 'left',
     width = 60,
   },
