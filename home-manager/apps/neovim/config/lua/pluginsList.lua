@@ -65,7 +65,7 @@ return require("packer").startup(
     -- Highlight hex colors
     use "norcalli/nvim-colorizer.lua"
     -- Code formatting
-    use "sbdchd/neoformat"
+    -- use "sbdchd/neoformat"
 
     -- Language server
     use {

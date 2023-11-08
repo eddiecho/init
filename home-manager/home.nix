@@ -27,6 +27,8 @@ in {
       clang_16
       clang-tools_16
 
+      zig
+      zls
       # raylib and its dependencies
       #raylib
       #mesa

@@ -1,12 +1,5 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = {
-    "rust_analyzer",
-    "pyright",
-    "zls",
-    "tsserver"
-  },
-
   -- this means automatically install new servers when visiting a new file type
   -- not worth for me, since I need clangtools available in nix-path
   automatic_installation = false,

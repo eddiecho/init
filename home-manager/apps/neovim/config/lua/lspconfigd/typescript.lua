@@ -8,7 +8,7 @@ local js_root_files = {
   ".git"
 }
 
-local function js_on_attach(client, bufnr)
+local function on_attach(client, bufnr)
   client.resolved_capabilities.document_formatting = false
   local ts_utils = require"nvim-lsp-ts-utils"
 
@@ -51,7 +51,7 @@ lsp_config.tsserver.setup {
   },
   settings = { documentFormatting = false },
   root_dir = lsp.root_dir(root_files),
-  on_attach = js_on_attach,
+  on_attach = on_attach,
   handlers = {
     ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = { spacing = 0, prefix = " "},
