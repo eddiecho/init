@@ -9,7 +9,7 @@ vim.api.nvim_set_keymap(
 )
 
 devicon_opts = {
-   {
+  {
     html = {
       icon = "",
       color = "#DE8C92",
@@ -112,8 +112,6 @@ devicon_opts = {
     }
   }
 }
-
-vim.o.termguicolors = true
 
 local function nvimtree_onattach(bufnr)
   local api = require('nvim-tree.api')

@@ -1,5 +1,9 @@
 return {
-  "lukas-reineke/indent-blankline.nvim",
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+  },
   {
     "norcalli/nvim-colorizer.lua",
     opts = {},
