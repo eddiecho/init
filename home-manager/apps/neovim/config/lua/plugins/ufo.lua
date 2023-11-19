@@ -1,15 +1,4 @@
-vim.o.foldcolumn = '1' -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
-local ufo = require('ufo')
-
--- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-vim.keymap.set('n', 'zR', ufo.openAllFolds)
-vim.keymap.set('n', 'zM', ufo.closeAllFolds)
-
-local handler = function(virtText, lnum, endLnum, width, truncate)
+local fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
   local suffix = ('  %d '):format(endLnum - lnum)
   local sufWidth = vim.fn.strdisplaywidth(suffix)
@@ -34,17 +23,32 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
     curWidth = curWidth + chunkWidth
   end
   table.insert(newVirtText, {suffix, 'MoreMsg'})
+
   return newVirtText
 end
 
--- Option 3: treesitter as a main provider instead
--- Only depend on `nvim-treesitter/queries/filetype/folds.scm`,
--- performance and stability are better than `foldmethod=nvim_treesitter#foldexpr()`
-require('ufo').setup({
-    provider_selector = function(bufnr, filetype, buftype)
-        return {'treesitter', 'indent'}
-    end,
-    fold_virt_text_handler = handler
-})
+return {
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
+    init = function()
+      vim.o.foldcolumn = '1'
+      vim.o.foldlevel = 99
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
 
--- za is a fold toggle
+      local ufo = require('ufo')
+      vim.keymap.set('n', 'zR', ufo.openAllFolds)
+      vim.keymap.set('n', 'zM', ufo.closeAllFolds)
+      -- za is the fold toggle
+    end,
+    opts = {
+      provider_selector = function(bufnr, filetype, buftype)
+        return {'treesitter', 'indent'}
+      end,
+      -- fold_virt_text_handler = fold_virt_text_handler,
+    }
+  }
+}

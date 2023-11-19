@@ -1,3 +1,4 @@
+--[[
 local open_and_center = function(state)
   local node = state.tree:get_node()
   print(vim.inspect(state))
@@ -103,12 +104,6 @@ require("neo-tree").setup({
       nowait = true,
     },
     mappings = {
-      --[[
-      ["<space>"] = {
-          "toggle_node",
-          nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-      },
-      --]]
       ["<Space>"] = open_and_center,
       ["<2-LeftMouse>"] = "open",
       ["<cr>"] = "open",
@@ -282,3 +277,4 @@ vim.api.nvim_set_keymap("",
     silent = true,
   }
 )
+]]--
