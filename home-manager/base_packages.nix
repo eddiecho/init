@@ -15,6 +15,7 @@ with pkgs; [
   jq
   direnv
   traceroute
+  delta
 
   # home-manager can install zsh, but can't set it as default shell
   # need to do it manually...
