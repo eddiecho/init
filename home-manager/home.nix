@@ -29,6 +29,7 @@ in {
 
       zig
       zls
+
       # raylib and its dependencies
       #raylib
       #mesa
@@ -37,6 +38,8 @@ in {
       #xorg.libX11.dev
       #xorg.libXft
       #xorg.libXinerama
+
+      python3
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
