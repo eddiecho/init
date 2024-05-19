@@ -1,10 +1,9 @@
--- load all plugins
 require "options"
+require "mappings"
 
 require "lazyplug"
 
 require "lsp"
-require "mappings"
 require "utils"
 
 -- hide line numbers in terminal windows

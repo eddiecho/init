@@ -4,6 +4,17 @@
 -- 2. Install nvim plugin https://github.com/yamatsum/nvim-nonicons
 --]]
 
+
+
+return {
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  config = function()
+    require 'config.statusline'
+  end,
+}
+
+--[[
 return {
   "nvimdev/galaxyline.nvim",
   init = function()
@@ -510,3 +521,4 @@ return {
     }
   end,
 }
+]]--
