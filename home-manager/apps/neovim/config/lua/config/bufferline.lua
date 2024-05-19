@@ -66,4 +66,3 @@ require"bufferline".setup {
     }
   }
 }
-)

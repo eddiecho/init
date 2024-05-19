@@ -36,7 +36,6 @@ require'lualine'.setup {
   sections = {
     lualine_a = {
       {'mode', fmt=trunc(80, 4, nil, true)},
-      {'filename', fmt=trunc(90, 30, 50)},
       {function() return require'lsp-status'.status() end, fmt=trunc(120, 20, 60)},
       window,
     },

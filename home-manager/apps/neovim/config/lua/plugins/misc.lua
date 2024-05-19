@@ -1,17 +1,6 @@
 return {
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {},
-  },
-  {
-    "norcalli/nvim-colorizer.lua",
-    opts = {},
-  },
-  {
-    "windwp/nvim-autopairs",
-    opts = {},
-  },
+  "norcalli/nvim-colorizer.lua",
+  "windwp/nvim-autopairs",
   "alvan/vim-closetag",
   -- Profile startup time for bottlenecks use with :StartupTime
   "tweekmonster/startuptime.vim",
