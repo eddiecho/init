@@ -42,3 +42,11 @@ map("n", "H", "<C-w>h")
 map("n", "L", "<C-w>l")
 map("n", "K", "<C-w>k")
 map("n", "J", "<C-w>j")
+
+-- system clipboard
+vim.keymap.set('n','y','"+y')
+vim.keymap.set('n','yy','"+yy')
+vim.keymap.set('n','Y','"+Y')
+vim.keymap.set('x','y','"+y')
+vim.keymap.set('x','Y','"+Y')
+

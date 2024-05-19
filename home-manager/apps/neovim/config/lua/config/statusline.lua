@@ -39,7 +39,7 @@ require'lualine'.setup {
       {'filename', fmt=trunc(90, 30, 50)},
       {function() return require'lsp-status'.status() end, fmt=trunc(120, 20, 60)},
       window,
-    }
+    },
     lualine_b = {
       {'diff', source = diff_source},
       {'b:gitsigns_head', icon = ''},
