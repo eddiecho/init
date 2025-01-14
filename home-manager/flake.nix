@@ -26,7 +26,7 @@
             email = "eunseocho@gmail.com";
           };
         };
-        "Eddie.Cho" = home-manager.lib.homeManagerConfiguration {
+        work = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
           };
