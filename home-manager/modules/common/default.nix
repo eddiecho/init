@@ -9,21 +9,21 @@
     user = lib.mkOption {
       type = lib.types.str;
     };
-    fullName = lib.mkOptions {
+    fullName = lib.mkOption {
       type = lib.types.str;
     };
     homePath = lib.mkOption {
       type = lib.types.path;
       default = builtins.toPath (
         if pkgs.stdenv.isDarwin then "/Users/${config.user}" else "/home/${config.user}"
-      )
+      );
     };
     unfreePackages = lib.mkOption {
-      type = lib.types.listOf lib.types.str
+      type = lib.types.listOf lib.types.str;
       default = [ ];
     };
     insecurePackages = lib.mkOption {
-      type = lib.types.listOf lib.types.str
+      type = lib.types.listOf lib.types.str;
       default = [ ];
     };
   };
@@ -39,13 +39,27 @@
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
+    };
 
-      nixpkgs.config = {
-        allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.unfreePackages;
-	permittedInsecurePackages = config.insecurePackages;
+    nix = {
+      extraOptions = ''
+        experimental-features = nix-command flakes
+	warn-dirty = false
+      '';
+
+      gc = {
+        automatic = true;
+	options = "--delete-older-than 7d";
       };
 
-      nix.registry.nixpkgs.flake = nixpkgs;
+      settings = {
+        auto-optimise-store = lib.mkIf (!pkgs.stdenv.isDarwin) true;
+      };
+    };
+
+    nixpkgs.config = {
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.unfreePackages;
+      permittedInsecurePackages = config.insecurePackages;
     };
   };
 }

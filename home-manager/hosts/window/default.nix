@@ -9,6 +9,7 @@ nixpkgs.lib.nixosSystem {
 
   modules = [
     ../../modules/common
+    ../../modules/nixos
 
     wsl.nixosModules.default
     {
@@ -18,6 +19,9 @@ nixpkgs.lib.nixosSystem {
     }
 
     home-manager.nixosModules.home-manager
+    {
+      nix.registry.nixpkgs.flake = nixpkgs;
+    }
   ];
 
   specialArgs = {
