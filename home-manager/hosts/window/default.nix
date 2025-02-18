@@ -22,9 +22,10 @@ nixpkgs.lib.nixosSystem {
 
       nix.registry.nixpkgs.flake = nixpkgs;
 
-      extraSpecialArgs = {
-        email = "eunseocho@gmail.com";
-      };
     }
   ];
+
+  specialArgs = {
+    email = "eunseocho@gmail.com";
+  };
 }

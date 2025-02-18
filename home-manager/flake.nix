@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }:
