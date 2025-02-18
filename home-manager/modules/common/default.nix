@@ -18,6 +18,9 @@
     fullName = lib.mkOption {
       type = lib.types.str;
     };
+    stateVersion = lib.mkOption {
+      type = lib.types.str;
+    };
     homePath = lib.mkOption {
       type = lib.types.path;
       default = builtins.toPath (
@@ -42,11 +45,16 @@
       curl
     ];
 
-    system.stateVersion = globals.stateVersion;
+    system.stateVersion = config.stateVersion;
 
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
+
+      users.${config.user} = {
+        home.stateVersion = config.stateVersion;
+	programs.home-manager.enable = true;
+      };
     };
 
     nix = {

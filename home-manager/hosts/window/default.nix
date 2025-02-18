@@ -11,6 +11,8 @@ nixpkgs.lib.nixosSystem {
     # god nix is so ASS
     ({ config, ... }: { config._module.args = {inherit inputs globals; }; })
 
+    globals
+
     ../../modules/common
     ../../modules/nixos
     ../../modules/wsl

@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   config = {
     home-manager.users.${config.user} = {
-      home.packages = [
+      home.packages = with pkgs; [
         jq
 	neovim
       ];
