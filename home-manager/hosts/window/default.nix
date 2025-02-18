@@ -8,6 +8,8 @@ nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
 
   modules = [
+    ../../modules/common
+
     wsl.nixosModules.default
     {
       system.stateVersion = globals.stateVersion;
@@ -16,13 +18,6 @@ nixpkgs.lib.nixosSystem {
     }
 
     home-manager.nixosModules.home-manager
-    {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-
-      nix.registry.nixpkgs.flake = nixpkgs;
-
-    }
   ];
 
   specialArgs = {
