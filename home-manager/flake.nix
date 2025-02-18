@@ -9,9 +9,9 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
+  outputs = inputs@{ self, ... }: 
   let
-    globals = rec {
+    globals = {
       user = "eddie";
       fullName = "Eddie Cho";
       stateVersion = "24.11";
@@ -22,7 +22,9 @@
       "aarch64-darwin"
     ];
 
-    forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    forAllSystems = inputs.nixpkgs.lib.genAttrs supportedSystems;
+
+    # recursive struct
   in rec {
     nixosConfigurations = {
       window = import ./hosts/window { inherit inputs globals; };

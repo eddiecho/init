@@ -8,19 +8,20 @@ nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
 
   modules = [
+    # god nix is so ASS
+    ({ config, ... }: { config._module.args = {inherit inputs globals; }; })
+
     ../../modules/common
     ../../modules/nixos
+    ../../modules/wsl
 
     wsl.nixosModules.default
-    {
-      system.stateVersion = globals.stateVersion;
-      wsl.enable = true;
-      wsl.defaultUser = globals.user;
-    }
 
     home-manager.nixosModules.home-manager
+
     {
-      nix.registry.nixpkgs.flake = nixpkgs;
+      wsl.enable = true;
+      wsl.defaultUser = globals.user;
     }
   ];
 

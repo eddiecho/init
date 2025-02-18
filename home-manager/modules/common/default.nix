@@ -2,9 +2,15 @@
   config,
   lib,
   pkgs,
+  inputs,
+  globals,
   ...
 }:
 {
+  imports = [
+    ./apps
+  ];
+
   options = {
     user = lib.mkOption {
       type = lib.types.str;
@@ -36,6 +42,8 @@
       curl
     ];
 
+    system.stateVersion = globals.stateVersion;
+
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
@@ -55,6 +63,8 @@
       settings = {
         auto-optimise-store = lib.mkIf (!pkgs.stdenv.isDarwin) true;
       };
+
+      registry.nixpkgs.flake = inputs.nixpkgs;
     };
 
     nixpkgs.config = {
