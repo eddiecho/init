@@ -2,31 +2,51 @@
   description = "Home Manager configuration of eddie";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }:
-    {
+    let
+      globals = rec {
+        user         = "eddie";
+        fullName     = "Eddie Cho";
+        stateVersion = "24.05";
+      };
+
+      supportedSystems = [
+        "x86_64-linux"   # WSL, typically
+        "aarch64-darwin" # work issued Mac
+      ];
+
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+    in rec {
+      # nixos-rebuild switch --flake .#window
+      nixosConfigurations = {
+        window    = import ./hosts/window    { inherit inputs globals; };
+        # framework = import ./hosts/framework { inherit inputs globals; };
+      };
+
+      # nixos-rebuild switch --flake .#work
+      # darwinConfigurations = {
+        # work = import ./hosts/work { inherit inputs globals; };
+      # };
+
+      # home-manager switch --flake .#window
       homeConfigurations = {
-        eddie = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "x86_64-linux";
-          };
+        window =
+          nixosConfigurations.window.config.home-manager.users.${globals.user}.home;
 
-          modules = [
-            ./home.nix
-          ];
-
-          extraSpecialArgs = {
-            email = "eunseocho@gmail.com";
-          };
-        };
-        work = home-manager.lib.homeManagerConfiguration {
+        work =
+        ''
+        home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
           };
@@ -39,6 +59,7 @@
             email = "eddie.cho@rubrik.com";
           };
         };
+        '';
       };
     };
 }
