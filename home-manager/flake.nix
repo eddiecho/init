@@ -47,7 +47,7 @@
       # home-manager switch --flake .#window
       homeConfigurations = {
         window = nixosConfigurations.window.config.home-manager.users.${globals.user}.home;
-        work = darwinConfigurations.work.config.home-manager.users.${globals.user}.home; 
+        work = darwinConfigurations.work.config.home-manager.users.${globals.user}.home;
       };
     };
 }
