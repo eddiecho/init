@@ -38,12 +38,7 @@
   };
   
   config = {
-    environment.systemPackages = with pkgs; [
-      git
-      vim
-      wget
-      curl
-    ];
+    environment.systemPackages = import ./system_packages.nix pkgs;
 
     system.stateVersion = config.stateVersion;
 
