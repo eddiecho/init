@@ -9,7 +9,12 @@ nixpkgs.lib.nixosSystem {
 
   modules = [
     # god nix is so ASS
-    ({ config, ... }: { config._module.args = {inherit inputs globals; }; })
+    (
+      { config, ... }:
+      {
+        config._module.args = { inherit inputs globals; };
+      }
+    )
 
     globals
 

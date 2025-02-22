@@ -36,7 +36,7 @@
       default = [ ];
     };
   };
-  
+
   config = {
     environment.systemPackages = import ./system_packages.nix pkgs;
 
@@ -48,19 +48,19 @@
 
       users.${config.user} = {
         home.stateVersion = config.stateVersion;
-	programs.home-manager.enable = true;
+        programs.home-manager.enable = true;
       };
     };
 
     nix = {
       extraOptions = ''
-        experimental-features = nix-command flakes
-	warn-dirty = false
+                experimental-features = nix-command flakes
+        	warn-dirty = false
       '';
 
       gc = {
         automatic = true;
-	options = "--delete-older-than 7d";
+        options = "--delete-older-than 7d";
       };
 
       settings = {

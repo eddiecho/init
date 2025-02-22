@@ -6,4 +6,3 @@
     ./direnv.nix
   ];
 }
-

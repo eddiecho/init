@@ -3,7 +3,8 @@
 # when you import it, you need to pass in the pkgs you get from the top level home file
 { pkgs, ... }:
 
-with pkgs; [
+with pkgs;
+[
   cloc
   ripgrep
   tldr
