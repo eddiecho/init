@@ -3,6 +3,7 @@
 # when you import it, you need to pass in the pkgs you get from the top level home file
 { pkgs, ... }:
 
+# these are environment packages, available to all users
 with pkgs;
 [
   git
@@ -12,5 +13,7 @@ with pkgs;
   curl
   cloc
   fd
+  jq
   tree
+  unzip
 ]

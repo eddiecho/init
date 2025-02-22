@@ -16,7 +16,9 @@ nixpkgs.lib.nixosSystem {
       }
     )
 
-    globals
+    (globals // {
+      gitEmail = "eunseocho@gmail.com";
+    })
 
     ../../modules/common
     ../../modules/nixos

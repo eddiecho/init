@@ -18,6 +18,9 @@
     fullName = lib.mkOption {
       type = lib.types.str;
     };
+    gitEmail = lib.mkOption {
+      type = lib.types.str;
+    };
     stateVersion = lib.mkOption {
       type = lib.types.str;
     };

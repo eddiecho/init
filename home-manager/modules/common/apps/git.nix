@@ -1,10 +1,10 @@
-{ specialArgs, ... }:
+{ ... }:
 
 {
   programs.git = {
     enable = true;
-    userName = "Eddie Cho";
-    userEmail = specialArgs.email;
+    userName = config.fullName;
+    userEmail = config.gitEmail;
     extraConfig = {
       core = {
         editor = "nvim";

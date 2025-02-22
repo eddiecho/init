@@ -30,6 +30,7 @@
     rec {
       formatter = {
         x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+        aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
       };
 
       # nixos-rebuild switch --flake .#window
