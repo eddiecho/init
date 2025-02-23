@@ -50,3 +50,10 @@ vim.keymap.set('n','Y','"+Y')
 vim.keymap.set('x','y','"+y')
 vim.keymap.set('x','Y','"+Y')
 
+-- remove the buffer
+-- vim.api.nvim_set_keymap("n", "<C-w>", [[<Cmd>BufDel<CR>]], opt)
+-- remove the buffer and delete the window
+-- vim.api.nvim_set_keymap("n", "<C-q>", [[<Cmd>q<CR>]], opt)
+
+local bb = require "bufdelete"
+vim.api.nvim_set_keymap("n", "<C-w>", bb.delete())
