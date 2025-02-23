@@ -16,4 +16,5 @@ with pkgs;
   jq
   tree
   unzip
+  clang
 ]

@@ -11,3 +11,5 @@ tmp
 /alacritty
 /iterm2
 /direnv
+/fontconfig
+/systemd

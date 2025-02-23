@@ -1,6 +1,9 @@
-{ lib, config, ... }:
 {
-  home-manager.home.${config.user} = {
+  config,
+  ...
+}:
+{
+  home-manager.users.${config.user} = {
     programs.neovim = {
       enable = true;
       defaultEditor = true;
@@ -8,7 +11,12 @@
       vimAlias = true;
       vimdiffAlias = true;
     };
+    home.file = {
+      ".config/nvim" = {
+        source = ./config;
+      };
+    };
+
   };
 
-  home.file.neovim.source = lib.file.mkOutOfStoreSymlink ./config;
 }

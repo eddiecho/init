@@ -10,7 +10,7 @@
       extraConfig = {
         core = {
           editor = "nvim";
-          pager = "delta";
+          pager = "less -X";
         };
         diff.algorithm = "histogram";
         pull.rebase = true;
