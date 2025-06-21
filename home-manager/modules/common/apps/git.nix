@@ -7,19 +7,48 @@
       enable = true;
       userName = config.fullName;
       userEmail = config.gitEmail;
+
       extraConfig = {
         core = {
           editor = "nvim";
           pager = "less -X";
         };
-        diff.algorithm = "histogram";
-        pull.rebase = true;
-        push.default = "current";
-        merge.conflictstyle = "diff3";
-        commit.verbose = true;
-        rerere.enabled = true;
+
+        commit = {
+          verbose = true;
+          cleanup = "scissors";
+        };
+
+        fetch = {
+          prune = true;
+          pruneTags = true;
+        };
+
+        rebase = {
+          autoSquash = true;
+          autoStash = true;
+          updateRefs = true;
+        };
+
+        diff = {
+          algorithm = "histogram";
+          colorMoved = "plain";
+          renames = true;
+        };
+
+        push = {
+          default = "current";
+          autoSetupRemote = true;
+        };
+
         branch.sort = "committerdate";
-        commit.cleanup = "scissors";
+        column.ui = "auto";
+
+        merge.conflictstyle = "diff3";
+        pull.rebase = true;
+
+        # Reuse Recorded Resolutions
+        rerere.enabled = true;
       };
     };
   };

@@ -1,5 +1,8 @@
 -- General key mappings
 
+-- stick with nvim_set_keymap
+-- it accepts strings to convert to vim commands
+-- the other, vim.key_map.set() takes lua callbacks as rhs
 local function map(mode, lhs, rhs, opts)
   local options = {noremap = true}
   if opts then
@@ -50,10 +53,5 @@ vim.keymap.set('n','Y','"+Y')
 vim.keymap.set('x','y','"+y')
 vim.keymap.set('x','Y','"+Y')
 
--- remove the buffer
--- vim.api.nvim_set_keymap("n", "<C-w>", [[<Cmd>BufDel<CR>]], opt)
--- remove the buffer and delete the window
--- vim.api.nvim_set_keymap("n", "<C-q>", [[<Cmd>q<CR>]], opt)
-
-local bb = require "bufdelete"
-vim.api.nvim_set_keymap("n", "<C-w>", bb.delete())
+local b = require "bufdelete"
+vim.keymap.set("n", "<C-w>", function() b.delete() end, { noremap = true })

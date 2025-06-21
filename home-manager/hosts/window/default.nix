@@ -1,6 +1,6 @@
 # System config for WSL based systems
 
-{ inputs, globals, ... }:
+{ inputs, globals, lib, ... }:
 
 with inputs;
 

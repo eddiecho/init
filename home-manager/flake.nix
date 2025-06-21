@@ -1,7 +1,11 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    wsl.url = "github:nix-community/NixOS-WSL/main";
+
+    wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -10,8 +14,11 @@
   };
 
   outputs =
-    inputs@{ self, ... }:
+    inputs@{ self, nixpkgs, ... }:
+
     let
+      inherit (nixpkgs) lib;
+
       globals = {
         user = "eddie";
         fullName = "Eddie Cho";
@@ -28,6 +35,7 @@
     in
     # rec means recursive struct
     rec {
+
       formatter = {
         x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
         aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
@@ -35,13 +43,13 @@
 
       # nixos-rebuild switch --flake .#window
       nixosConfigurations = {
-        window = import ./hosts/window { inherit inputs globals; };
-        framework = import ./hosts/framework { inherit inputs globals; };
+        window = import ./hosts/window { inherit inputs globals lib; };
+        framework = import ./hosts/framework { inherit inputs globals lib; };
       };
 
       # nixos-rebuild switch --flake .#work
       darwinConfigurations = {
-        work = import ./hosts/work { inherit inputs globals; };
+        work = import ./hosts/work { inherit inputs globals lib; };
       };
 
       # home-manager switch --flake .#window
