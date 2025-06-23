@@ -7,7 +7,7 @@ in
 lib
 // rec {
 
-  fileInDirWithSuffix =
+  filesInDirWithSuffix =
     dir: suffix:
     lib.pipe (lib.filesystem.listFilesRecursive dir) [
       (builtins.filter (name: lib.hasSuffix suffix name))
@@ -20,6 +20,8 @@ lib
     lib.pipe (nixFiles dir) [
       (map (file: (import file) inputs))
     ];
+
+  overlays = [] ++ (importOverlays ../overlays);
 
   defaultFilesToAttrset =
     dir:
@@ -52,9 +54,9 @@ lib
   pkgsBySystem = forAllSystems (
     system:
     import inputs.nixpkgs {
-      inherit system overlays
+      inherit system;
       config.allowUnfree = true;
-    };
+    }
   );
 
   homeModule = {
@@ -122,7 +124,7 @@ lib
         {
           home-manager = {
             extraSpecialArgs = {} // specialArgs;
-          } // homeModule.home-manager
+          } // homeModule.home-manager;
         }
       ];
     };
