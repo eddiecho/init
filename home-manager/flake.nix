@@ -25,22 +25,56 @@
         stateVersion = "24.11";
       };
 
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-darwin"
-      ];
-
-      forAllSystems = inputs.nixpkgs.lib.genAttrs supportedSystems;
-
     in
     # rec means recursive struct
     rec {
 
-      formatter = {
-        x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-        aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
-      };
+      lib = import ./lib inputs;
+      flattenAttrset = attrs: builtins.foldl' lib.mergeAttrs { } (builtins.attrValues attrs);
 
+      formatter = lib.forAllSystems (
+        system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            inherit (lib) overlays;
+          };
+        in
+        pkgs.nixfmt-rfc-style
+      );
+
+      nixosConfigurations = flattenAttrset (
+        builtins.mapAttrs (
+          system: hosts:
+          builtins.mapAttrs (
+            name: module:
+            lib.buildNixos {
+              inherit system module;
+              specialArgs = { };
+            }
+          ) hosts
+        ) lib.linuxHosts
+      );
+
+      homeModules = builtins.mapAttrs (
+        system: hosts:
+        builtins.mapAttrs (
+          name: module: (builtins.head (lib.attrsToList module.home-managers.users)).value
+        ) hosts
+      ) lib.hosts;
+
+      homeConfigurations = builtins.mapAttrs (
+        system: hosts:
+        builtins.mapAttrs (
+          name: module:
+          lib.buildHome {
+            inherit system module;
+            specialArgs = {};
+          }
+        )
+      ) homeModules;
+
+      /*
       # nixos-rebuild switch --flake .#window
       nixosConfigurations = {
         window = import ./hosts/window { inherit inputs globals lib; };
@@ -57,5 +91,6 @@
         window = nixosConfigurations.window.config.home-manager.users.${globals.user}.home;
         work = darwinConfigurations.work.config.home-manager.users.${globals.user}.home;
       };
+      */
     };
 }

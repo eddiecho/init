@@ -50,6 +50,7 @@
       useUserPackages = true;
 
       users.${config.user} = {
+        news.display = "silent";
         home.stateVersion = config.stateVersion;
         programs.home-manager.enable = true;
       };

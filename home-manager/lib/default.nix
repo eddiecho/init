@@ -1,0 +1,129 @@
+inputs:
+
+let
+  lib = inputs.nixpkgs.lib;
+in
+
+lib
+// rec {
+
+  fileInDirWithSuffix =
+    dir: suffix:
+    lib.pipe (lib.filesystem.listFilesRecursive dir) [
+      (builtins.filter (name: lib.hasSuffix suffix name))
+    ];
+
+  nixFiles = dir: filesInDirWithSuffix dir ".nix";
+
+  importOverlays =
+    dir:
+    lib.pipe (nixFiles dir) [
+      (map (file: (import file) inputs))
+    ];
+
+  defaultFilesToAttrset =
+    dir:
+    lib.pipe (nixFiles dir) [
+      (map (file: {
+        name = builtins.baseNameOf (builtins.dirOf file);
+        value = import file;
+      }))
+
+      (builtins.listToAttrs)
+    ];
+
+  supportedSystems = [
+    "x86_64-linux"
+    "aarch64-darwin"
+  ];
+
+  linuxSystems = builtins.filter (lib.hasSuffix "linux") supportedSystems;
+  darwinSystems = builtins.filter (lib.hasSuffix "darwin") supportedSystems;
+
+  forSystems = systems: lib.genAttrs systems;
+  forAllSystems = systems: lib.genAttrs supportedSystems;
+
+  # { x86_64-linux = { window = { settings = ...; }; }; };
+  hosts = forAllSystems (system: defaultFilesToAttrset ../hosts/${system});
+  linuxHosts = lib.filterAttrs (name: value: builtins.elem name linuxSystems) hosts;
+  darkwinHosts = lib.filterAttrs (name: value: builtins.elem name darwinSystems) hosts;
+
+  # { system -> pkgs }
+  pkgsBySystem = forAllSystems (
+    system:
+    import inputs.nixpkgs {
+      inherit system overlays
+      config.allowUnfree = true;
+    };
+  );
+
+  homeModule = {
+    home-manager = {
+      sharedModules = nixFiles ../platforms/home-manager;
+      # use system level nixpkgs instead of home-manager's
+      useGlobalPkgs = lib.mkDefault true;
+      # install packages to /etc/profiles instead of ~/.nix-profile
+      useUserPackages = lib.mkDefault true;
+    };
+  };
+
+  buildHome =
+    {
+      system,
+      module,
+      specialArgs,
+    }:
+    inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = pkgsBySystem.${system};
+      modules = [
+        { imports = (nixFiles ../platforms/home-manager); }
+        module
+      ];
+      extraSpecialArgs = {} // specialArgs;
+    };
+
+  buildNixos =
+    {
+      system,
+      module,
+      specialArgs,
+    }:
+    inputs.nixpkgs.lib.nixosSystem {
+      inherit specialArgs;
+      pkgs = pkgsBySystem.${system};
+      modules = [
+        inputs.home-manager.nixosModules.home-manager
+        inputs.wsl.nixosModules.wsl
+        { imports = (nixFiles ../platforms/nixos); }
+        module
+        {
+          home-manager = {
+            extraSpecialArgs = {} // specialArgs;
+          } // homeModule.home-manager;
+        }
+      ];
+    };
+
+  buildDarwin =
+    {
+      system,
+      module,
+      specialArgs,
+    }:
+    inputs.darwin.lib.darwinSystem {
+      inherit system specialArgs;
+      modules = [
+        inputs.home-manager.darwinModules.home-manager
+        {
+          imports = (nixFiles ../platforms/nix-darwin);
+          nixpkgs.pkgs = pkgsBySystem.${system};
+        }
+        module
+        {
+          home-manager = {
+            extraSpecialArgs = {} // specialArgs;
+          } // homeModule.home-manager
+        }
+      ];
+    };
+}
