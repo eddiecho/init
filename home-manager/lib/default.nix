@@ -47,8 +47,9 @@ lib
 
   # { x86_64-linux = { window = { settings = ...; }; }; };
   hosts = forAllSystems (system: defaultFilesToAttrset ../hosts/${system});
+
   linuxHosts = lib.filterAttrs (name: value: builtins.elem name linuxSystems) hosts;
-  darkwinHosts = lib.filterAttrs (name: value: builtins.elem name darwinSystems) hosts;
+  darwinHosts = lib.filterAttrs (name: value: builtins.elem name darwinSystems) hosts;
 
   # { system -> pkgs }
   pkgsBySystem = forAllSystems (

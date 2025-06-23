@@ -30,7 +30,7 @@
     rec {
 
       lib = import ./lib inputs;
-      flattenAttrset = attrs: builtins.foldl' lib.mergeAttrs { } (builtins.attrValues attrs);
+      flatenAttrset = attrs: builtins.foldl' lib.mergeAttrs { } (builtins.attrValues attrs);
 
       formatter = lib.forAllSystems (
         system:
