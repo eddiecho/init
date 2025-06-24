@@ -47,7 +47,7 @@ lib
 
   # { x86_64-linux = { window = { settings = ...; }; }; };
   hosts = forAllSystems (system: defaultFilesToAttrset ../hosts/${system});
-
+  _1 = builtins.traceVerbose "hosts: ${builtins.toJSON hosts}" null;
   linuxHosts = lib.filterAttrs (name: value: builtins.elem name linuxSystems) hosts;
   darwinHosts = lib.filterAttrs (name: value: builtins.elem name darwinSystems) hosts;
 
