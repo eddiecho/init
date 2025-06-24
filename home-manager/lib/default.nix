@@ -43,7 +43,7 @@ lib
   darwinSystems = builtins.filter (lib.hasSuffix "darwin") supportedSystems;
 
   forSystems = systems: lib.genAttrs systems;
-  forAllSystems = systems: lib.genAttrs supportedSystems;
+  forAllSystems = lib.genAttrs supportedSystems;
 
   # { x86_64-linux = { window = { settings = ...; }; }; };
   hosts = forAllSystems (system: defaultFilesToAttrset ../hosts/${system});
