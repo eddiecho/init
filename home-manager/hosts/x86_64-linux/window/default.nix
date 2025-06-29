@@ -7,7 +7,7 @@ rec {
   };
 
   eddie.profiles = {
-    base.enable = true;
+    common.enable = true;
     wsl.enable = true;
   };
 
