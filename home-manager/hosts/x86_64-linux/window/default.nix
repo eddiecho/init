@@ -17,10 +17,13 @@ in rec {
     home.stateVersion = vals.stateVersion;
   };
 
-  mixins = {
+  nixos = {
     common.enable = true;
     wsl.enable = true;
+    kernel.enable = true;
   };
+
+  users.mutableUsers = true;
 
   system.stateVersion = vals.stateVersion;
 }

@@ -2,10 +2,10 @@
 
 let
   inherit (config.settings) username;
-  cfg = config.mixins.common;
+  cfg = config.nixos.common;
 in
 {
-  options.mixins.common.enable = lib.mkEnableOption "Enable common";
+  options.nixos.common.enable = lib.mkEnableOption "Enable common";
 
   config = lib.mkIf cfg.enable {
 
@@ -21,13 +21,17 @@ in
 
     environment.systemPackages = [
       pkgs.git
-      pkgs.vim
-      pkgs.wget
+      pkgs.neovim
+      pkgs.curl
       pkgs.home-manager
       pkgs.ripgrep
+      pkgs.fd
+      pkgs.jq
+      pkgs.htop
+      pkgs.unzip
     ];
 
-    # allowUnfreePackages = true;
+    wsl.enable = lib.mkDefault false;
   };
 }
 

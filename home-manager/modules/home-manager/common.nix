@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }:
 
 let
-  cfg = config.mixins.common;
+  cfg = config.hm.common;
 in
 {
-  options.mixins.common.enable = lib.mkEnableOption "Enable base";
+  options.hm.common.enable = lib.mkEnableOption "Enable base";
 
   config = lib.mkIf cfg.enable {
     news.display = "silent";
@@ -12,6 +12,7 @@ in
     home.username = config.eddie.settings.username;
     home.homeDirectory =
       if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
+
   };
 }
 
