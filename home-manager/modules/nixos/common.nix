@@ -1,11 +1,11 @@
 { config, pkgs, lib, ... }:
 
 let
-  inherit (config.eddie.settings) username;
-  cfg = config.eddie.profiles.common;
+  inherit (config.settings) username;
+  cfg = config.mixins.common;
 in
 {
-  options.eddie.profiles.common.enable = lib.mkEnableOption "Enable common";
+  options.mixins.common.enable = lib.mkEnableOption "Enable common";
 
   config = lib.mkIf cfg.enable {
 

@@ -1,7 +1,7 @@
 { lib, ... }:
 
 {
-  options.eddie.settings = {
+  options.settings = {
     username = lib.mkOption {
       type = lib.types.str;
       default = "eddie";
@@ -10,10 +10,5 @@
       type = lib.types.str;
       default = "Eddie Cho";
     };
-    /*
-    host = lib.mkOption {
-      type = lib.types.str;
-    };
-    */
   };
 }

@@ -1,28 +1,26 @@
 # System config for WSL based systems
 
-rec {
-  eddie.settings = {
+let
+  vals = {
     username = "eddie";
     fullName = "Eddie Cho";
+    stateVersion = "24.11";
   };
 
-  eddie.profiles = {
+in rec {
+  home-manager.users."eddie" = {
+    settings = {
+      username = vals.username;
+      fullName = vals.fullName;
+    };
+
+    home.stateVersion = vals.stateVersion;
+  };
+
+  mixins = {
     common.enable = true;
     wsl.enable = true;
   };
 
-  home-manager.users."eddie" = {
-    eddie.settings = {
-      username = eddie.settings.username;
-      fullName = eddie.settings.fullName;
-    };
-
-    eddie.profiles = {
-      common.enable = true;
-    };
-
-    home.stateVersion = "24.11";
-  };
-
-  system.stateVersion = "24.11";
+  system.stateVersion = vals.stateVersion;
 }

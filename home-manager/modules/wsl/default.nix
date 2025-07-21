@@ -1,11 +1,15 @@
 { config, pkgs, lib, ... }:
 
 let
-  cfg = config.eddie.profiles;
+  inherit (config.settings) username;
+  cfg = config.mixins.wsl;
 in
 {
-  options.eddie.profiles.wsl.enable = lib.mkEnableOption "Enable WSL";
-  config = lib.mkIf cfg.wsl.enable {
-
+  options.mixins.wsl.enable = lib.mkEnableOption "Enable WSL";
+  config = lib.mkIf cfg.enable {
+    wsl = {
+      enable = true;
+      defaultUser = lib.mkDefault username;
+    };
   };
 }

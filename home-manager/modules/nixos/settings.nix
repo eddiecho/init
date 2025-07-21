@@ -1,7 +1,7 @@
 { lib, ... }:
 
 {
-  options.eddie.settings = {
+  options.settings = {
     username = lib.mkOption {
       type = lib.types.str;
       default = "eddie";

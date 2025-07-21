@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }:
 
 let
-  cfg = config.eddie.profiles.common;
+  cfg = config.mixins.common;
 in
 {
-  options.eddie.profiles.common.enable = lib.mkEnableOption "Enable base";
+  options.mixins.common.enable = lib.mkEnableOption "Enable base";
 
   config = lib.mkIf cfg.enable {
     news.display = "silent";
