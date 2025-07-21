@@ -1,10 +1,11 @@
+{ config, pkgs, lib, ... }:
+
+let
+  cfg = config.eddie.profiles;
+in
 {
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-{
-  config = lib.mkIf (pkgs.stdenv.isLinux && config.wsl.enable) {
+  options.eddie.profiles.wsl.enable = lib.mkEnableOption "Enable WSL";
+  config = lib.mkIf cfg.wsl.enable {
+
   };
 }

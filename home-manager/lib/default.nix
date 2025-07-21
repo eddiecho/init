@@ -47,7 +47,6 @@ lib
 
   # { x86_64-linux = { window = { settings = ...; }; }; };
   hosts = forAllSystems (system: defaultFilesToAttrset ../hosts/${system});
-  _1 = builtins.traceVerbose "hosts: ${builtins.toJSON hosts}" null;
   linuxHosts = lib.filterAttrs (name: value: builtins.elem name linuxSystems) hosts;
   darwinHosts = lib.filterAttrs (name: value: builtins.elem name darwinSystems) hosts;
 
@@ -62,7 +61,7 @@ lib
 
   homeModule = {
     home-manager = {
-      sharedModules = nixFiles ../platforms/home-manager;
+      sharedModules = nixFiles ../modules/home-manager;
       # use system level nixpkgs instead of home-manager's
       useGlobalPkgs = lib.mkDefault true;
       # install packages to /etc/profiles instead of ~/.nix-profile
@@ -79,7 +78,7 @@ lib
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = pkgsBySystem.${system};
       modules = [
-        { imports = (nixFiles ../platforms/home-manager); }
+        { imports = (nixFiles ../modules/home-manager); }
         module
       ];
       extraSpecialArgs = {} // specialArgs;
@@ -97,7 +96,7 @@ lib
       modules = [
         inputs.home-manager.nixosModules.home-manager
         inputs.wsl.nixosModules.wsl
-        { imports = (nixFiles ../platforms/nixos); }
+        { imports = (nixFiles ../modules/nixos); }
         module
         {
           home-manager = {
@@ -118,7 +117,7 @@ lib
       modules = [
         inputs.home-manager.darwinModules.home-manager
         {
-          imports = (nixFiles ../platforms/nix-darwin);
+          imports = (nixFiles ../modules/nix-darwin);
           nixpkgs.pkgs = pkgsBySystem.${system};
         }
         module
