@@ -19,12 +19,6 @@
     let
       inherit (nixpkgs) lib;
 
-      globals = {
-        user = "eddie";
-        fullName = "Eddie Cho";
-        stateVersion = "24.11";
-      };
-
     in
     # rec means recursive struct
     rec {
@@ -40,7 +34,7 @@
             inherit (lib) overlays;
           };
         in
-        pkgs.nixfmt-rfc-style
+        pkgs.nixpkgs-fmt
       );
 
       nixosConfigurations = flattenAttrset (
@@ -74,23 +68,5 @@
         )
       ) homeModules;
 
-      /*
-      # nixos-rebuild switch --flake .#window
-      nixosConfigurations = {
-        window = import ./hosts/window { inherit inputs globals lib; };
-        framework = import ./hosts/framework { inherit inputs globals lib; };
-      };
-
-      # nixos-rebuild switch --flake .#work
-      darwinConfigurations = {
-        work = import ./hosts/work { inherit inputs globals lib; };
-      };
-
-      # home-manager switch --flake .#window
-      homeConfigurations = {
-        window = nixosConfigurations.window.config.home-manager.users.${globals.user}.home;
-        work = darwinConfigurations.work.config.home-manager.users.${globals.user}.home;
-      };
-      */
     };
 }
