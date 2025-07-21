@@ -1,9 +1,11 @@
-{ config, pkgs, lib, ... }:
-
-let
-  cfg = config.hm.common;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  cfg = config.hm.common;
+in {
   options.hm.common.enable = lib.mkEnableOption "Enable base";
 
   config = lib.mkIf cfg.enable {
@@ -11,8 +13,8 @@ in
 
     home.username = config.eddie.settings.username;
     home.homeDirectory =
-      if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
-
+      if pkgs.stdenv.isDarwin
+      then "/Users/${config.home.username}"
+      else "/home/${config.home.username}";
   };
 }
-

@@ -1,5 +1,4 @@
 # System config for my work macbooks
-
 rec {
   eddie.settings = {
     username = "eddie";

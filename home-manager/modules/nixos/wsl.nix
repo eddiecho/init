@@ -1,10 +1,12 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (config.settings) username;
   cfg = config.nixos.wsl;
-in
-{
+in {
   options.nixos.wsl.enable = lib.mkEnableOption "Enable WSL";
 
   config = lib.mkIf cfg.enable {
@@ -14,5 +16,4 @@ in
       interop.includePath = lib.mkDefault false;
     };
   };
-
 }

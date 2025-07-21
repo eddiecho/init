@@ -1,8 +1,4 @@
-{
-  config,
-  ...
-}:
-{
+{config, ...}: {
   home-manager.users.${config.user} = {
     programs.neovim = {
       enable = true;
@@ -16,7 +12,5 @@
         source = ./config;
       };
     };
-
   };
-
 }

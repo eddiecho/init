@@ -1,5 +1,4 @@
 # System config for my nixos laptop
-
 rec {
   eddie.settings = {
     username = "eddie";

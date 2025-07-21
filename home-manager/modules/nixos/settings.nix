@@ -1,6 +1,4 @@
-{ lib, ... }:
-
-{
+{lib, ...}: {
   options.settings = {
     username = lib.mkOption {
       type = lib.types.str;
@@ -12,7 +10,7 @@
     };
     /*
     host = lib.mkOption {
-      type = lib.types.str;
+    type = lib.types.str;
     };
     */
   };

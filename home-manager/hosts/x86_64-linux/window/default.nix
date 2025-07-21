@@ -1,12 +1,10 @@
 # System config for WSL based systems
-
 let
   vals = {
     username = "eddie";
     fullName = "Eddie Cho";
     stateVersion = "24.11";
   };
-
 in rec {
   home-manager.users."eddie" = {
     settings = {

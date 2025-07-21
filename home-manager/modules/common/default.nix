@@ -5,38 +5,29 @@
   inputs,
   globals,
   ...
-}:
-{
-  imports = [
-    ./apps
-  ];
+}: {
+  imports = [./apps];
 
   options = {
-    user = lib.mkOption {
-      type = lib.types.str;
-    };
-    fullName = lib.mkOption {
-      type = lib.types.str;
-    };
-    gitEmail = lib.mkOption {
-      type = lib.types.str;
-    };
-    stateVersion = lib.mkOption {
-      type = lib.types.str;
-    };
+    user = lib.mkOption {type = lib.types.str;};
+    fullName = lib.mkOption {type = lib.types.str;};
+    gitEmail = lib.mkOption {type = lib.types.str;};
+    stateVersion = lib.mkOption {type = lib.types.str;};
     homePath = lib.mkOption {
       type = lib.types.path;
       default = builtins.toPath (
-        if pkgs.stdenv.isDarwin then "/Users/${config.user}" else "/home/${config.user}"
+        if pkgs.stdenv.isDarwin
+        then "/Users/${config.user}"
+        else "/home/${config.user}"
       );
     };
     unfreePackages = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [ ];
+      default = [];
     };
     insecurePackages = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [ ];
+      default = [];
     };
   };
 
@@ -58,8 +49,8 @@
 
     nix = {
       extraOptions = ''
-                experimental-features = nix-command flakes
-        	warn-dirty = false
+               experimental-features = nix-command flakes
+        warn-dirty = false
       '';
 
       gc = {

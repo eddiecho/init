@@ -1,6 +1,4 @@
-{ lib, ... }:
-
-{
+{lib, ...}: {
   options.settings = {
     username = lib.mkOption {
       type = lib.types.str;

@@ -17,9 +17,7 @@
       enable = true;
       theme = "gallifrey";
 
-      plugins = [
-        "git"
-      ];
+      plugins = ["git"];
     };
   };
 }

@@ -1,22 +1,21 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (config.settings) username;
   cfg = config.nixos.common;
-in
-{
+in {
   options.nixos.common.enable = lib.mkEnableOption "Enable common";
 
   config = lib.mkIf cfg.enable {
-
     users.mutableUsers = lib.mkDefault false;
 
     users.users.${username} = {
       isNormalUser = lib.mkDefault true;
 
-      extraGroups = [
-        "wheel"
-      ];
+      extraGroups = ["wheel"];
     };
 
     environment.systemPackages = [
@@ -34,4 +33,3 @@ in
     wsl.enable = lib.mkDefault false;
   };
 }
-
