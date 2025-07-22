@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   lib,
   ...
 }: let
@@ -20,7 +21,7 @@ in {
 
       home.file = {
         ".config/nvim" = {
-          source = ./config;
+          source = "${inputs.root}/config"
         };
       };
     };

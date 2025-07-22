@@ -44,7 +44,9 @@
               name: module:
                 lib.buildNixos {
                   inherit system module;
-                  specialArgs = {};
+                  specialArgs = {
+                    root = self;
+                  };
                 }
             )
             hosts
@@ -69,7 +71,9 @@
               name: module:
                 lib.buildHome {
                   inherit system module;
-                  specialArgs = {};
+                  specialArgs = {
+                    root = self;
+                  };
                 }
             )
         )

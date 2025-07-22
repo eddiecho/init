@@ -18,6 +18,7 @@ in {
       else "/home/${config.home.username}";
 
     hm.apps = {
+      neovim.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
       direnv.enable = lib.mkDefault true;
       zsh.enable = lib.mkDefault true;
