@@ -32,9 +32,7 @@
             inherit (lib) overlays;
           };
         in
-          # pkgs.nixfmt-rfc-style
           pkgs.alejandra
-        # pkgs.nixfmt-rfc-style
       );
 
       nixosConfigurations = flattenAttrset (
@@ -58,13 +56,13 @@
         builtins.mapAttrs (
           system: hosts:
             builtins.mapAttrs (
-              name: module: (builtins.head (lib.attrsToList module.home-managers.users)).value
+              name: module: (builtins.head (lib.attrsToList module.home-manager.users)).value
             )
             hosts
         )
         lib.hosts;
 
-      homeConfigurations =
+      homeConfigurations = flattenAttrset (
         builtins.mapAttrs (
           system: hosts:
             builtins.mapAttrs (
@@ -76,7 +74,9 @@
                   };
                 }
             )
+            hosts
         )
-        homeModules;
+        homeModules
+      );
     };
 }

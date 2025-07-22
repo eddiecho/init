@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  inputs,
+  root,
   lib,
   ...
 }: let
@@ -18,12 +18,6 @@ in {
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
-
-      home.file = {
-        ".config/nvim" = {
-          source = "${inputs.root}/config"
-        };
-      };
     };
 
     programs.git.extraConfig.core.editor = "${lib.getExe cfg.package}";
@@ -31,6 +25,12 @@ in {
     home.sessionVariables = {
       EDITOR = "${lib.getExe cfg.package}";
       MANPAGER = "${lib.getExe cfg.package} +Man!";
+    };
+
+    home.file = {
+      ".config/nvim" = {
+        source = builtins.toPath "${root}/config";
+      };
     };
   };
 }

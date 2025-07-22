@@ -14,8 +14,8 @@ in {
     home.username = config.settings.username;
     home.homeDirectory =
       if pkgs.stdenv.isDarwin
-      then "/Users/${config.home.username}"
-      else "/home/${config.home.username}";
+      then "/Users/${config.settings.username}"
+      else "/home/${config.settings.username}";
 
     hm.apps = {
       neovim.enable = lib.mkDefault true;
