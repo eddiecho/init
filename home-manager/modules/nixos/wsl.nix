@@ -13,7 +13,7 @@ in {
     wsl = {
       enable = true;
       defaultUser = lib.mkDefault username;
-      interop.includePath = lib.mkDefault false;
+      interop.includePath = lib.mkDefault true;
     };
   };
 }

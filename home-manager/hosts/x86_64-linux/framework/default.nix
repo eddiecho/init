@@ -1,26 +1,28 @@
 # System config for my nixos laptop
-rec {
-  eddie.settings = {
+let
+  vals = {
     username = "eddie";
     fullName = "Eddie Cho";
+    stateVersion = "24.11";
   };
-
-  eddie.profiles = {
-    base.enable = true;
-  };
-
-  home-manager.users."eddie" = {
-    eddie.settings = {
-      username = eddie.settings.username;
-      fullName = eddie.settings.fullName;
+in rec {
+  home-manager.users.${vals.username} = {
+    settings = {
+      username = vals.username;
+      fullName = vals.fullName;
     };
 
-    eddie.profiles = {
+    hm = {
       common.enable = true;
     };
 
-    home.stateVersion = "24.11";
+    home.stateVersion = vals.stateVersion;
   };
 
-  system.stateVersion = "24.11";
+  nixos = {
+    common.enable = true;
+    kernel.enable = true;
+  };
+
+  system.stateVersion = vals.stateVersion;
 }
