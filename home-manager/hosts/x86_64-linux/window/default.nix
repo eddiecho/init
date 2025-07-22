@@ -12,6 +12,10 @@ in rec {
       fullName = vals.fullName;
     };
 
+    hm = {
+      common.enable = true;
+    };
+
     home.stateVersion = vals.stateVersion;
   };
 

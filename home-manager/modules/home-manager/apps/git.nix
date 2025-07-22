@@ -18,7 +18,7 @@ in {
 
       extraConfig = {
         core = {
-          editor = "nvim";
+          editor = lib.mkDefault "vi";
           pager = "less -X";
         };
 

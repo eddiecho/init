@@ -9,6 +9,7 @@
 in {
   options.hm.apps.neovim = {
     enable = lib.mkEnableOption "Enable neovim";
+    package = lib.mkPackageOption pkgs "neovim" {};
   };
 
   config = lib.mkIf cfg.enable {
@@ -20,11 +21,11 @@ in {
       vimdiffAlias = true;
     };
 
-    programs.git.extraConfig.core.editor = "${lib.getExe cfg.package}";
+    programs.git.extraConfig.core.editor = lib.mkForce "${lib.getExe cfg.package}";
 
     home.sessionVariables = {
-      EDITOR = "${lib.getExe cfg.package}";
-      MANPAGER = "${lib.getExe cfg.package} +Man!";
+      EDITOR = lib.mkDefault "${lib.getExe cfg.package}";
+      MANPAGER = lib.mkDefault "${lib.getExe cfg.package} +Man!";
     };
 
     home.file = {
