@@ -17,11 +17,16 @@ in {
       then "/Users/${config.settings.username}"
       else "/home/${config.settings.username}";
 
+    home.packages = with pkgs; [
+      clang_20
+    ];
+
     hm.apps = {
       neovim.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
       direnv.enable = lib.mkDefault true;
       zsh.enable = lib.mkDefault true;
     };
+
   };
 }
