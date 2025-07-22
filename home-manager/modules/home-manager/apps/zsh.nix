@@ -1,8 +1,11 @@
-{ config, pkgs, lib, ... }:
-let
-  cfg = config.hm.apps.zsh;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  cfg = config.hm.apps.zsh;
+in {
   options.hm.apps.zsh = {
     enable = lib.mkEnableOption "Enable zsh";
   };
@@ -21,7 +24,6 @@ in
         theme = "gallifrey";
         plugins = ["git"];
       };
-    }
+    };
   };
 }
-

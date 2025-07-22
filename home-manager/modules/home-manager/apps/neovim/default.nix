@@ -1,8 +1,11 @@
-{ config, pkgs, lib, ... }:
-let
-  cfg = config.hm.apps.neovim;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  cfg = config.hm.apps.neovim;
+in {
   options.hm.apps.neovim = {
     enable = lib.mkEnableOption "Enable neovim";
   };
@@ -17,7 +20,7 @@ in
 
       home.file = {
         ".config/nvim" = {
-          source = ./config
+          source = ./config;
         };
       };
     };
@@ -30,4 +33,3 @@ in
     };
   };
 }
-

@@ -1,9 +1,11 @@
-{ config, pkgs, lib, ... }:
-
-let
-  cfg = config.hm.apps.git;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  cfg = config.hm.apps.git;
+in {
   options.hm.apps.git = {
     enable = lib.mkEnableOption "Enable git";
   };

@@ -32,7 +32,7 @@ in {
 
     nix = {
       extraOptions = ''
-               experimental-features = nix-command flakes
+        experimental-features = nix-command flakes
         warn-dirty = false
       '';
 
@@ -44,8 +44,6 @@ in {
       settings = {
         auto-optimise-store = lib.mkIf (!pkgs.stdenv.isDarwin) true;
       };
-
-      registry.nixpkgs.flake = inputs.nixpkgs;
     };
 
     wsl.enable = lib.mkDefault false;

@@ -1,9 +1,11 @@
-{ config, pkgs, lib, ... }:
-
-let
-  cfg = config.hm.apps.direnv;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  cfg = config.hm.apps.direnv;
+in {
   options.hm.apps.direnv = {
     enable = lib.mkEnableOption "Enable direnv";
   };

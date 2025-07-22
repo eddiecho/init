@@ -1,8 +1,11 @@
-{ config, pkgs, lib, ... }:
-let
-  cfg = config.hm.apps.tmux;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  cfg = config.hm.apps.tmux;
+in {
   options.hm.apps.tmux = {
     enable = lib.mkEnableOption "Enable tmux";
   };
@@ -41,7 +44,6 @@ in
         bind '"' split-window -v -c '#{pane_current_path}'
         bind % split-window -h -c '#{pane_current_path}'
       '';
-    }
+    };
   };
 }
-
