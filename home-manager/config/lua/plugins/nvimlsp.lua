@@ -42,12 +42,12 @@ return {
     end,
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
+    config = function()
+      require"config.mason"
+    end,
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      opt = {
-        automatic_installation = false,
-      },
+      { "mason-org/mason.nvim", opts = {} },
     },
   },
   {
