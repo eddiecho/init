@@ -18,16 +18,17 @@ in {
       extraGroups = ["wheel"];
     };
 
-    environment.systemPackages = [
-      pkgs.git
-      pkgs.neovim
-      pkgs.curl
-      pkgs.home-manager
-      pkgs.ripgrep
-      pkgs.fd
-      pkgs.jq
-      pkgs.htop
-      pkgs.unzip
+    environment.systemPackages = with pkgs; [
+      git
+      neovim
+      curl
+      home-manager
+      ripgrep
+      fd
+      jq
+      htop
+      unzip
+      file
     ];
 
     nix = {

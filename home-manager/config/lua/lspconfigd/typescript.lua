@@ -39,7 +39,7 @@ local function on_attach(client, bufnr)
   ts_utils.setup_client(client)
 end
 
-lsp_config.tsserver.setup {
+lsp_config.ts_ls.setup {
   cmd = {"typescript-language-server", "--stdio"},
   filetypes = {
     "javascript",
