@@ -30,6 +30,24 @@ in {
       pkgs.unzip
     ];
 
+    nix = {
+      extraOptions = ''
+               experimental-features = nix-command flakes
+        warn-dirty = false
+      '';
+
+      gc = {
+        automatic = true;
+        options = "--delete-older-than 7d";
+      };
+
+      settings = {
+        auto-optimise-store = lib.mkIf (!pkgs.stdenv.isDarwin) true;
+      };
+
+      registry.nixpkgs.flake = inputs.nixpkgs;
+    };
+
     wsl.enable = lib.mkDefault false;
   };
 }

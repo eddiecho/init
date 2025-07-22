@@ -11,10 +11,16 @@ in {
   config = lib.mkIf cfg.enable {
     news.display = "silent";
 
-    home.username = config.eddie.settings.username;
+    home.username = config.settings.username;
     home.homeDirectory =
       if pkgs.stdenv.isDarwin
       then "/Users/${config.home.username}"
       else "/home/${config.home.username}";
+
+    hm.apps = {
+      git.enable = lib.mkDefault true;
+      direnv.enable = lib.mkDefault true;
+      zsh.enable = lib.mkDefault true;
+    };
   };
 }

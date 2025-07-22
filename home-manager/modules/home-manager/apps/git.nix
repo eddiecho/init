@@ -1,9 +1,18 @@
-{config, ...}: {
-  home-manager.users.${config.user} = {
+{ config, pkgs, lib, ... }:
+
+let
+  cfg = config.hm.apps.git;
+in
+{
+  options.hm.apps.git = {
+    enable = lib.mkEnableOption "Enable git";
+  };
+
+  config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = config.fullName;
-      userEmail = config.gitEmail;
+      userName = config.settings.fullName;
+      userEmail = config.settings.email;
 
       extraConfig = {
         core = {
