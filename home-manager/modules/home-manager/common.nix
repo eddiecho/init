@@ -19,6 +19,7 @@ in {
 
     home.packages = with pkgs; [
       clang_20
+      cargo # way too many nix things depend on this not to have zzz
     ];
 
     hm.apps = {
@@ -27,6 +28,5 @@ in {
       direnv.enable = lib.mkDefault true;
       zsh.enable = lib.mkDefault true;
     };
-
   };
 }
