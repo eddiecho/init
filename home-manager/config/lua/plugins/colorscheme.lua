@@ -3,11 +3,6 @@ return {
   name = "catppuccin",
   lazy = false,
   priority = 1000,
-  --[[
-  config = function()
-    require'config.colorscheme'
-  end
-  ]]--
   opts = {
     flavour = "mocha",
     integrations = {
