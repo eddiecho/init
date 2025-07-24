@@ -1,3 +1,3 @@
-local lsp_config = require'lspconfig'
-
-lsp_config.gopls.setup {}
+if vim.fn.executable("gopls") == 1 then
+  vim.lsp.enable("gopls")
+end

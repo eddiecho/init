@@ -1,5 +1,5 @@
 local ensure_installed = {
-  "emmylua_ls",
+  "lua_ls",
 }
 
 local idx = 2

@@ -1,3 +1,3 @@
-local lsp_config = require'lspconfig'
-
-lsp_config.nil_ls.setup {}
+if vim.fn.executable("nix") == 1 then
+  vim.lsp.enable("nil_ls")
+end

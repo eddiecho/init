@@ -1,11 +1,10 @@
+-- TODO - this one is it's own mess
 local lsp_config = require"lspconfig"
 local lsp = require"lsp"
 
 local js_root_files = {
   "package.json",
   "tsconfig.json",
-  "jsconfig.json",
-  ".git"
 }
 
 local function on_attach(client, bufnr)
@@ -50,14 +49,6 @@ lsp_config.ts_ls.setup {
     "typescript.tsx",
   },
   settings = { documentFormatting = false },
-  root_dir = lsp.root_dir(root_files),
+  root_dir = lsp.root_dir(js_root_files),
   on_attach = on_attach,
-  handlers = {
-    ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = { spacing = 0, prefix = " "},
-      signs = true,
-      underline = true,
-      update_in_insert = true
-    })
-  }
 }

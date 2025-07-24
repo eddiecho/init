@@ -32,6 +32,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+vim.diagnostic.config({
+  underline = true,
+  signs = {
+    active = true,
+  },
+})
+
 local lsp = {}
 
 function lsp.root_dir(root_files)

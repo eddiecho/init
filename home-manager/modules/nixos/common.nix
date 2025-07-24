@@ -31,6 +31,14 @@ in {
       file
     ];
 
+    programs = {
+      # FUCK YOU
+      nix-ld = {
+        enable = true;
+        libraries = with pkgs; [];
+      };
+    };
+
     nix = {
       extraOptions = ''
         experimental-features = nix-command flakes
