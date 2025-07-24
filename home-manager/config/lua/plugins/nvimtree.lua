@@ -1,4 +1,3 @@
---[[
 return {
   {
     "nvim-tree/nvim-tree.lua",
@@ -12,11 +11,11 @@ return {
       "yamatsum/nvim-nonicons",
     },
     config = function()
-      require"config.fs"
+      require"config.nvimtree"
     end
   },
 }
-]]--
+--[[
 return {
   {
     "echasnovski/mini.icons",
@@ -35,6 +34,21 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
+      {
+        "s1n7ax/nvim-window-picker",
+        config = function()
+          require("window-picker").setup({
+            filter_rules = {
+              include_current_win = false,
+              autoselect_one = true,
+              bo = {
+                filetype = { "neo-tree", "neo-tree-popup", "notify" },
+                buftype = { "terminal", "quickfix" },
+              },
+            },
+          })
+        end,
+      },
     },
     lazy = false,
     config = function()
@@ -42,3 +56,4 @@ return {
     end
   },
 }
+]]--
