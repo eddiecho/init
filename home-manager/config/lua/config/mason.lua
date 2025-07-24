@@ -1,5 +1,8 @@
-local ensure_installed = {}
-local idx = 1
+local ensure_installed = {
+  "emmylua_ls",
+}
+
+local idx = 2
 
 if vim.fn.executable("go") == 1 then
   ensure_installed[idx] = "gopls"

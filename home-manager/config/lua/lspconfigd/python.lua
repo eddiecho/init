@@ -9,7 +9,8 @@ local python_root_files = {
   ".git",
 }
 
-lsp_config.pyright.setup {
+vim.lsp.enable("pyright")
+vim.lsp.config("pyright", {
   cmd = {
     "pyright-langserver",
     "--stdio"
@@ -36,4 +37,4 @@ lsp_config.pyright.setup {
       }
     }
   }
-}
+})
