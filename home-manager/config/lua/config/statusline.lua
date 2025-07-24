@@ -43,5 +43,18 @@ require'lualine'.setup {
       {'diff', source = diff_source},
       {'b:gitsigns_head', icon = ''},
     },
+    lualine_c = {
+      {
+        'filename',
+        path = 1,
+        shorting_target = 80,
+        symbols = {
+          modified = '[+]',
+          readonly = '[-]',
+          unnamed = '[No Name]',
+          newfile = '[New]',
+        },
+      },
+    },
   }
 }
