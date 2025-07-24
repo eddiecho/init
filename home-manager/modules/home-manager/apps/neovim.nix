@@ -30,7 +30,7 @@ in {
 
     home.file = {
       ".config/nvim" = {
-        source = builtins.toPath "${root}/config";
+        source = builtins.toPath "${root}/static/nvim";
       };
     };
   };

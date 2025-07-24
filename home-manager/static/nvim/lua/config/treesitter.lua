@@ -1,6 +1,6 @@
 require"ibl".setup{}
 
-require"nvim-treesitter.configs".setup{
+require"nvim-treesitter.configs".setup({
   sync_install = false,
   ensure_installed = {
     "bash",
@@ -12,6 +12,8 @@ require"nvim-treesitter.configs".setup{
     "html",
     "javascript",
     "lua",
+    "markdown",
+    "markdown_inline",
     "nix",
     "python",
     "rust",
@@ -25,4 +27,4 @@ require"nvim-treesitter.configs".setup{
   indent = {
     enable = true,
   },
-}
+})
