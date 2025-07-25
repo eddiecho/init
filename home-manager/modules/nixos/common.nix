@@ -13,25 +13,29 @@ in {
     users.mutableUsers = lib.mkDefault false;
 
     users.users.${username} = {
+      shell = pkgs.zsh;
+
       isNormalUser = lib.mkDefault true;
 
       extraGroups = ["wheel"];
     };
 
     environment.systemPackages = with pkgs; [
-      git
-      neovim
       curl
-      home-manager
-      ripgrep
       fd
-      jq
-      htop
-      unzip
       file
+      git
+      home-manager
+      htop
+      jq
+      neovim
+      ripgrep
+      unzip
     ];
 
     programs = {
+      zsh.enable = true;
+
       # FUCK YOU
       nix-ld = {
         enable = true;
