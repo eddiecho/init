@@ -1,12 +1,7 @@
--- Why don't we have these in ftplugin files?
--- Something about Packer probably messes up the load order
--- The first file you enter doesn't get LSP working
-
 vim.lsp.set_log_level('info')
 
-vim.keymap.set('n', ']d',       vim.diagnostic.goto_next)
-vim.keymap.set('n', '[d',       vim.diagnostic.goto_prev)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_next() }) end)
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_prev() }) end)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
