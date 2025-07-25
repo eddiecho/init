@@ -3,7 +3,7 @@ require "mappings"
 local utils = require "utils"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -25,9 +25,9 @@ require("lazy").setup({
 require "lsp"
 
 -- hide line numbers in terminal windows
-vim.api.nvim_exec([[
+vim.api.nvim_command([[
    au BufEnter term://* setlocal nonumber
-]], false)
+]])
 
 -- inactive statuslines as thin splitlines
 vim.cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
