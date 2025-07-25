@@ -55,6 +55,16 @@ in {
       };
 
       settings = {
+        trusted-users = [
+          "root"
+          "@wheel"
+          username
+        ];
+
+        allowed-users = [
+          "@wheel"
+          username
+        ];
         auto-optimise-store = lib.mkIf (!pkgs.stdenv.isDarwin) true;
       };
     };
