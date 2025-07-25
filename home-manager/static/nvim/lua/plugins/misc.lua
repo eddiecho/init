@@ -21,11 +21,4 @@ return {
   -- "mg979/vim-visual-multi"
   "christoomey/vim-tmux-navigator",
   "DanilaMihailov/beacon.nvim",
-  {
-    "ojroques/nvim-bufdel",
-    opts = {
-      next = "tabs",
-      quit = false,
-    },
-  },
 }
