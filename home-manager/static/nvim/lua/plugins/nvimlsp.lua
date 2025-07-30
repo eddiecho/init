@@ -48,8 +48,11 @@ return {
   {
     "j-hui/fidget.nvim",
     opts = {
-      window = {
-        blend = 0,
+      notification = {
+        window = {
+          winblend = 100,
+          border = "rounded",
+        },
       },
     },
   },

@@ -65,6 +65,7 @@ in {
           "@wheel"
           username
         ];
+
         auto-optimise-store = lib.mkIf (!pkgs.stdenv.isDarwin) true;
       };
     };
