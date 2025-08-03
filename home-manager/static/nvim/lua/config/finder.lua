@@ -1,5 +1,7 @@
 local fff = require("fff")
 
-vim.api.nvim_set_keymap("n", "<Leader>ff", fff.find_files())
+local opt = {noremap = true, silent = true}
+
+vim.keymap.set("n", "<Leader>ff", function() fff.find_files() end, opt)
 
 fff.setup({})

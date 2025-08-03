@@ -31,6 +31,8 @@ in {
       neovim
       ripgrep
       unzip
+      pkg-config
+      openssl
     ];
 
     programs = {
