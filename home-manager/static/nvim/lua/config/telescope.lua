@@ -1,9 +1,9 @@
-local borderchars = {
-  { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-  prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-  results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-  preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-}
+local opt = {noremap = true, silent = true}
+
+vim.api.nvim_set_keymap("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<Leader>fg", [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<Leader>ft", [[<Cmd>lua require('telescope.builtin').t
+reesitter()<CR>]], opt)
 
 local function buffer_previewer(filepath, bufnr, opts)
   local job = require("plenary.job")
