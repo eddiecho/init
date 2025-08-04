@@ -1,3 +1,3 @@
-if vim.fn.executable("gopls") == 1 then
+if vim.fn.executable("go") == 1 then
   vim.lsp.enable("gopls")
 end

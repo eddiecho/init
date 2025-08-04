@@ -3,7 +3,7 @@ local function on_attach(client, bufnr)
   client.server_capabilities.documentRangeFormattingProvider = false
 end
 
-if vim.fn.executable("zls") == 1 then
+if vim.fn.executable("zig") == 1 then
   vim.lsp.enable("zls")
   vim.lsp.config("zls", {
     on_attach = on_attach,
