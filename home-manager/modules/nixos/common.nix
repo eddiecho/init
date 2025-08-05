@@ -32,7 +32,6 @@ in {
       ripgrep
       unzip
       pkg-config
-      openssl
     ];
 
     programs = {
@@ -41,7 +40,9 @@ in {
       # FUCK YOU
       nix-ld = {
         enable = true;
-        libraries = with pkgs; [];
+        libraries = with pkgs; [
+          openssl
+        ];
       };
     };
 
