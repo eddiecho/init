@@ -8,11 +8,11 @@ _inputs: _final: prev: let
       list
     );
   lib = prev.lib;
-  tools = lib.pipe (lib.filesystem.listFilesRecursive ../tools) [
+  packages = lib.pipe (lib.filesystem.listFilesRecursive ../tools) [
     (builtins.filter (name: lib.hasSuffix "package.nix" name))
     (builtins.map (name: prev.callPackage name {}))
     listToAttrs
   ];
 in {
-  eddie = tools;
+  eddie = packages;
 }

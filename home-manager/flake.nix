@@ -30,7 +30,6 @@
   }: let
     inherit (nixpkgs) lib;
   in
-    # rec means recursive struct
     rec {
       lib = import ./lib inputs;
       flattenAttrset = attrs: builtins.foldl' lib.mergeAttrs {} (builtins.attrValues attrs);
@@ -43,6 +42,11 @@
           };
         in
           pkgs.alejandra
+      );
+
+      packages = lib.forAllSystems (
+        system:
+          lib.pkgsBySystem.${system}.eddie
       );
 
       nixosConfigurations = flattenAttrset (

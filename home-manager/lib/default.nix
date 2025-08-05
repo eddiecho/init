@@ -12,9 +12,11 @@ in
 
     importOverlays = dir: lib.pipe (nixFiles dir) [(map (file: (import file) inputs))];
 
-    overlays = [
-      inputs.nur.overlays.default
-    ] ++ (importOverlays ../overlays);
+    overlays =
+      [
+        inputs.nur.overlays.default
+      ]
+      ++ (importOverlays ../overlays);
 
     defaultFilesToAttrset = dir:
       lib.pipe (nixFiles dir) [
@@ -46,7 +48,7 @@ in
     pkgsBySystem = forAllSystems (
       system:
         import inputs.nixpkgs {
-          inherit system;
+          inherit system overlays;
           config.allowUnfree = true;
         }
     );
