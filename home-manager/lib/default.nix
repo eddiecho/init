@@ -12,7 +12,9 @@ in
 
     importOverlays = dir: lib.pipe (nixFiles dir) [(map (file: (import file) inputs))];
 
-    overlays = [] ++ (importOverlays ../overlays);
+    overlays = [
+      inputs.nur.overlays.default
+    ] ++ (importOverlays ../overlays);
 
     defaultFilesToAttrset = dir:
       lib.pipe (nixFiles dir) [
