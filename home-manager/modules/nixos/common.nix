@@ -30,6 +30,7 @@ in {
       jq
       neovim
       ripgrep
+      tldr
       unzip
       pkg-config
     ];
