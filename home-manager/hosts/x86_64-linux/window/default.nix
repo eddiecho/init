@@ -12,7 +12,7 @@ in rec {
       fullName = vals.fullName;
     };
 
-    hm = {
+    modules = {
       common.enable = true;
     };
 

@@ -5,9 +5,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.apps.neovim;
+  cfg = config.modules.apps.neovim;
 in {
-  options.hm.apps.neovim = {
+  options.modules.apps.neovim = {
     enable = lib.mkEnableOption "Enable neovim";
     package = lib.mkPackageOption pkgs "neovim" {};
   };

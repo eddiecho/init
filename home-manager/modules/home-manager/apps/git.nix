@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.apps.git;
+  cfg = config.modules.apps.git;
 in {
-  options.hm.apps.git = {
+  options.modules.apps.git = {
     enable = lib.mkEnableOption "Enable git";
   };
 

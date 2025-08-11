@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.apps.tmux;
+  cfg = config.modules.apps.tmux;
 in {
-  options.hm.apps.tmux = {
+  options.modules.apps.tmux = {
     enable = lib.mkEnableOption "Enable tmux";
   };
 

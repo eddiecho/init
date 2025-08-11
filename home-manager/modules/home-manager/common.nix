@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.common;
+  cfg = config.modules.common;
 in {
-  options.hm.common.enable = lib.mkEnableOption "Enable base";
+  options.modules.common.enable = lib.mkEnableOption "Enable base";
 
   config = lib.mkIf cfg.enable {
     news.display = "silent";
@@ -22,7 +22,7 @@ in {
       cargo # way too many nix things depend on this not to have zzz
     ];
 
-    hm.apps = {
+    modules.apps = {
       neovim.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
       direnv.enable = lib.mkDefault true;

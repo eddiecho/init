@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.apps.zsh;
+  cfg = config.modules.apps.zsh;
 in {
-  options.hm.apps.zsh = {
+  options.modules.apps.zsh = {
     enable = lib.mkEnableOption "Enable zsh";
   };
 

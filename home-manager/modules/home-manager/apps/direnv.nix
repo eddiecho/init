@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.apps.direnv;
+  cfg = config.modules.apps.direnv;
 in {
-  options.hm.apps.direnv = {
+  options.modules.apps.direnv = {
     enable = lib.mkEnableOption "Enable direnv";
   };
 
