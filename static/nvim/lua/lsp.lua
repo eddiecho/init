@@ -1,14 +1,14 @@
-vim.lsp.set_log_level('info')
+vim.lsp.set_log_level("info")
 
-vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_next() }) end)
-vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_prev() }) end)
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_next() }) end)
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_prev() }) end)
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
     local opts = { buffer = ev.buf }
 
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)

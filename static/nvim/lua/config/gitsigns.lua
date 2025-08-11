@@ -4,9 +4,9 @@ local function map(mode, l, r, opts, bufnr)
   vim.keymap.set(mode, l, r, opts)
 end
 
-local gs = require 'gitsigns'
+local gs = require "gitsigns"
 
-require 'gitsigns'.setup {
+require "gitsigns".setup {
   signs = {
     add = { hl = "DiffAdd", text = "▌", numhl = "GitSignsAddNr" },
     change = { hl = "DiffChange", text = "▌", numhl = "GitSignsChangeNr" },
@@ -21,16 +21,16 @@ require 'gitsigns'.setup {
   sign_priority = 5,
   status_formatter = nil,
   on_attach = function(bufnr)
-    map('n', ']c', function()
-      if vim.wo.diff then return ']c' end
+    map("n", "]c", function()
+      if vim.wo.diff then return "]c" end
       vim.schedule(function() gs.next_hunk() end)
-      return '<Ignore>'
+      return "<Ignore>"
     end, { expr = true }, bufnr)
 
-    map('n', '[c', function()
-      if vim.wo.diff then return ']c' end
+    map("n", "[c", function()
+      if vim.wo.diff then return "]c" end
       vim.schedule(function() gs.prev_hunk() end)
-      return '<Ignore>'
+      return "<Ignore>"
     end, { expr = true }, bufnr)
   end,
 }
