@@ -1,0 +1,41 @@
+require "options"
+require "mappings"
+local utils = require "utils"
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+  },
+  lockfile = utils.dir_of(vim.fn.stdpath("config")) .. "/home-manager/static/nvim/lazy-lock.json"
+})
+
+require "lsp"
+
+-- hide line numbers in terminal windows
+vim.api.nvim_command([[
+   au BufEnter term://* setlocal nonumber
+]])
+
+-- inactive statuslines as thin splitlines
+vim.cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
+
+vim.cmd "hi clear CursorLine"
+vim.cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
+
+-- keep it at the bottom,
+-- has dependencies on other plugin settings
+vim.cmd.colorscheme "catppuccin"
+
