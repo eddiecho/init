@@ -1,5 +1,7 @@
 #!/bin/bash
 
+FLAKE_NAME=$1
+
 exists() {
 	command -v $1 2>&1 >/dev/null
 }
@@ -10,8 +12,9 @@ then
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 fi
 
-if ! exists home-manager
-then
+if [[ -n $(uname -a | grep nixos) ]]; then
+  sudo nixos-rebuild switch --flake .#$FLAKE_NAME
+else
 	# install home-manager
 	nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 	nix-channel --update
@@ -21,11 +24,4 @@ then
 	nix flake --extra-experimental-features 'nix-command flakes' update
 fi
 
-if 0; then
-	# install neovim
-	git clone --depth 1 git@github.com:neovim/neovim
-	pushd neovim
-	make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=/usr/local
-	sudo make install
-	popd
-fi
+home-manager switch --flake .#$FLAKE_NAME
