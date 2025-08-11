@@ -88,5 +88,20 @@
       )
       homeModules
     );
+
+    darwinConfigurations = flattenAttrset (
+      builtins.mapAttrs (
+        system: hosts:
+          builtins.mapAttrs (
+            name: module:
+              lib.buildDarwin {
+              inherit system module;
+              specialArgs = {
+                root = self;
+              };
+            }
+          ) hosts
+      ) lib.darwinHosts
+    );
   };
 }
