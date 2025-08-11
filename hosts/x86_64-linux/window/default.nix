@@ -5,7 +5,7 @@ let
     fullName = "Eddie Cho";
     stateVersion = "24.11";
   };
-in rec {
+in {
   home-manager.users.${vals.username} = {
     settings = {
       username = vals.username;

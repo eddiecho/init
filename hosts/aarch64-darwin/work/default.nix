@@ -1,21 +1,22 @@
 # System config for my work macbooks
-rec {
-  eddie.settings = {
-    username = "eddie";
+let
+  vals = {
+    username = "Eddie.Cho";
     fullName = "Eddie Cho";
+    stateVersion = "24.11";
   };
-
+in {
   eddie.profiles = {
     base.enable = true;
   };
 
-  home-manager.users."eddie" = {
-    eddie.settings = {
-      username = eddie.settings.username;
-      fullName = eddie.settings.fullName;
+  home-manager.users.${vals.username} = {
+    settings = {
+      username = vals.username;
+      fullName = vals.fullName;
     };
 
-    eddie.profiles = {
+    modules = {
       common.enable = true;
     };
 
