@@ -13,3 +13,4 @@ tmp
 /direnv
 /fontconfig
 /systemd
+/go
