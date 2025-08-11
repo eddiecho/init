@@ -1,5 +1,5 @@
 local bd = require("bufdelete")
-local opt = {silent = true}
+local opt = { silent = true }
 
 --command that adds new buffer and moves to it
 vim.api.nvim_command "com -nargs=? -complete=file_in_path New badd <args> | blast"
@@ -9,7 +9,7 @@ vim.api.nvim_set_keymap("n", "<S-b>", ":New ", opt)
 vim.api.nvim_set_keymap("n", "<Tab>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<S-Tab>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
 
-require"bufferline".setup {
+require "bufferline".setup {
   options = {
     numbers = "both",
     buffer_close_icon = "✗",

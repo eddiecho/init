@@ -24,24 +24,25 @@ end
 local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
   return function(str)
     local win_width = vim.fn.winwidth(0)
-    if hide_width and win_width < hide_width then return ''
+    if hide_width and win_width < hide_width then
+      return ''
     elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-       return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
+      return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
     end
     return str
   end
 end
 
-require'lualine'.setup {
+require 'lualine'.setup {
   sections = {
     lualine_a = {
-      {'mode', fmt=trunc(80, 4, nil, true)},
-      {function() return require'lsp-status'.status() end, fmt=trunc(120, 20, 60)},
+      { 'mode',                                             fmt = trunc(80, 4, nil, true) },
+      { function() return require 'lsp-status'.status() end, fmt = trunc(120, 20, 60) },
       window,
     },
     lualine_b = {
-      {'diff', source = diff_source},
-      {'b:gitsigns_head', icon = ''},
+      { 'diff', source = diff_source },
+      { 'b:gitsigns_head', icon = '' },
     },
     lualine_c = {
       {

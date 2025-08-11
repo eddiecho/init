@@ -3,7 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     init = function()
-      require"lspconfigd"
+      require "lspconfigd"
     end,
   },
   {
@@ -24,13 +24,13 @@ return {
       "saadparwaiz1/cmp_luasnip",
     },
     config = function()
-      require"config.completion"
+      require "config.completion"
     end,
   },
   {
     "mason-org/mason-lspconfig.nvim",
     config = function()
-      require"config.mason"
+      require "config.mason"
     end,
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },

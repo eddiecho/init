@@ -1,6 +1,6 @@
-require"ibl".setup{}
+require "ibl".setup {}
 
-require"nvim-treesitter.configs".setup({
+require "nvim-treesitter.configs".setup({
   sync_install = false,
   ensure_installed = {
     "bash",

@@ -1,4 +1,4 @@
-local opt = {noremap = true, silent = true}
+local opt = { noremap = true, silent = true }
 
 vim.api.nvim_set_keymap("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>fg", [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], opt)
@@ -28,7 +28,7 @@ local function buffer_previewer(filepath, bufnr, opts)
   }):sync()
 end
 
-require"telescope".setup{
+require "telescope".setup {
   defaults = {
     winblend = 20,
     width = 0.8,
@@ -36,8 +36,8 @@ require"telescope".setup{
     prompt_title = '',
     results_title = '',
     preview_title = '',
-    path_display = {"smart"},
-    file_ignore_patterns = {".git/", "node_modules", "build", "out"},
+    path_display = { "smart" },
+    file_ignore_patterns = { ".git/", "node_modules", "build", "out" },
     buffer_previewer_maker = buffer_previewer,
     vimgrep_arguments = {
       "rg",
@@ -52,7 +52,7 @@ require"telescope".setup{
   },
   pickers = {
     find_files = {
-      find_command = {"fd", "--type", "f", "--strip-cwd-prefix"}
+      find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
     }
   }
 }

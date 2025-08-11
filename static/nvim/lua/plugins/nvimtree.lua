@@ -5,13 +5,13 @@ return {
     dependencies = {
       {
         "nvim-tree/nvim-web-devicons",
-        opts = require"config.icons"
+        opts = require "config.icons"
       },
       "ryanoasis/vim-devicons",
       "yamatsum/nvim-nonicons",
     },
     config = function()
-      require"config.nvimtree"
+      require "config.nvimtree"
     end
   },
 }
@@ -58,4 +58,4 @@ return {
     end
   },
 }
-]]--
+]] --

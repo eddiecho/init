@@ -19,7 +19,7 @@ if vim.fn.executable("nix") == 1 then
   idx = idx + 1
 end
 
-require("mason-lspconfig").setup{
+require("mason-lspconfig").setup {
   ensure_installed = ensure_installed,
   automatic_enable = false
 }
