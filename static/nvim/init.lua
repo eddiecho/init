@@ -19,7 +19,7 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  lockfile = utils.dir_of(vim.fn.stdpath("config")) .. "/home-manager/static/nvim/lazy-lock.json"
+  lockfile = utils.dir_of(vim.fn.stdpath("config")) .. "/static/nvim/lazy-lock.json"
 })
 
 require "lsp"
