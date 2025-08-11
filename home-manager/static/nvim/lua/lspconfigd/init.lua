@@ -1,0 +1,7 @@
+require("lspconfigd/cpp")
+require("lspconfigd/go")
+require("lspconfigd/lua")
+require("lspconfigd/nix")
+require("lspconfigd/python")
+require("lspconfigd/typescript")
+require("lspconfigd/zig")
