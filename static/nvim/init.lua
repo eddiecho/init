@@ -38,4 +38,3 @@ vim.cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
 -- keep it at the bottom,
 -- has dependencies on other plugin settings
 vim.cmd.colorscheme "catppuccin"
-

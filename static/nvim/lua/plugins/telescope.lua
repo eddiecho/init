@@ -9,7 +9,7 @@ return {
     require"config.telescope"
   end,
 }
-]]--
+]] --
 
 return {
   "dmtrKovalenko/fff.nvim",

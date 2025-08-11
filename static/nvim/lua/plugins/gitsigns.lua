@@ -5,7 +5,7 @@ return {
       "nvim-lua/plenary.nvim"
     },
     config = function()
-      require'config.gitsigns'
+      require 'config.gitsigns'
     end
   },
 }
