@@ -54,5 +54,5 @@ vim.keymap.set('x','y','"+y')
 vim.keymap.set('x','Y','"+Y')
 
 local b = require "bufdelete"
-vim.keymap.set("n", "bb", function() b.delete() end, { noremap = true })
+vim.keymap.set("n", "<Leader>bb", function() b.delete() end, { noremap = true })
 -- map("n", "<C-w>", ":w|b#|bd#<CR>")

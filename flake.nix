@@ -35,10 +35,7 @@
 
     formatter = lib.forAllSystems (
       system: let
-        pkgs = import nixpkgs {
-          inherit system;
-          inherit (lib) overlays;
-        };
+        pkgs = nixpkgs.legacyPackages.${system};
       in
         pkgs.alejandra
     );
