@@ -1,8 +1,8 @@
 local opt = { noremap = true, silent = true }
 
-vim.api.nvim_set_keymap("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fg", [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>ft", [[<Cmd>lua require('telescope.builtin').t
+vim.api.nvim_set_keymap("n", "<Leader>ff", [[<Cmd>lua require("telescope.builtin").find_files()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<Leader>fg", [[<Cmd>lua require("telescope.builtin").live_grep()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<Leader>ft", [[<Cmd>lua require("telescope.builtin").t
 reesitter()<CR>]], opt)
 
 local function buffer_previewer(filepath, bufnr, opts)
@@ -33,9 +33,9 @@ require "telescope".setup {
     winblend = 20,
     width = 0.8,
     show_line = false,
-    prompt_title = '',
-    results_title = '',
-    preview_title = '',
+    prompt_title = "",
+    results_title = "",
+    preview_title = "",
     path_display = { "smart" },
     file_ignore_patterns = { ".git/", "node_modules", "build", "out" },
     buffer_previewer_maker = buffer_previewer,

@@ -22,7 +22,7 @@ require "bufferline".setup {
     },
     diagnostics = "nvim_lsp",
     modified_icon = "●",
-    close_icon = '',
+    close_icon = "",
     max_name_length = 14,
     max_prefix_length = 13,
     tab_size = 18,

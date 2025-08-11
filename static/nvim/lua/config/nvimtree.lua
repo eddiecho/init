@@ -40,7 +40,7 @@ require "nvim-tree".setup {
     },
   },
   renderer = {
-    root_folder_modifier = ':~',
+    root_folder_modifier = ":~",
     highlight_git = true,
     indent_markers = {
       enable = true,

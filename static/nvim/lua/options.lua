@@ -12,7 +12,7 @@ vim.o.numberwidth = 2
 -- Highlight current line
 vim.wo.cul = true
 -- Allow mouse
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 -- Signs next to line numbers
 vim.wo.signcolumn = "yes"
 -- Height of status line
@@ -34,14 +34,14 @@ if vim.fn.has("wsl") == 1 then
   -- remember to install this garbage on the windows side
   -- choco install win32yank
   vim.g.clipboard = {
-    name = 'win32yank',
+    name = "win32yank",
     copy = {
-      ['+'] = { 'win32yank.exe', '-i', '--crlf' },
-      ['*'] = { 'win32yank.exe', '-i', '--crlf' },
+      ["+"] = { "win32yank.exe", "-i", "--crlf" },
+      ["*"] = { "win32yank.exe", "-i", "--crlf" },
     },
     paste = {
-      ['+'] = { 'win32yank.exe', '-o', '--lf' },
-      ['*'] = { 'win32yank.exe', '-o', '--lf' },
+      ["+"] = { "win32yank.exe", "-o", "--lf" },
+      ["*"] = { "win32yank.exe", "-o", "--lf" },
     },
     cache_enabled = 0,
   }

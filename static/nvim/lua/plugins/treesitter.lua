@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
     build = function(plug)
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
+      pcall(require("nvim-treesitter.install").update { with_sync = true })
     end,
     config = function()
       require "config.treesitter"

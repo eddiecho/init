@@ -16,7 +16,7 @@ return {
   },
 }
 -- neotree.nvim is apparently less performant than nvimtree
--- and i don't really care about the other features anyway
+-- and i don"t really care about the other features anyway
 --[[
 return {
   {
