@@ -110,7 +110,7 @@ in
         modules = [
           inputs.home-manager.darwinModules.home-manager
           {
-            imports = nixFiles ../modules/nix-darwin;
+            imports = nixFiles ../modules/darwin;
             nixpkgs.pkgs = pkgsBySystem.${system};
           }
           module
