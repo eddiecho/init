@@ -19,6 +19,9 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
+  git = {
+    timeout = 600,
+  },
   lockfile = utils.dir_of(vim.fn.stdpath("config")) .. "/static/nvim/lazy-lock.json"
 })
 
