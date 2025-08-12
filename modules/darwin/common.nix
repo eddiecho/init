@@ -25,6 +25,11 @@ in {
       pkg-config
     ];
 
+    users.users.${username} = {
+      name = username;
+      home = "/Users/${username}";
+    };
+
     nix = {
       extraOptions = ''
         experimental-features = nix-command flakes
