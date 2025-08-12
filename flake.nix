@@ -100,8 +100,10 @@
                 root = self;
               };
             }
-          ) hosts
-      ) lib.darwinHosts
+          )
+          hosts
+      )
+      lib.darwinHosts
     );
   };
 }

@@ -6,8 +6,8 @@ let
     stateVersion = "24.11";
   };
 in {
-  eddie.profiles = {
-    base.enable = true;
+  darwin = {
+    common.enable = true;
   };
 
   home-manager.users.${vals.username} = {
