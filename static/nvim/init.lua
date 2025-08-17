@@ -1,3 +1,4 @@
+require "filetypes"
 require "options"
 require "mappings"
 local utils = require "utils"
