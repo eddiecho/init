@@ -37,6 +37,7 @@ return {
     },
   },
   {
+    -- gives lua completions for nvim specifically
     "folke/lazydev.nvim",
     ft = "lua",
     opts = {
@@ -46,6 +47,7 @@ return {
     },
   },
   {
+    -- show lsp server notifications
     "j-hui/fidget.nvim",
     opts = {
       notification = {
@@ -56,11 +58,22 @@ return {
       },
     },
   },
+  -- icons in completions
   "onsails/lspkind.nvim",
   {
+    -- diagnostic lists
     "folke/trouble.nvim",
     config = function()
       require("config.trouble")
     end,
+  },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "LspAttach",
+    priority = 1000,
+    config = function()
+        require('tiny-inline-diagnostic').setup()
+        vim.diagnostic.config({ virtual_text = false })
+    end
   },
 }
