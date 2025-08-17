@@ -1,8 +1,9 @@
 local ensure_installed = {
   "lua_ls",
+  "superhtml",
 }
 
-local idx = 2
+local idx = 3
 
 if vim.fn.executable("go") == 1 then
   ensure_installed[idx] = "gopls"
