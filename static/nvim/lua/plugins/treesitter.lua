@@ -3,9 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
     branch = "main",
-    build = function(plug)
-      pcall(require("nvim-treesitter.install").update { with_sync = true })
-    end,
+    build = ':TSUpdate',
     config = function()
       require "config.treesitter"
     end,
@@ -16,5 +14,5 @@ return {
       },
     }
   },
-  "nvim-treesitter/nvim-treesitter-textobjects",
+  -- "nvim-treesitter/nvim-treesitter-textobjects",
 }
