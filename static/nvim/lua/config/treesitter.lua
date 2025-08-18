@@ -1,22 +1,25 @@
-require "ibl".setup {}
-
 local nts = require("nvim-treesitter")
 
-nts.setup()
-nts.install({
-  "bash",
-  "cmake",
-  "comment",
-  "cpp",
-  "css",
-  "go",
-  "html",
-  "javascript",
-  "lua",
-  "markdown",
-  "markdown_inline",
-  "nix",
-  "python",
-  "vimdoc",
-  "zig",
-})
+nts.install(
+  {
+    "bash",
+    "cmake",
+    "comment",
+    "cpp",
+    "css",
+    "go",
+    "html",
+    "javascript",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "nix",
+    "python",
+    "vimdoc",
+    "zig",
+  },
+  {
+    summary = true,
+    max_jobs = 2,
+  }
+)
