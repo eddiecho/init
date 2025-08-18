@@ -1,29 +1,22 @@
 require "ibl".setup {}
 
-require "nvim-treesitter".setup({
-  sync_install = false,
-  ensure_installed = {
-    "bash",
-    "cmake",
-    "comment",
-    "cpp",
-    "css",
-    "go",
-    "html",
-    "javascript",
-    "lua",
-    "markdown",
-    "markdown_inline",
-    "nix",
-    "python",
-    "vimdoc",
-    "zig",
-  },
-  highlight = {
-    enable = true,
-    use_languagetree = true,
-  },
-  indent = {
-    enable = true,
-  },
+local nts = require("nvim-treesitter")
+
+nts.setup()
+nts.install({
+  "bash",
+  "cmake",
+  "comment",
+  "cpp",
+  "css",
+  "go",
+  "html",
+  "javascript",
+  "lua",
+  "markdown",
+  "markdown_inline",
+  "nix",
+  "python",
+  "vimdoc",
+  "zig",
 })
