@@ -16,7 +16,6 @@ require "nvim-treesitter.configs".setup({
     "markdown_inline",
     "nix",
     "python",
-    "rust",
     "vimdoc",
     "zig",
   },
