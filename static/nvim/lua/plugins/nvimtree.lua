@@ -8,10 +8,7 @@ return {
         lazy = false,
         priority = 1000,
         dependencies = {
-          {
-            "nvim-tree/nvim-web-devicons",
-            opts = require "config.icons"
-          },
+          "nvim-tree/nvim-web-devicons",
           "ryanoasis/vim-devicons",
           "yamatsum/nvim-nonicons",
         },
