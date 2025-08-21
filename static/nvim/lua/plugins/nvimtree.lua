@@ -1,18 +1,27 @@
 return {
-  {
-    "nvim-tree/nvim-tree.lua",
-    lazy = false,
-    priority = 1000,
+{
+    "lewis6991/gitsigns.nvim",
     dependencies = {
+      "nvim-lua/plenary.nvim",
       {
-        "nvim-tree/nvim-web-devicons",
-        opts = require "config.icons"
+        "nvim-tree/nvim-tree.lua",
+        lazy = false,
+        priority = 1000,
+        dependencies = {
+          {
+            "nvim-tree/nvim-web-devicons",
+            opts = require "config.icons"
+          },
+          "ryanoasis/vim-devicons",
+          "yamatsum/nvim-nonicons",
+        },
+        config = function()
+          require "config.nvimtree"
+        end
       },
-      "ryanoasis/vim-devicons",
-      "yamatsum/nvim-nonicons",
     },
     config = function()
-      require "config.nvimtree"
+      require "config.gitsigns"
     end
   },
 }
