@@ -21,6 +21,8 @@
       url = "github:nix-community/nur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = inputs @ {
@@ -95,11 +97,11 @@
           builtins.mapAttrs (
             name: module:
               lib.buildDarwin {
-              inherit system module;
-              specialArgs = {
-                root = self;
-              };
-            }
+                inherit system module;
+                specialArgs = {
+                  root = self;
+                };
+              }
           )
           hosts
       )

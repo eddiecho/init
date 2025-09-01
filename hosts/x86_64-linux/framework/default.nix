@@ -5,7 +5,7 @@ let
     fullName = "Eddie Cho";
     stateVersion = "24.11";
   };
-in rec {
+in {
   home-manager.users.${vals.username} = {
     settings = {
       username = vals.username;
@@ -14,6 +14,7 @@ in rec {
 
     modules = {
       common.enable = true;
+      display.enable = true;
     };
 
     home.stateVersion = vals.stateVersion;
@@ -22,6 +23,7 @@ in rec {
   nixos = {
     common.enable = true;
     kernel.enable = true;
+    desktop.enable = true;
   };
 
   system.stateVersion = vals.stateVersion;
