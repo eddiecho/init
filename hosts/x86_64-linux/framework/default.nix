@@ -14,7 +14,7 @@ in {
 
     modules = {
       common.enable = true;
-      display.enable = true;
+      hyprland.enable = true;
     };
 
     home.stateVersion = vals.stateVersion;
@@ -23,7 +23,7 @@ in {
   nixos = {
     common.enable = true;
     kernel.enable = true;
-    desktop.enable = true;
+    display.enable = true;
   };
 
   system.stateVersion = vals.stateVersion;

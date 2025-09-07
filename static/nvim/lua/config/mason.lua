@@ -1,17 +1,13 @@
 local ensure_installed = {
+  "clangd",
   "lua_ls",
   "superhtml",
 }
 
-local idx = 3
+local idx = 4
 
 if vim.fn.executable("go") == 1 then
   ensure_installed[idx] = "gopls"
-  idx = idx + 1
-end
-
-if vim.fn.executable("clang") == 1 then
-  ensure_installed[idx] = "clangd"
   idx = idx + 1
 end
 
