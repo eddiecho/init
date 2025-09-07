@@ -17,6 +17,7 @@ local function nvimtree_onattach(bufnr)
   vim.keymap.set("n", "d", api.fs.remove, opts("Delete"))
   vim.keymap.set("n", "e", api.tree.expand_all, opts("Expand all"))
   vim.keymap.set("n", "r", api.fs.rename, opts("Rename"))
+  vim.keymap.set("n", "R", api.tree.reload, opts("Reload"))
   vim.keymap.set("n", "w", api.node.open.vertical, opts("Open: vertical split"))
   vim.keymap.set("n", "W", api.node.open.horizontal, opts("Open: horizontal split"))
   vim.keymap.set("n", "y", api.fs.copy.filename, opts("Copy Name"))
@@ -25,6 +26,7 @@ end
 
 require "nvim-tree".setup {
   on_attach = nvimtree_onattach,
+  sync_root_with_cwd = true,
   filters = {
     dotfiles = false,
     custom = {},
@@ -37,6 +39,11 @@ require "nvim-tree".setup {
   actions = {
     open_file = {
       quit_on_open = false,
+    },
+    change_dir = {
+      enable = true,
+      global = true,
+      restrict_above_cwd = false,
     },
   },
   renderer = {
