@@ -11,9 +11,17 @@ return {
 }
 ]] --
 
+local build_func = function()
+  if vim.fn.executable("nix") == 1 then
+    return "nix run .#release"
+  end
+
+  return "cargo build --release"
+end
+
 return {
   "dmtrKovalenko/fff.nvim",
-  build = "nix run .#release",
+  build = build_func(),
   config = function()
     require("config.finder")
   end,
