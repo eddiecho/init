@@ -26,5 +26,10 @@ in {
     display.enable = true;
   };
 
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+  };
+
   system.stateVersion = vals.stateVersion;
 }
