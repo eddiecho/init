@@ -23,6 +23,8 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 
   outputs = inputs @ {

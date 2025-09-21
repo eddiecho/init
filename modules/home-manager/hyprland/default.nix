@@ -6,6 +6,13 @@
 }: let
   cfg = config.modules.hyprland;
 in {
+  imports = [
+    ./pkgs.nix
+    ./hyprpaper.nix
+    ./hyprlock.nix
+    ./tofi.nix
+  ];
+
   options.modules.hyprland.enable = lib.mkEnableOption "Enable Hyprland";
 
   config = lib.mkIf cfg.enable {
@@ -28,12 +35,11 @@ in {
         "$terminal" = "ghostty";
         "$webBrowser" = "firefox";
         "$menu" = "tofi-drun --drun-launch=true";
-        "$codeEditor" = "code";
-        "$fileManager" = "nautilus";
-        "$notes" = "obsidian";
+        #"$codeEditor" = "code";
+        #"$fileManager" = "nautilus";
+        #"$notes" = "obsidian";
 
         exec-once = [
-          "udiskie"
           "waybar"
           "swww-daemon"
           "swww img /etc/nixos/home-manager/wallpapers/miku.png"
