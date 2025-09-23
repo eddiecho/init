@@ -47,13 +47,13 @@ in {
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/18ed4b766-5ac2-4c1e-baef-eca238f1c0e7";
+    { device = "/dev/disk/by-uuid/10ed4b76-5ac2-4c1e-baef-eca230f1c0e7";
       fsType = "ext4";
     };
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/E204-4398";
       fsType = "vfat";
-      options = [ "fmast=0077" "dmask=0077" ];
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices = [ ];
@@ -61,4 +61,8 @@ in {
   networking.useDHCP = true;
   nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = true;
+
+  hardware.opengl = {
+    enable = true;
+  };
 }
