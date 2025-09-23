@@ -17,7 +17,7 @@ in {
 
       isNormalUser = lib.mkDefault true;
 
-      extraGroups = ["wheel"];
+      extraGroups = ["networkmanager" "wheel"];
     };
 
     environment.systemPackages = with pkgs; [
