@@ -33,7 +33,7 @@ in {
         # extraConfig = "";
 
         source = [
-          "/etc/nixos/home-manager/modules/hyprland/mocha.conf" # Theme
+          "/home/eddie/.config/hyprland/mocha.conf"
         ];
 
         monitor = ",preferred,auto,1";
