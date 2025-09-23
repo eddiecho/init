@@ -37,6 +37,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       ghostty
+      networkmanagerapplet
     ];
 
     services.pipewire = {
