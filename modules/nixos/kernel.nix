@@ -11,5 +11,6 @@ in {
   config = lib.mkIf cfg.enable {
     # I got the need for speed, baby
     boot.kernelParams = ["mitigations=off"];
+    boot.kernelPackages = pkgs.linuxPackages_latest;
   };
 }
