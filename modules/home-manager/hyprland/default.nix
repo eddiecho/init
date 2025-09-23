@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  root,
   lib,
   ...
 }: let
@@ -16,6 +17,12 @@ in {
   options.modules.hyprland.enable = lib.mkEnableOption "Enable Hyprland";
 
   config = lib.mkIf cfg.enable {
+    home.file = {
+      ".config/hyprland" = {
+        source = builtins.toPath "${root}/static/hyprland";
+      };
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = true;
