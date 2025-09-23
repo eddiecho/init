@@ -58,8 +58,12 @@ in {
 
   swapDevices = [ ];
 
-  networking.useDHCP = true;
+  networking = {
+    networkmanager.enable = true;
+  };
+
   nixpkgs.hostPlatform = "x86_64-linux";
+
   hardware.cpu.amd.updateMicrocode = true;
 
   hardware.opengl = {
