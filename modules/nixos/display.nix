@@ -25,13 +25,13 @@ in {
       enable = true;
       settings = {
         initial_session = {
-	  command = "${session}";
-	  user = "eddie";
-	};
-	default_session = {
-	  command = "${session}";
-	  user = "eddie";
-	};
+          command = "${session}";
+          user = "eddie";
+        };
+        default_session = {
+          command = "${session}";
+          user = "eddie";
+        };
       };
     };
 
