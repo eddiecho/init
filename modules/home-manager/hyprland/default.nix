@@ -98,7 +98,7 @@ in {
           "col.border_active" = "$surface1";
           "col.border_inactive" = "$surface0";
           groupbar = {
-            font_family = "SFMono Nerd Font";
+            font_family = "SFMonoNerdFontComplete Nerd Font";
             font_size = 14;
             gradients = true;
             text_color = "$crust";

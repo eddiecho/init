@@ -22,7 +22,7 @@ in {
 
       settings = {
         theme = "Catppuccin Mocha";
-        font-family = "SFMono Nerd Font";
+        font-family = "SFMonoNerdFontComplete Nerd Font";
         font-size = 16;
         macos-titlebar-style = "hidden";
         window-decoration = false;
