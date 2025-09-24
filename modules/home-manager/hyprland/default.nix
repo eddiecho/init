@@ -172,8 +172,6 @@ in {
           new_status = "slave";
         };
 
-        gestures = {workspace_swipe = false;};
-
         misc = {
           disable_hyprland_logo = true;
           mouse_move_enables_dpms = true;
