@@ -14,9 +14,7 @@ in {
 
     users.users.${username} = {
       shell = pkgs.zsh;
-
       isNormalUser = lib.mkDefault true;
-
       extraGroups = ["networkmanager" "wheel"];
     };
 
