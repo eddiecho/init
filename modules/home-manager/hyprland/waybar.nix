@@ -259,13 +259,13 @@
       }
     ];
     style = ''
-            * {
-              font-family: "SFMonoNerdFontComplete Nerd Font";
-              font-size: 14px;
-              font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-      margin: 0px;
-      padding: 0px;
-            }
+          * {
+            font-family: "SFMonoNerdFontComplete Nerd Font";
+            font-size: 14px;
+            font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+            margin: 0px;
+            padding: 0px;
+          }
 
           @define-color base   #1e1e2e;
           @define-color mantle #181825;
@@ -303,29 +303,27 @@
           window#waybar {
             transition-property: background-color;
             transition-duration: 0.5s;
-      border: 2px;
-      background: rgba(17 ,17 , 27, 0.65);
-      box-shadow: 0 4px 4px rgba(17 ,17 , 27, 0.25);
-      padding: 10px 25px;
+            border: 2px;
+            background: rgba(17 ,17 , 27, 0.65);
+            box-shadow: 0 4px 4px rgba(17 ,17 , 27, 0.25);
+            padding: 10px 25px;
           }
 
           window#waybar.hidden {
-      opacity: 0.2;
+            opacity: 0.2;
           }
 
           tooltip {
-      background: #1e1e2e;
-                  border-radius: 8px;
-                  border-color: @mauve;
+            background: #1e1e2e;
+            border-radius: 8px;
+            border-color: @mauve;
           }
 
           tooltip label {
-      color: #cad3f5;
-             margin-right: 5px;
-             margin-left: 5px;
+            color: #cad3f5;
+            margin-right: 5px;
+            margin-left: 5px;
           }
-
-
 
           /* This section can be use if you want to separate waybar modules */
           .modules-left {
@@ -409,73 +407,73 @@
       }
 
       #idle_inhibitor {
-      color: @blue;
+        color: @blue;
       }
 
       #bluetooth,
       #backlight {
-      color: @blue;
+        color: @blue;
       }
 
       #battery {
-      color: @green;
+        color: @green;
       }
 
       @keyframes blink {
         to {
-      color: @surface0;
+          color: @surface0;
         }
       }
 
       #battery.critical:not(.charging) {
         background-color: @red;
-      color: @theme_text_color;
-             animation-name: blink;
-             animation-duration: 0.5s;
-             animation-timing-function: linear;
-             animation-iteration-count: infinite;
-             animation-direction: alternate;
-             box-shadow: inset 0 -3px transparent;
+        color: @theme_text_color;
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        box-shadow: inset 0 -3px transparent;
       }
 
       #custom-updates {
-      color: @blue
+        color: @blue
       }
 
       #custom-notification {
-      color: #dfdfdf;
-      padding: 0px 5px;
-               border-radius: 5px;
+        color: #dfdfdf;
+        padding: 0px 5px;
+        border-radius: 5px;
       }
 
       #language {
-      color: @blue
+        color: @blue
       }
 
       #clock {
-      color: @mauve;
+        color: @mauve;
       }
 
       #custom-icon {
         font-size: 15px;
-      color: #cba6f7;
+        color: #cba6f7;
       }
 
       #cpu {
-      color: @pink;
+        color: @pink;
       }
 
       #custom-keyboard,
       #memory {
-      color: @lavender;
+        color: @lavender;
       }
 
       #disk {
-      color: @sapphire;
+        color: @sapphire;
       }
 
       #temperature {
-      color: @teal;
+        color: @teal;
       }
 
       #temperature.critical {
@@ -490,133 +488,136 @@
       }
 
       #keyboard-state {
-      color: @flamingo;
+        color: @flamingo;
       }
 
       #workspaces button {
         box-shadow: none;
         text-shadow: none;
-      padding: 0px;
-               border-radius: 9px;
-               padding-left: 4px;
-               padding-right: 4px;
-      animation: gradient_f 20s ease-in infinite;
-      transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+        padding: 0px;
+        border-radius: 9px;
+        padding-left: 4px;
+        padding-right: 4px;
+        animation: gradient_f 20s ease-in infinite;
+        transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
       }
 
       #workspaces button:hover {
         border-radius: 10px;
-      color: @overlay0;
-             background-color: @surface0;
-             padding-left: 2px;
-             padding-right: 2px;
-      animation: gradient_f 20s ease-in infinite;
-      transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+        color: @overlay0;
+        background-color: @surface0;
+        padding-left: 2px;
+        padding-right: 2px;
+        animation: gradient_f 20s ease-in infinite;
+        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
       }
 
       #workspaces button.persistent {
-      color: @surface1;
-             border-radius: 10px;
+        color: @surface1;
+        border-radius: 10px;
       }
 
       #workspaces button.active {
-      color: @mauve;
-             border-radius: 10px;
-             padding-left: 8px;
-             padding-right: 8px;
-      animation: gradient_f 20s ease-in infinite;
-      transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+        color: @mauve;
+        border-radius: 10px;
+        padding-left: 8px;
+        padding-right: 8px;
+        animation: gradient_f 20s ease-in infinite;
+        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
       }
 
       #workspaces button.urgent {
-      color: @red;
-             border-radius: 0px;
+        color: @red;
+        border-radius: 0px;
       }
 
       #taskbar button.active {
         padding-left: 8px;
         padding-right: 8px;
-      animation: gradient_f 20s ease-in infinite;
-      transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+        animation: gradient_f 20s ease-in infinite;
+        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
       }
 
       #taskbar button:hover {
         padding-left: 2px;
         padding-right: 2px;
-      animation: gradient_f 20s ease-in infinite;
-      transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+        animation: gradient_f 20s ease-in infinite;
+        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
       }
 
       #custom-cava_mviz {
-      color: @pink;
+        color: @pink;
       }
 
       #cava {
-      color: @pink;
+        color: @pink;
       }
 
       #mpris {
-      color: @pink;
+        color: @pink;
       }
 
       #custom-menu {
-      color: @rosewater;
+        color: @rosewater;
       }
 
       #custom-power {
-      color: @red;
+        color: @red;
       }
 
       #custom-updater {
-      color: @red;
+        color: @red;
       }
 
       #custom-light_dark {
-      color: @blue;
+        color: @blue;
       }
 
       #custom-weather {
-      color: @lavender;
+        color: @lavender;
       }
 
       #custom-lock {
-      color: @maroon;
+        color: @maroon;
       }
 
       #pulseaudio {
-      color: @lavender;
+        color: @lavender;
       }
 
       #pulseaudio.bluetooth {
-      color: @pink;
+        color: @pink;
       }
+
       #pulseaudio.muted {
-      color: @red;
+        color: @red;
       }
 
       #window {
-      color: @mauve;
+        color: @mauve;
       }
 
       #custom-waybar-mpris {
-      color:@lavender;
+        color:@lavender;
       }
 
       #network {
-      color: @blue;
+        color: @blue;
       }
+
       #network.disconnected,
       #network.disabled {
         background-color: @surface0;
-      color: @text;
+        color: @text;
       }
+
       #pulseaudio-slider slider {
         min-width: 0px;
         min-height: 0px;
-      opacity: 0;
-               background-image: none;
-      border: none;
-              box-shadow: none;
+        opacity: 0;
+        background-image: none;
+        border: none;
+        box-shadow: none;
       }
 
       #pulseaudio-slider trough {
@@ -633,10 +634,10 @@
       #backlight-slider slider {
         min-width: 0px;
         min-height: 0px;
-      opacity: 0;
-               background-image: none;
-      border: none;
-              box-shadow: none;
+        opacity: 0;
+        background-image: none;
+        border: none;
+        box-shadow: none;
       }
 
       #backlight-slider trough {
