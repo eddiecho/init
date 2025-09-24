@@ -10,5 +10,9 @@ in {
 
   config = lib.mkIf cfg.enable {
     modules.hyprland.enable = lib.mkDefault true;
+
+    home.packages = with pkgs; [
+      firefox
+    ];
   };
 }

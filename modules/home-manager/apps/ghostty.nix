@@ -21,7 +21,8 @@ in {
       enableZshIntegration = true;
 
       settings = {
-        theme = "catpuccin-mocha";
+        theme = "Catppuccin Mocha";
+        font-family = "SFMono Nerd Font";
         font-size = 16;
         macos-titlebar-style = "hidden";
         window-decoration = false;
