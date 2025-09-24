@@ -25,11 +25,14 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     ghostty.url = "github:ghostty-org/ghostty";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
+    nixos-hardware,
     ...
   }: let
     inherit (nixpkgs) lib;
@@ -57,6 +60,7 @@
               lib.buildNixos {
                 inherit system module;
                 specialArgs = {
+                  inherit inputs;
                   root = self;
                 };
               }

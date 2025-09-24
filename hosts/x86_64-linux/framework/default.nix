@@ -1,5 +1,8 @@
 # System config for my nixos laptop
-let
+{
+  inputs,
+  ...
+}: let
   vals = {
     username = "eddie";
     fullName = "Eddie Cho";
@@ -30,6 +33,10 @@ in {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
+
+  imports = [
+    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+  ];
 
   users.mutableUsers = true;
   system.stateVersion = vals.stateVersion;
