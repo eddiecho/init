@@ -29,6 +29,9 @@ in {
     modules = {
       common.enable = true;
       hyprland.enable = true;
+      display.enable = true;
+
+      apps.ghostty.enable = true;
     };
 
     home.stateVersion = vals.stateVersion;

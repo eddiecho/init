@@ -98,8 +98,8 @@ in {
           "col.border_active" = "$surface1";
           "col.border_inactive" = "$surface0";
           groupbar = {
-            font_family = "Fira Mono";
-            font_size = 12;
+            font_family = "SFMono Nerd Font";
+            font_size = 14;
             gradients = true;
             text_color = "$crust";
             "col.active" = "$mauve";

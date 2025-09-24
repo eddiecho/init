@@ -6,7 +6,7 @@
 
             $accent = $mauve
             $accentAlpha = $mauveAlpha
-            $font = JetBrainsMono Nerd Font
+            $font = SFMono Nerd Font
 
       # GENERAL
             general {
