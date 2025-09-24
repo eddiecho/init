@@ -74,7 +74,12 @@
       builtins.mapAttrs (
         system: hosts:
           builtins.mapAttrs (
-            name: module: (builtins.head (lib.attrsToList module.home-manager.users)).value
+            name: module:
+              (builtins.head (lib.attrsToList
+                (module {
+                  inherit inputs;
+                  pkgs = nixpkgs.legacyPackages.${system};
+                }).home-manager.users)).value
           )
           hosts
       )

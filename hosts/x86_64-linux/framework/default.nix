@@ -11,6 +11,7 @@
   };
 in {
   imports = [
+    ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
   ];
 
@@ -45,28 +46,9 @@ in {
   };
 
   users.mutableUsers = true;
-  system.stateVersion = vals.stateVersion;
-
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/10ed4b76-5ac2-4c1e-baef-eca230f1c0e7";
-    fsType = "ext4";
-  };
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/E204-4398";
-    fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
-  };
-
-  swapDevices = [];
 
   networking.hostName = "framework";
   networking.wireless.iwd.enable = true;
-  networking.useDHCP = true;
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
@@ -76,4 +58,6 @@ in {
   hardware.graphics = {
     enable = true;
   };
+
+  system.stateVersion = vals.stateVersion;
 }
