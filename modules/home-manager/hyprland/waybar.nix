@@ -260,7 +260,7 @@
     ];
     style = ''
             * {
-              font-family: "SFMono Nerd Font";
+              font-family: "SFMonoNerdFontComplete Nerd Font";
               font-size: 14px;
               font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
       margin: 0px;
