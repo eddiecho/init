@@ -1,5 +1,5 @@
 # System config for WSL based systems
-let
+{...}: let
   vals = {
     username = "eddie";
     fullName = "Eddie Cho";
