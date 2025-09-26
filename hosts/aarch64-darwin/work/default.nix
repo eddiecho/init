@@ -1,5 +1,5 @@
 # System config for my work macbooks
-let
+{...}: let
   vals = {
     username = "Eddie.Cho";
     fullName = "Eddie Cho";
@@ -18,6 +18,8 @@ in {
 
     modules = {
       common.enable = true;
+      display.enable = false;
+      hyprland.enable = false;
     };
 
     home.stateVersion = "24.11";
