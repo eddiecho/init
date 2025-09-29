@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = config.modules.common;
+  cfg = config.modules.display;
 in {
   options.modules.display.enable = lib.mkEnableOption "Enable display";
 
