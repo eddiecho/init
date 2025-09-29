@@ -79,10 +79,16 @@ return {
   {
     "retran/meow.yarn.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
-    config = function()
-      require("meow.yarn").setup({
-        -- Your custom configuration goes here
-      })
+    init = function()
+      local yarn = require("meow.yarn")
+      vim.keymap.set("n", "<Leader>yt", function() yarn.open_tree("type_hierarchy", "supertypes") end,
+        { desc = "Yarn: Type Hierarchy (Super)" })
+      vim.keymap.set("n", "<leader>yT", function() yarn.open_tree("type_hierarchy", "subtypes") end,
+        { desc = "Yarn: Type Hierarchy (Sub)" })
+      vim.keymap.set("n", "<leader>yc", function() yarn.open_tree("call_hierarchy", "callers") end,
+        { desc = "Yarn: Call Hierarchy (Callers)" })
+      vim.keymap.set("n", "<leader>yC", function() yarn.open_tree("call_hierarchy", "callees") end,
+        { desc = "Yarn: Call Hierarchy (Callees)" })
     end,
   }
 }
