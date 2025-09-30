@@ -1,6 +1,6 @@
 # System config for my nixos laptop
 {
-  inputs,
+  nixos-hardware,
   pkgs,
   ...
 }: let
@@ -12,7 +12,7 @@
 in {
   imports = [
     ./hardware-configuration.nix
-    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+    nixos-hardware.nixosModules.framework-13-7040-amd
   ];
 
   hardware.enableRedistributableFirmware = true;
