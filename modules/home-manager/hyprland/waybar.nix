@@ -9,7 +9,7 @@ in {
     programs.waybar = {
       enable = true;
       systemd = {
-        enable = false;
+        enable = true;
         target = "graphical-session.target";
       };
       settings = [
@@ -268,8 +268,7 @@ in {
       style = ''
             * {
               font-family: "SFMonoNerdFontComplete Nerd Font";
-              font-size: 14px;
-              font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+              font-size: 16px;
               margin: 0px;
               padding: 0px;
             }

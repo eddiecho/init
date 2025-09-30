@@ -8,5 +8,6 @@
     ./hyprlock.nix
     ./tofi.nix
     ./keybinds.nix
+    ./waybar.nix
   ];
 }

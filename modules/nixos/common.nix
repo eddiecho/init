@@ -25,12 +25,13 @@ in {
       git
       home-manager
       htop
+      hwinfo
       jq
       neovim
+      pkg-config
       ripgrep
       tldr
       unzip
-      pkg-config
     ];
 
     programs = {

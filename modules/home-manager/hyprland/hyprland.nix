@@ -37,7 +37,6 @@ in {
         #"$notes" = "obsidian";
 
         exec-once = [
-          "waybar"
           "swww-daemon"
           "swww img /etc/nixos/home-manager/wallpapers/miku.png"
           "swaync"
