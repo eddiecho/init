@@ -11,9 +11,11 @@ in {
   options.nixos.display.enable = lib.mkEnableOption "Enable display";
 
   config = lib.mkIf cfg.enable {
+    /*
     programs.hyprland = {
       enable = true;
     };
+    */
 
     /*
     services.xserver.enable = true;
