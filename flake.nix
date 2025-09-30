@@ -60,7 +60,7 @@
               lib.buildNixos {
                 inherit system module;
                 specialArgs = {
-                  inherit inputs;
+                  inherit nixos-hardware;
                   root = self;
                 };
               }

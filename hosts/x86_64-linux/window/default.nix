@@ -3,7 +3,7 @@
   vals = {
     username = "eddie";
     fullName = "Eddie Cho";
-    stateVersion = "24.11";
+    stateVersion = "25.05";
   };
 in {
   home-manager.users.${vals.username} = {

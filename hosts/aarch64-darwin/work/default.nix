@@ -3,7 +3,7 @@
   vals = {
     username = "Eddie.Cho";
     fullName = "Eddie Cho";
-    stateVersion = "24.11";
+    stateVersion = "25.05";
   };
 in {
   darwin = {
@@ -22,7 +22,7 @@ in {
       hyprland.enable = false;
     };
 
-    home.stateVersion = "24.11";
+    home.stateVersion = vals.stateVersion;
   };
 
   system.stateVersion = 6;
