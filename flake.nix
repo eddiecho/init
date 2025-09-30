@@ -77,7 +77,7 @@
             name: module:
               (builtins.head (lib.attrsToList
                 (module {
-                  inherit inputs;
+                  inherit nixos-hardware;
                   pkgs = nixpkgs.legacyPackages.${system};
                 }).home-manager.users)).value
           )
