@@ -21,7 +21,6 @@ nts.install(
     "zig",
   },
   {
-    summary = true,
-    max_jobs = 2,
+    summary = false,
   }
 )
