@@ -118,7 +118,7 @@ in {
           };
 
           layerrule = [
-            "blur, waybar "
+            "blur, waybar"
             "blur, tofi"
             "blur, swaync"
           ];
