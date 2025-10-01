@@ -32,6 +32,7 @@ in {
       ripgrep
       tldr
       unzip
+      wormhole-william
     ];
 
     programs = {
