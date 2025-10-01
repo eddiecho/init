@@ -1,26 +1,26 @@
 return {
-  {
-    "lewis6991/gitsigns.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      {
-        "nvim-tree/nvim-tree.lua",
-        lazy = false,
-        priority = 1000,
-        dependencies = {
-          "nvim-tree/nvim-web-devicons",
-          "ryanoasis/vim-devicons",
-          "yamatsum/nvim-nonicons",
-        },
-        config = function()
-          require "config.nvimtree"
-        end
-      },
-    },
-    config = function()
-      require "config.gitsigns"
-    end
-  },
+	{
+		"lewis6991/gitsigns.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"nvim-tree/nvim-tree.lua",
+				lazy = false,
+				priority = 1000,
+				dependencies = {
+					"nvim-tree/nvim-web-devicons",
+					"ryanoasis/vim-devicons",
+					"yamatsum/nvim-nonicons",
+				},
+				config = function()
+					require("config.nvimtree")
+				end,
+			},
+		},
+		config = function()
+			require("config.gitsigns")
+		end,
+	},
 }
 -- neotree.nvim is apparently less performant than nvimtree
 -- and i don"t really care about the other features anyway
@@ -65,4 +65,5 @@ return {
     end
   },
 }
-]] --
+]]
+--

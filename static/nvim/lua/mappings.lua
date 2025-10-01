@@ -4,11 +4,11 @@
 -- it accepts strings to convert to vim commands
 -- the other, vim.key_map.set() takes lua callbacks as rhs
 local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	local options = { noremap = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 -- Move vertically by visual line
@@ -49,12 +49,14 @@ map("n", "K", "<C-w>k")
 map("n", "J", "<C-w>j")
 
 -- system clipboard
-vim.keymap.set("n","y",'"+y')
-vim.keymap.set("n","Y",'"+Y')
-vim.keymap.set("x","y",'"+y')
-vim.keymap.set("x","Y",'"+Y')
-vim.keymap.set("n","yy",'"+yy')
+vim.keymap.set("n", "y", '"+y')
+vim.keymap.set("n", "Y", '"+Y')
+vim.keymap.set("x", "y", '"+y')
+vim.keymap.set("x", "Y", '"+Y')
+vim.keymap.set("n", "yy", '"+yy')
 
-local b = require "bufdelete"
-vim.keymap.set("n", "<Leader>bb", function() b.delete() end, { noremap = true })
+local b = require("bufdelete")
+vim.keymap.set("n", "<Leader>bb", function()
+	b.delete()
+end, { noremap = true })
 -- map("n", "<C-w>", ":w|b#|bd#<CR>")

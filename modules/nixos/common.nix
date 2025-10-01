@@ -32,6 +32,7 @@ in {
       pkg-config
       ripgrep
       tldr
+      tree
       unzip
       wormhole-william
     ];

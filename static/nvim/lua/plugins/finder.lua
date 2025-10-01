@@ -9,20 +9,21 @@ return {
     require"config.telescope"
   end,
 }
-]] --
+]]
+--
 
 local build_func = function()
-  if vim.fn.executable("nix") == 1 then
-    return "nix run .#release"
-  end
+	if vim.fn.executable("nix") == 1 then
+		return "nix run .#release"
+	end
 
-  return "cargo build --release"
+	return "cargo build --release"
 end
 
 return {
-  "dmtrKovalenko/fff.nvim",
-  build = build_func(),
-  config = function()
-    require("config.finder")
-  end,
+	"dmtrKovalenko/fff.nvim",
+	build = build_func(),
+	config = function()
+		require("config.finder")
+	end,
 }
