@@ -1,8 +1,8 @@
 return {
-  {
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      require "config.statusline"
-    end,
-  },
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("config.statusline")
+		end,
+	},
 }

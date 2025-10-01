@@ -32,12 +32,15 @@
       url = "path:./static/fonts/SFMono";
       flake = false;
     };
+
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
     nixos-hardware,
+    treefmt-nix,
     ...
   }: let
     inherit (nixpkgs) lib;
@@ -49,7 +52,8 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in
-        pkgs.alejandra
+        (treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper
+      # pkgs.alejandra
     );
 
     packages = lib.forAllSystems (
