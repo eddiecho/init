@@ -591,8 +591,21 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nur": "nur",
+        "sfmono": "sfmono",
         "wsl": "wsl"
       }
+    },
+    "sfmono": {
+      "flake": false,
+      "locked": {
+        "path": "./static/fonts/SFMono",
+        "type": "path"
+      },
+      "original": {
+        "path": "./static/fonts/SFMono",
+        "type": "path"
+      },
+      "parent": []
     },
     "systems": {
       "locked": {

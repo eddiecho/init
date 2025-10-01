@@ -13,7 +13,7 @@ in {
 
         $accent = $mauve
         $accentAlpha = $mauveAlpha
-        $font = SFMono Nerd Font
+        $font = SFMono
 
         # GENERAL
         general {

@@ -23,6 +23,7 @@ in {
       fd
       file
       git
+      git-lfs
       home-manager
       htop
       hwinfo
