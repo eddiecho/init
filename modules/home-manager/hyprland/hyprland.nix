@@ -11,6 +11,9 @@ in {
       ".config/hyprland" = {
         source = builtins.toPath "${root}/static/hyprland";
       };
+      ".config/wallpapers" = {
+        source = builtins.toPath "${root}/static/wallpapers";
+      };
     };
 
     wayland.windowManager.hyprland = {
@@ -38,7 +41,7 @@ in {
 
         exec-once = [
           "swww-daemon"
-          "swww img /etc/nixos/home-manager/wallpapers/miku.png"
+          "swww img ~/.config/wallpapers/b835tzvb2b1a1.gif"
           "swaync"
           "hyprctl setcursor Catppuccin Mocha Dark 24"
           "sudo auto-cpufreq --daemon"
