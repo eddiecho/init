@@ -33,6 +33,7 @@ vim.o.background = "dark"
 if vim.fn.has("wsl") == 1 then
 	-- remember to install this garbage on the windows side
 	-- choco install win32yank
+	--[[
 	vim.g.clipboard = {
 		name = "win32yank",
 		copy = {
@@ -45,4 +46,22 @@ if vim.fn.has("wsl") == 1 then
 		},
 		cache_enabled = 0,
 	}
+  ]]
+	--
+
+	--[[
+  vim.g.clipboard = {
+    name = "WslClipboard",
+    copy = {
+      ["+"] = "clip.exe",
+      ["*"] = "clip.exe",
+    },
+    paste = {
+      ["+"] = {'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'},
+      ["*"] = {'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'},
+    },
+    cache_enabled = 0,
+  }
+  ]]
+	--
 end
