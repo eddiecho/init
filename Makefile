@@ -1,22 +1,23 @@
-.PHONY clear-generations
-clear-generations:
-	nix-env --delete-generations old --profile /nix/var/nix/profiles/system
+all: nixos
 
-.PHONY gc
+.PHONY: clean
+clean:
+	sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system
+	nix-collect-garbage -d
+	nix-store --optimize
+
+.PHONY: gc
 gc:
 	nix-collect-garbage -d
 
-.PHONY home
+.PHONY: home
 home:
-	home-manager switch --flake .$#$$NIXOS_FLAKE_NAME
+	home-manager switch --flake .\#$$NIXOS_FLAKE_NAME
 
-.PHONY nixos
+.PHONY: nixos
 nixos:
-	sudo nixos-rebuild switch --flake .$#$$NIXOS_FLAKE_NAME
+	sudo nixos-rebuild switch --flake .\#$$NIXOS_FLAKE_NAME
 
 # This rule acts as both the catch-all as well as the 'all' which is the typical default top-level rule
-.PHONY %
+.PHONY: %
 %:: nixos
-
-all:: nixos
-
