@@ -25,3 +25,7 @@ fmt:
 # This rule acts as both the catch-all as well as the 'all' which is the typical default top-level rule
 .PHONY: %
 %:: nixos
+
+.PHONY: sync-nvim-to-win
+sync-nvim-to-win:
+	cp -r static/nvim /mnt/c/Users/photo/AppData/Local
