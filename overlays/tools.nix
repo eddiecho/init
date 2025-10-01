@@ -14,5 +14,5 @@ _inputs: _final: prev: let
     listToAttrs
   ];
 in {
-  eddie = packages;
+  tools = packages;
 }

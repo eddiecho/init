@@ -55,9 +55,9 @@
         (treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper
     );
 
-    packages = lib.forAllSystems (
+    tools = lib.forAllSystems (
       system:
-        lib.pkgsBySystem.${system}.eddie
+        lib.pkgsBySystem.${system}.tools
     );
 
     nixosConfigurations = flattenAttrset (
