@@ -27,6 +27,11 @@
     ghostty.url = "github:ghostty-org/ghostty";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    sfmono = {
+      url = "path:~/.local/share/fonts/SFMono";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
