@@ -22,13 +22,11 @@ in {
       curl
       fd
       file
-      git
       git-lfs
       home-manager
       htop
       hwinfo
       jq
-      neovim
       pkg-config
       ripgrep
       tldr
