@@ -29,3 +29,7 @@ fmt:
 .PHONY: sync-nvim-to-win
 sync-nvim-to-win:
 	cp -r static/nvim /mnt/c/Users/photo/AppData/Local
+
+.PHONY: toolexample
+toolexample:
+	nix run .\#tools.x86_64-linux.loadkey
