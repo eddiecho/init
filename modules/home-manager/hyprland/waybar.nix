@@ -29,7 +29,7 @@ in {
           modules-left = ["hyprland/workspaces" "cava"];
           modules-center = ["clock" "custom/notification"];
           # modules-center = ["idle_inhibitor" "clock"];
-          modules-right = ["custom/gpuinfo" "cpu" "memory" "pulseaudio" "network" "bluetooth" "tray" "battery"];
+          modules-right = ["cpu" "memory" "pulseaudio" "network" "bluetooth" "tray" "battery"];
 
           "custom/notification" = {
             tooltip = false;
@@ -179,7 +179,7 @@ in {
             format-alt = "󰾅 {used}GB";
             max-length = 10;
             tooltip = true;
-            tooltip-format = " {used =0.1f}GB/{total =0.1f}GB";
+            tooltip-format = " {used:0.1f}GB/{total:0.1f}GB";
           };
 
           "backlight" = {
