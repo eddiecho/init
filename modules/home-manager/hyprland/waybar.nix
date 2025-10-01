@@ -267,7 +267,7 @@ in {
       ];
       style = ''
         * {
-          font-family: "SFMonoNerdFontComplete Nerd Font";
+          font-family: "SFMono";
           font-size: 16px;
           margin: 0px;
           padding: 0px;

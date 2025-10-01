@@ -29,7 +29,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     sfmono = {
-      url = "path:~/.local/share/fonts/SFMono";
+      url = "path:./static/fonts/SFMono";
       flake = false;
     };
   };

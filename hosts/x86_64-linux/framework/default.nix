@@ -62,5 +62,11 @@ in {
     enable = true;
   };
 
+  fonts = {
+    packages = with pkgs; [
+      sfmono
+    ];
+  };
+
   system.stateVersion = vals.stateVersion;
 }

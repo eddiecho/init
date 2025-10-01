@@ -1,4 +1,4 @@
-(final: prev: {
+inputs: _final: prev: {
   sfmono = prev.stdenvNoCC.mkDerivation rec {
     pname = "sfmono";
     version = "dev";
@@ -9,4 +9,4 @@
       cp -R $src/*.otf $out/share/fonts/opentype
     '';
   };
-})
+}
