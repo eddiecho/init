@@ -20,7 +20,7 @@ in {
       extraConfig = {
         core = {
           editor = lib.mkDefault "vi";
-          pager = "less -X";
+          pager = "less -X -F";
         };
 
         commit = {
