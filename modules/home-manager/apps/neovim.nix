@@ -21,6 +21,10 @@ in {
       vimdiffAlias = true;
     };
 
+    home.packages = with pkgs; [
+      nixd
+    ];
+
     programs.git.extraConfig.core.editor = lib.mkForce "${lib.getExe cfg.package}";
 
     home.sessionVariables = {

@@ -18,6 +18,10 @@ home:
 nixos:
 	sudo nixos-rebuild switch --flake .\#$$NIXOS_FLAKE_NAME
 
+.PHONY: fmt
+fmt:
+	nix fmt .
+
 # This rule acts as both the catch-all as well as the 'all' which is the typical default top-level rule
 .PHONY: %
 %:: nixos
