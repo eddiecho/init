@@ -23,7 +23,7 @@ in {
 
     home.packages = with pkgs; [
       nixd
-      treefmt
+      tree-sitter
     ];
 
     programs.git.extraConfig.core.editor = lib.mkForce "${lib.getExe cfg.package}";
