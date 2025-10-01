@@ -63,7 +63,7 @@
           builtins.mapAttrs (
             name: module:
               lib.buildNixos {
-                inherit system module;
+                inherit name system module;
                 specialArgs = {
                   inherit nixos-hardware;
                   root = self;
