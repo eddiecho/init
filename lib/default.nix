@@ -90,9 +90,11 @@ in
           inputs.home-manager.nixosModules.home-manager
           inputs.wsl.nixosModules.wsl
           {imports = nixFiles ../modules/nixos;}
-          {environment.sessionVariables = {
-            NIXOS_FLAKE_NAME = name;
-          };}
+          {
+            environment.sessionVariables = {
+              NIXOS_FLAKE_NAME = name;
+            };
+          }
           module
           {
             home-manager =
@@ -118,9 +120,11 @@ in
             imports = nixFiles ../modules/darwin;
             nixpkgs.pkgs = pkgsBySystem.${system};
           }
-          {environment.sessionVariables = {
-            NIXOS_FLAKE_NAME = name;
-          };}
+          {
+            environment.sessionVariables = {
+              NIXOS_FLAKE_NAME = name;
+            };
+          }
           module
           {
             home-manager =
