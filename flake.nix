@@ -53,7 +53,6 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
         (treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper
-      # pkgs.alejandra
     );
 
     packages = lib.forAllSystems (
