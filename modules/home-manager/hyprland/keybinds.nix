@@ -23,10 +23,6 @@ in {
 
         "SUPER_SHIFT, L, exec, hyprlock"
 
-        #background
-        "$mainMod SHIFT, G, exec, swww img /etc/nixos/home-manager/wallpapers/miku.gif"
-        "$mainMod CTRL, G, exec, swww img /etc/nixos/home-manager/wallpapers/miku.png"
-
         #Screenshot
         "$mainMod, PRINT, exec, hyprshot -m window"
         ", PRINT, exec, hyprshot -m output"
@@ -89,8 +85,8 @@ in {
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
         # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
+        "$mainMod SHIFT, right, workspace, e+1"
+        "$mainMod SHIFT, left, workspace, e-1"
       ];
 
       bindm = [
