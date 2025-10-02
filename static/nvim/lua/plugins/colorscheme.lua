@@ -1,3 +1,5 @@
+local is_linux = vim.fn.has("linux") == 1 and vim.fn.has("wsl") == 0
+
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
@@ -5,6 +7,7 @@ return {
 	priority = 1000,
 	opts = {
 		flavour = "mocha",
+		transparent_background = is_linux,
 		integrations = {
 			cmp = true,
 			gitsigns = true,
