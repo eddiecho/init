@@ -1,10 +1,10 @@
 # System configurations for my stuff
 
-Mostly managed by [Nix](https://nixos.org) and heavily inspired by [https://github.com/nmasur/dotfiles].
+Mostly managed by [Nix](https://nixos.org) and heavily inspired by https://github.com/nmasur/dotfiles.
 
 # How it works
 
-The library functions `buildHome`, `buildNixos`, and `buildDarwin` will crawl through the `hosts` directory to find any `default.nix` files and use those as inputs. For example, `hosts/x86_64-linux/window/default.nix` will create a flake named `window`, and use the configurations defined there.
+The library functions `buildHome`, `buildNixos`, and `buildDarwin` will crawl through the `hosts` directory to find any `default.nix` files and use those as input modules. For example, `hosts/x86_64-linux/window/default.nix` will create a flake named `window`, and use the configurations defined there.
 
 `modules` defines the options for setting up applications. Generally, `modules/home-manager` is for user level stuff, and `modules/nixos` and `modules/darwin` are for system level stuff.
 
