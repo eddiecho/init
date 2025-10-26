@@ -28,11 +28,11 @@ in {
       settings = {
         initial_session = {
           command = "${session}";
-          user = "eddie";
+          user = config.settings.username;
         };
         default_session = {
           command = "${session}";
-          user = "eddie";
+          user = config.settings.username;
         };
       };
     };

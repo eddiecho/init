@@ -12,4 +12,4 @@ The library functions `buildHome`, `buildNixos`, and `buildDarwin` will crawl th
 
 `tools` has random one-off scripts.
 
-
+If for whatever reason someone else decides to copy this, just update the values in config.json and you should be fine. Remember to add your own hardware-configuration.nix files to the hosts.
