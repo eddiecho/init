@@ -3,6 +3,8 @@ inputs: let
 in
   lib
   // rec {
+    flattenAttrset = attrs: builtins.foldl' lib.mergeAttrs {} (builtins.attrValues attrs);
+
     filesInDirWithSuffix = dir: suffix:
       lib.pipe (lib.filesystem.listFilesRecursive dir) [
         (builtins.filter (name: lib.hasSuffix suffix name))

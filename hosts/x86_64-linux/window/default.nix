@@ -1,16 +1,14 @@
 # System config for WSL based systems
-{...}: let
-  vals = {
-    username = "eddie";
-    fullName = "Eddie Cho";
-    stateVersion = "25.05";
+{vals, ...}: let
+in rec {
+  settings = {
+    username = vals.username;
+    fullName = vals.fullName;
+    email = vals.email;
   };
-in {
+
   home-manager.users.${vals.username} = {
-    settings = {
-      username = vals.username;
-      fullName = vals.fullName;
-    };
+    settings = settings;
 
     modules = {
       common.enable = true;

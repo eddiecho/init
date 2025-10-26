@@ -1,21 +1,18 @@
 # System config for my work macbooks
-{...}: let
-  vals = {
-    username = "Eddie.Cho";
-    fullName = "Eddie Cho";
-    stateVersion = "25.05";
+{vals, ...}: let
+in rec {
+  settings = {
+    username = vals.darwinUsername;
+    fullName = vals.fullName;
   };
-in {
+
   darwin = {
+    settings = settings;
     common.enable = true;
   };
 
   home-manager.users.${vals.username} = {
-    settings = {
-      username = vals.username;
-      fullName = vals.fullName;
-    };
-
+    settings = settings;
     modules = {
       common.enable = true;
       display.enable = false;

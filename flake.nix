@@ -43,10 +43,9 @@
     treefmt-nix,
     ...
   }: let
-    inherit (nixpkgs) lib;
+    vals = builtins.fromJSON (builtins.readFile ./config.json);
   in rec {
     lib = import ./lib inputs;
-    flattenAttrset = attrs: builtins.foldl' lib.mergeAttrs {} (builtins.attrValues attrs);
 
     formatter = lib.forAllSystems (
       system: let
@@ -60,7 +59,7 @@
         lib.pkgsBySystem.${system}.tools
     );
 
-    nixosConfigurations = flattenAttrset (
+    nixosConfigurations = lib.flattenAttrset (
       builtins.mapAttrs (
         system: hosts:
           builtins.mapAttrs (
@@ -68,7 +67,7 @@
               lib.buildNixos {
                 inherit name system module;
                 specialArgs = {
-                  inherit nixos-hardware;
+                  inherit nixos-hardware vals;
                   root = self;
                 };
               }
@@ -93,13 +92,13 @@
       )
       lib.hosts;
 
-    homeConfigurations = flattenAttrset (
+    homeConfigurations = lib.flattenAttrset (
       builtins.mapAttrs (
         system: hosts:
           builtins.mapAttrs (
             name: module:
               lib.buildHome {
-                inherit system module;
+                inherit system module vals;
                 specialArgs = {
                   root = self;
                 };
@@ -110,13 +109,13 @@
       homeModules
     );
 
-    darwinConfigurations = flattenAttrset (
+    darwinConfigurations = lib.flattenAttrset (
       builtins.mapAttrs (
         system: hosts:
           builtins.mapAttrs (
             name: module:
               lib.buildDarwin {
-                inherit system module;
+                inherit system module vals;
                 specialArgs = {
                   root = self;
                 };

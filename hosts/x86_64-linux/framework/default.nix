@@ -2,14 +2,9 @@
 {
   nixos-hardware,
   pkgs,
+  vals,
   ...
-}: let
-  vals = {
-    username = "eddie";
-    fullName = "Eddie Cho";
-    stateVersion = "25.05";
-  };
-in {
+}: rec {
   imports = [
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.framework-13-7040-amd
@@ -20,12 +15,14 @@ in {
     linux-firmware
   ];
 
-  home-manager.users.${vals.username} = {
-    settings = {
-      username = vals.username;
-      fullName = vals.fullName;
-    };
+  settings = {
+    username = vals.username;
+    fullName = vals.fullName;
+    email = vals.email;
+  };
 
+  home-manager.users.${vals.username} = {
+    settings = settings;
     modules = {
       common.enable = true;
       hyprland.enable = true;
@@ -38,6 +35,8 @@ in {
   };
 
   nixos = {
+    settings = settings;
+
     common.enable = true;
     kernel.enable = true;
     display.enable = true;
