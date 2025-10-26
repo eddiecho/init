@@ -35,7 +35,9 @@ in {
 
     home.file = {
       ".config/nvim" = {
-        source = builtins.toPath "${root}/static/nvim";
+        source =
+          config.lib.file.mkOutOfStoreSymlink
+          (builtins.toPath "${root}/static/nvim");
       };
     };
   };

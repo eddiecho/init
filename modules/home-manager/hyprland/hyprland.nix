@@ -9,10 +9,14 @@ in {
   config = lib.mkIf cfg.enable {
     home.file = {
       ".config/hyprland" = {
-        source = builtins.toPath "${root}/static/hyprland";
+        source =
+          config.lib.file.mkOutOfStoreSymlink
+          (builtins.toPath "${root}/static/hyprland");
       };
       ".config/wallpapers" = {
-        source = builtins.toPath "${root}/static/wallpapers";
+        source =
+          config.lib.file.mkOutOfStoreSymlink
+          (builtins.toPath "${root}/static/wallpapers");
       };
     };
 
