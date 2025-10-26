@@ -19,7 +19,7 @@ in {
 
     home.packages = with pkgs; [
       clang_20
-      # cargo # way too many nix things depend on this not to have zzz
+      cargo # way too many nix things depend on this not to have zzz
       gnumake
     ];
 

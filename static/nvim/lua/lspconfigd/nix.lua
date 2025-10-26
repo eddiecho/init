@@ -1,3 +1,3 @@
 if vim.fn.executable("nix") == 1 then
-	vim.lsp.enable("nixd")
+	vim.lsp.enable("nil_ls")
 end

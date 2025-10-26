@@ -13,11 +13,14 @@ in {
   config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      lfs.enable = true;
-      userName = config.settings.fullName;
-      userEmail = config.settings.email;
 
-      extraConfig = {
+      lfs.enable = true;
+      settings = {
+        user = {
+          email = config.settings.email;
+          name = config.settings.fullName;
+        };
+
         core = {
           editor = lib.mkDefault "vi";
           pager = "less -X -F";
