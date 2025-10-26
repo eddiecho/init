@@ -26,7 +26,7 @@ in {
       tree-sitter
     ];
 
-    programs.git.extraConfig.core.editor = lib.mkForce "${lib.getExe cfg.package}";
+    programs.git.settings.core.editor = lib.mkForce "${lib.getExe cfg.package}";
 
     home.sessionVariables = {
       EDITOR = lib.mkDefault "${lib.getExe cfg.package}";

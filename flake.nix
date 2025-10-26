@@ -84,7 +84,8 @@
             name: module:
               (builtins.head (lib.attrsToList
                 (module {
-                  inherit nixos-hardware;
+                  # ensure compatibility with the actual module
+                  inherit nixos-hardware vals;
                   pkgs = nixpkgs.legacyPackages.${system};
                 }).home-manager.users)).value
           )
@@ -98,7 +99,7 @@
           builtins.mapAttrs (
             name: module:
               lib.buildHome {
-                inherit system module vals;
+                inherit system module;
                 specialArgs = {
                   root = self;
                 };

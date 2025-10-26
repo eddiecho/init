@@ -2,13 +2,11 @@ local ensure_installed = {
 	"clangd",
 	"lua_ls",
 	"superhtml",
+	"nil_ls",
 }
 
-local idx = 4
-
 if vim.fn.executable("go") == 1 then
-	ensure_installed[idx] = "gopls"
-	idx = idx + 1
+	ensure_installed[#ensure_installed + 1] = "gopls"
 end
 
 require("mason-lspconfig").setup({
