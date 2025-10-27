@@ -44,8 +44,8 @@
     ...
   }: let
     vals = builtins.fromJSON (builtins.readFile ./config.json);
-  in rec {
     lib = import ./lib inputs;
+  in rec {
 
     formatter = lib.forAllSystems (
       system: let

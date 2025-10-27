@@ -1,6 +1,5 @@
 # System config for my work macbooks
-{vals, ...}: let
-in rec {
+{vals, ...}: rec {
   settings = {
     username = vals.darwinUsername;
     fullName = vals.fullName;
