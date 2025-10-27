@@ -48,7 +48,7 @@ in {
           "swww img ~/.config/Pictures/wallpaper.gif"
           "swaync"
           "hyprctl setcursor Catppuccin Mocha Dark 24"
-          "sudo auto-cpufreq --daemon"
+          # "sudo auto-cpufreq --daemon"
         ];
 
         env = [
