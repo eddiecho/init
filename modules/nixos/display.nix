@@ -11,18 +11,6 @@ in {
   options.nixos.display.enable = lib.mkEnableOption "Enable display";
 
   config = lib.mkIf cfg.enable {
-    /*
-    programs.hyprland = {
-      enable = true;
-    };
-    */
-
-    /*
-    services.xserver.enable = true;
-    services.xserver.displayManager.sddm.enable = true;
-    services.xserver.displayManager.sddm.wayland.enable = true;
-    */
-
     services.greetd = {
       enable = true;
       settings = {

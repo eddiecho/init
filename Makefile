@@ -2,6 +2,7 @@ all: nixos
 
 .PHONY: clean
 clean:
+	sudo nix-store --verify --check-contents --repair
 	sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system
 	nix-collect-garbage -d
 	nix-store --optimize
