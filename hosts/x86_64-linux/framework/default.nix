@@ -35,8 +35,6 @@
   };
 
   nixos = {
-    settings = settings;
-
     common.enable = true;
     kernel.enable = true;
     display.enable = true;

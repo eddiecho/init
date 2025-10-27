@@ -73,7 +73,5 @@ in {
         auto-optimise-store = lib.mkIf (!pkgs.stdenv.isDarwin) true;
       };
     };
-
-    wsl.enable = lib.mkDefault false;
   };
 }

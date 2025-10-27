@@ -1,6 +1,5 @@
 # System config for WSL based systems
-{vals, ...}: let
-in rec {
+{vals, ...}: rec {
   settings = {
     username = vals.username;
     fullName = vals.fullName;

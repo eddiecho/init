@@ -16,7 +16,6 @@ in {
 
       shellAliases = {
         nvimswaps = "pushd; cd ~/.local/state/nvim/swap";
-        hms = "home-manager switch --flake ~/.config/home-manager --show-trace";
       };
 
       oh-my-zsh = {

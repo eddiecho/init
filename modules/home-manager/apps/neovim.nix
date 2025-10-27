@@ -22,7 +22,6 @@ in {
     };
 
     home.packages = with pkgs; [
-      nixd
       tree-sitter
     ];
 
