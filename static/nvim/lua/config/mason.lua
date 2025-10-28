@@ -1,9 +1,10 @@
 local ensure_installed = {
-	"bash-language-server",
+	"bashls",
 	"clangd",
 	"lua_ls",
 	"superhtml",
 	"nil_ls",
+	"zls",
 }
 
 if vim.fn.executable("go") == 1 then

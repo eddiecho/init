@@ -21,6 +21,7 @@ in {
       clang_20
       cargo # way too many nix things depend on this not to have zzz
       gnumake
+      nodejs_22 # zzzzzzzzzzz
     ];
 
     modules.apps = {
