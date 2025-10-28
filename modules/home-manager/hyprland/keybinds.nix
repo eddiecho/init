@@ -132,12 +132,6 @@ in {
         "$mainMod ALT, 5, Switch to group window 5, changegroupactive, 5"
       ];
 
-      bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-        "$mainMod, V, resizewindow"
-      ];
-
       bindmd = [
         # Move/resize windows with mainMod + LMB/RMB and dragging
         "$mainMod, mouse:272, Move window, movewindow"
@@ -151,12 +145,6 @@ in {
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ", XF86MonBrightnessUp, exec, brightnessctl s 5%+"
-        # resize with mainMod CTRL + arrow keys
-        "$mainMod CTRL, left, resizeactive, -20 0"
-        "$mainMod CTRL, right, resizeactive, 20 0"
-        "$mainMod CTRL, up, resizeactive, 0 -20"
-        "$mainMod CTRL, down, resizeactive, 0 20"
-
         ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"
       ];
 

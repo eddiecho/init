@@ -1,5 +1,5 @@
 local ensure_installed = {
-	"bash_language_server",
+	"bash-language-server",
 	"clangd",
 	"lua_ls",
 	"superhtml",
