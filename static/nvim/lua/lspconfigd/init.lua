@@ -1,3 +1,4 @@
+require("lspconfigd/sh")
 require("lspconfigd/cpp")
 require("lspconfigd/go")
 require("lspconfigd/lua")
