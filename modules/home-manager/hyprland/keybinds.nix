@@ -7,92 +7,141 @@
 in {
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
+      # basically copying omarchy's bindings
+      # they get that right at least
       bind = [
         "$mainMod, SPACE , exec, $terminal"
         "$mainMod, B, exec, $webBrowser"
-        "$mainMod, Q, killactive"
         "$mainMod SHIFT, M, exit"
         "$mainMod, A, exec, $menu"
         "$mainMod, E, exec, $fileManager"
-        "$mainMod, D, togglefloating"
-        "$mainMod CTRL, D, pseudo" # dwindle
-        "$mainMod, R, togglesplit" # dwindle
-        "$mainMod, C, exec, $codeEditor"
+        "$mainMod SHIFT, N, exec, $codeEditor"
         "$mainMod, N, exec, $notes"
-        "$mainMod, F, fullscreen"
+        "$mainMod_SHIFT, L, exec, hyprlock"
 
-        "SUPER_SHIFT, L, exec, hyprlock"
-
-        #Screenshot
+        # Screenshot
         "$mainMod, PRINT, exec, hyprshot -m window"
         ", PRINT, exec, hyprshot -m output"
         "$shiftMod, PRINT, exec, hyprshot -m region"
 
-        # Move focus with mainMod + arrow keys or vim motions
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+        "$mainMod, J, togglesplit" # dwindle
+        "$mainMod, P, pseudo" # dwindle
+        "$mainMod, T, togglefloating"
+        "$mainMod, F, fullscreen"
+      ];
 
-        "$mainMod, l, movefocus, l"
-        "$mainMod, h, movefocus, r"
-        "$mainMod, k, movefocus, u"
-        "$mainMod, j, movefocus, d"
+      # the d stands for description
+      bindd = [
+        # Clipboard
+        "$mainMod, C, Copy, sendshortcut, CTRL, Insert"
+        "$mainMod, V, Paste, sendshortcut, SHIFT, Insert"
+        "$mainMod, X, Cut, sendshortcut, CTRL, X"
 
-        "$mainMod CTRL, l, movewindow, l"
-        "$mainMod CTRL, h, movewindow, r"
-        "$mainMod CTRL, k, movewindow, u"
-        "$mainMod CTRL, j, movewindow, d"
+        # Close windows
+        "$mainMod, W, Close active window, killactive"
+        # "CTRL ALT, DELETE, Close all Windows, exec, omarchy-hyprland-window-close-all"
 
-        # Switch workspaces with mainMod + [0-9]
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+        # Control tiling
+        "$mainMod, J, Toggle split, togglesplit," # dwindle
+        "$mainMod, P, Pseudo window, pseudo," # dwindle
+        "$mainMod, T, Toggle floating, togglefloating,"
+        "$mainMod, F, Force full screen, fullscreen, 0"
+        "$mainMod CTRL, F, Tiled full screen, fullscreenstate, 0 2"
+        "$mainMod ALT, F, Full width, fullscreen, 1"
 
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
+        # Move focus with $mainMod + arrow keys
+        "$mainMod, LEFT, Move focus left, movefocus, l"
+        "$mainMod, RIGHT, Move focus right, movefocus, r"
+        "$mainMod, UP, Move focus up, movefocus, u"
+        "$mainMod, DOWN, Move focus down, movefocus, d"
 
-        # Move active window to a workspace without moving mainMod + ctrl + [0-9]
-        "$mainMod CTRL, 1, movetoworkspacesilent, 1"
-        "$mainMod CTRL, 2, movetoworkspacesilent, 2"
-        "$mainMod CTRL, 3, movetoworkspacesilent, 3"
-        "$mainMod CTRL, 4, movetoworkspacesilent, 4"
-        "$mainMod CTRL, 5, movetoworkspacesilent, 5"
-        "$mainMod CTRL, 6, movetoworkspacesilent, 6"
-        "$mainMod CTRL, 7, movetoworkspacesilent, 7"
-        "$mainMod CTRL, 8, movetoworkspacesilent, 8"
-        "$mainMod CTRL, 9, movetoworkspacesilent, 9"
-        "$mainMod CTRL, 0, movetoworkspacesilent, 10"
+        # Switch workspaces with $mainMod + [0-9]
+        "$mainMod, code:10, Switch to workspace 1, workspace, 1"
+        "$mainMod, code:11, Switch to workspace 2, workspace, 2"
+        "$mainMod, code:12, Switch to workspace 3, workspace, 3"
+        "$mainMod, code:13, Switch to workspace 4, workspace, 4"
+        "$mainMod, code:14, Switch to workspace 5, workspace, 5"
+        "$mainMod, code:15, Switch to workspace 6, workspace, 6"
+        "$mainMod, code:16, Switch to workspace 7, workspace, 7"
+        "$mainMod, code:17, Switch to workspace 8, workspace, 8"
+        "$mainMod, code:18, Switch to workspace 9, workspace, 9"
+        "$mainMod, code:19, Switch to workspace 10, workspace, 10"
 
-        # Example special workspace (scratchpad)
-        "$mainMod, S, togglespecialworkspace, magic"
-        "$mainMod SHIFT, S, movetoworkspace, special:magic"
+        # Move active window to a workspace with $mainMod + SHIFT + [0-9]
+        "$mainMod SHIFT, code:10, Move window to workspace 1, movetoworkspace, 1"
+        "$mainMod SHIFT, code:11, Move window to workspace 2, movetoworkspace, 2"
+        "$mainMod SHIFT, code:12, Move window to workspace 3, movetoworkspace, 3"
+        "$mainMod SHIFT, code:13, Move window to workspace 4, movetoworkspace, 4"
+        "$mainMod SHIFT, code:14, Move window to workspace 5, movetoworkspace, 5"
+        "$mainMod SHIFT, code:15, Move window to workspace 6, movetoworkspace, 6"
+        "$mainMod SHIFT, code:16, Move window to workspace 7, movetoworkspace, 7"
+        "$mainMod SHIFT, code:17, Move window to workspace 8, movetoworkspace, 8"
+        "$mainMod SHIFT, code:18, Move window to workspace 9, movetoworkspace, 9"
+        "$mainMod SHIFT, code:19, Move window to workspace 10, movetoworkspace, 10"
 
-        # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod SHIFT, right, workspace, e+1"
-        "$mainMod SHIFT, left, workspace, e-1"
+        # TAB between workspaces
+        "$mainMod, TAB, Next workspace, workspace, e+1"
+        "$mainMod SHIFT, TAB, Previous workspace, workspace, e-1"
+        "$mainMod CTRL, TAB, Former workspace, workspace, previous"
+
+        # Swap active window with the one next to it with $mainMod + SHIFT + arrow keys
+        "$mainMod SHIFT, LEFT, Swap window to the left, swapwindow, l"
+        "$mainMod SHIFT, RIGHT, Swap window to the right, swapwindow, r"
+        "$mainMod SHIFT, UP, Swap window up, swapwindow, u"
+        "$mainMod SHIFT, DOWN, Swap window down, swapwindow, d"
+
+        # Cycle through applications on active workspace
+        "ALT, TAB, Cycle to next window, cyclenext"
+        "ALT SHIFT, TAB, Cycle to prev window, cyclenext, prev"
+        "ALT, TAB, Reveal active window on top, bringactivetotop"
+        "ALT SHIFT, TAB, Reveal active window on top, bringactivetotop"
+
+        # Resize active window
+        "$mainMod, code:20, Expand window left, resizeactive, -100 0" # - key
+        "$mainMod, code:21, Shrink window left, resizeactive, 100 0" # = key
+        "$mainMod SHIFT, code:20, Shrink window up, resizeactive, 0 -100"
+        "$mainMod SHIFT, code:21, Expand window down, resizeactive, 0 100"
+
+        # Scroll through existing workspaces with $mainMod + scroll
+        "$mainMod, mouse_down, Scroll active workspace forward, workspace, e+1"
+        "$mainMod, mouse_up, Scroll active workspace backward, workspace, e-1"
+
+        # Toggle groups
+        "$mainMod, G, Toggle window grouping, togglegroup"
+        "$mainMod ALT, G, Move active window out of group, moveoutofgroup"
+
+        # Join groups
+        "$mainMod ALT, LEFT, Move window to group on left, moveintogroup, l"
+        "$mainMod ALT, RIGHT, Move window to group on right, moveintogroup, r"
+        "$mainMod ALT, UP, Move window to group on top, moveintogroup, u"
+        "$mainMod ALT, DOWN, Move window to group on bottom, moveintogroup, d"
+
+        # Navigate a single set of grouped windows
+        "$mainMod ALT, TAB, Next window in group, changegroupactive, f"
+        "$mainMod ALT SHIFT, TAB, Previous window in group, changegroupactive, b"
+
+        # Scroll through a set of grouped windows with $mainMod + ALT + scroll
+        "$mainMod ALT, mouse_down, Next window in group, changegroupactive, f"
+        "$mainMod ALT, mouse_up, Previous window in group, changegroupactive, b"
+
+        # Activate window in a group by number
+        "$mainMod ALT, 1, Switch to group window 1, changegroupactive, 1"
+        "$mainMod ALT, 2, Switch to group window 2, changegroupactive, 2"
+        "$mainMod ALT, 3, Switch to group window 3, changegroupactive, 3"
+        "$mainMod ALT, 4, Switch to group window 4, changegroupactive, 4"
+        "$mainMod ALT, 5, Switch to group window 5, changegroupactive, 5"
       ];
 
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
         "$mainMod, V, resizewindow"
+      ];
+
+      bindmd = [
+        # Move/resize windows with mainMod + LMB/RMB and dragging
+        "$mainMod, mouse:272, Move window, movewindow"
+        "$mainMod, mouse:273, Resize window, resizewindow"
       ];
 
       # Laptop multimedia keys for volume and LCD brightness

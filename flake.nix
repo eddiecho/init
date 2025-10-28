@@ -46,7 +46,6 @@
     vals = builtins.fromJSON (builtins.readFile ./config.json);
     lib = import ./lib inputs;
   in rec {
-
     formatter = lib.forAllSystems (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
