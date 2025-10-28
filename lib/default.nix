@@ -95,6 +95,7 @@ in
           {
             environment.sessionVariables = {
               NIXOS_FLAKE_NAME = name;
+              LESS = "-X -F -R";
             };
           }
           module
