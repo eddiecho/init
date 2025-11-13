@@ -316,7 +316,7 @@ in {
         }
 
         window#waybar.hidden {
-          opacity: 0.2;
+          opacity: 0.8;
         }
 
         tooltip {
