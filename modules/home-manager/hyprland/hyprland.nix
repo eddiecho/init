@@ -85,7 +85,7 @@ in {
           border_size = 0;
           "col.active_border" = "$mauve";
           "col.inactive_border" = "$surface0";
-          layout = "dwindle";
+          # layout = "dwindle";
         };
 
         group = {
