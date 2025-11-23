@@ -11,6 +11,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      difftastic
+    ];
+
     programs.git = {
       enable = true;
 
@@ -46,6 +50,7 @@ in {
           algorithm = "histogram";
           colorMoved = "plain";
           renames = true;
+          external = "difft";
         };
 
         push = {
