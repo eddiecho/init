@@ -38,6 +38,7 @@
     common.enable = true;
     kernel.enable = true;
     display.enable = true;
+    tailscale.enable = true;
   };
 
   boot = {
