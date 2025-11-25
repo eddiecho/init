@@ -15,7 +15,16 @@ in {
       tailscale
     ];
 
+    services.caddy = {
+      enable = true;
+      virtualHosts."framework.azules-stargazer.ts.net".extraConfig = "";
+    };
+
     # default NAS port is 8080
-    services.tailscale.enable = true;
+    services.tailscale = {
+      enable = true;
+      permitCertUid = "caddy";
+      useRoutingFeatures = "both";
+    };
   };
 }
