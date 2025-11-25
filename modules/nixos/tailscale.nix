@@ -15,6 +15,7 @@ in {
       tailscale
     ];
 
+    # default NAS port is 8080
     services.tailscale.enable = true;
   };
 }
