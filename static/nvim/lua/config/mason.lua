@@ -3,7 +3,7 @@ local ensure_installed = {
 	"lua_ls",
 	"superhtml",
 	"nil_ls",
-  "rust_analyzer",
+	"rust_analyzer",
 	"zls",
 }
 

@@ -34,3 +34,7 @@ sync-nvim-to-win:
 .PHONY: toolexample
 toolexample:
 	nix run .\#tools.x86_64-linux.loadkey
+
+.PHONY: update
+update:
+	nix flake update
