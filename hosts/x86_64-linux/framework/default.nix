@@ -39,6 +39,7 @@
     kernel.enable = true;
     display.enable = true;
     tailscale.enable = true;
+    moonlight.enable = true;
   };
 
   boot = {
