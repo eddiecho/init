@@ -21,6 +21,15 @@ return {
 			require("config.gitsigns")
 		end,
 	},
+  {
+    "A7Lavinraj/fyler.nvim",
+    dependencies = { "nvim-mini/mini.icons" },
+    branch = "main",
+    opts = {},
+    config = function()
+      require("config.fyler")
+    end,
+  },
 }
 -- neotree.nvim is apparently less performant than nvimtree
 -- and i don"t really care about the other features anyway
