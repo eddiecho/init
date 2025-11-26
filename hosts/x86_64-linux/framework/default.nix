@@ -49,8 +49,14 @@
 
   users.mutableUsers = true;
 
+  # iwctl station wlan0 connect "wifi-name"
   networking.hostName = "framework";
   networking.wireless.iwd.enable = true;
+  networking.nameservers = [
+    "192.168.0.26"
+    "192.168.0.1"
+  ];
+  # networking.nameservers = [ "8.8.8.8" ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
 

@@ -18,6 +18,8 @@ in {
       extraGroups = ["networkmanager" "wheel"];
     };
 
+    time.timeZone = "America/Los_Angeles";
+
     environment.systemPackages = with pkgs; [
       curl
       fd

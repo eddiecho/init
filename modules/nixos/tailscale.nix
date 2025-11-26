@@ -17,7 +17,7 @@ in {
 
     services.caddy = {
       enable = true;
-      virtualHosts."framework.azules-stargazer.ts.net".extraConfig = "";
+      virtualHosts."${config.networking.hostName}.azules-stargazer.ts.net".extraConfig = "";
     };
 
     # default NAS port is 8080
