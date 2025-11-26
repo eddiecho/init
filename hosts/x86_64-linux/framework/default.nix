@@ -68,4 +68,11 @@
   };
 
   system.stateVersion = vals.stateVersion;
+
+  # i don't know, some home-manager thing
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
 }
+
