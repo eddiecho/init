@@ -1,3 +1,37 @@
 local fyler = require("fyler")
 
--- vim.keymap.set("n", "<Leader><Space>", function() fyler.toggle() end, {noremap = true, silent = true})
+fyler.setup({
+	views = {
+		finder = {
+			close_on_select = false,
+			confirm_simple = false,
+			git_status = {
+				enabled = true,
+			},
+			watcher = {
+				enabled = true,
+			},
+			indentscope = {
+				enabled = true,
+				group = "FylerIndentMarker",
+				marker = "│",
+			},
+			mappings = {
+				["q"] = "CloseView",
+				["<CR>"] = "Select",
+				["<C-t>"] = "SelectTab",
+				["w"] = "SelectVSplit",
+				["-"] = "SelectSplit",
+				["^"] = "GotoParent",
+				["="] = "GotoCwd",
+				["."] = "GotoNode",
+				["#"] = "CollapseAll",
+				["<BS>"] = "CollapseNode",
+			},
+		},
+	},
+})
+
+vim.keymap.set("n", "<Leader><Space>", function()
+	fyler.toggle({ kind = "split_left_most" })
+end, { noremap = true, silent = true })

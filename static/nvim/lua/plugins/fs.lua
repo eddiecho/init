@@ -25,7 +25,6 @@ return {
 		"A7Lavinraj/fyler.nvim",
 		dependencies = { "nvim-mini/mini.icons" },
 		branch = "main",
-		opts = {},
 		config = function()
 			require("config.fyler")
 		end,
