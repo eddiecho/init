@@ -28,7 +28,10 @@
       hyprland.enable = true;
       display.enable = true;
 
-      apps.ghostty.enable = true;
+      apps = {
+        ghostty.enable = true;
+        discord.enable = true;
+      };
     };
 
     home.stateVersion = vals.stateVersion;
