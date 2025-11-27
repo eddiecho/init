@@ -23,6 +23,7 @@ in {
         "$mainMod SHIFT, N, exec, $codeEditor"
         "$mainMod, N, exec, $notes"
         "$mainMod_SHIFT, L, exec, hyprlock"
+        "$mainMod, d, exec, discord"
 
         # Screenshot
         "$mainMod, PRINT, exec, hyprshot -m window"
