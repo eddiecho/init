@@ -85,4 +85,3 @@
     "/share/xdg-desktop-portal"
   ];
 }
-
