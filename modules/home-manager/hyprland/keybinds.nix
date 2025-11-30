@@ -20,10 +20,10 @@ in {
         "$mainMod SHIFT, M, exit"
         "$mainMod, A, exec, $menu"
         "$mainMod, E, exec, $fileManager"
-        "$mainMod SHIFT, N, exec, $codeEditor"
         "$mainMod, N, exec, $notes"
         "$mainMod_SHIFT, L, exec, hyprlock"
         "$mainMod, d, exec, discord"
+        "$mainMod, s, exec, steam"
 
         # Screenshot
         "$mainMod, PRINT, exec, hyprshot -m window"

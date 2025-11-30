@@ -43,6 +43,7 @@
     display.enable = true;
     tailscale.enable = true;
     moonlight.enable = true;
+    steam.enable = true;
   };
 
   boot = {
