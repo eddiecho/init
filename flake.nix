@@ -50,7 +50,7 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in
-        pkgs.mkShellNoCC {
+        pkgs.mkShell {
           buildInputs = with pkgs; [
             direnv
             gnumake

@@ -22,9 +22,9 @@ in {
 
     environment.systemPackages = with pkgs; [
       curl
+      fastfetch
       fd
       file
-      git-lfs
       home-manager
       htop
       hwinfo
