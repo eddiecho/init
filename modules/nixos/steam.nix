@@ -10,7 +10,7 @@ in {
     enable = lib.mkEnableOption "Enable steam";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && config.nixos.display.enable) {
     programs.steam.enable = true;
   };
 }

@@ -12,7 +12,7 @@ in {
 
   # ctrl + alt + shift + q to quit
   # default sunshine port is 47990
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && config.nixos.display.enable) {
     environment.systemPackages = with pkgs; [
       sunshine
       moonlight-qt
