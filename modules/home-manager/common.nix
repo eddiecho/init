@@ -18,10 +18,8 @@ in {
       else "/home/${config.settings.username}";
 
     home.packages = with pkgs; [
-      clang_20
-      cargo # way too many nix things depend on this not to have zzz
-      gnumake
-      nodejs_22 # zzzzzzzzzzz
+      clang_21  # tree-sitter uses this internally
+      nodejs_22 # I think Mason.nvim uses this? Maybe just be better to add LSPs manually in nix
     ];
 
     modules.apps = {
