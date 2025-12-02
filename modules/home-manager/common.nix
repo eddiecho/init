@@ -19,6 +19,7 @@ in {
 
     home.packages = with pkgs; [
       nodejs_22 # I think Mason.nvim uses this? Maybe just be better to add LSPs manually in nix
+      clang_21 # tree-sitter uses this
     ];
 
     modules.apps = {
