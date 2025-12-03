@@ -7,7 +7,7 @@
 in {
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
-      gestures.workspace_swipe_invert = false;
+      gestures.workspace_swipe_invert = true;
       gestures.workspace_swipe_distance = 700;
       gesture = [
         "3, horizontal, workspace"
