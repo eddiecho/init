@@ -14,14 +14,15 @@ in {
       curl
       fd
       file
-      git
       home-manager
       htop
       jq
       ripgrep
       tldr
+      tree
       unzip
       pkg-config
+      wormhole-william
     ];
 
     users.users.${username} = {
