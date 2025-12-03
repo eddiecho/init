@@ -39,13 +39,3 @@ vim.diagnostic.config({
 	},
 })
 
-local lsp = {}
-
-function lsp.root_dir(root_files)
-	return function(filename)
-		print(filename)
-		lsp_config.util.root_pattern(unpack(root_files))(filename)
-	end
-end
-
-return lsp
