@@ -127,8 +127,9 @@
           builtins.mapAttrs (
             name: module:
               lib.buildDarwin {
-                inherit system module vals;
+                inherit name system module;
                 specialArgs = {
+                  inherit vals;
                   root = self;
                 };
               }

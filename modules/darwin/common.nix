@@ -18,7 +18,6 @@ in {
       home-manager
       htop
       jq
-      neovim
       ripgrep
       tldr
       unzip

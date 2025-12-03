@@ -3,14 +3,14 @@
   settings = {
     username = vals.darwinUsername;
     fullName = vals.fullName;
+    email = vals.workEmail;
   };
 
   darwin = {
-    settings = settings;
     common.enable = true;
   };
 
-  home-manager.users.${vals.username} = {
+  home-manager.users.${settings.username} = {
     settings = settings;
     modules = {
       common.enable = true;

@@ -124,7 +124,7 @@ in
             nixpkgs.pkgs = pkgsBySystem.${system};
           }
           {
-            environment.sessionVariables = {
+            environment.variables = {
               NIXOS_FLAKE_NAME = name;
             };
           }
