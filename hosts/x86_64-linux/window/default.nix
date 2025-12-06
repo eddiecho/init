@@ -27,4 +27,8 @@
   networking.hostName = "window";
 
   system.stateVersion = vals.stateVersion;
+
+  environment.sessionVariables = {
+    WIN_HOME_DIR = "/mnt/c/Users/${vals.windowsUsername}";
+  };
 }
