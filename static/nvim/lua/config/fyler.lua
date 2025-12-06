@@ -1,10 +1,14 @@
 local fyler = require("fyler")
 
 fyler.setup({
+  integrations = {
+    icon = "nvim_web_devicons",
+  },
 	views = {
 		finder = {
 			close_on_select = false,
-			confirm_simple = false,
+			confirm_simple = true,
+      default_explorer = true,
 			git_status = {
 				enabled = true,
 			},
@@ -28,6 +32,9 @@ fyler.setup({
 				["#"] = "CollapseAll",
 				["<BS>"] = "CollapseNode",
 			},
+      win = {
+        border = "rounded"
+      },
 		},
 	},
 })

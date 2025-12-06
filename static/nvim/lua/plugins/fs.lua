@@ -8,9 +8,6 @@ return {
 				lazy = false,
 				priority = 1000,
 				dependencies = {
-					"nvim-tree/nvim-web-devicons",
-					"ryanoasis/vim-devicons",
-					"yamatsum/nvim-nonicons",
 				},
 				config = function()
 					require("config.nvimtree")
@@ -23,7 +20,12 @@ return {
 	},
 	{
 		"A7Lavinraj/fyler.nvim",
-		dependencies = { "nvim-mini/mini.icons" },
+		dependencies = {
+      "nvim-mini/mini.icons",
+      "nvim-tree/nvim-web-devicons",
+      "ryanoasis/vim-devicons",
+      "yamatsum/nvim-nonicons",
+    },
 		branch = "main",
 		config = function()
 			require("config.fyler")
