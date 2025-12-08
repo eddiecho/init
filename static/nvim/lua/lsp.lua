@@ -38,4 +38,3 @@ vim.diagnostic.config({
 		active = true,
 	},
 })
-

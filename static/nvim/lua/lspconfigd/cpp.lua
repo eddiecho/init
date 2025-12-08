@@ -1,6 +1,6 @@
 local clangd_flags = {
-  "--background-index",
-  "--query-driver=/nix/store/*-clang-wrapper-*/bin/c++",
+	"--background-index",
+	"--query-driver=/nix/store/*-clang-wrapper-*/bin/c++",
 }
 
 if vim.fn.executable("clangd") == 1 then
