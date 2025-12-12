@@ -77,6 +77,17 @@ return {
 					break_line = {
 						enabled = true,
 					},
+
+					multilines = {
+						enabled = true,
+						always_show = true,
+						trim_whitespaces = true,
+					},
+
+					overflow = {
+						mode = "wrap",
+						padding = 1,
+					},
 				},
 			})
 			vim.diagnostic.config({ virtual_text = false })
