@@ -91,6 +91,7 @@ in
         modules = [
           inputs.home-manager.nixosModules.home-manager
           inputs.wsl.nixosModules.wsl
+          inputs.determinate.nixosModules.default
           {imports = nixFiles ../modules/nixos;}
           {
             environment.sessionVariables = {
