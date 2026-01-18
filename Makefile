@@ -22,13 +22,17 @@ home:
 nixos:
 	sudo nixos-rebuild switch --flake .\#$$NIXOS_FLAKE_NAME
 
+.PHONY: build
+build:
+	sudo nixos-rebuild build --flake .\#$$NIXOS_FLAKE_NAME
+
 .PHONY: fmt
 fmt:
 	nix fmt .
 
 .PHONY: sync-nvim-to-win
 sync-nvim-to-win:
-	cp -r static/nvim /mnt/c/Users/photo/AppData/Local
+	cp -r static/nvim /mnt/c/Users/$$WIN_HOME_DIR/AppData/Local
 
 .PHONY: toolexample
 toolexample:

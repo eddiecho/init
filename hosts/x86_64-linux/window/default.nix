@@ -18,8 +18,11 @@
 
   nixos = {
     common.enable = true;
-    wsl.enable = true;
     kernel.enable = true;
+    wsl = {
+      enable = true;
+      windowsUsername = vals.windowsUsername;
+    };
   };
 
   users.mutableUsers = true;
@@ -27,8 +30,4 @@
   networking.hostName = "window";
 
   system.stateVersion = vals.stateVersion;
-
-  environment.sessionVariables = {
-    WIN_HOME_DIR = "/mnt/c/Users/${vals.windowsUsername}";
-  };
 }

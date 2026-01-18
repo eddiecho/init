@@ -26,13 +26,6 @@ in {
       xwayland.enable = true;
       sourceFirst = true;
       settings = {
-        # plugins = [];
-        # extraConfig = "";
-
-        source = [
-          "/home/eddie/.config/hyprland/mocha.conf"
-        ];
-
         monitor = ",preferred,auto,1";
 
         # Programs

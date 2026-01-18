@@ -1,5 +1,9 @@
 local M = {}
 
+function M.is_neovide()
+  return vim.g.neovide ~= nil
+end
+
 function M.is_buffer_empty()
 	-- Check whether the current buffer is empty
 	return vim.fn.empty(vim.fn.expand("%:t")) == 1

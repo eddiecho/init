@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 return {
 	"norcalli/nvim-colorizer.lua",
 	"windwp/nvim-autopairs",
@@ -44,4 +46,9 @@ return {
 			end,
 		},
 	},
+  {
+    "sphamba/smear-cursor.nvim",
+    enabled = utils.is_neovide(),
+    opts = {},
+  },
 }
