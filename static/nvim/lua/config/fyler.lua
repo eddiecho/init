@@ -9,16 +9,17 @@ fyler.setup({
 			close_on_select = false,
 			confirm_simple = true,
 			default_explorer = true,
-			git_status = {
-				enabled = true,
-			},
+      delete_to_trash = false,
+      columns = {
+        git = {
+          enabled = true,
+        },
+      },
 			watcher = {
 				enabled = true,
 			},
 			indentscope = {
 				enabled = true,
-				group = "FylerIndentMarker",
-				marker = "│",
 			},
 			mappings = {
 				["q"] = "CloseView",
