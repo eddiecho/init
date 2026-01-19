@@ -37,6 +37,8 @@
     };
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
+
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = inputs @ {
@@ -45,6 +47,7 @@
     nixos-hardware,
     treefmt-nix,
     determinate,
+    catppuccin,
     ...
   }: let
     vals = builtins.fromJSON (builtins.readFile ./config.json);

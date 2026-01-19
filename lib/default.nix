@@ -74,6 +74,7 @@ in
         pkgs = pkgsBySystem.${system};
         modules = [
           {imports = nixFiles ../modules/home-manager;}
+          inputs.catppuccin.homeModules.catppuccin
           module
         ];
         extraSpecialArgs = {} // specialArgs;
@@ -92,6 +93,7 @@ in
           inputs.home-manager.nixosModules.home-manager
           inputs.wsl.nixosModules.wsl
           inputs.determinate.nixosModules.default
+          inputs.catppuccin.nixosModules.catppuccin
           {imports = nixFiles ../modules/nixos;}
           {
             environment.sessionVariables = {

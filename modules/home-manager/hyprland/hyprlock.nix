@@ -9,10 +9,6 @@ in {
     programs.hyprlock = {
       enable = true;
       extraConfig = ''
-        source = /home/eddie/.config/hyprland/mocha.conf
-
-        $accent = $mauve
-        $accentAlpha = $mauveAlpha
         $font = SFMono
 
         # GENERAL
@@ -64,28 +60,6 @@ in {
           valign = top
         }
 
-        # FINGERPRINT
-        {
-          monitor = "";
-          text = "$FPRINTPROMPT";
-          color = "$text";
-          font_size = 14;
-          font_family = $font;
-          position = "0, -107";
-          halign = "center";
-          valign = "center";
-        }
-
-        # USER AVATAR
-        image {
-          monitor =
-          path = $HOME/.face
-          size = 100
-          border_color = $accent
-          position = 0, 75
-          halign = center
-          valign = center
-        }
 
         # INPUT FIELD
         input-field {
