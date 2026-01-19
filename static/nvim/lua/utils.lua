@@ -1,7 +1,7 @@
 local M = {}
 
 function M.is_neovide()
-  return vim.g.neovide ~= nil
+	return vim.g.neovide ~= nil
 end
 
 function M.is_buffer_empty()

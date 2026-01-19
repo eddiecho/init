@@ -1,4 +1,4 @@
-local utils = require('utils')
+local utils = require("utils")
 
 return {
 	"norcalli/nvim-colorizer.lua",
@@ -46,9 +46,8 @@ return {
 			end,
 		},
 	},
-  {
-    "sphamba/smear-cursor.nvim",
-    enabled = utils.is_neovide(),
-    opts = {},
-  },
+	{
+		"sphamba/smear-cursor.nvim",
+		enabled = not utils.is_neovide(),
+	},
 }
