@@ -3,18 +3,19 @@ local fyler = require("fyler")
 fyler.setup({
 	integrations = {
 		icon = "nvim_web_devicons",
+		winpick = "builtin",
 	},
 	views = {
 		finder = {
 			close_on_select = false,
 			confirm_simple = true,
 			default_explorer = true,
-      delete_to_trash = false,
-      columns = {
-        git = {
-          enabled = true,
-        },
-      },
+			delete_to_trash = false,
+			columns = {
+				git = {
+					enabled = true,
+				},
+			},
 			watcher = {
 				enabled = true,
 			},
