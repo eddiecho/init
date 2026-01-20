@@ -30,7 +30,7 @@ nixos:
 
 .PHONY: build
 build:
-	sudo nixos-rebuild build --flake .\#$$NIXOS_FLAKE_NAME
+	sudo $(NIXOS)-rebuild build --flake .\#$$NIXOS_FLAKE_NAME
 
 .PHONY: fmt
 fmt:
