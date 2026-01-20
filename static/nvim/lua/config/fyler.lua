@@ -18,9 +18,6 @@ fyler.setup({
 			watcher = {
 				enabled = true,
 			},
-			indentscope = {
-				enabled = true,
-			},
 			mappings = {
 				["q"] = "CloseView",
 				["<CR>"] = "Select",
