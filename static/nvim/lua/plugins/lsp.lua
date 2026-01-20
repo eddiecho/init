@@ -112,4 +112,9 @@ return {
 			end, { desc = "Yarn: Call Hierarchy (Callees)" })
 		end,
 	},
+	{
+		"esmuellert/vscode-diff.nvim",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		cmd = "CodeDiff",
+	},
 }

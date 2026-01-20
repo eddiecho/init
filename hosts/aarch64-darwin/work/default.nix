@@ -6,6 +6,8 @@
     email = vals.workEmail;
   };
 
+  nix.enable = false;
+
   darwin = {
     common.enable = true;
   };

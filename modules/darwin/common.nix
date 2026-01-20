@@ -37,7 +37,7 @@ in {
       '';
 
       gc = {
-        automatic = true;
+        # automatic = true;
         options = "--delete-older-than 7d";
       };
 

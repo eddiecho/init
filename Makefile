@@ -1,5 +1,12 @@
 .DEFAULT_GOAL := nixos
 
+OS_NAME := $(shell uname -s)
+ifeq ($(OS_NAME), Darwin)
+	NIXOS := darwin
+else
+	NIXOS := nixos
+endif
+
 .PHONY: %
 %:: nixos
 
@@ -19,7 +26,7 @@ home:
 
 .PHONY: nixos
 nixos:
-	sudo nixos-rebuild switch --flake .\#$$NIXOS_FLAKE_NAME
+	sudo $(NIXOS)-rebuild switch --flake .\#$$NIXOS_FLAKE_NAME
 
 .PHONY: build
 build:
