@@ -76,21 +76,13 @@ in {
           gaps_in = 3;
           gaps_out = 6;
           border_size = 0;
-          "col.active_border" = "$mauve";
-          "col.inactive_border" = "$surface0";
-          # layout = "dwindle";
         };
 
         group = {
-          "col.border_active" = "$surface1";
-          "col.border_inactive" = "$surface0";
           groupbar = {
             font_family = "SFMono";
             font_size = 14;
             gradients = true;
-            text_color = "$crust";
-            "col.active" = "$mauve";
-            "col.inactive" = "$overlay0";
           };
         };
 

@@ -143,7 +143,6 @@ in {
 
           "clock" = {
             format = "{:%a %d %b %R}";
-            # format = "{:%R 󰃭 %d·%m·%y}";
             format-alt = "{:%I:%M %p}";
             tooltip-format = "<tt>{calendar}</tt>";
             calendar = {
@@ -250,7 +249,6 @@ in {
               critical = 20;
             };
             format = "{icon} {capacity}%";
-            # format-charging = " {capacity}%";
             format-charging = " {capacity}%";
             format-plugged = " {capacity}%";
             format-alt = "{time} {icon}";
@@ -265,6 +263,7 @@ in {
           };
         }
       ];
+
       style = ''
         * {
           font-family: "SFMono";
@@ -331,11 +330,10 @@ in {
           margin-left: 5px;
         }
 
-        /* This section can be use if you want to separate waybar modules */
         .modules-left {
           padding-right: 15px;
           padding-left: 2px;
-          /*  border: 2px solid; */
+          /* border: 2px solid; */
           border-radius: 10px;
           border-color: @theme_base_color;
           margin-left: 10px;
@@ -354,7 +352,7 @@ in {
         .modules-right {
           padding-right: 15px;
           padding-left: 15px;
-          /*  border: 2px solid; */
+          /* border: 2px solid; */
           border-radius: 10px;
           border-color: @theme_base_color;
           margin-right: 10px;
