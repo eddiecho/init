@@ -46,6 +46,11 @@
     steam.enable = true;
   };
 
+  catppuccin = {
+    flavor = "mocha";
+    enable = true;
+  };
+
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
