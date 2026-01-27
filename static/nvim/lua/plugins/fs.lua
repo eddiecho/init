@@ -1,4 +1,5 @@
 return {
+  --[[
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = {
@@ -17,6 +18,7 @@ return {
 			require("config.gitsigns")
 		end,
 	},
+  --]]
 	{
 		"A7Lavinraj/fyler.nvim",
 		dependencies = {
