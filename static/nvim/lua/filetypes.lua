@@ -3,5 +3,6 @@ vim.filetype.add({
 		hbs = "html",
 		fx = "glsl",
 		fxh = "glsl",
+		tofu = "terraform",
 	},
 })
