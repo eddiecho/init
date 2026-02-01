@@ -16,7 +16,7 @@ require("bufferline").setup({
 		offsets = {
 			{
 				-- filetype = "NvimTree",
-        filetype = "fyler",
+				filetype = "fyler",
 				text = "Explorer",
 				highlight = "Directory",
 			},

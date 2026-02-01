@@ -49,5 +49,6 @@ return {
 	{
 		"sphamba/smear-cursor.nvim",
 		enabled = not utils.is_neovide(),
+		init = function() end,
 	},
 }
