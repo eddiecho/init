@@ -25,6 +25,8 @@
     };
   };
 
+  catppuccin.enable = false;
+
   users.mutableUsers = true;
 
   networking.hostName = "window";
