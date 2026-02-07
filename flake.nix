@@ -1,9 +1,12 @@
 {
   inputs = {
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    determinate = {
+      url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
@@ -17,7 +20,7 @@
 
     home-manager = {
       #url = "github:nix-community/home-manager";
-      url = "https://flakehub.com/f/nix-community/home-manager/0.2511.5853";
+      url = "https://flakehub.com/f/nix-community/home-manager/0.2511.5858";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -26,20 +29,34 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    ghostty.url = "github:ghostty-org/ghostty";
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     sfmono = {
       url = "path:./static/fonts/SFMono";
       flake = false;
     };
-
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-
-    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = inputs @ {
