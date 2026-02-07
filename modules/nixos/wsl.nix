@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }: let
@@ -23,5 +24,9 @@ in {
     environment.sessionVariables = {
       WIN_HOME_DIR = "/mnt/c/Users/${config.nixos.wsl.windowsUsername}";
     };
+
+    environment.systemPackages = with pkgs; [
+      wl-clipboard
+    ];
   };
 }
