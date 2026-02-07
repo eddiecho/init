@@ -25,11 +25,6 @@
     };
   };
 
-  catppuccin = {
-    flavor = "mocha";
-    enable = true;
-  };
-
   users.mutableUsers = true;
 
   networking.hostName = "window";
