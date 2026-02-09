@@ -30,7 +30,9 @@ vim.o.softtabstop = 2
 vim.o.termguicolors = true
 vim.o.background = "dark"
 
-if vim.fn.has("wsl") == 1 then
+local utils = require("utils")
+
+if utils.is_wsl() then
 	if vim.fn.executable("wl-copy") ~= 0 then
 		vim.g.clipboard = {
 			name = "wl-clipboard (wsl)",

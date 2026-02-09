@@ -302,6 +302,7 @@ in {
         @define-color pink      #f5c2e7;
         @define-color flamingo  #f2cdcd;
         @define-color rosewater #f5e0dc;
+
         @define-color theme_base_color #1e1e2e;
         @define-color theme_text_color #cdd6f4;
 
