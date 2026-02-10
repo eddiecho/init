@@ -1,6 +1,7 @@
 local utils = require("utils")
 
 return {
+  -- hex codes
 	"norcalli/nvim-colorizer.lua",
 	"windwp/nvim-autopairs",
 	"alvan/vim-closetag",
@@ -22,7 +23,10 @@ return {
 	"machakann/vim-highlightedyank",
 	-- "mg979/vim-visual-multi"
 	"christoomey/vim-tmux-navigator",
+  -- cursor flashes
 	"DanilaMihailov/beacon.nvim",
+  -- paste respects indentations
+  "nemanjamalesija/smart-paste.nvim",
 	{
 		"kevinhwang91/nvim-ufo",
 		event = "VeryLazy",
