@@ -1,4 +1,3 @@
-vim.o.termguicolors = true
 -- Buffers become hidden when abandoned
 vim.o.hidden = true
 -- Ignore case on search

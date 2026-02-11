@@ -11,12 +11,10 @@ in {
       extraConfig = ''
         $font = SFMono
 
-        # GENERAL
         general {
           hide_cursor = true
         }
 
-        # BACKGROUND
         background {
           monitor =
           path = /etc/nixos/home-manager/wallpapers/miku.png
@@ -60,8 +58,6 @@ in {
           valign = top
         }
 
-
-        # INPUT FIELD
         input-field {
           monitor =
           size = 300, 60
@@ -73,7 +69,7 @@ in {
           inner_color = $surface0
           font_color = $text
           fade_on_empty = false
-          placeholder_text = <span foreground="##$textAlpha"><i>󰌾 Logged in as </i><span foreground="##$accentAlpha">$USER</span></span>
+          placeholder_text = <i><span foreground="##cdd6f4">Input Password...</span></i>
           hide_input = false
           check_color = $accent
           fail_color = $red
