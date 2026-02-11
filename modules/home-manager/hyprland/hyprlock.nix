@@ -8,78 +8,76 @@ in {
   config = lib.mkIf cfg.enable {
     programs.hyprlock = {
       enable = true;
-      extraConfig = ''
-        $font = SFMono
 
-        general {
-          hide_cursor = true
-        }
+      settings = {
+        "$font" = "SFMono";
 
-        background {
-          monitor =
-          path = /etc/nixos/home-manager/wallpapers/miku.png
-          blur_passes = 3
-          color = $base
-        }
+        general = {
+          hide_cursor = true;
+        };
 
-        # LAYOUT
-        label {
-          monitor =
-          text = Layout: $LAYOUT
-          color = $text
-          font_size = 25
-          font_family = $font
-          position = 30, -30
-          halign = left
-          valign = top
-        }
+        background = {
+          monitor = "";
+          path = "/etc/nixos/home-manager/wallpapers/miku.png";
+          blur_passes = 3;
+          color = "$base";
+        };
 
-        # TIME
-        label {
-          monitor =
-          text = $TIME
-          color = $text
-          font_size = 90
-          font_family = $font
-          position = -30, 0
-          halign = right
-          valign = top
-        }
+        label = [
+          {
+            monitor = "";
+            text = "Layout: $LAYOUT";
+            color = "$text";
+            font_size = 25;
+            font_family = "$font";
+            position = "30, -30";
+            halign = "left";
+            valign = "top";
+          }
+          {
+            monitor = "";
+            text = "$TIME";
+            color = "$text";
+            font_size = 90;
+            font_family = "$font";
+            position = "-30, 0";
+            halign = "right";
+            valign = "top";
+          }
+          {
+            monitor = "";
+            text = "cmd[update:43200000] date +\"%A, %d %B %Y\"";
+            color = "$text";
+            font_size = 25;
+            font_family = "$font";
+            position = "-30, -150";
+            halign = "right";
+            valign = "top";
+          }
+        ];
 
-        # DATE
-        label {
-          monitor =
-          text = cmd[update:43200000] date +"%A, %d %B %Y"
-          color = $text
-          font_size = 25
-          font_family = $font
-          position = -30, -150
-          halign = right
-          valign = top
-        }
-
-        input-field {
-          monitor =
-          size = 300, 60
-          outline_thickness = 4
-          dots_size = 0.2
-          dots_spacing = 0.2
-          dots_center = true
-          outer_color = $accent
-          inner_color = $surface0
-          font_color = $text
-          fade_on_empty = false
-          placeholder_text = <i><span foreground="##cdd6f4">Input Password...</span></i>
-          hide_input = false
-          check_color = $accent
-          fail_color = $red
-          fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
-          capslock_color = $yellow
-          position = 0, -47
-          halign = center
-          valign = center
-        }
-      '';
+        input-field = {
+          monitor = "";
+          size = "300, 60";
+          outline_thickness = 4;
+          dots_size = 0.2;
+          dots_spacing = 0.2;
+          dots_center = true;
+          outer_color = "$accent";
+          inner_color = "$surface0";
+          font_color = "$text";
+          fade_on_empty = false;
+          placeholder_text = "<i><span foreground=\"##cdd6f4\">Input Password...</span></i>";
+          hide_input = false;
+          check_color = "$accent";
+          fail_color = "$red";
+          fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+          capslock_color = "$yellow";
+          position = "0, -47";
+          halign = "center";
+          valign = "center";
+        };
+      };
     };
   };
 }
