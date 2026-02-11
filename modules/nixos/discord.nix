@@ -4,14 +4,15 @@
   lib,
   ...
 }: let
-  cfg = config.modules.apps.discord;
+  cfg = config.nixos.discord;
 in {
-  options.modules.apps.discord = {
+  options.nixos.discord = {
     enable = lib.mkEnableOption "Enable discord";
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
+    # home.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       (discord.override {
         withVencord = true;
       })

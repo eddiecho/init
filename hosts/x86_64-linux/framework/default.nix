@@ -30,7 +30,6 @@
 
       apps = {
         ghostty.enable = true;
-        discord.enable = true;
       };
     };
 
@@ -38,6 +37,7 @@
   };
 
   nixos = {
+    discord.enable = true;
     common.enable = true;
     kernel.enable = true;
     display.enable = true;
