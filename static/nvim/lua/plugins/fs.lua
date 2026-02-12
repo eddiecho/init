@@ -1,24 +1,13 @@
 return {
-	--[[
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			{
-				"nvim-tree/nvim-tree.lua",
-				lazy = false,
-				priority = 1000,
-				dependencies = {},
-				config = function()
-					require("config.nvimtree")
-				end,
-			},
 		},
 		config = function()
 			require("config.gitsigns")
 		end,
 	},
-  --]]
 	{
 		"A7Lavinraj/fyler.nvim",
 		dependencies = {
@@ -33,6 +22,17 @@ return {
 		end,
 	},
 }
+	--[[
+			{
+				"nvim-tree/nvim-tree.lua",
+				lazy = false,
+				priority = 1000,
+				dependencies = {},
+				config = function()
+					require("config.nvimtree")
+				end,
+			},
+  --]]
 -- neotree.nvim is apparently less performant than nvimtree
 -- and i don"t really care about the other features anyway
 --[[
