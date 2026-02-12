@@ -22,7 +22,7 @@ return {
 		end,
 	},
 }
-	--[[
+--[[
 			{
 				"nvim-tree/nvim-tree.lua",
 				lazy = false,
