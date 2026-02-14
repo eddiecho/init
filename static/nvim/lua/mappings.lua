@@ -48,13 +48,6 @@ map("n", "L", "<C-w>l")
 map("n", "K", "<C-w>k")
 map("n", "J", "<C-w>j")
 
--- system clipboard
-vim.keymap.set("n", "y", '"+y')
-vim.keymap.set("n", "Y", '"+Y')
-vim.keymap.set("x", "y", '"+y')
-vim.keymap.set("x", "Y", '"+Y')
-vim.keymap.set("n", "yy", '"+yy')
-
 local b = require("bufdelete")
 vim.keymap.set("n", "<Leader>bb", function()
 	b.delete()
