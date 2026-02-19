@@ -75,6 +75,7 @@ in
         modules = [
           {imports = nixFiles ../modules/home-manager;}
           inputs.catppuccin.homeModules.catppuccin
+          inputs.vicinae.homeManagerModules
           module
         ];
         extraSpecialArgs = {} // specialArgs;

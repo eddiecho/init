@@ -31,8 +31,7 @@ in {
         # Programs
         "$terminal" = "ghostty";
         "$webBrowser" = "firefox";
-        "$menu" = "tofi-drun --drun-launch=true";
-        #"$codeEditor" = "code";
+        "$menu" = "vicinae toggle";
         #"$fileManager" = "nautilus";
         #"$notes" = "obsidian";
 
@@ -41,6 +40,7 @@ in {
           "swww img ~/.config/Pictures/wallpaper.gif"
           "swaync"
           "hyprctl setcursor Catppuccin Mocha Dark 24"
+          "vicinae server"
           # "sudo auto-cpufreq --daemon"
         ];
 

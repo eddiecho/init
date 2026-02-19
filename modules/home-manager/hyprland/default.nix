@@ -3,11 +3,11 @@
 
   imports = [
     ./pkgs.nix
+    ./hypridle.nix
     ./hyprland.nix
-    ./hyprpaper.nix
     ./hyprlock.nix
-    ./tofi.nix
     ./keybinds.nix
     ./waybar.nix
+    ./vicinae.nix
   ];
 }

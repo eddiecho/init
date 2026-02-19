@@ -15,10 +15,10 @@ in {
 
       # basically copying omarchy's bindings
       bind = [
-        "$mainMod, SPACE , exec, $terminal"
+        "$mainMod, SPACE , exec, $menu"
         "$mainMod, B, exec, $webBrowser"
         "$mainMod SHIFT, M, exit"
-        "$mainMod, A, exec, $menu"
+        "$mainMod, T, exec, $terminal"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, N, exec, $notes"
         "$mainMod_SHIFT, L, exec, hyprlock"
