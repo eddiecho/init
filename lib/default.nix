@@ -72,9 +72,11 @@ in
     }:
       inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsBySystem.${system};
-        modules = [
-          {imports = nixFiles ../modules/home-manager;}
-        ] ++ modules;
+        modules =
+          [
+            {imports = nixFiles ../modules/home-manager;}
+          ]
+          ++ modules;
         extraSpecialArgs = {} // specialArgs;
       };
 
@@ -86,16 +88,18 @@ in
       inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         pkgs = pkgsBySystem.${system};
-        modules = [
-          {imports = nixFiles ../modules/nixos;}
-          {
-            home-manager =
-              {
-                extraSpecialArgs = {} // specialArgs;
-              }
-              // homeModule.home-manager;
-          }
-        ] ++ modules;
+        modules =
+          [
+            {imports = nixFiles ../modules/nixos;}
+            {
+              home-manager =
+                {
+                  extraSpecialArgs = {} // specialArgs;
+                }
+                // homeModule.home-manager;
+            }
+          ]
+          ++ modules;
       };
 
     buildDarwin = {
@@ -105,18 +109,20 @@ in
     }:
       inputs.darwin.lib.darwinSystem {
         inherit system specialArgs;
-        modules = [
-          {
-            imports = nixFiles ../modules/darwin;
-            nixpkgs.pkgs = pkgsBySystem.${system};
-          }
-          {
-            home-manager =
-              {
-                extraSpecialArgs = {} // specialArgs;
-              }
-              // homeModule.home-manager;
-          }
-        ] ++ modules;
+        modules =
+          [
+            {
+              imports = nixFiles ../modules/darwin;
+              nixpkgs.pkgs = pkgsBySystem.${system};
+            }
+            {
+              home-manager =
+                {
+                  extraSpecialArgs = {} // specialArgs;
+                }
+                // homeModule.home-manager;
+            }
+          ]
+          ++ modules;
       };
   }
