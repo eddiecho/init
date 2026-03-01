@@ -19,7 +19,6 @@
     };
 
     home-manager = {
-      #url = "github:nix-community/home-manager";
       url = "https://flakehub.com/f/nix-community/home-manager/0.2511.5858";
       inputs.nixpkgs.follows = "nixpkgs";
     };
