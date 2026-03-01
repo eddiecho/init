@@ -10,17 +10,20 @@ local function diff_source()
 end
 
 local utils = require("utils")
+local trouble = require("trouble")
+local symbols = trouble.statusline({
+  mode = "diagnostics",
+  groups = {},
+  title = false,
+  filter = { buf = 0 },
+  format = "{severity_icon} {count}",
+  hl_group = "lualine_c_normal",
+})
 
 require("lualine").setup({
 	sections = {
 		lualine_a = {
 			{ "mode", fmt = utils.truncate(80, 4, nil, true) },
-			{
-				function()
-					return require("lsp-status").status()
-				end,
-				fmt = utils.truncate(120, 20, 60, true),
-			},
 		},
 		lualine_b = {
 			{ "diff", source = diff_source },
@@ -38,6 +41,10 @@ require("lualine").setup({
 					newfile = "[New]",
 				},
 			},
+      {
+        symbols.get,
+        cond = symbols.has,
+      }
 		},
 	},
 })
