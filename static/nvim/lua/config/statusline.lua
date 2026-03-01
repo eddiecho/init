@@ -12,12 +12,12 @@ end
 local utils = require("utils")
 local trouble = require("trouble")
 local symbols = trouble.statusline({
-  mode = "diagnostics",
-  groups = {},
-  title = false,
-  filter = { buf = 0 },
-  format = "{severity_icon} {count}",
-  hl_group = "lualine_c_normal",
+	mode = "diagnostics",
+	groups = {},
+	title = false,
+	filter = { buf = 0 },
+	format = "{severity_icon} {count}",
+	hl_group = "lualine_c_normal",
 })
 
 require("lualine").setup({
@@ -41,10 +41,10 @@ require("lualine").setup({
 					newfile = "[New]",
 				},
 			},
-      {
-        symbols.get,
-        cond = symbols.has,
-      }
+			{
+				symbols.get,
+				cond = symbols.has,
+			},
 		},
 	},
 })

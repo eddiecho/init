@@ -6,7 +6,7 @@ t.setup({
 			auto_open = false,
 			auto_close = true,
 			win = {
-				position = "right",
+				position = "bottom",
 			},
 		},
 	},
