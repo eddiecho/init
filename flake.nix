@@ -106,7 +106,20 @@
           builtins.mapAttrs (
             name: module:
               lib.buildNixos {
-                inherit name system module;
+                inherit system;
+                modules = [
+                  module
+                  inputs.home-manager.nixosModules.home-manager
+                  inputs.wsl.nixosModules.wsl
+                  inputs.determinate.nixosModules.default
+                  inputs.catppuccin.nixosModules.catppuccin
+                  {
+                    environment.sessionVariables = {
+                      NIXOS_FLAKE_NAME = name;
+                      LESS = "-X -F -R";
+                    };
+                  }
+                ];
                 specialArgs = {
                   inherit nixos-hardware vals;
                   root = self;
@@ -125,7 +138,6 @@
             name: module:
               (builtins.head (lib.attrsToList
                 (module {
-                  # ensure compatibility with the actual module
                   inherit nixos-hardware vals;
                   pkgs = nixpkgs.legacyPackages.${system};
                 }).home-manager.users)).value
@@ -140,7 +152,12 @@
           builtins.mapAttrs (
             name: module:
               lib.buildHome {
-                inherit system module;
+                inherit system;
+                modules = [
+                  inputs.catppuccin.homeModules.catppuccin
+                  inputs.vicinae.homeManagerModules
+                  module
+                ];
                 specialArgs = {
                   root = self;
                 };
@@ -157,7 +174,16 @@
           builtins.mapAttrs (
             name: module:
               lib.buildDarwin {
-                inherit name system module;
+                inherit system;
+                modules = [
+                  module
+                  inputs.home-manager.darwinModules.home-manager
+                  {
+                    environment.variables = {
+                      NIXOS_FLAKE_NAME = name;
+                    };
+                  }
+                ];
                 specialArgs = {
                   inherit vals;
                   root = self;

@@ -67,42 +67,27 @@ in
 
     buildHome = {
       system,
-      module,
+      modules,
       specialArgs,
     }:
       inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsBySystem.${system};
         modules = [
           {imports = nixFiles ../modules/home-manager;}
-          inputs.catppuccin.homeModules.catppuccin
-          inputs.vicinae.homeManagerModules
-          module
-        ];
+        ] ++ modules;
         extraSpecialArgs = {} // specialArgs;
       };
 
     buildNixos = {
-      name,
       system,
-      module,
+      modules,
       specialArgs,
     }:
       inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         pkgs = pkgsBySystem.${system};
         modules = [
-          inputs.home-manager.nixosModules.home-manager
-          inputs.wsl.nixosModules.wsl
-          inputs.determinate.nixosModules.default
-          inputs.catppuccin.nixosModules.catppuccin
           {imports = nixFiles ../modules/nixos;}
-          {
-            environment.sessionVariables = {
-              NIXOS_FLAKE_NAME = name;
-              LESS = "-X -F -R";
-            };
-          }
-          module
           {
             home-manager =
               {
@@ -110,29 +95,21 @@ in
               }
               // homeModule.home-manager;
           }
-        ];
+        ] ++ modules;
       };
 
     buildDarwin = {
-      name,
       system,
-      module,
+      modules,
       specialArgs,
     }:
       inputs.darwin.lib.darwinSystem {
         inherit system specialArgs;
         modules = [
-          inputs.home-manager.darwinModules.home-manager
           {
             imports = nixFiles ../modules/darwin;
             nixpkgs.pkgs = pkgsBySystem.${system};
           }
-          {
-            environment.variables = {
-              NIXOS_FLAKE_NAME = name;
-            };
-          }
-          module
           {
             home-manager =
               {
@@ -140,6 +117,6 @@ in
               }
               // homeModule.home-manager;
           }
-        ];
+        ] ++ modules;
       };
   }
