@@ -28,17 +28,6 @@ require("lazy").setup({
 
 require("lsp")
 
--- hide line numbers in terminal windows
-vim.api.nvim_command([[
-   au BufEnter term://* setlocal nonumber
-]])
-
--- inactive statuslines as thin splitlines
-vim.cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
-
-vim.cmd("hi clear CursorLine")
-vim.cmd("hi cursorlinenr guibg=NONE guifg=#abb2bf")
-
 -- keep it at the bottom,
 -- has dependencies on other plugin settings
 vim.cmd.colorscheme("catppuccin")

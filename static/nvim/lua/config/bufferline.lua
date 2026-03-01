@@ -15,7 +15,6 @@ require("bufferline").setup({
 		buffer_close_icon = "✗",
 		offsets = {
 			{
-				-- filetype = "NvimTree",
 				filetype = "fyler",
 				text = "Explorer",
 				highlight = "Directory",

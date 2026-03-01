@@ -32,6 +32,7 @@ in {
       MANPAGER = lib.mkDefault "${lib.getExe cfg.package} +Man!";
     };
 
+/*
     home.file = {
       ".config/nvim" = {
         source =
@@ -39,5 +40,6 @@ in {
           (builtins.toPath "${root}/static/nvim");
       };
     };
+*/
   };
 }

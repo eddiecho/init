@@ -20,12 +20,16 @@ clean:
 gc:
 	nix-collect-garbage -d
 
+.PHONY: nvim
+nvim:
+	ln -s $(shell pwd)/static/nvim $$HOME/.config
+
 .PHONY: home
-home:
+home: nvim
 	home-manager switch --flake .\#$$NIXOS_FLAKE_NAME
 
 .PHONY: nixos
-nixos:
+nixos: nvim
 	sudo $(NIXOS)-rebuild switch --flake .\#$$NIXOS_FLAKE_NAME
 
 .PHONY: build
