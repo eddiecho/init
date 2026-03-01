@@ -10,19 +10,18 @@ endif
 .PHONY: %
 %:: nixos
 
-.PHONY: clean
-clean:
-	sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system
-	nix-collect-garbage -d
-	nix-store --optimize
-
 .PHONY: gc
 gc:
 	nix-collect-garbage -d
 
+.PHONY: clean
+clean: gc
+	sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system
+	nix-store --optimize
+
 .PHONY: nvim
 nvim:
-	ln -s $(shell pwd)/static/nvim $$HOME/.config
+	ln -sf $(shell pwd)/static/nvim $$HOME/.config
 
 .PHONY: home
 home: nvim
