@@ -4,7 +4,7 @@ Mostly managed by [Nix](https://nixos.org) and heavily inspired by https://githu
 
 # How it works
 
-The library functions `buildHome`, `buildNixos`, and `buildDarwin` will crawl through the `hosts` directory to find any `default.nix` files and use those as input modules. For example, `hosts/x86_64-linux/window/default.nix` will create a flake named `window`, and use the configurations defined there. If you want to use that one, then you can do `nixos-rebuild switch --flake .#window`. `nixos-rebuild switch` will also save the flake name you used to `$NIXOS_FLAKE_NAME`.
+The library functions `buildHome`, `buildNixos`, and `buildDarwin` will crawl through the `hosts` directory to find any `default.nix` files and use those as input modules. For example, `hosts/x86_64-linux/window/default.nix` will create a flake named `window`, and use the configurations defined there. If you want to use that one, then you can do `nixos-rebuild switch --flake .#window`. `nixos-rebuild switch` will also save the flake name you used to `$NIXOS_FLAKE_NAME`. After that a simple `make` will suffice.
 
 `modules` defines the options for setting up applications. Generally, `modules/home-manager` is for user level stuff, and `modules/nixos` and `modules/darwin` are for system level stuff.
 
