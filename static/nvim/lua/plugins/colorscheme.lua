@@ -1,4 +1,4 @@
-local is_linux = vim.fn.has("linux") == 1 and vim.fn.has("wsl") == 0
+local utils = require("utils")
 
 return {
 	"catppuccin/nvim",
@@ -7,7 +7,7 @@ return {
 	priority = 1000,
 	opts = {
 		flavour = "mocha",
-		transparent_background = is_linux,
+		transparent_background = utils.is_linux(),
 		integrations = {
 			cmp = true,
 			gitsigns = true,
