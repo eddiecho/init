@@ -9,7 +9,7 @@ function M.is_wsl()
 end
 
 function M.is_linux()
-  return vim.fn.has("linux") == 1 and vim.fn.has("wsl") == 0
+	return vim.fn.has("linux") == 1 and vim.fn.has("wsl") == 0
 end
 
 -- Check whether the current buffer is empty

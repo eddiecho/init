@@ -26,7 +26,7 @@ in {
       neovim.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
       direnv.enable = lib.mkDefault true;
-      zsh.enable = lib.mkDefault true;
+      shell.enable = lib.mkDefault true;
     };
   };
 }
