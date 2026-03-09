@@ -10,15 +10,6 @@ local function diff_source()
 end
 
 local utils = require("utils")
-local trouble = require("trouble")
-local symbols = trouble.statusline({
-	mode = "diagnostics",
-	groups = {},
-	title = false,
-	filter = { buf = 0 },
-	format = "{severity_icon} {count}",
-	hl_group = "lualine_c_normal",
-})
 
 require("lualine").setup({
 	sections = {
@@ -42,8 +33,13 @@ require("lualine").setup({
 				},
 			},
 			{
-				symbols.get,
-				cond = symbols.has,
+				"diagnostics",
+				sources = { "nvim_lsp" },
+				sections = { "error", "warn", "info", "hint" },
+				symbols = { error = "E", warn = "W", info = "I", hint = "H" },
+				colored = true, -- Displays diagnostics status in color if set to true.
+				update_in_insert = false, -- Update diagnostics in insert mode.
+				always_visible = false, -- Show diagnostics even if there are none.
 			},
 		},
 	},

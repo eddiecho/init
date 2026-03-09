@@ -14,6 +14,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
+		-- Ctrl + T to go back from jump
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
