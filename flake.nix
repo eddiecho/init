@@ -66,12 +66,10 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    nixos-hardware,
-    treefmt-nix,
-    determinate,
-    catppuccin,
     ...
   }: let
+    # inherit is a really stupid system if it can't figure this out
+    nixos-hardware = inputs.nixos-hardware;
     vals = builtins.fromJSON (builtins.readFile ./config.json);
     lib = import ./lib inputs;
   in rec {
@@ -91,7 +89,7 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in
-        (treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper
+        (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper
     );
 
     tools = lib.forAllSystems (
