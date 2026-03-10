@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 return {
 	-- hex codes
 	"norcalli/nvim-colorizer.lua",
@@ -49,10 +47,5 @@ return {
 				return { "treesitter", "indent" }
 			end,
 		},
-	},
-	{
-		"sphamba/smear-cursor.nvim",
-		enabled = not utils.is_neovide(),
-		init = function() end,
 	},
 }

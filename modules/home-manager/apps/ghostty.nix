@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  root,
   lib,
   ...
 }: let
@@ -32,6 +33,9 @@ in {
           if pkgs.stdenv.isDarwin
           then true
           else false;
+        custom-shader = [
+          "${root}/static/shaders/smear-cursor.glsl"
+        ];
       };
     };
   };
