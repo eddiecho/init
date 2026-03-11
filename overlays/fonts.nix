@@ -1,5 +1,5 @@
 inputs: _final: prev: {
-  sfmono = prev.stdenvNoCC.mkDerivation rec {
+  sfmono = prev.stdenvNoCC.mkDerivation {
     pname = "sfmono";
     version = "dev";
     src = inputs.sfmono;
