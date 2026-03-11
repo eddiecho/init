@@ -73,16 +73,17 @@
     vals = builtins.fromJSON (builtins.readFile ./config.json);
     lib = import ./lib inputs;
   in rec {
-    devShell = lib.forAllSystems (
+    devShells = lib.forAllSystems (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
-      in
-        pkgs.mkShell {
+      in {
+        default = pkgs.mkShell {
           buildInputs = with pkgs; [
             direnv
             gnumake
           ];
-        }
+        };
+      }
     );
 
     formatter = lib.forAllSystems (
