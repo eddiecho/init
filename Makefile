@@ -27,8 +27,15 @@ nvim:
 home: nvim
 	home-manager switch --flake .\#$$NIXOS_FLAKE_NAME
 
+.PHONY: sync-nvim-to-win
+sync-nvim-to-win:
+ifdef WIN_HOME_DIR
+	cp -r static/nvim $$WIN_HOME_DIR/AppData/Local
+endif
+
 .PHONY: nixos
-nixos: nvim
+nixos: nvim sync-nvim-to-win
+	git update-index --skip-worktree config.json
 	sudo $(NIXOS)-rebuild switch --flake .\#$$NIXOS_FLAKE_NAME
 
 .PHONY: build
@@ -38,10 +45,6 @@ build:
 .PHONY: fmt
 fmt:
 	nix fmt .
-
-.PHONY: sync-nvim-to-win
-sync-nvim-to-win:
-	cp -r static/nvim $$WIN_HOME_DIR/AppData/Local
 
 .PHONY: toolexample
 toolexample:
