@@ -33,6 +33,7 @@ ifdef WIN_HOME_DIR
 	cp -r static/nvim $$WIN_HOME_DIR/AppData/Local
 endif
 
+# TODO - maybe just switch to just so we can have proper dependency tracking
 .PHONY: nixos
 nixos: nvim sync-nvim-to-win
 	git update-index --skip-worktree config.json

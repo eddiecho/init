@@ -57,6 +57,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nix-locate
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sfmono = {
       url = "path:./static/fonts/SFMono";
       flake = false;
@@ -111,7 +117,9 @@
                   inputs.wsl.nixosModules.wsl
                   inputs.determinate.nixosModules.default
                   inputs.catppuccin.nixosModules.catppuccin
+                  inputs.nix-index-database.nixosModules.default
                   {
+                    programs.nix-index-database.comma.enable = true;
                     environment.sessionVariables = {
                       NIXOS_FLAKE_NAME = name;
                       LESS = "-X -F -R";
