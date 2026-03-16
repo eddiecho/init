@@ -43,59 +43,64 @@ function M.truncate(width, len, hide_width, no_ellipsis)
 end
 
 function M.build_plugin(plugin_name, plugin_path, plugin_cmd)
-  -- Create buffer for logs
-  local buf = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_buf_set_name(buf, "Plugin Build: " .. plugin_name)
-  vim.api.nvim_set_option_value("buftype", "nofile", { buf = buf })
-  vim.api.nvim_set_option_value("bufhidden", "hide", { buf = buf })
-  vim.api.nvim_set_option_value("swapfile", false, { buf = buf })
-  -- Map 'q' to just close the window easily
-  vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf, silent = true })
+	-- Create buffer for logs
+	local buf = vim.api.nvim_create_buf(false, true)
+	vim.api.nvim_buf_set_name(buf, "Plugin Build: " .. plugin_name)
+	vim.api.nvim_set_option_value("buftype", "nofile", { buf = buf })
+	vim.api.nvim_set_option_value("bufhidden", "hide", { buf = buf })
+	vim.api.nvim_set_option_value("swapfile", false, { buf = buf })
+	-- Map 'q' to just close the window easily
+	vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf, silent = true })
 
-  -- Open a small split for the buffer
-  vim.cmd("split")
-  vim.api.nvim_win_set_buf(0, buf)
-  vim.api.nvim_win_set_height(0, 10)
+	-- Open a small split for the buffer
+	vim.cmd("split")
+	vim.api.nvim_win_set_buf(0, buf)
+	vim.api.nvim_win_set_height(0, 10)
 
-  local handle = vim.system(plugin_cmd, {
-    cwd = plugin_path,
-    stdout = function(_, data)
-      if data then
-        vim.schedule(function()
-          local lines = vim.split(data, "\n", {trimempty = true})
-          vim.api.nvim_buf_set_lines(buf, -1, -1, false, lines)
-          vim.api.nvim_win_set_cursor(0, { vim.api.nvim_buf_line_count(buf), 0 })
-        end)
-      end
-    end,
-    stderr = function(_, data)
-      if data then
-        vim.schedule(function()
-          local lines = vim.split(data, "\n", { trimempty = true })
-          vim.api.nvim_buf_set_lines(buf, -1, -1, false, lines)
-        end)
-      end
-    end,
-  }, function(obj)
-    vim.schedule(function()
-      if obj.code == 0 then
-        vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "--- BUILD SUCCESSFUL ---" })
-      else
-        vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "--- BUILD FAILED (Exit Code " .. obj.code .. ") ---" })
-      end
-    end)
-  end
-)
+	local handle = vim.system(plugin_cmd, {
+		cwd = plugin_path,
+		stdout = function(_, data)
+			if data then
+				vim.schedule(function()
+					local lines = vim.split(data, "\n", { trimempty = true })
+					vim.api.nvim_buf_set_lines(buf, -1, -1, false, lines)
+					vim.api.nvim_win_set_cursor(0, { vim.api.nvim_buf_line_count(buf), 0 })
+				end)
+			end
+		end,
+		stderr = function(_, data)
+			if data then
+				vim.schedule(function()
+					local lines = vim.split(data, "\n", { trimempty = true })
+					vim.api.nvim_buf_set_lines(buf, -1, -1, false, lines)
+				end)
+			end
+		end,
+	}, function(obj)
+		vim.schedule(function()
+			if obj.code == 0 then
+				vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "--- BUILD SUCCESSFUL ---" })
+			else
+				vim.api.nvim_buf_set_lines(
+					buf,
+					-1,
+					-1,
+					false,
+					{ "--- BUILD FAILED (Exit Code " .. obj.code .. ") ---" }
+				)
+			end
+		end)
+	end)
 
-  -- Killing the buffer with :bd will stop the build
-  vim.api.nvim_create_autocmd("BufWipeout", {
-    buffer = buf,
-    callback = function()
-      if handle and not handle:is_closing() then
-        handle:kill(15)
-      end
-    end
-  })
+	-- Killing the buffer with :bd will stop the build
+	vim.api.nvim_create_autocmd("BufWipeout", {
+		buffer = buf,
+		callback = function()
+			if handle and not handle:is_closing() then
+				handle:kill(15)
+			end
+		end,
+	})
 end
 
 return M

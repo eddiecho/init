@@ -1,49 +1,49 @@
 if vim.pack ~= nil then
-local utils = require("utils")
+	local utils = require("utils")
 
-vim.pack.add({
-  "https://github.com/catppuccin/nvim",
-})
+	vim.pack.add({
+		"https://github.com/catppuccin/nvim",
+	})
 
-require("catppuccin").setup({
-	name = "catppuccin",
-	lazy = false,
-	priority = 1000,
-	opts = {
-		flavour = "mocha",
-		transparent_background = utils.is_linux(),
-		integrations = {
-			cmp = true,
-			gitsigns = true,
-			nvimtree = true,
-			treesitter = true,
-			fidget = true,
-			indent_blankline = {
-				enabled = true,
-				colored_indent_levels = false,
-			},
-			native_lsp = {
-				enabled = true,
-				virtual_text = {
-					errors = { "italic" },
-					hints = { "italic" },
-					warnings = { "italic" },
-					information = { "italic" },
+	require("catppuccin").setup({
+		name = "catppuccin",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			flavour = "mocha",
+			transparent_background = utils.is_linux(),
+			integrations = {
+				cmp = true,
+				gitsigns = true,
+				nvimtree = true,
+				treesitter = true,
+				fidget = true,
+				indent_blankline = {
+					enabled = true,
+					colored_indent_levels = false,
 				},
-				underlines = {
-					errors = { "underline" },
-					hints = { "underline" },
-					warnings = { "underline" },
-					information = { "underline" },
+				native_lsp = {
+					enabled = true,
+					virtual_text = {
+						errors = { "italic" },
+						hints = { "italic" },
+						warnings = { "italic" },
+						information = { "italic" },
+					},
+					underlines = {
+						errors = { "underline" },
+						hints = { "underline" },
+						warnings = { "underline" },
+						information = { "underline" },
+					},
+					inlay_hints = {
+						background = true,
+					},
 				},
-				inlay_hints = {
-					background = true,
+				telescope = {
+					enabled = true,
 				},
-			},
-			telescope = {
-				enabled = true,
 			},
 		},
-	},
-})
+	})
 end

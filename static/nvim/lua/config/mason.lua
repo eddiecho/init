@@ -17,7 +17,7 @@ if vim.fn.executable("go") == 1 then
 end
 
 if utils.is_neovide() then
-  ensure_installed[#ensure_installed + 1] = "csharp-language-server"
+	ensure_installed[#ensure_installed + 1] = "csharp_ls"
 end
 
 require("mason-lspconfig").setup({
