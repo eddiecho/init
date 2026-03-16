@@ -5,6 +5,7 @@ nts.install({
 	"cmake",
 	"comment",
 	"cpp",
+  "csharp",
 	"css",
 	"glsl",
 	"go",
