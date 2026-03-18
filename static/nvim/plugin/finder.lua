@@ -12,7 +12,7 @@ if vim.pack ~= nil then
 	end
 
 	vim.pack.add({
-		"dmtrKovalenko/fff.nvim",
+		"https://github.com/dmtrKovalenko/fff.nvim",
 	})
 
 	vim.api.nvim_create_autocmd("PackChanged", {
