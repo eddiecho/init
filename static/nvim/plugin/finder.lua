@@ -23,7 +23,8 @@ if vim.pack ~= nil then
 			local plugin_name = "fff.nvim"
 
 			if name == plugin_name and (kind == "install" or kind == "update") then
-				utils.build_plugin_with_logs(plugin_name, ev.data.path, build_cmd())
+        require("fff.download").download_or_build_binary()
+				-- utils.build_plugin_with_logs(plugin_name, ev.data.path, build_cmd())
 			end
 		end,
 	})
