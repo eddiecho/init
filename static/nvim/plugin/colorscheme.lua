@@ -40,9 +40,6 @@ if vim.pack ~= nil then
 						background = true,
 					},
 				},
-				telescope = {
-					enabled = true,
-				},
 			},
 		},
 	})

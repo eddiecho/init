@@ -6,8 +6,6 @@ if vim.pack ~= nil then
     "https://github.com/alvan/vim-closetag",
     -- Profile startup time for bottlenecks use with :StartupTime
     "https://github.com/tweekmonster/startuptime.vim",
-    -- Popup window support
-    "https://github.com/nvim-lua/popup.nvim",
     -- Highlight trailing whitespace
     "https://github.com/ntpeters/vim-better-whitespace",
     -- Live preview for search and replace
@@ -27,7 +25,6 @@ if vim.pack ~= nil then
     -- paste respects indentations
     "https://github.com/nemanjamalesija/smart-paste.nvim",
     -- better folds
-    "https://github.com/kevinhwang91/promise-async",
 		"https://github.com/kevinhwang91/nvim-ufo",
   })
 

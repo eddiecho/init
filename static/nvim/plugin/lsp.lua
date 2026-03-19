@@ -2,8 +2,8 @@ if vim.pack ~= nil then
   vim.pack.add({
 		"https://github.com/neovim/nvim-lspconfig",
 		"https://github.com/ray-x/lsp_signature.nvim",
-    "https://github.com/hrsh7th/cmp-nvim-lsp",
 		"https://github.com/hrsh7th/nvim-cmp",
+    "https://github.com/hrsh7th/cmp-nvim-lsp",
     "https://github.com/mason-org/mason.nvim",
 		"https://github.com/mason-org/mason-lspconfig.nvim",
 		"https://github.com/folke/lazydev.nvim",
@@ -11,7 +11,6 @@ if vim.pack ~= nil then
     "https://github.com/onsails/lspkind.nvim",
 		"https://github.com/folke/trouble.nvim",
 		"https://github.com/rachartier/tiny-inline-diagnostic.nvim",
-		"https://github.com/MunifTanjim/nui.nvim",
 		"https://github.com/esmuellert/codediff.nvim",
   })
 
