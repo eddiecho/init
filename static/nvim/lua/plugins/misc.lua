@@ -19,8 +19,6 @@ return {
 	"junegunn/vim-peekaboo",
 	-- Highlight yanks
 	"machakann/vim-highlightedyank",
-	-- "mg979/vim-visual-multi"
-	"christoomey/vim-tmux-navigator",
 	-- cursor flashes
 	"DanilaMihailov/beacon.nvim",
 	-- paste respects indentations

@@ -18,8 +18,6 @@ if vim.pack ~= nil then
 		"https://github.com/junegunn/vim-peekaboo",
 		-- Highlight yanks
 		"https://github.com/machakann/vim-highlightedyank",
-		-- "mg979/vim-visual-multi"
-		"https://github.com/christoomey/vim-tmux-navigator",
 		-- cursor flashes
 		"https://github.com/DanilaMihailov/beacon.nvim",
 		-- paste respects indentations

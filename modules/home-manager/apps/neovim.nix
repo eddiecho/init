@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  root,
   lib,
   ...
 }: let
@@ -31,15 +30,5 @@ in {
       EDITOR = lib.mkDefault "${lib.getExe cfg.package}";
       MANPAGER = lib.mkDefault "${lib.getExe cfg.package} +Man!";
     };
-
-    /*
-    home.file = {
-      ".config/nvim" = {
-        source =
-          config.lib.file.mkOutOfStoreSymlink
-          (builtins.toPath "${root}/static/nvim");
-      };
-    };
-    */
   };
 }
