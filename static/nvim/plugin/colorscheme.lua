@@ -43,4 +43,6 @@ if vim.pack ~= nil then
 			},
 		},
 	})
+
+	vim.cmd.colorscheme("catppuccin")
 end
