@@ -23,5 +23,27 @@ if vim.pack ~= nil then
 		end,
 	})
 
-	require("config.treesitter")
+	require("nvim-treesitter").install({
+		"bash",
+		"cmake",
+		"comment",
+		"cpp",
+		"css",
+		"c_sharp",
+		"glsl",
+		"go",
+		"hlsl",
+		"html",
+		"javascript",
+		"lua",
+		"make",
+		"markdown",
+		"markdown_inline",
+		"nix",
+		"python",
+		"vimdoc",
+		"zig",
+	}, {
+		summary = false,
+	})
 end

@@ -1,5 +1,3 @@
-vim.lsp.set_log_level("info")
-
 vim.keymap.set("n", "]d", function()
 	vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_next() })
 end)
