@@ -1,14 +1,14 @@
 if vim.pack ~= nil then
 	vim.pack.add({
 		{
-			src = "lukas-reineke/indent-blankline.nvim",
-			version = "ibl",
-		},
-		{
-			src = "nvim-treesitter/nvim-treesitter",
-			version = "main",
-		},
-	})
+      src = "https://github.com/lukas-reineke/indent-blankline.nvim",
+      version = "master",
+    },
+    {
+      src = "https://github.com/nvim-treesitter/nvim-treesitter",
+      version = "main",
+    },
+  })
 
 	vim.api.nvim_create_autocmd("PackChanged", {
 		callback = function(ev)

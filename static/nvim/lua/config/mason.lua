@@ -1,5 +1,7 @@
 local utils = require("utils")
 
+require("mason").setup()
+
 local ensure_installed = {
 	"bashls",
 	"lua_ls",

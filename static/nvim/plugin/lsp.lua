@@ -24,12 +24,12 @@ if vim.pack ~= nil then
 	})
 	require("config.completion")
 	require("config.mason")
-	require("lazydev.nvim").setup({
+	require("lazydev").setup({
 		library = {
 			{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 		},
 	})
-	require("fidget.nvim").setup({
+	require("fidget").setup({
 		notification = {
 			window = {
 				winblend = 100,
