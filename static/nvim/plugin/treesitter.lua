@@ -23,7 +23,7 @@ if vim.pack ~= nil then
 		end,
 	})
 
-	require("nvim-treesitter").install({
+  local ensure_installed = {
 		"bash",
 		"cmake",
 		"comment",
@@ -43,7 +43,13 @@ if vim.pack ~= nil then
 		"python",
 		"vimdoc",
 		"zig",
-	}, {
+	}
+  local already_installed = require("nvim-treesitter.config").get_installed()
+  local to_install = vim.iter(ensure_installed) :filter(function(c)
+    return not vim.tbl_contains(already_installed, c)
+  end) :totable()
+
+	require("nvim-treesitter").install(to_install, {
 		summary = false,
 	})
 end

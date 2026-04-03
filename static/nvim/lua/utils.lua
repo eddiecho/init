@@ -1,6 +1,8 @@
 local M = {}
 
 function M.is_neovide()
+  -- install neovide from the github installer
+  -- install nvim from choco
 	return vim.g.neovide ~= nil
 end
 
