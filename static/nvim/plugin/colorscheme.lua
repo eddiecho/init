@@ -2,8 +2,13 @@ if vim.pack ~= nil then
 	local utils = require("utils")
 
 	vim.pack.add({
-		"https://github.com/catppuccin/nvim",
+		{
+			src = "https://github.com/catppuccin/nvim",
+			name = "catppuccin",
+		},
 	})
+
+	local transparent = utils.is_linux()
 
 	require("catppuccin").setup({
 		name = "catppuccin",
@@ -11,7 +16,10 @@ if vim.pack ~= nil then
 		priority = 1000,
 		opts = {
 			flavour = "mocha",
-			transparent_background = utils.is_linux(),
+			transparent_background = transparent,
+			float = {
+				transparent = transparent,
+			},
 			integrations = {
 				cmp = true,
 				gitsigns = true,
