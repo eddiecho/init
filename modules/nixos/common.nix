@@ -21,6 +21,7 @@ in {
     time.timeZone = "America/Los_Angeles";
 
     environment.systemPackages = with pkgs; [
+      awscli2
       cloc
       curl
       fastfetch
