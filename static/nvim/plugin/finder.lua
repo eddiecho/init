@@ -1,38 +1,37 @@
-if vim.pack ~= nil then
-	local utils = require("utils")
+local utils = require("utils")
 
-	-- On Windows Neovide, I think Lazy holds a lock on the directory or something?
-	-- I have to close out Neovide and then manually recompile to get it working
-	local function build_cmd()
-		if vim.fn.executable("nix") == 1 then
-			return { "nix", "run", ".#release" }
-		end
-
-		return { "cargo", "build", "--release" }
+-- On Windows Neovide, I think Lazy holds a lock on the directory or something?
+-- I have to close out Neovide and then manually recompile to get it working
+local function build_cmd()
+	if vim.fn.executable("nix") == 1 then
+		return { "nix", "run", ".#release" }
 	end
 
-	vim.pack.add({
-		"https://github.com/dmtrKovalenko/fff.nvim",
-	})
+	return { "cargo", "build", "--release" }
+end
 
-	vim.api.nvim_create_autocmd("PackChanged", {
-		callback = function(event)
-			if event.data.updated then
-				require("fff.download").download_or_build_binary()
-			end
-		end,
-	})
+vim.pack.add({
+	"https://github.com/dmtrKovalenko/fff.nvim",
+})
 
-	-- the plugin will automatically lazy load
-	vim.g.fff = {
-		lazy_sync = true, -- start syncing only when the picker is open
-		debug = {
-			enabled = true,
-			show_scores = true,
-		},
-	}
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(event)
+		if event.data.updated then
+			require("fff.download").download_or_build_binary()
+		end
+	end,
+})
 
-	--[[
+-- the plugin will automatically lazy load
+vim.g.fff = {
+	lazy_sync = true, -- start syncing only when the picker is open
+	debug = {
+		enabled = true,
+		show_scores = true,
+	},
+}
+
+--[[
 	vim.api.nvim_create_autocmd("PackChanged", {
 		callback = function(ev)
 			local name = ev.data.spec.name
@@ -46,19 +45,18 @@ if vim.pack ~= nil then
 		end,
 	})
   ]]
-	--
+--
 
-	local fff = require("fff")
+local fff = require("fff")
 
-	local opt = { noremap = true, silent = true }
+local opt = { noremap = true, silent = true }
 
-	vim.keymap.set("n", "<Leader>ff", function()
-		fff.find_files()
-	end, opt)
+vim.keymap.set("n", "<Leader>ff", function()
+	fff.find_files()
+end, opt)
 
-	vim.keymap.set("n", "<Leader>fg", function()
-		fff.live_grep()
-	end, opt)
+vim.keymap.set("n", "<Leader>fg", function()
+	fff.live_grep()
+end, opt)
 
-	fff.setup({})
-end
+fff.setup({})

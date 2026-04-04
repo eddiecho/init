@@ -25,7 +25,7 @@
       "src": "https://github.com/rhysd/conflict-marker.vim"
     },
     "fff.nvim": {
-      "rev": "feaae7de2860a1615e3eb66bfc0a2a1024789eee",
+      "rev": "db4cd2825c32e5e53e12bb8af106ff724d33904e",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -38,7 +38,7 @@
       "version": "'main'"
     },
     "gitsigns.nvim": {
-      "rev": "944ef13cc8d8fe8b846c91f36041c8dfb85ca000",
+      "rev": "4ed47e8c4c66c921dc1d6643977e0526e1f44396",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "indent-blankline.nvim": {
@@ -51,7 +51,7 @@
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "lsp_signature.nvim": {
-      "rev": "af7e4074d85d785cf6614352ba9ad3b28a1f8a56",
+      "rev": "a381eb443cae078541297dc71674fa9c95e52a9e",
       "src": "https://github.com/ray-x/lsp_signature.nvim"
     },
     "lspkind.nvim": {
@@ -59,7 +59,7 @@
       "src": "https://github.com/onsails/lspkind.nvim"
     },
     "lualine.nvim": {
-      "rev": "74114f0df664f14d7c228945693ba68a3b70a794",
+      "rev": "8811f3f3f4dc09d740c67e9ce399e7a541e2e5b2",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mason-lspconfig.nvim": {

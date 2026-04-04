@@ -1,5 +1,9 @@
-local utils = require("utils")
+vim.pack.add({
+	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/mason-org/mason-lspconfig.nvim",
+})
 
+local utils = require("utils")
 require("mason").setup()
 
 local ensure_installed = {

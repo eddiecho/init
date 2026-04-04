@@ -74,7 +74,6 @@
     nixpkgs,
     ...
   }: let
-    # inherit is a really stupid system if it can't figure this out
     nixos-hardware = inputs.nixos-hardware;
     vals = builtins.fromJSON (builtins.readFile ./config.json);
     lib = import ./lib inputs;
