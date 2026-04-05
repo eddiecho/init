@@ -1,4 +1,3 @@
--- vim.pack doesn't do dependency tracking
 vim.pack.add({
 	"https://github.com/lewis6991/gitsigns.nvim",
 	{

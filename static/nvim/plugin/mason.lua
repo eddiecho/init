@@ -7,7 +7,6 @@ local utils = require("utils")
 require("mason").setup()
 
 local ensure_installed = {
-	"bashls",
 	"lua_ls",
 	"superhtml",
 	"rust_analyzer",
@@ -24,6 +23,8 @@ end
 
 if utils.is_neovide() then
 	ensure_installed[#ensure_installed + 1] = "csharp_ls"
+else
+	ensure_installed[#ensure_installed + 1] = "bashls"
 end
 
 require("mason-lspconfig").setup({

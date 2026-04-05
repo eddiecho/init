@@ -2,7 +2,6 @@ vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/ray-x/lsp_signature.nvim",
 	"https://github.com/folke/lazydev.nvim",
-	"https://github.com/j-hui/fidget.nvim",
 	"https://github.com/onsails/lspkind.nvim",
 	"https://github.com/folke/trouble.nvim",
 	"https://github.com/rachartier/tiny-inline-diagnostic.nvim",
@@ -23,14 +22,6 @@ require("lsp_signature").setup({
 require("lazydev").setup({
 	library = {
 		{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-	},
-})
-require("fidget").setup({
-	notification = {
-		window = {
-			winblend = 100,
-			border = "rounded",
-		},
 	},
 })
 
