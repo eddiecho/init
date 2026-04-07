@@ -40,7 +40,7 @@ trouble.setup({
 
 vim.keymap.set("n", "<Leader>xx", function()
 	trouble.toggle({ mode = "diagnostics", filter = { buf = 0 } })
-end, { noremap = true, silent = true, nowait = true})
+end, { noremap = true, silent = true, nowait = true })
 
 require("tiny-inline-diagnostic").setup({
 	options = {

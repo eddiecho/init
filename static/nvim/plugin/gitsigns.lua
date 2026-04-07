@@ -19,7 +19,7 @@ gs.setup({
 	sign_priority = 5,
 	status_formatter = nil,
 	on_attach = function(bufnr)
-    vim.keymap.set("n", "<leader>c", function()
+		vim.keymap.set("n", "<leader>c", function()
 			if vim.wo.diff then
 				return "<leader>c"
 			end
@@ -27,9 +27,9 @@ gs.setup({
 				gs.nav_hunk("next")
 			end)
 			return "<Ignore>"
-    end, { expr = true, buffer = bufnr})
+		end, { expr = true, buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>c", function()
+		vim.keymap.set("n", "<leader>c", function()
 			if vim.wo.diff then
 				return "<leader>c"
 			end
@@ -37,7 +37,6 @@ gs.setup({
 				gs.nav_hunk("prev")
 			end)
 			return "<Ignore>"
-		end, { expr = true, buffer = bufnr})
+		end, { expr = true, buffer = bufnr })
 	end,
 })
-

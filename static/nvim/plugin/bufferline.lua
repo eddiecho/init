@@ -6,8 +6,12 @@ local bd = require("bufdelete")
 local bl = require("bufferline")
 
 local opt = { silent = true }
-vim.keymap.set("n", "<Tab>", function() bl.cycle(1) end, opt)
-vim.keymap.set("n", "<S-Tab>", function() bl.cycle(-1) end, opt)
+vim.keymap.set("n", "<Tab>", function()
+	bl.cycle(1)
+end, opt)
+vim.keymap.set("n", "<S-Tab>", function()
+	bl.cycle(-1)
+end, opt)
 
 bl.setup({
 	options = {
