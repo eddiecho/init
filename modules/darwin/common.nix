@@ -11,17 +11,18 @@ in {
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      cloc
       curl
       fd
       file
       home-manager
       htop
       jq
+      pkg-config
       ripgrep
       tldr
       tree
       unzip
-      pkg-config
       wormhole-william
     ];
 
