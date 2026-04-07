@@ -38,18 +38,9 @@ trouble.setup({
 	},
 })
 
-local function opts(desc)
-	return {
-		desc = "trouble: " .. desc,
-		noremap = true,
-		silent = true,
-		nowait = true,
-	}
-end
-
 vim.keymap.set("n", "<Leader>xx", function()
 	trouble.toggle({ mode = "diagnostics", filter = { buf = 0 } })
-end, opts("toggle"))
+end, { noremap = true, silent = true, nowait = true})
 
 require("tiny-inline-diagnostic").setup({
 	options = {

@@ -25,6 +25,8 @@ vim.pack.add({
 	"https://github.com/kevinhwang91/nvim-ufo",
 })
 
+require("nvim-autopairs").setup({})
+
 local ufo = require("ufo")
 ufo.setup({
 	provider_selector = function(bufnr, filetype, buftype)

@@ -1,54 +1,8 @@
 vim.pack.add({
-	"https://github.com/lewis6991/gitsigns.nvim",
 	{
 		src = "https://github.com/A7Lavinraj/fyler.nvim",
 		version = "main",
 	},
-})
-
-local function map(mode, l, r, opts, bufnr)
-	opts = opts or {}
-	opts.buffer = bufnr
-	vim.keymap.set(mode, l, r, opts)
-end
-
-local gs = require("gitsigns")
-
-gs.setup({
-	signs = {
-		add = { text = "▌" },
-		change = { text = "▌" },
-		delete = { text = "_" },
-		topdelete = { text = "‾" },
-		changedelete = { text = "~" },
-	},
-	numhl = false,
-	watch_gitdir = {
-		interval = 100,
-	},
-	sign_priority = 5,
-	status_formatter = nil,
-	on_attach = function(bufnr)
-		map("n", "]c", function()
-			if vim.wo.diff then
-				return "]c"
-			end
-			vim.schedule(function()
-				gs.nav_hunk("next")
-			end)
-			return "<Ignore>"
-		end, { expr = true }, bufnr)
-
-		map("n", "[c", function()
-			if vim.wo.diff then
-				return "]c"
-			end
-			vim.schedule(function()
-				gs.nav_hunk("prev")
-			end)
-			return "<Ignore>"
-		end, { expr = true }, bufnr)
-	end,
 })
 
 local fyler = require("fyler")

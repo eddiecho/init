@@ -3,13 +3,13 @@ vim.pack.add({
 })
 
 local bd = require("bufdelete")
+local bl = require("bufferline")
+
 local opt = { silent = true }
+vim.keymap.set("n", "<Tab>", function() bl.cycle(1) end, opt)
+vim.keymap.set("n", "<S-Tab>", function() bl.cycle(-1) end, opt)
 
--- tabnew and tabprev
-vim.api.nvim_set_keymap("n", "<Tab>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<S-Tab>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
-
-require("bufferline").setup({
+bl.setup({
 	options = {
 		numbers = "both",
 		buffer_close_icon = "✗",
