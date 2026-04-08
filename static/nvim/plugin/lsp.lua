@@ -9,7 +9,6 @@ vim.pack.add({
 })
 
 require("lsp")
-require("lspconfigd")
 
 require("lsp_signature").setup({
 	bind = true,

@@ -30,3 +30,7 @@ require("mason-lspconfig").setup({
 	ensure_installed = ensure_installed,
 	automatic_enable = false,
 })
+
+for _, svr in ipairs(ensure_installed) do
+  vim.lsp.enable(svr)
+end
