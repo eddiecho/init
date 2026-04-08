@@ -14,6 +14,7 @@ in {
     home.packages = with pkgs; [
       difftastic
       git-lfs
+      mergiraf
     ];
 
     programs.git = {
