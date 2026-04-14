@@ -24,7 +24,7 @@ vim.pack.add({
 	-- better folds
 	--"https://github.com/kevinhwang91/promise-async",
 	-- "https://github.com/kevinhwang91/nvim-ufo",
-  "https://github.com/chrisgrieser/nvim-origami",
+	"https://github.com/chrisgrieser/nvim-origami",
 })
 
 require("beacon").setup({})
@@ -48,4 +48,5 @@ ufo.setup({
 vim.keymap.set("n", "zR", ufo.openAllFolds)
 vim.keymap.set("n", "zM", ufo.closeAllFolds)
 -- za is the fold toggle
-]]--
+]]
+--
