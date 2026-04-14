@@ -22,11 +22,22 @@ vim.pack.add({
 	-- paste respects indentations
 	"https://github.com/nemanjamalesija/smart-paste.nvim",
 	-- better folds
-	"https://github.com/kevinhwang91/nvim-ufo",
+	--"https://github.com/kevinhwang91/promise-async",
+	-- "https://github.com/kevinhwang91/nvim-ufo",
+  "https://github.com/chrisgrieser/nvim-origami",
 })
 
+require("beacon").setup({})
+require("smart-paste").setup({})
 require("nvim-autopairs").setup({})
+require("origami").setup({})
 
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
+--[[
 local ufo = require("ufo")
 ufo.setup({
 	provider_selector = function(bufnr, filetype, buftype)
@@ -34,11 +45,7 @@ ufo.setup({
 	end,
 })
 
-vim.o.foldcolumn = "1"
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
 vim.keymap.set("n", "zR", ufo.openAllFolds)
 vim.keymap.set("n", "zM", ufo.closeAllFolds)
 -- za is the fold toggle
+]]--

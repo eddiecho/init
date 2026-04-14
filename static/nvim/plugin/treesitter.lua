@@ -9,6 +9,8 @@ vim.pack.add({
 	},
 })
 
+require("ibl").setup()
+
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
 		local name = ev.data.spec.name
