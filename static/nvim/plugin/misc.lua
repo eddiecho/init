@@ -30,23 +30,15 @@ vim.pack.add({
 require("beacon").setup({})
 require("smart-paste").setup({})
 require("nvim-autopairs").setup({})
-require("origami").setup({})
+require("origami").setup({
+  autoFold = {
+    enabled = false,
+  },
+})
 
 vim.o.foldcolumn = "1"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
---[[
-local ufo = require("ufo")
-ufo.setup({
-	provider_selector = function(bufnr, filetype, buftype)
-		return { "treesitter", "indent" }
-	end,
-})
-
-vim.keymap.set("n", "zR", ufo.openAllFolds)
-vim.keymap.set("n", "zM", ufo.closeAllFolds)
 -- za is the fold toggle
-]]
---
