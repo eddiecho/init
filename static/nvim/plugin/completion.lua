@@ -1,54 +1,22 @@
 vim.pack.add({
-	"https://github.com/hrsh7th/nvim-cmp",
-	"https://github.com/hrsh7th/cmp-nvim-lsp",
-})
-
-local cmp = require("cmp")
-
-cmp.setup({
-	window = {
-		completion = cmp.config.window.bordered(),
-		documenation = cmp.config.window.bordered(),
-	},
-	mapping = cmp.mapping.preset.insert({
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
-		}),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-	}),
-	sources = {
-		{ name = "nvim_lsp" },
-	},
-})
-
---[[
-vim.pack.add({
-  "https://github.com/saghen/blink.cmp"
+	"https://github.com/saghen/blink.cmp",
 })
 
 require("blink.cmp").setup({
-  keymap = {
-    preset = "enter",
-  },
-  fuzzy = {
-    implementation = "prefer_rust_with_warning",
-  },
+	keymap = {
+		preset = "none",
+		["<Tab>"] = { "select_next", "fallback" },
+		["<S-Tab>"] = { "select_prev", "fallback" },
+		["<CR>"] = { "accept", "fallback" },
+		["<Up>"] = { "select_next", "fallback" },
+		["<Down>"] = { "select_prev", "fallback" },
+	},
+	fuzzy = {
+		implementation = "prefer_rust_with_warning",
+		prebuilt_binaries = {
+			download = true,
+			ignore_version_mismatch = true,
+			force_version = "v*",
+		},
+	},
 })
-]]--

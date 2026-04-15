@@ -4,6 +4,10 @@
       "rev": "098ff96c33874339d5e61656f3050dbd587d6bd5",
       "src": "https://github.com/DanilaMihailov/beacon.nvim"
     },
+    "blink.cmp": {
+      "rev": "456d38d1cd3743926f329204c2340f3e7840aad6",
+      "src": "https://github.com/saghen/blink.cmp"
+    },
     "blink.nvim": {
       "rev": "d1e7c7c45d45c6b6a25427bf62db4db73b03ff3d",
       "src": "https://github.com/saghen/blink.nvim",

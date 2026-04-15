@@ -31,9 +31,9 @@ require("beacon").setup({})
 require("smart-paste").setup({})
 require("nvim-autopairs").setup({})
 require("origami").setup({
-  autoFold = {
-    enabled = false,
-  },
+	autoFold = {
+		enabled = false,
+	},
 })
 
 vim.o.foldcolumn = "1"

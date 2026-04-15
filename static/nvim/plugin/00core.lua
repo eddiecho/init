@@ -3,7 +3,4 @@ vim.pack.add({
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/ryanoasis/vim-devicons",
 	"https://github.com/yamatsum/nvim-nonicons",
-	-- "https://github.com/nvim-lua/plenary.nvim",
-	-- "https://github.com/MunifTanjim/nui.nvim",
-	--"https://github.com/nvim-lua/popup.nvim",
 })
