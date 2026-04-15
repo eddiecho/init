@@ -17,7 +17,9 @@ require("catppuccin").setup({
 		transparent = transparent,
 	},
 	integrations = {
-    blink_cmp = true,
+		blink_cmp = {
+			style = "bordered",
+		},
 		gitsigns = true,
 		nvimtree = true,
 		treesitter = true,
