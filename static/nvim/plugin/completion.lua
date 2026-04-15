@@ -50,8 +50,8 @@ require("blink.cmp").setup({
 		["<Tab>"] = { "select_next", "fallback" },
 		["<S-Tab>"] = { "select_prev", "fallback" },
 		["<CR>"] = { "accept", "fallback" },
-		["<Up>"] = { "select_next", "fallback" },
-		["<Down>"] = { "select_prev", "fallback" },
+		["<Up>"] = { "select_prev", "fallback" },
+		["<Down>"] = { "select_next", "fallback" },
 	},
 	sources = {
 		default = { "lsp" },
@@ -60,6 +60,14 @@ require("blink.cmp").setup({
 			markdown = {},
 			text = {},
 			lua = { inherit_defaults = true, "lazydev" },
+		},
+		providers = {
+			lazydev = {
+				name = "LazyDev",
+				module = "lazydev.integrations.blink",
+				-- make lazydev completions top priority (see `:h blink.cmp`)
+				score_offset = 100,
+			},
 		},
 	},
 	fuzzy = {
