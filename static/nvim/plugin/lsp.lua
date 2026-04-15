@@ -1,8 +1,8 @@
 vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/ray-x/lsp_signature.nvim",
-	"https://github.com/folke/lazydev.nvim",
 	"https://github.com/onsails/lspkind.nvim",
+	"https://github.com/folke/lazydev.nvim",
 	"https://github.com/folke/trouble.nvim",
 	"https://github.com/rachartier/tiny-inline-diagnostic.nvim",
 	"https://github.com/esmuellert/codediff.nvim",

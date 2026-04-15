@@ -37,3 +37,18 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 	},
 })
+
+--[[
+vim.pack.add({
+  "https://github.com/saghen/blink.cmp"
+})
+
+require("blink.cmp").setup({
+  keymap = {
+    preset = "enter",
+  },
+  fuzzy = {
+    implementation = "prefer_rust_with_warning",
+  },
+})
+]]--
