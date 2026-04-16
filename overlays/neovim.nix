@@ -17,20 +17,22 @@ inputs: _final: prev: {
       sha256 = "fcFEfoALrbpBD6rWogxJ7FNVlvDQgswoX9ylRgko+8Q=";
     };
   in
-  prev.tree-sitter.overrideAttrs (oldAttrs: {
-    version = "0.26.8";
-    inherit src;
-    patches = [];
-    cargoHash = "";
-    cargoDeps = prev.rustPlatform.fetchCargoVendor {
+    prev.tree-sitter.overrideAttrs (oldAttrs: {
+      version = "0.26.8";
       inherit src;
-      hash = "sha256-9FeWnWWPUWmMF15Psmul8GxGv2JceHWc2WZPmOr81gw=";
-    };
-    nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [
-      prev.llvmPackages.clang
-      prev.llvmPackages.libclang.lib
-    ];
-    LIBCLANG_PATH = "${prev.llvmPackages.libclang.lib}/lib";
-    BINDGEN_EXTRA_CLANG_ARGS = "-isystem ${prev.llvmPackages.libclang.lib}/lib/clang/${prev.llvmPackages.libclang.version}/include";
-  });
+      patches = [];
+      cargoHash = "";
+      cargoDeps = prev.rustPlatform.fetchCargoVendor {
+        inherit src;
+        hash = "sha256-9FeWnWWPUWmMF15Psmul8GxGv2JceHWc2WZPmOr81gw=";
+      };
+      nativeBuildInputs =
+        (oldAttrs.nativeBuildInputs or [])
+        ++ [
+          prev.llvmPackages.clang
+          prev.llvmPackages.libclang.lib
+        ];
+      LIBCLANG_PATH = "${prev.llvmPackages.libclang.lib}/lib";
+      BINDGEN_EXTRA_CLANG_ARGS = "-isystem ${prev.llvmPackages.libclang.lib}/lib/clang/${prev.llvmPackages.libclang.version}/include";
+    });
 }
