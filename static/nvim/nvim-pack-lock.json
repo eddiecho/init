@@ -5,7 +5,7 @@
       "src": "https://github.com/DanilaMihailov/beacon.nvim"
     },
     "blink.cmp": {
-      "rev": "456d38d1cd3743926f329204c2340f3e7840aad6",
+      "rev": "37c96dc06032b3f128b230b5fb193706535b3811",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.nvim": {
@@ -34,7 +34,7 @@
       "src": "https://github.com/rhysd/conflict-marker.vim"
     },
     "fff.nvim": {
-      "rev": "8912a1abdbdcb91b73cda91058b378e4233ab58f",
+      "rev": "7de55be63d725d94944e5e89206284a67b8baa08",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -80,7 +80,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.icons": {
-      "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
+      "rev": "bac6317300e205335df425296570d84322730067",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "nui.nvim": {
@@ -104,7 +104,7 @@
       "src": "https://github.com/norcalli/nvim-colorizer.lua"
     },
     "nvim-lspconfig": {
-      "rev": "8a9378a822719346a0288fa004dab302ca3c0a8f",
+      "rev": "b80f82f59544f0770981b5a6c7d129ca276dab36",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nonicons": {
