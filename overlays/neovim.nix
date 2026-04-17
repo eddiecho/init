@@ -35,4 +35,13 @@ inputs: _final: prev: {
       LIBCLANG_PATH = "${prev.llvmPackages.libclang.lib}/lib";
       BINDGEN_EXTRA_CLANG_ARGS = "-isystem ${prev.llvmPackages.libclang.lib}/lib/clang/${prev.llvmPackages.libclang.version}/include";
     });
+
+  tree-sitter-grammars = prev.tree-sitter-grammars.tree-sitter-lua.overrideAttrs (oldAttrs: {
+    src = prev.fetchFromGitHub {
+      owner = "tree-sitter-grammars";
+      repo = "tree-sitter-lua";
+      rev = "master"; # Or a specific recent hash
+      sha256 = "..."; # Nix will complain and give you the correct hash
+    };
+  });
 }
