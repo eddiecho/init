@@ -1,4 +1,5 @@
 vim.pack.add({
+	"https://github.com/saghen/blink.lib",
 	"https://github.com/saghen/blink.cmp",
 })
 
@@ -29,7 +30,9 @@ local function in_treesitter_capture(capture)
 	return false
 end
 
-require("blink.cmp").setup({
+local blink = require("blink.cmp")
+
+blink.setup({
 	completion = {
 		menu = {
 			auto_show = function()
@@ -72,10 +75,7 @@ require("blink.cmp").setup({
 	},
 	fuzzy = {
 		implementation = "prefer_rust_with_warning",
-		prebuilt_binaries = {
-			download = true,
-			ignore_version_mismatch = true,
-			force_version = "v*",
-		},
 	},
 })
+
+blink.build()
