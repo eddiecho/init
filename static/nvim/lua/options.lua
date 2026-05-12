@@ -28,6 +28,8 @@ vim.o.softtabstop = 2
 -- Colors
 vim.o.termguicolors = true
 vim.o.background = "dark"
+-- readd this whenever you manage to fix the fucking tree-sitter tab query error
+-- vim.o.cmdheight = 0
 
 local utils = require("utils")
 
