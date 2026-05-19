@@ -31,7 +31,7 @@ gs.setup({
 
 		vim.keymap.set("n", "<leader>c", function()
 			if vim.wo.diff then
-				return "<leader>c"
+				return "<leader>C"
 			end
 			vim.schedule(function()
 				gs.nav_hunk("prev")

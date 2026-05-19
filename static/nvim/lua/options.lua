@@ -6,14 +6,14 @@ vim.o.ignorecase = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 -- Line numbers
-vim.wo.number = true
+vim.o.number = true
 vim.o.numberwidth = 2
 -- Highlight current line
-vim.wo.cul = true
+vim.o.cursorline = true
 -- Allow mouse
 vim.o.mouse = "a"
 -- Signs next to line numbers
-vim.wo.signcolumn = "yes"
+vim.o.signcolumn = "yes"
 -- Height of status line
 vim.o.cmdheight = 1
 -- Update delay time
