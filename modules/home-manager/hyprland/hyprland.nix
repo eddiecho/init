@@ -22,16 +22,6 @@ in {
           config.lib.file.mkOutOfStoreSymlink
           (builtins.toPath "${root}/static/hypr/parts");
       };
-      ".config/hyprland" = {
-        source =
-          config.lib.file.mkOutOfStoreSymlink
-          (builtins.toPath "${root}/static/hyprland");
-      };
-      ".config/wallpapers" = {
-        source =
-          config.lib.file.mkOutOfStoreSymlink
-          (builtins.toPath "${root}/static/wallpapers");
-      };
     };
 
     # Previously set via Hyprland's `env = [...]` directive. The Lua API for
