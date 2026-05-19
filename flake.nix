@@ -52,7 +52,8 @@
     };
 
     catppuccin = {
-      # that version has to track stateVersion
+      # Tracks the active nixpkgs release branch — *not* stateVersion.
+      # Bump alongside any nixpkgs major release update.
       url = "github:catppuccin/nix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };

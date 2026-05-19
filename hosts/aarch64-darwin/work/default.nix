@@ -6,6 +6,8 @@
     email = vals.workEmail;
   };
 
+  # Determinate's Nix installer manages the Nix daemon out-of-band, so let
+  # nix-darwin keep its hands off it.
   nix.enable = false;
 
   darwin = {

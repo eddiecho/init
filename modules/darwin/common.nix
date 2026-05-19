@@ -38,6 +38,10 @@ in {
       '';
 
       gc = {
+        # Automatic GC intentionally disabled on Darwin — Determinate's Nix
+        # daemon (see hosts/aarch64-darwin) owns its own GC schedule, and
+        # nix-darwin's timer fights it. Use `nix-collect-garbage -d` or
+        # `make gc` to GC manually.
         # automatic = true;
         options = "--delete-older-than 7d";
       };

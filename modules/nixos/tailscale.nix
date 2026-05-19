@@ -8,6 +8,16 @@
 in {
   options.nixos.tailscale = {
     enable = lib.mkEnableOption "Enable tailscale";
+
+    tailnetDomain = lib.mkOption {
+      type = lib.types.str;
+      example = "azules-stargazer.ts.net";
+      description = ''
+        The MagicDNS domain of your tailnet (e.g. `azules-stargazer.ts.net`),
+        without leading dot or hostname. Used to build the Caddy vhost as
+        `<hostname>.<tailnetDomain>`.
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -17,7 +27,7 @@ in {
 
     services.caddy = {
       enable = true;
-      virtualHosts."${config.networking.hostName}.azules-stargazer.ts.net".extraConfig = "";
+      virtualHosts."${config.networking.hostName}.${cfg.tailnetDomain}".extraConfig = "";
     };
 
     # default NAS port is 8080

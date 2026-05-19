@@ -42,7 +42,9 @@ in {
     programs = {
       zsh.enable = true;
 
-      # FUCK YOU
+      # nix-ld lets unpatched dynamic binaries (e.g. tools downloaded by
+      # Mason, language servers shipped as glibc ELFs) find their libs.
+      # openssl is here because several such binaries link against it.
       nix-ld = {
         enable = true;
         libraries = with pkgs; [

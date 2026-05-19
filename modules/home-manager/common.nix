@@ -18,7 +18,7 @@ in {
       else "/home/${config.settings.username}";
 
     home.packages = with pkgs; [
-      nodejs_22 # I think Mason.nvim uses this? Maybe just be better to add LSPs manually in nix
+      nodejs_22 # required by mason for npm-based LSPs (pyright, ts_ls, bashls)
       clang_21 # tree-sitter uses this
       cargo
     ];

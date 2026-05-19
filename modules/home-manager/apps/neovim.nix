@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  root,
   ...
 }: let
   cfg = config.modules.apps.neovim;
@@ -19,6 +20,12 @@ in {
       vimAlias = true;
       vimdiffAlias = true;
     };
+
+    # Out-of-store symlink so edits in static/nvim/ take effect without
+    # `home-manager switch`. Mirrors the pattern used for Hyprland.
+    home.file.".config/nvim".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (builtins.toPath "${root}/static/nvim");
 
     home.packages = with pkgs; [
       tree-sitter
