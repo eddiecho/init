@@ -5,7 +5,6 @@
   ...
 }: let
   cfg = config.modules.hyprland;
-  mkInline = lib.generators.mkLuaInline;
 in {
   config = lib.mkIf cfg.enable {
     home.file = {
