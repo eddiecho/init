@@ -16,8 +16,12 @@ clean: gc
 	sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system
 	nix-store --optimize
 
+.PHONY: nvim
+nvim:
+	ln -sfn $(shell pwd)/static/nvim $$HOME/.config/nvim
+
 .PHONY: home
-home:
+home: nvim
 	home-manager switch --flake .\#$$NIXOS_FLAKE_NAME
 
 .PHONY: sync-nvim-to-win
@@ -28,7 +32,7 @@ endif
 
 # TODO - maybe just switch to just so we can have proper dependency tracking
 .PHONY: nixos
-nixos: sync-nvim-to-win
+nixos: nvim sync-nvim-to-win
 	git update-index --skip-worktree config.json
 	sudo $(NIXOS)-rebuild switch --flake .\#$$NIXOS_FLAKE_NAME
 

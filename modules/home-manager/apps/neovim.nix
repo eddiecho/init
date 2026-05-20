@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  root,
   ...
 }: let
   cfg = config.modules.apps.neovim;
@@ -24,13 +23,10 @@ in {
       withPython3 = false;
     };
 
-    # Direct symlink (not mkOutOfStoreSymlink) so writes through ~/.config/nvim
-    # land in static/nvim/ — nvim's plugin lock file lives there and must be
-    # writable. mkOutOfStoreSymlink routes through /nix/store/ which is mounted
-    # read-only on macOS (and typically on NixOS), blocking the write.
-    home.activation.linkNvimConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      run ln $VERBOSE_ARG -sfn ${toString root}/static/nvim $HOME/.config/nvim
-    '';
+    # NOTE: ~/.config/nvim is symlinked to static/nvim/ by the `nvim` target
+    # in the top-level Makefile, not by home-manager. mkOutOfStoreSymlink
+    # routes through /nix/store/ which is read-only and blocks nvim's
+    # plugin lockfile writes; a `home.activation` ln also did not work.
 
     home.packages = with pkgs; [
       tree-sitter
