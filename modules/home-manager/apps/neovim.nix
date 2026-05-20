@@ -24,11 +24,13 @@ in {
       withPython3 = false;
     };
 
-    # Out-of-store symlink so edits in static/nvim/ take effect without
-    # `home-manager switch`. Mirrors the pattern used for Hyprland.
-    home.file.".config/nvim".source =
-      config.lib.file.mkOutOfStoreSymlink
-      (builtins.toPath "${root}/static/nvim");
+    # Direct symlink (not mkOutOfStoreSymlink) so writes through ~/.config/nvim
+    # land in static/nvim/ — nvim's plugin lock file lives there and must be
+    # writable. mkOutOfStoreSymlink routes through /nix/store/ which is mounted
+    # read-only on macOS (and typically on NixOS), blocking the write.
+    home.activation.linkNvimConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      run ln $VERBOSE_ARG -sfn ${toString root}/static/nvim $HOME/.config/nvim
+    '';
 
     home.packages = with pkgs; [
       tree-sitter
