@@ -1,14 +1,18 @@
 {
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
+    # nixos-unstable currently rolls into the 26.05 release ("Yarara",
+    # expected end of May 2026). Once 26.05 ships, switching this to
+    # `nixos-26.05` would pin to the stable release branch.
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     determinate = {
-      url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+      url = "github:DeterminateSystems/determinate";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      # No nix-darwin-26.05 branch yet; track master until it lands.
+      url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -18,7 +22,9 @@
     };
 
     home-manager = {
-      url = "https://flakehub.com/f/nix-community/home-manager/*";
+      # On github (not flakehub) so we get the `configType = "lua"` option
+      # for hyprland, which flakehub releases lag behind on.
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -52,9 +58,9 @@
     };
 
     catppuccin = {
-      # Tracks the active nixpkgs release branch — *not* stateVersion.
-      # Bump alongside any nixpkgs major release update.
-      url = "github:catppuccin/nix/release-25.11";
+      # Tracks main until a release-26.05 branch exists; bump to that
+      # branch once nixpkgs is also pinned to nixos-26.05.
+      url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

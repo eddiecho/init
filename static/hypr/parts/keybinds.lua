@@ -1,3 +1,17 @@
+-- Autostart commands (the dbus-update-activation-environment call is
+-- emitted automatically by HM's systemd.enable = true).
+hl.on("hyprland.start", function()
+    hl.exec_cmd("swww-daemon")
+    hl.exec_cmd("swww img ~/.config/Pictures/wallpaper.gif")
+    hl.exec_cmd("swaync")
+    hl.exec_cmd("hyprctl setcursor Catppuccin Mocha Dark 24")
+    hl.exec_cmd("vicinae server")
+end)
+
+-- ============================================================================
+-- Keybinds
+-- ============================================================================
+
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(webBrowser))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exit())
