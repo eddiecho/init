@@ -19,6 +19,9 @@ in {
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
+
+      withRuby = false;
+      withPython3 = false;
     };
 
     # Out-of-store symlink so edits in static/nvim/ take effect without
