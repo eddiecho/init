@@ -32,7 +32,7 @@ endif
 
 # TODO - maybe just switch to just so we can have proper dependency tracking
 .PHONY: nixos
-nixos: nvim sync-nvim-to-win
+nixos: sync-nvim-to-win
 	git update-index --skip-worktree config.json
 	sudo $(NIXOS)-rebuild switch --flake .\#$$NIXOS_FLAKE_NAME
 
