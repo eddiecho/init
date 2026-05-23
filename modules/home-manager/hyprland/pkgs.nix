@@ -8,7 +8,7 @@
 in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      # awww # wallpaper manager, for loading images because this is hard for some reason????
+      awww # wallpaper manager, for loading images because this is hard for some reason????
       hyprland
       xwayland
       waybar # status bar
