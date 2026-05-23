@@ -21,6 +21,12 @@ in {
 
       withRuby = false;
       withPython3 = false;
+
+      # Keep HM from writing ~/.config/nvim/init.lua — it auto-merges
+      # wrappedNeovim'.luaRcContent into initLua, which conflicts with
+      # our Makefile-managed symlink to static/nvim/. With sideloadInitLua
+      # the wrapper passes its init via `nvim -u <path>` instead.
+      sideloadInitLua = true;
     };
 
     # NOTE: ~/.config/nvim is symlinked to static/nvim/ by the `nvim` target
