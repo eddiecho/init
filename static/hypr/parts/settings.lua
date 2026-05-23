@@ -65,7 +65,6 @@ hl.config({
         enabled = true,
     },
     dwindle = {
-        pseudotile = true,
         preserve_split = true,
         force_split = 2,
         default_split_ratio = 1,
@@ -85,19 +84,23 @@ hl.config({
     },
 })
 
--- Animation curves
+-- Animation curves. "default" is our own ease curve so the animation
+-- entries below don't depend on Hyprland having a built-in by that name.
+hl.curve("default",   { type = "bezier", points = { { 0.25, 0.1  }, { 0.25, 1.0  } } })
 hl.curve("slow",      { type = "bezier", points = { { 0,    0.85 }, { 0.3,  1    } } })
 hl.curve("overshot",  { type = "bezier", points = { { 0.7,  0.6  }, { 0.1,  1.1  } } })
 hl.curve("bounce",    { type = "bezier", points = { { 1,    1.6  }, { 0.1,  0.85 } } })
 hl.curve("slingshot", { type = "bezier", points = { { 1,   -1    }, { 0.15, 1.25 } } })
 hl.curve("myBezier",  { type = "bezier", points = { { 0.05, 0.9  }, { 0.1,  1.05 } } })
 
--- Animations (speed is in ds, 1ds = 100ms)
+-- Animations. speed is in ds (1ds = 100ms). The curve param is named
+-- `bezier` or `spring` in the actual API (wiki docs of `curve = ...` are
+-- misleading).
 hl.animation({ leaf = "windows",    enabled = true, speed = 7,  bezier = "myBezier" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 7,  curve  = "default", style = "popin 80%" })
-hl.animation({ leaf = "border",     enabled = true, speed = 10, curve  = "default" })
-hl.animation({ leaf = "fade",       enabled = true, speed = 7,  curve  = "default" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 6,  curve  = "default" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 7,  bezier = "default", style = "popin 80%" })
+hl.animation({ leaf = "border",     enabled = true, speed = 10, bezier = "default" })
+hl.animation({ leaf = "fade",       enabled = true, speed = 7,  bezier = "default" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 6,  bezier = "default" })
 
 -- Gestures
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
