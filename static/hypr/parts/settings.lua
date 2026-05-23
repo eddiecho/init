@@ -3,104 +3,104 @@ hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
 
 -- Settings
 hl.config({
-    general = {
-        gaps_in = 3,
-        gaps_out = 6,
-        border_size = 0,
-    },
-    input = {
-        kb_layout = "us",
-        kb_variant = "",
-        kb_model = "",
-        kb_rules = "",
-        kb_options = "",
-        follow_mouse = 1,
-        sensitivity = 0,
-        touchpad = {
-            natural_scroll = true,
-            clickfinger_behavior = false,
-            disable_while_typing = false,
-            tap_and_drag = false,
-        },
-    },
-    cursor = {
-        inactive_timeout = 3,
-        no_hardware_cursors = 1,
-    },
-    decoration = {
-        rounding = 8,
-        active_opacity = 1,
-        inactive_opacity = 1,
-        dim_inactive = true,
-        dim_strength = 0.1,
-        blur = {
-            enabled = true,
-            size = 6,
-            passes = 2,
-            new_optimizations = true,
-            ignore_opacity = true,
-        },
-        shadow = {
-            enabled = true,
-            range = 5,
-            render_power = 3,
-            offset = { 0, 0 },
-            color = "rgba(17,17,27,1.0)",
-            color_inactive = "rgba(17,17,27,0.0)",
-        },
-    },
-    group = {
-        groupbar = {
-            font_family = "SFMono",
-            font_size = 14,
-            gradients = true,
-        },
-    },
-    binds = {
-        movefocus_cycles_fullscreen = false,
-        workspace_center_on = 1,
-        focus_preferred_method = 0,
-    },
-    animations = {
-        enabled = true,
-    },
-    dwindle = {
-        preserve_split = true,
-        force_split = 2,
-        default_split_ratio = 1,
-    },
-    master = {
-        new_status = "slave",
-    },
-    misc = {
-        disable_hyprland_logo = true,
-        mouse_move_enables_dpms = true,
-        key_press_enables_dpms = true,
-        force_default_wallpaper = -1,
-    },
-    gestures = {
-        workspace_swipe_invert = true,
-        workspace_swipe_distance = 700,
-    },
+	general = {
+		gaps_in = 3,
+		gaps_out = 6,
+		border_size = 0,
+	},
+	input = {
+		kb_layout = "us",
+		kb_variant = "",
+		kb_model = "",
+		kb_rules = "",
+		kb_options = "",
+		follow_mouse = 1,
+		sensitivity = 0,
+		touchpad = {
+			natural_scroll = true,
+			clickfinger_behavior = false,
+			disable_while_typing = false,
+			tap_and_drag = false,
+		},
+	},
+	cursor = {
+		inactive_timeout = 3,
+		no_hardware_cursors = 1,
+	},
+	decoration = {
+		rounding = 8,
+		active_opacity = 1,
+		inactive_opacity = 1,
+		dim_inactive = true,
+		dim_strength = 0.1,
+		blur = {
+			enabled = true,
+			size = 6,
+			passes = 2,
+			new_optimizations = true,
+			ignore_opacity = true,
+		},
+		shadow = {
+			enabled = true,
+			range = 5,
+			render_power = 3,
+			offset = { 0, 0 },
+			color = "rgba(17,17,27,1.0)",
+			color_inactive = "rgba(17,17,27,0.0)",
+		},
+	},
+	group = {
+		groupbar = {
+			font_family = "SFMono",
+			font_size = 14,
+			gradients = true,
+		},
+	},
+	binds = {
+		movefocus_cycles_fullscreen = false,
+		workspace_center_on = 1,
+		focus_preferred_method = 0,
+	},
+	animations = {
+		enabled = true,
+	},
+	dwindle = {
+		preserve_split = true,
+		force_split = 2,
+		default_split_ratio = 1,
+	},
+	master = {
+		new_status = "slave",
+	},
+	misc = {
+		disable_hyprland_logo = true,
+		mouse_move_enables_dpms = true,
+		key_press_enables_dpms = true,
+		force_default_wallpaper = -1,
+	},
+	gestures = {
+		workspace_swipe_invert = true,
+		workspace_swipe_distance = 700,
+	},
 })
 
 -- Animation curves. "default" is our own ease curve so the animation
 -- entries below don't depend on Hyprland having a built-in by that name.
-hl.curve("default",   { type = "bezier", points = { { 0.25, 0.1  }, { 0.25, 1.0  } } })
-hl.curve("slow",      { type = "bezier", points = { { 0,    0.85 }, { 0.3,  1    } } })
-hl.curve("overshot",  { type = "bezier", points = { { 0.7,  0.6  }, { 0.1,  1.1  } } })
-hl.curve("bounce",    { type = "bezier", points = { { 1,    1.6  }, { 0.1,  0.85 } } })
-hl.curve("slingshot", { type = "bezier", points = { { 1,   -1    }, { 0.15, 1.25 } } })
-hl.curve("myBezier",  { type = "bezier", points = { { 0.05, 0.9  }, { 0.1,  1.05 } } })
+hl.curve("default", { type = "bezier", points = { { 0.25, 0.1 }, { 0.25, 1.0 } } })
+hl.curve("slow", { type = "bezier", points = { { 0, 0.85 }, { 0.3, 1 } } })
+hl.curve("overshot", { type = "bezier", points = { { 0.7, 0.6 }, { 0.1, 1.1 } } })
+hl.curve("bounce", { type = "bezier", points = { { 1, 1.6 }, { 0.1, 0.85 } } })
+hl.curve("slingshot", { type = "bezier", points = { { 1, -1 }, { 0.15, 1.25 } } })
+hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
 
 -- Animations. speed is in ds (1ds = 100ms). The curve param is named
 -- `bezier` or `spring` in the actual API (wiki docs of `curve = ...` are
 -- misleading).
-hl.animation({ leaf = "windows",    enabled = true, speed = 7,  bezier = "myBezier" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 7,  bezier = "default", style = "popin 80%" })
-hl.animation({ leaf = "border",     enabled = true, speed = 10, bezier = "default" })
-hl.animation({ leaf = "fade",       enabled = true, speed = 7,  bezier = "default" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 6,  bezier = "default" })
+hl.animation({ leaf = "windows", enabled = true, speed = 7, bezier = "myBezier" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 7, bezier = "default", style = "popin 80%" })
+hl.animation({ leaf = "border", enabled = true, speed = 10, bezier = "default" })
+hl.animation({ leaf = "fade", enabled = true, speed = 7, bezier = "default" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 6, bezier = "default" })
 
 -- Gestures
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })

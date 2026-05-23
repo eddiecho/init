@@ -49,7 +49,7 @@ local ensure_installed = {
 local cfg = require("nvim-treesitter.config")
 
 cfg.setup({
-  parser_install_dir = "~/.local/share/nvim/treesitter",
+	parser_install_dir = "~/.local/share/nvim/treesitter",
 })
 
 local already_installed = cfg.get_installed()
