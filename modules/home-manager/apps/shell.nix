@@ -20,10 +20,10 @@ in {
       history = {
         size = 1000000;
         save = 1000000;
-        extended = true;             # EXTENDED_HISTORY — record timestamps per entry
-        ignoreSpace = true;          # bash: HISTCONTROL ignorespace / HISTIGNORE "[ ]*"
-        ignoreDups = true;           # bash: HISTCONTROL ignoredups
-        ignoreAllDups = true;        # bash: HISTCONTROL erasedups
+        extended = true; # EXTENDED_HISTORY — record timestamps per entry
+        ignoreSpace = true; # bash: HISTCONTROL ignorespace / HISTIGNORE "[ ]*"
+        ignoreDups = true; # bash: HISTCONTROL ignoredups
+        ignoreAllDups = true; # bash: HISTCONTROL erasedups
         expireDuplicatesFirst = true;
         ignorePatterns = [
           "exit"

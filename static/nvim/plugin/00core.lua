@@ -19,11 +19,13 @@ require("catppuccin").setup({
 		solid = false,
 		transparent = transparent,
 	},
+
 	integrations = {
 		beacon = true,
 		blink_cmp = {
 			style = "bordered",
 		},
+		cmp = true,
 		gitsigns = true,
 		indent_blankline = {
 			enabled = true,
@@ -53,8 +55,8 @@ require("catppuccin").setup({
 		},
 	},
 })
-
 vim.cmd.colorscheme("catppuccin")
+
 local ui2 = require("vim._core.ui2")
 local messages = require("vim._core.ui2.messages")
 
