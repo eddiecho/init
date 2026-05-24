@@ -8,5 +8,5 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("vicinae server")
 end)
 
-require("parts/keybinds.lua")
-require("parts/settings.lua")
+require("keybinds")
+require("settings")
