@@ -64,9 +64,14 @@ vim.diagnostic.config({ virtual_text = false })
 
 vim.api.nvim_create_autocmd("LspProgress", {
 	callback = function(ev)
-		local client = vim.lsp.get_client_by_id(ev.data.client_id) or {}
 		local value = ev.data.params.value
-		local msg = ("[%s] %s %s"):format(client.name or "", value.kind == "end" and "✓" or "", value.title or "")
-		vim.notify(msg)
+		vim.api.nvim_echo({ { value.message or "done" } }, false, {
+			id = "lsp." .. (ev.data.client_id or {}),
+			kind = "progress",
+			source = "vim.lsp",
+			title = value.title,
+			status = value.kind ~= "end" and "running" or "success",
+			percent = value.percentage,
+		})
 	end,
 })

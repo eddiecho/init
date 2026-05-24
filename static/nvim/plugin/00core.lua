@@ -5,9 +5,12 @@ vim.pack.add({
 	"https://github.com/yamatsum/nvim-nonicons",
 })
 
-require("vim._core.ui2").enable({
-	enable = true, -- Whether to enable or disable the UI.
-	msg = { -- Options related to the message module.
+local ui2 = require("vim._core.ui2")
+local messages = require("vim._core.ui2.messages")
+
+ui2.enable({
+	enable = true,
+	msg = {
 		targets = {
 			[""] = "msg",
 			empty = "cmd",
@@ -37,18 +40,89 @@ require("vim._core.ui2").enable({
 			typed_cmd = "cmd",
 		},
 
-		cmd = { -- Options related to messages in the cmdline window.
-			height = 0.5, -- Maximum height while expanded for messages beyond 'cmdheight'.
+		cmd = {
+			height = 0.5,
 		},
-		dialog = { -- Options related to dialog window.
-			height = 0.5, -- Maximum height.
+		dialog = {
+			height = 0.5,
 		},
-		msg = { -- Options related to msg window.
-			height = 0.5, -- Maximum height.
-			timeout = 5000, -- Time a message is visible in the message window.
+		msg = {
+			height = 0.3,
+			timeout = 5000,
 		},
-		pager = { -- Options related to message window.
-			height = 1, -- Maximum height.
+		pager = {
+			height = 1,
 		},
 	},
 })
+
+local last_title = nil
+local last_hl = 'Normal'
+
+local function msg_win()
+  local win = ui2.wins and ui2.wins.msg
+  if not (win and vim.api.nvim_win_is_valid(win)) then
+    return
+  end
+  if vim.api.nvim_win_get_config(win).hide then
+    return
+  end
+  pcall(vim.api.nvim_win_set_config, win, {
+    relative = 'editor',
+    anchor = 'NE',
+    row = 1,
+    col = vim.o.columns - 1,
+    border = 'rounded',
+    style = 'minimal',
+    title = last_title and { { last_title, last_hl } } or nil,
+    title_pos = last_title and 'center' or nil,
+  })
+end
+
+local function pager_win()
+    local win = ui2.wins and ui2.wins.pager
+    if not (win and vim.api.nvim_win_is_valid(win)) then
+        return
+    end
+    if vim.api.nvim_win_get_config(win).hide then
+        return
+    end
+    local height = vim.api.nvim_win_get_height(win)
+    pcall(vim.api.nvim_win_set_config, win, {
+        border = 'rounded',
+        height = height,
+        style = 'minimal',
+        title = last_title and { { last_title, last_hl } } or nil,
+        title_pos = last_title and 'center' or nil,
+    })
+end
+
+local function dialog_win()
+    local win = ui2.wins and ui2.wins.dialog
+    if not (win and vim.api.nvim_win_is_valid(win)) then
+        return
+    end
+    if vim.api.nvim_win_get_config(win).hide then
+        return
+    end
+    local height = vim.api.nvim_win_get_height(win)
+    pcall(vim.api.nvim_win_set_config, win, {
+        border = 'rounded',
+        height = height,
+        style = 'minimal',
+        title = last_title and { { last_title, last_hl } } or nil,
+        title_pos = last_title and 'center' or nil,
+    })
+end
+
+local orig_set_pos = messages.set_pos
+messages.set_pos = function(tgt)
+  orig_set_pos(tgt)
+  if tgt == 'msg' or tgt == nil then
+    msg_win()
+  elseif tgt == 'pager' then
+    pager_win()
+  elseif tgt == 'dialog' then
+    dialog_win()
+  end
+end
