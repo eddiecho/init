@@ -22,8 +22,6 @@ vim.pack.add({
 	-- paste respects indentations
 	"https://github.com/nemanjamalesija/smart-paste.nvim",
 	-- better folds
-	--"https://github.com/kevinhwang91/promise-async",
-	-- "https://github.com/kevinhwang91/nvim-ufo",
 	"https://github.com/chrisgrieser/nvim-origami",
 })
 
