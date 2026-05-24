@@ -4,7 +4,6 @@
   lib,
   ...
 }: let
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   session = "${pkgs.hyprland}/bin/Hyprland";
   cfg = config.nixos.display;
 in {
@@ -24,6 +23,8 @@ in {
         };
       };
     };
+
+    programs.hyprland.enable = true;
 
     environment.systemPackages = with pkgs; [
       networkmanagerapplet
