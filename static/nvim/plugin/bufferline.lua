@@ -14,6 +14,9 @@ vim.keymap.set("n", "<S-Tab>", function()
 end, opt)
 
 bl.setup({
+	highlights = require("catppuccin.special.bufferline").get_theme({
+		styles = { "italic", "bold" },
+	}),
 	options = {
 		numbers = "both",
 		buffer_close_icon = "✗",

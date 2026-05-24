@@ -3,8 +3,58 @@ vim.pack.add({
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/ryanoasis/vim-devicons",
 	"https://github.com/yamatsum/nvim-nonicons",
+	{
+		src = "https://github.com/catppuccin/nvim",
+		name = "catppuccin",
+	},
 })
 
+local utils = require("utils")
+local transparent = utils.is_linux()
+
+require("catppuccin").setup({
+	flavour = "mocha",
+	transparent_background = transparent,
+	float = {
+		solid = false,
+		transparent = transparent,
+	},
+	integrations = {
+		beacon = true,
+		blink_cmp = {
+			style = "bordered",
+		},
+		gitsigns = true,
+		indent_blankline = {
+			enabled = true,
+			colored_indent_levels = false,
+		},
+		lsp_trouble = true,
+		mason = true,
+		nvimtree = true,
+		treesitter = true,
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
+			},
+			underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
+			},
+			inlay_hints = {
+				background = true,
+			},
+		},
+	},
+})
+
+vim.cmd.colorscheme("catppuccin")
 local ui2 = require("vim._core.ui2")
 local messages = require("vim._core.ui2.messages")
 
