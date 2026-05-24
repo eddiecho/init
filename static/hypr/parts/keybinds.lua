@@ -1,4 +1,4 @@
-local vars = require("variables")
+local vars = require("parts/variables")
 
 hl.bind(vars.mainMod .. " + SPACE", hl.dsp.exec_cmd(vars.menu))
 hl.bind(vars.mainMod .. " + B", hl.dsp.exec_cmd(vars.webBrowser))
