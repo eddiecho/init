@@ -1,7 +1,8 @@
--- Globals (visible to later parts loaded via dofile in the same Lua state)
-mainMod = "SUPER"
-terminal = "ghostty"
-webBrowser = "firefox"
-menu = "vicinae toggle"
--- fileManager = "nautilus"
--- notes = "obsidian"
+local M = {}
+
+M.mainMod = "SUPER"
+M.terminal = "ghostty"
+M.webBrowser = "firefox"
+M.menu = "vicinae toggle"
+
+return M
