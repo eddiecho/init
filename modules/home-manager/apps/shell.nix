@@ -35,7 +35,7 @@ in {
         ];
       };
 
-      initExtra = ''
+      initContent = ''
         # Flush each command to $HISTFILE as it's run (bash equivalent:
         # PROMPT_COMMAND="history -a..."). Without sharing across live shells.
         setopt INC_APPEND_HISTORY
