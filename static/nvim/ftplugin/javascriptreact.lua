@@ -1,1 +1,1 @@
-ftplugin/typescript.lua
+typescript.lua

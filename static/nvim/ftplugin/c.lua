@@ -1,1 +1,1 @@
-ftplugin/cpp.lua
+cpp.lua
