@@ -1,39 +1,23 @@
 local vars = require("parts/variables")
 
+hl.bind(vars.mainMod .. " + SHIFT + M", hl.dsp.exit())
+hl.bind(vars.mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(vars.mainMod .. " + SPACE", hl.dsp.exec_cmd(vars.menu))
 hl.bind(vars.mainMod .. " + B", hl.dsp.exec_cmd(vars.webBrowser))
-hl.bind(vars.mainMod .. " + SHIFT + M", hl.dsp.exit())
 hl.bind(vars.mainMod .. " + T", hl.dsp.exec_cmd(vars.terminal))
--- hl.bind(vars.mainMod .. " + E", hl.dsp.exec_cmd(fileManager))  -- fileManager unset
--- hl.bind(vars.mainMod .. " + N", hl.dsp.exec_cmd(notes))        -- notes unset
-hl.bind(vars.mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(vars.mainMod .. " + d", hl.dsp.exec_cmd("discord"))
-hl.bind(vars.mainMod .. " + s", hl.dsp.exec_cmd("steam"))
+hl.bind(vars.mainMod .. " + D", hl.dsp.exec_cmd("discord"))
+hl.bind(vars.mainMod .. " + S", hl.dsp.exec_cmd("steam"))
 
 -- Screenshot
-hl.bind(vars.mainMod .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m window"))
-hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
-hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
+hl.bind("CTRL + SHIFT + 3", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))
+hl.bind("CTRL + SHIFT + 4", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 
--- NB: vars.mainMod + T below was also bound to exec terminal above. The
--- togglefloating bind overrides the terminal one (same as original).
-hl.bind(vars.mainMod .. " + J", hl.dsp.layout("togglesplit"))
-hl.bind(vars.mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(vars.mainMod .. " + T", hl.dsp.window.float())
-hl.bind(vars.mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
-
--- Clipboard
-hl.bind(vars.mainMod .. " + C", hl.dsp.send_shortcut({ mods = "CTRL", key = "Insert" }), { description = "Copy" })
-hl.bind(vars.mainMod .. " + V", hl.dsp.send_shortcut({ mods = "SHIFT", key = "Insert" }), { description = "Paste" })
-hl.bind(vars.mainMod .. " + X", hl.dsp.send_shortcut({ mods = "CTRL", key = "X" }), { description = "Cut" })
-
--- Close windows
+-- Layout and tiling
 hl.bind(vars.mainMod .. " + W", hl.dsp.window.close(), { description = "Close active window" })
-
--- Control tiling (re-declares J/P/T/F with descriptions, matching original)
 hl.bind(vars.mainMod .. " + J", hl.dsp.layout("togglesplit"), { description = "Toggle split" })
-hl.bind(vars.mainMod .. " + P", hl.dsp.window.pseudo(), { description = "Pseudo window" })
-hl.bind(vars.mainMod .. " + T", hl.dsp.window.float(), { description = "Toggle floating" })
+-- hl.bind(vars.mainMod .. " + P", hl.dsp.window.pseudo(), { description = "Pseudo window" })
+-- hl.bind(vars.mainMod .. " + T", hl.dsp.window.float(), { description = "Toggle floating" })
 hl.bind(
 	vars.mainMod .. " + F",
 	hl.dsp.window.fullscreen({ mode = "fullscreen" }),
@@ -45,6 +29,11 @@ hl.bind(
 	{ description = "Tiled full screen" }
 )
 hl.bind(vars.mainMod .. " + ALT + F", hl.dsp.window.fullscreen({ mode = "maximized" }), { description = "Full width" })
+
+-- Clipboard
+hl.bind(vars.mainMod .. " + C", hl.dsp.send_shortcut({ mods = "CTRL", key = "Insert" }), { description = "Copy" })
+hl.bind(vars.mainMod .. " + V", hl.dsp.send_shortcut({ mods = "SHIFT", key = "Insert" }), { description = "Paste" })
+hl.bind(vars.mainMod .. " + X", hl.dsp.send_shortcut({ mods = "CTRL", key = "X" }), { description = "Cut" })
 
 -- Move focus
 hl.bind(vars.mainMod .. " + LEFT", hl.dsp.focus({ direction = "l" }), { description = "Move focus left" })
