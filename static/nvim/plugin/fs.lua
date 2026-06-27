@@ -1,6 +1,6 @@
 vim.pack.add({
 	{
-		src = "https://github.com/A7Lavinraj/fyler.nvim",
+		src = "https://github.com/FylerOrg/fyler.nvim",
 		version = "main",
 	},
 })
@@ -8,40 +8,46 @@ vim.pack.add({
 local fyler = require("fyler")
 
 fyler.setup({
+	auto_confirm_simple_mutation = true,
+	follow_current_file = false,
+	use_as_default_explorer = true,
+	mappings = {
+		n = {
+			["q"] = { action = "close" },
+			["<CR>"] = { action = "select" },
+			["<C-t>"] = { action = "select", args = { tabedit = true } },
+			["w"] = { action = "select", args = { vsplit = true } },
+			["-"] = { action = "select", args = { split = true } },
+			["^"] = { action = "visit", args = { parent = true } },
+			["="] = { action = "visit" },
+			["."] = { action = "visit", args = { cursor = true } },
+			["#"] = { action = "shrink", args = { recursive = true } },
+			["<BS>"] = { action = "shrink" },
+		},
+	},
 	integrations = {
 		icon = "nvim_web_devicons",
-		winpick = "builtin",
 	},
-	views = {
-		finder = {
-			close_on_select = false,
-			confirm_simple = true,
-			default_explorer = true,
-			delete_to_trash = false,
-			columns = {
-				git = {
-					enabled = true,
-				},
-			},
-			watcher = {
-				enabled = true,
-			},
-			mappings = {
-				["q"] = "CloseView",
-				["<CR>"] = "Select",
-				["<C-t>"] = "SelectTab",
-				["w"] = "SelectVSplit",
-				["-"] = "SelectSplit",
-				["^"] = "GotoParent",
-				["="] = "GotoCwd",
-				["."] = "GotoNode",
-				["#"] = "CollapseAll",
-				["<BS>"] = "CollapseNode",
-			},
-			win = {
-				border = "rounded",
-			},
+	extensions = {
+		git = {
+			enabled = true,
+			inline = true,
 		},
+		trash = {
+			enabled = false,
+		},
+		watcher = {
+			enabled = true,
+		},
+	},
+	ui = {
+		hidden_items = {
+			switches = {},
+			patterns = {},
+			always_hidden = {},
+			always_visible = {},
+		},
+		indent_guides = true,
 	},
 })
 
