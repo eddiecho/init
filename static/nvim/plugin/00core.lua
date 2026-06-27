@@ -55,7 +55,7 @@ require("catppuccin").setup({
 		},
 	},
 })
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin-nvim")
 
 local ui2 = require("vim._core.ui2")
 local messages = require("vim._core.ui2.messages")

@@ -41,6 +41,7 @@ local ensure_installed = {
 	"markdown",
 	"markdown_inline",
 	"nix",
+	"terraform",
 	"python",
 	"vimdoc",
 	"zig",
