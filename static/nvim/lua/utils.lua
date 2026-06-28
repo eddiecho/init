@@ -18,6 +18,10 @@ function M.is_darwin()
   return vim.fn.has("darwin")
 end
 
+function M.is_unix_like()
+  return M.is_wsl() or M.is_linux() or M.is_darwin()
+end
+
 -- Check whether the current buffer is empty
 function M.is_buffer_empty()
 	return vim.fn.empty(vim.fn.expand("%:t")) == 1

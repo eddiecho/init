@@ -21,7 +21,7 @@ if vim.fn.executable("go") == 1 then
 	ensure_installed[#ensure_installed + 1] = "gopls"
 end
 
-if utils.is_linux() or utils.is_darwin() then
+if utils.is_unix_like() then
 	ensure_installed[#ensure_installed + 1] = "bashls"
 end
 
@@ -31,9 +31,11 @@ end
 
 require("mason-lspconfig").setup({
 	ensure_installed = ensure_installed,
-	automatic_enable = false,
+	automatic_enable = true,
 })
 
+--[[
 for _, svr in ipairs(ensure_installed) do
 	vim.lsp.enable(svr)
 end
+]]--
