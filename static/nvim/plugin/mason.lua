@@ -21,10 +21,12 @@ if vim.fn.executable("go") == 1 then
 	ensure_installed[#ensure_installed + 1] = "gopls"
 end
 
+if utils.is_linux() or utils.is_darwin() then
+	ensure_installed[#ensure_installed + 1] = "bashls"
+end
+
 if utils.is_neovide() then
 	ensure_installed[#ensure_installed + 1] = "csharp_ls"
-else
-	ensure_installed[#ensure_installed + 1] = "bashls"
 end
 
 require("mason-lspconfig").setup({
