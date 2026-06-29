@@ -9,28 +9,6 @@ vim.pack.add({
 	},
 })
 
-local icons = require("nvim-web-devicons")
-local icon_maps = {
-  {
-    from = "tofu",
-    to = "terraform",
-  },
-}
-
-local overrides = {}
-for _, o in pairs(icon_maps) do
-  local icon, color = icons.get_icon_color_by_filetype(o.to, {})
-  overrides[o.from] = {
-    icon = icon,
-    color = color,
-    name = o.from,
-  }
-end
-
-icons.setup({
-  override_by_extension = overrides,
-})
-
 local utils = require("utils")
 local transparent = utils.is_linux()
 
