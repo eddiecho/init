@@ -3,6 +3,8 @@ vim.filetype.add({
 		hbs = "html",
 		fx = "glsl",
 		fxh = "glsl",
-		tofu = "terraform",
+		tofu = "opentofu",
 	},
 })
+
+-- vim.treesitter.language.register("terraform", "opentofu")

@@ -9,7 +9,8 @@ require("mason").setup()
 local ensure_installed = {
 	"lua_ls",
 	"superhtml",
-  "terraformls",
+	-- "terraformls",
+	"tofu_ls",
 	"zls",
 }
 
@@ -34,8 +35,6 @@ require("mason-lspconfig").setup({
 	automatic_enable = true,
 })
 
---[[
 for _, svr in ipairs(ensure_installed) do
 	vim.lsp.enable(svr)
 end
-]]--
