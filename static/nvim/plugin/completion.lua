@@ -78,4 +78,4 @@ blink.setup({
 	},
 })
 
-blink.build()
+blink.build():wait()
