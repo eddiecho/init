@@ -15,7 +15,11 @@ function M.is_linux()
 end
 
 function M.is_darwin()
-	return vim.fn.has("darwin")
+	return vim.fn.has("darwin") == 1
+end
+
+function M.is_win32()
+  return vim.fn.has("win32") == 1
 end
 
 function M.is_unix_like()
