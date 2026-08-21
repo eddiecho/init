@@ -9,7 +9,6 @@ require("mason").setup()
 local ensure_installed = {
 	"lua_ls",
 	"superhtml",
-	-- "terraformls",
 	"tofu_ls",
 	"zls",
 }
