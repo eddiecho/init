@@ -19,14 +19,29 @@ in {
 
     programs.git = {
       enable = true;
-
       lfs.enable = true;
-      settings = {
-        user = {
-          email = config.settings.email;
-          name = config.settings.fullName;
+
+      includes = [
+        {
+          contents = {
+            user = {
+              email = config.settings.email;
+              name = config.settings.fullName;
+            };
+          };
+        }
+      ] ++ lib.optional (config.settings.anonEmail != null)
+        {
+          condition = "gitdir/i:**/ffxiv/**";
+          contents = {
+            user = {
+              email = config.settings.anonEmail;
+              name = config.settings.anonName;
+            };
+          };
         };
 
+      settings = {
         core = {
           editor = lib.mkDefault "vi";
           pager = "less -X -F";

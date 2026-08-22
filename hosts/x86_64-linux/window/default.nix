@@ -4,6 +4,8 @@
     username = vals.username;
     fullName = vals.fullName;
     email = vals.email;
+    anonEmail = vals.anonEmail;
+    anonName = vals.anonName;
   };
 
   home-manager.users.${vals.username} = {
