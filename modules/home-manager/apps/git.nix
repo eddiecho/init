@@ -21,16 +21,18 @@ in {
       enable = true;
       lfs.enable = true;
 
-      includes = [
-        {
-          contents = {
-            user = {
-              email = config.settings.email;
-              name = config.settings.fullName;
+      includes =
+        [
+          {
+            contents = {
+              user = {
+                email = config.settings.email;
+                name = config.settings.fullName;
+              };
             };
-          };
-        }
-      ] ++ lib.optional (config.settings.anonEmail != null)
+          }
+        ]
+        ++ lib.optional (config.settings.anonEmail != null)
         {
           condition = "gitdir/i:**/ffxiv/**";
           contents = {
