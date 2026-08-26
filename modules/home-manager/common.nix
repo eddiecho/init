@@ -21,6 +21,7 @@ in {
       nodejs_22 # required by mason for npm-based LSPs (pyright, ts_ls, bashls)
       clang_21 # tree-sitter uses this
       cargo
+      claude-code
     ];
 
     modules.apps = {
@@ -28,6 +29,7 @@ in {
       git.enable = lib.mkDefault true;
       direnv.enable = lib.mkDefault true;
       shell.enable = lib.mkDefault true;
+      claude.enable = lib.mkDefault true;
     };
   };
 }
