@@ -12,4 +12,6 @@ The library functions `buildHome`, `buildNixos`, and `buildDarwin` will crawl th
 
 `tools` has random one-off scripts, including a bootstrap installer (which as of 12/01/2025 I still haven't tested).
 
+`hosts/home` is for machines that don't get a full NixOS/nix-darwin config from this flake — home-manager only, run by hand. See `hosts/home/README.md`.
+
 If for whatever reason someone else decides to copy this, just update the values in config.json and you should be fine. Remember to add your own hardware-configuration.nix files to the hosts.

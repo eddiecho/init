@@ -46,6 +46,20 @@ in
     linuxHosts = lib.filterAttrs (name: value: builtins.elem name linuxSystems) hosts;
     darwinHosts = lib.filterAttrs (name: value: builtins.elem name darwinSystems) hosts;
 
+    # Standalone (non-NixOS/non-darwin) home-manager-only hosts, kept in a
+    # separate hosts/home/ tree so a name here can never collide with — and
+    # get silently overwritten by — a system-managed host of the same name.
+    # See hosts/home/README.md. Guarded with pathExists since it's fine for
+    # this tree to be empty (or missing a given system) most of the time.
+    homeHosts = forAllSystems (
+      system: let
+        dir = ../hosts/home/${system};
+      in
+        if builtins.pathExists dir
+        then defaultFilesToAttrset dir
+        else {}
+    );
+
     # { system -> pkgs }
     pkgsBySystem = forAllSystems (
       system:
@@ -65,6 +79,10 @@ in
       };
     };
 
+    # Standalone home-manager, unrelated to buildNixos/buildDarwin below —
+    # no useGlobalPkgs/useUserPackages, no shared system generation. Only
+    # for hosts/home/ hosts; never point this at an already NixOS/darwin-
+    # managed host (see hosts/home/README.md).
     buildHome = {
       system,
       modules,

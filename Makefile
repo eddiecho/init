@@ -27,10 +27,6 @@ nvim:
 hypr-luarc:
 	ln -sfn $$HOME/.config/hypr/.luarc.json $(shell pwd)/static/hypr/.luarc.json
 
-.PHONY: home
-home: nvim hypr-luarc
-	home-manager switch --flake .\#$$NIXOS_FLAKE_NAME
-
 .PHONY: sync-nvim-to-win
 sync-nvim-to-win:
 ifdef WIN_HOME_DIR
@@ -50,6 +46,16 @@ build:
 .PHONY: fmt
 fmt:
 	nix fmt .
+
+# Standalone home-manager only — for hosts/home/<system>/<name> machines
+# with no NixOS/darwin system config of their own. See hosts/home/README.md.
+# Never point this at framework/window/work.
+.PHONY: home
+home:
+ifndef HOME_CONFIG
+	$(error HOME_CONFIG is not set — pass the hosts/home/<system>/<name> host name, e.g. `make home HOME_CONFIG=laptop`. See hosts/home/README.md)
+endif
+	home-manager switch --flake .\#$(HOME_CONFIG)
 
 .PHONY: toolexample
 toolexample:

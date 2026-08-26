@@ -47,11 +47,6 @@
       url = "github:NixOS/nixos-hardware/master";
     };
 
-    vicinae = {
-      url = "github:vicinaehq/vicinae";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -148,21 +143,12 @@
       lib.linuxHosts
     );
 
-    homeModules =
-      builtins.mapAttrs (
-        system: hosts:
-          builtins.mapAttrs (
-            name: module:
-              (builtins.head (lib.attrsToList
-                (module {
-                  inherit nixos-hardware vals;
-                  pkgs = nixpkgs.legacyPackages.${system};
-                }).home-manager.users)).value
-          )
-          hosts
-      )
-      lib.hosts;
-
+    # Standalone home-manager configs for machines with no NixOS/nix-darwin
+    # system config of their own — see hosts/home/README.md for what this
+    # is for and how to run it. Sourced from hosts/home/, never from the
+    # same hosts/<system>/<name> tree that nixosConfigurations/
+    # darwinConfigurations use, so a name here can't collide with an
+    # already system-managed host.
     homeConfigurations = lib.flattenAttrset (
       builtins.mapAttrs (
         system: hosts:
@@ -172,17 +158,17 @@
                 inherit system;
                 modules = [
                   inputs.catppuccin.homeModules.catppuccin
-                  inputs.vicinae.homeManagerModules
                   module
                 ];
                 specialArgs = {
+                  inherit vals;
                   root = self;
                 };
               }
           )
           hosts
       )
-      homeModules
+      lib.homeHosts
     );
 
     darwinConfigurations = lib.flattenAttrset (
