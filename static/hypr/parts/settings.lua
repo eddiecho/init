@@ -78,6 +78,9 @@ hl.config({
 		key_press_enables_dpms = true,
 		force_default_wallpaper = -1,
 	},
+	ecosystem = {
+		no_update_news = true,
+	},
 	gestures = {
 		workspace_swipe_invert = true,
 		workspace_swipe_distance = 700,

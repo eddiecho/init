@@ -4,7 +4,12 @@
   lib,
   ...
 }: let
-  session = "${pkgs.hyprland}/bin/Hyprland";
+  # start-hyprland is Hyprland's own watchdog/supervisor binary — launching
+  # the raw Hyprland binary directly (as we used to) makes it log a warning
+  # that it was started without start-hyprland. --path pins it to the
+  # cap_sys_nice-wrapped binary from security.wrappers.Hyprland below,
+  # rather than relying on PATH search order to find it.
+  session = "${pkgs.hyprland}/bin/start-hyprland --path /run/wrappers/bin/Hyprland";
   cfg = config.nixos.display;
 in {
   options.nixos.display.enable = lib.mkEnableOption "Enable display";

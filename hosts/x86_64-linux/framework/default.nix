@@ -52,6 +52,11 @@
   catppuccin = {
     flavor = "mocha";
     enable = true;
+    # catppuccin/nix's own binary cache — without this, anything catppuccin
+    # builds (e.g. the cursor theme, which renders every flavor/accent
+    # variant via Inkscape) is built from source locally every time,
+    # since cache.nixos.org doesn't carry third-party flake outputs.
+    cache.enable = true;
   };
 
   boot = {
