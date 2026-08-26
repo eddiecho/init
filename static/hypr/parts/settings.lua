@@ -162,5 +162,4 @@ hl.window_rule({ match = { title = "^(pop-up)$" }, float = true, pin = true, siz
 
 -- Layer rules
 hl.layer_rule({ match = { namespace = "waybar" }, blur = true })
-hl.layer_rule({ match = { namespace = "tofi" }, blur = true })
 hl.layer_rule({ match = { namespace = "swaync" }, blur = true })

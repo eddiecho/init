@@ -15,9 +15,9 @@ in {
       hyprshot # take screenshots
       hyprlock # lock screen
       hypridle # idle daemon (whatever that means?)
-      tofi # popup program switcher
       linux-wallpaperengine
       swaynotificationcenter # swaync
+      vicinae # command pallete
     ];
   };
 }
