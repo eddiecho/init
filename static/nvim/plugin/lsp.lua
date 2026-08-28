@@ -72,17 +72,3 @@ require("tiny-inline-diagnostic").setup({
 })
 
 vim.diagnostic.config({ virtual_text = false })
-
-vim.api.nvim_create_autocmd("LspProgress", {
-	callback = function(ev)
-		local value = ev.data.params.value
-		vim.api.nvim_echo({ { value.message or "done" } }, false, {
-			id = "lsp." .. (ev.data.client_id or {}),
-			kind = "progress",
-			source = "vim.lsp",
-			title = value.title,
-			status = value.kind ~= "end" and "running" or "success",
-			percent = value.percentage,
-		})
-	end,
-})

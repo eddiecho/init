@@ -29,7 +29,7 @@ gs.setup({
 			return "<Ignore>"
 		end, { expr = true, buffer = bufnr })
 
-		vim.keymap.set("n", "<leader>c", function()
+		vim.keymap.set("n", "<leader>C", function()
 			if vim.wo.diff then
 				return "<leader>C"
 			end
