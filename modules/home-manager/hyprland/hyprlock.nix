@@ -18,7 +18,6 @@ in {
 
         background = {
           monitor = "";
-          path = "/etc/nixos/home-manager/wallpapers/miku.png";
           blur_passes = 3;
           color = "$base";
         };

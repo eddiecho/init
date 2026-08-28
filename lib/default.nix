@@ -22,12 +22,23 @@ in
 
     defaultFilesToAttrset = dir:
       lib.pipe (nixFiles dir) [
+        (builtins.filter (file: builtins.baseNameOf file == "default.nix"))
+
         (map (file: {
           name = builtins.baseNameOf (builtins.dirOf file);
           value = import file;
         }))
 
-        (builtins.listToAttrs)
+        (builtins.foldl' (
+            acc: {
+              name,
+              value,
+            }:
+              if acc ? ${name}
+              then throw "defaultFilesToAttrset: duplicate host name \"${name}\" under ${toString dir}"
+              else acc // {${name} = value;}
+          )
+          {})
       ];
 
     supportedSystems = [

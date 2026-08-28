@@ -3,5 +3,6 @@ pkgs.writeShellScriptBin "install" ''
   set -e
 
   FLAKE=$1
-  ${pkgs.nixos-install-tools}/bin/nixos-install --flake github:eddiecho/init#''${FLAKE}
+  FLAKE_URI=''${2:-github:eddiecho/init}
+  ${pkgs.nixos-install-tools}/bin/nixos-install --flake "''${FLAKE_URI}#''${FLAKE}"
 ''

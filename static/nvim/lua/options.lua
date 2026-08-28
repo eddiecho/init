@@ -14,8 +14,6 @@ vim.o.cursorline = true
 vim.o.mouse = "a"
 -- Signs next to line numbers
 vim.o.signcolumn = "yes"
--- Height of status line
-vim.o.cmdheight = 1
 -- Update delay time
 vim.o.updatetime = 250
 -- Allow copy paste

@@ -1,7 +1,7 @@
 {pkgs, ...}:
 pkgs.writeShellScriptBin "loadkey" ''
-  read -p "Enter the seed phrase for your SSH key... " seed
-  echo $seed
+  read -rsp "Enter the seed phrase for your SSH key... " seed
+  echo
   mkdir -p ~/.ssh/
   ${pkgs.melt}/bin/melt restore --seed "''${seed}" ~/.ssh/id_ed25519
   printf "\n\nContinuing activation.\n\n"
