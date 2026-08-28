@@ -29,10 +29,7 @@ in {
         macos-non-native-fullscreen = true;
         quit-after-last-window-closed = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin true;
         background-opacity = 0.8;
-        fullscreen =
-          if pkgs.stdenv.isDarwin
-          then true
-          else false;
+        fullscreen = pkgs.stdenv.hostPlatform.isDarwin;
         custom-shader = [
           "${root}/static/shaders/smear-cursor.glsl"
         ];

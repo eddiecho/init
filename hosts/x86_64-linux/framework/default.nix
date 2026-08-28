@@ -52,6 +52,7 @@
   catppuccin = {
     flavor = "mocha";
     enable = true;
+    autoEnable = true;
     cache.enable = true;
   };
 

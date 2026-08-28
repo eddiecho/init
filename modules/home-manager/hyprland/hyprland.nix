@@ -9,6 +9,7 @@
 in {
   config = lib.mkIf cfg.enable {
     home.pointerCursor = {
+      enable = true;
       package = pkgs.catppuccin-cursors.mochaDark;
       name = "catppuccin-mocha-dark-cursors";
       size = 24;
