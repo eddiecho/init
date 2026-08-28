@@ -4,3 +4,4 @@ result
 .direnv
 .envrc.private
 .DS_Store
+/static/hypr/.luarc.json

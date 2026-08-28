@@ -21,11 +21,17 @@ nvim:
 	ln -sfn $(shell pwd)/static/nvim $$HOME/.config/nvim
 
 # Lets lua-ls in static/hypr/parts/*.lua pick up the Hyprland stubs that
-# HM (configType = "lua") writes per current Hyprland version. Dangling on
-# machines without Hyprland — lua-ls treats a missing target as no config.
+# HM (configType = "lua") writes per current Hyprland version. On machines
+# without Hyprland the target never exists, so skip the symlink entirely —
+# a dangling symlink (rather than no file) makes lua-ls reload on every
+# lua buffer open instead of treating it as no config.
 .PHONY: hypr-luarc
 hypr-luarc:
-	ln -sfn $$HOME/.config/hypr/.luarc.json $(shell pwd)/static/hypr/.luarc.json
+	@if [ -e "$$HOME/.config/hypr/.luarc.json" ]; then \
+		ln -sfn $$HOME/.config/hypr/.luarc.json $(shell pwd)/static/hypr/.luarc.json; \
+	else \
+		rm -f $(shell pwd)/static/hypr/.luarc.json; \
+	fi
 
 .PHONY: sync-nvim-to-win
 sync-nvim-to-win:
