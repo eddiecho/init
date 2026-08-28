@@ -84,7 +84,7 @@
     nixos-hardware = inputs.nixos-hardware;
     vals = builtins.fromJSON (builtins.readFile ./config.json);
     lib = import ./lib inputs;
-  in rec {
+  in {
     devShells = lib.forAllSystems (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
