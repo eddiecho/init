@@ -5,3 +5,7 @@ result
 .envrc.private
 .DS_Store
 /static/hypr/.luarc.json
+
+/.claude/settings.local.json
+/.claude/worktrees/
+/CLAUDE.local.md
