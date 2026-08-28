@@ -1,4 +1,4 @@
--- On Windows Neovide, I think Lazy holds a lock on the directory or something?
+-- On Windows Neovide, neovim itself holds a lock on the directory or something?
 -- I have to close out Neovide and then manually recompile to get it working
 vim.pack.add({
 	"https://github.com/dmtrKovalenko/fff.nvim",

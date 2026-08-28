@@ -4,11 +4,7 @@
   lib,
   ...
 }: let
-  # start-hyprland is Hyprland's own watchdog/supervisor binary — launching
-  # the raw Hyprland binary directly (as we used to) makes it log a warning
-  # that it was started without start-hyprland. --path pins it to the
-  # cap_sys_nice-wrapped binary from security.wrappers.Hyprland below,
-  # rather than relying on PATH search order to find it.
+  # I don't know why we need this
   session = "${pkgs.hyprland}/bin/start-hyprland --path /run/wrappers/bin/Hyprland";
   cfg = config.nixos.display;
 in {
@@ -18,11 +14,7 @@ in {
     services.greetd = {
       enable = true;
       settings = let
-        # greetd execs `command` directly with no shell in between, so
-        # home.sessionVariables (XCURSOR_THEME/SIZE, EDITOR, ...) never
-        # reach Hyprland or anything it spawns unless we route through a
-        # login shell ourselves — `-l` makes zsh read ~/.zprofile, which is
-        # what home-manager's zsh integration uses to export them.
+        # or this
         loginSession = "${pkgs.zsh}/bin/zsh -l -c 'exec ${session}'";
       in {
         initial_session = {

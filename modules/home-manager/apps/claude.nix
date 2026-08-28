@@ -11,8 +11,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # Hand-edited plain Markdown, kept in static/ like nvim/hypr — edit
-    # static/claude/CLAUDE.md directly, not this file.
     home.file.".claude/CLAUDE.md" = {
       source =
         config.lib.file.mkOutOfStoreSymlink
