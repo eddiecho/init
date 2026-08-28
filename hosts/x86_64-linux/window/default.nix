@@ -27,7 +27,10 @@
     };
   };
 
-  catppuccin.enable = false;
+  catppuccin = {
+    enable = false;
+    autoEnable = false;
+  };
 
   users.mutableUsers = true;
 

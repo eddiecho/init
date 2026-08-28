@@ -76,7 +76,7 @@ in {
           username
         ];
 
-        auto-optimise-store = lib.mkIf (!pkgs.stdenv.isDarwin) true;
+        auto-optimise-store = true;
       };
     };
   };

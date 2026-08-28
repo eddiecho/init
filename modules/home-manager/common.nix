@@ -13,7 +13,7 @@ in {
 
     home.username = config.settings.username;
     home.homeDirectory =
-      if pkgs.stdenv.isDarwin
+      if pkgs.stdenv.hostPlatform.isDarwin
       then "/Users/${config.settings.username}"
       else "/home/${config.settings.username}";
 

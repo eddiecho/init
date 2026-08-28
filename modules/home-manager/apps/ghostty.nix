@@ -27,7 +27,7 @@ in {
         macos-titlebar-style = "hidden";
         window-decoration = false;
         macos-non-native-fullscreen = true;
-        quit-after-last-window-closed = lib.mkIf pkgs.stdenv.isDarwin true;
+        quit-after-last-window-closed = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin true;
         background-opacity = 0.8;
         fullscreen =
           if pkgs.stdenv.isDarwin
