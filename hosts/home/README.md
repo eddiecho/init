@@ -61,6 +61,10 @@ install needed):
 nix run .#homeConfigurations.<name>.activationPackage
 ```
 
+If Nix itself isn't installed yet either, `tools/install/bootstrap.sh --home <name>`
+does both steps: installs Nix if missing, then runs the activation package
+above. See `tools/install/bootstrap.sh`.
+
 Every switch after that:
 
 ```

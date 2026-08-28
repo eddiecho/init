@@ -1,5 +1,5 @@
 {pkgs, ...}:
-pkgs.writeShellScriptBin "installer" ''
+pkgs.writeShellScriptBin "install" ''
   set -e
 
   FLAKE=$1
