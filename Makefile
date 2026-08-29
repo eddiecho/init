@@ -41,9 +41,14 @@ endif
 
 # TODO - maybe just switch to just so we can have proper dependency tracking
 .PHONY: nixos
-nixos: nvim hypr-luarc sync-nvim-to-win
+# hypr-luarc runs after the switch, not as a prerequisite: it syncs whatever
+# ~/.config/hypr/.luarc.json currently is, and before the switch that file
+# may not exist yet (first-ever run), leaving static/hypr/.luarc.json deleted
+# even though the switch that follows creates a live one.
+nixos: nvim sync-nvim-to-win
 	git update-index --skip-worktree config.json
 	sudo $(NIXOS)-rebuild switch --flake .\#$$NIXOS_FLAKE_NAME
+	$(MAKE) hypr-luarc
 
 .PHONY: build
 build:

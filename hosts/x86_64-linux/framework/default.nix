@@ -89,4 +89,10 @@
     "/share/applications"
     "/share/xdg-desktop-portal"
   ];
+
+  # retarded mongrel dogshit
+  # in what fucking universe DO WE TURN WIFI OFF
+  # ON A FUCKING LAPTOP FOR """"POWER SAVING""""???????
+  environment.systemPackages = [pkgs.iw];
+  powerManagement.powerUpCommands = "${pkgs.iw}/bin/iw dev wlan0 set power_save off";
 }
