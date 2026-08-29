@@ -47,6 +47,7 @@
     };
     moonlight.enable = true;
     steam.enable = true;
+    wifiPowersaveOff.enable = true;
   };
 
   catppuccin = {
@@ -89,39 +90,4 @@
     "/share/applications"
     "/share/xdg-desktop-portal"
   ];
-
-  # retarded mongrel dogshit
-  # in what fucking universe DO WE TURN WIFI OFF
-  # ON A FUCKING LAPTOP FOR """"POWER SAVING""""???????
-  environment.systemPackages = [pkgs.iw];
-  systemd.services = {
-    wifi-powersave-off = {
-      description = "Disable WiFi power save at boot";
-      wantedBy = ["multi-user.target"];
-      after = ["sys-subsystem-net-devices-wlan0.device"];
-      bindsTo = ["sys-subsystem-net-devices-wlan0.device"];
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.iw}/bin/iw dev wlan0 set power_save off";
-      };
-    };
-
-    # https://www.freedesktop.org/software/systemd/man/latest/systemd.special.html#sleep.target
-    # ExecStop runs after the system wakes, not before it sleeps.
-    wifi-powersave-off-resume = {
-      description = "Disable WiFi power save after resume";
-      unitConfig = {
-        DefaultDependencies = false;
-        StopWhenUnneeded = true;
-      };
-      before = ["sleep.target"];
-      wantedBy = ["sleep.target"];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-        ExecStart = "true";
-        ExecStop = "${pkgs.iw}/bin/iw dev wlan0 set power_save off";
-      };
-    };
-  };
 }
