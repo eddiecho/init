@@ -31,6 +31,7 @@ in {
         background-opacity = 0.8;
         fullscreen = pkgs.stdenv.hostPlatform.isDarwin;
         custom-shader = [
+          "${root}/static/shaders/bloom.glsl"
           "${root}/static/shaders/smear-cursor.glsl"
         ];
       };
