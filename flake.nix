@@ -143,12 +143,7 @@
       lib.linuxHosts
     );
 
-    # Standalone home-manager configs for machines with no NixOS/nix-darwin
-    # system config of their own — see hosts/home/README.md for what this
-    # is for and how to run it. Sourced from hosts/home/, never from the
-    # same hosts/<system>/<name> tree that nixosConfigurations/
-    # darwinConfigurations use, so a name here can't collide with an
-    # already system-managed host.
+    # see hosts/home/README.md for what this
     homeConfigurations = lib.flattenAttrset (
       builtins.mapAttrs (
         system: hosts:
