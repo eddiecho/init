@@ -68,10 +68,10 @@ above. See `tools/install/bootstrap.sh`.
 Every switch after that:
 
 ```
-make home HOME_CONFIG=<name>
+just home <name>
 ```
 
-which just runs `home-manager switch --flake .#<name>`. `HOME_CONFIG` is
+which runs `home-manager switch --flake .#<name>`. The host name is
 required on purpose — there's no ambient `$NIXOS_FLAKE_NAME` fallback here,
 so you always have to name the target explicitly.
 

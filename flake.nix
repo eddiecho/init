@@ -92,7 +92,7 @@
         default = pkgs.mkShell {
           buildInputs = with pkgs; [
             direnv
-            gnumake
+            just
           ];
         };
       }
