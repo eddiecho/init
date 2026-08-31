@@ -10,7 +10,11 @@ vim.pack.add({
 })
 
 local utils = require("utils")
+local ui = require("ui")
 local transparent = utils.is_linux()
+
+local vimui = require("vim._core.ui2")
+local messages = require("vim._core.ui2.messages")
 
 require("catppuccin").setup({
 	flavour = "mocha",
@@ -57,10 +61,7 @@ require("catppuccin").setup({
 })
 vim.cmd.colorscheme("catppuccin-nvim")
 
-local ui2 = require("vim._core.ui2")
-local messages = require("vim._core.ui2.messages")
-
-ui2.enable({
+vimui.enable({
 	enable = true,
 	msg = {
 		targets = {
@@ -108,79 +109,21 @@ ui2.enable({
 	},
 })
 
-local last_title = nil
-local last_hl = "Normal"
-
-local function msg_win()
-	local win = ui2.wins and ui2.wins.msg
-	if not (win and vim.api.nvim_win_is_valid(win)) then
-		return
-	end
-	if vim.api.nvim_win_get_config(win).hide then
-		return
-	end
-	pcall(vim.api.nvim_win_set_config, win, {
-		relative = "editor",
-		anchor = "NE",
-		row = 1,
-		col = vim.o.columns - 1,
-		border = "rounded",
-		style = "minimal",
-		title = last_title and { { last_title, last_hl } } or nil,
-		title_pos = last_title and "center" or nil,
-	})
-end
-
-local function pager_win()
-	local win = ui2.wins and ui2.wins.pager
-	if not (win and vim.api.nvim_win_is_valid(win)) then
-		return
-	end
-	if vim.api.nvim_win_get_config(win).hide then
-		return
-	end
-	local height = vim.api.nvim_win_get_height(win)
-	pcall(vim.api.nvim_win_set_config, win, {
-		border = "rounded",
-		height = height,
-		style = "minimal",
-		title = last_title and { { last_title, last_hl } } or nil,
-		title_pos = last_title and "center" or nil,
-	})
-end
-
-local function dialog_win()
-	local win = ui2.wins and ui2.wins.dialog
-	if not (win and vim.api.nvim_win_is_valid(win)) then
-		return
-	end
-	if vim.api.nvim_win_get_config(win).hide then
-		return
-	end
-	local height = vim.api.nvim_win_get_height(win)
-	pcall(vim.api.nvim_win_set_config, win, {
-		border = "rounded",
-		height = height,
-		style = "minimal",
-		title = last_title and { { last_title, last_hl } } or nil,
-		title_pos = last_title and "center" or nil,
-	})
-end
-
 local orig_set_pos = messages.set_pos
 messages.set_pos = function(tgt)
 	orig_set_pos(tgt)
 	if tgt == "msg" or tgt == nil then
-		msg_win()
+		ui.msg_win()
 	elseif tgt == "pager" then
-		pager_win()
+		ui.pager_win()
 	elseif tgt == "dialog" then
-		dialog_win()
+		ui.dialog_win()
 	end
 end
 
 -- show cursor line only in active window
 local cursorline_augroup = vim.api.nvim_create_augroup("cursorline-active-window", { clear = true })
+
 vim.api.nvim_create_autocmd("WinEnter", {
 	group = cursorline_augroup,
 	callback = function()
@@ -200,6 +143,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
 		end)
 	end,
 })
+
 vim.api.nvim_create_autocmd("WinLeave", {
 	group = cursorline_augroup,
 	callback = function()
