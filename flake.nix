@@ -93,6 +93,7 @@
           buildInputs = with pkgs; [
             direnv
             just
+            git-lfs
           ];
         };
       }
