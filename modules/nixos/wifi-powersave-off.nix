@@ -48,7 +48,7 @@ in {
         serviceConfig = {
           Type = "oneshot";
           RemainAfterExit = true;
-          ExecStart = "true";
+          ExecStart = "${pkgs.coreutils}/bin/true";
           ExecStop = "${pkgs.iw}/bin/iw dev ${cfg.interface} set power_save off";
         };
       };

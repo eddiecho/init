@@ -1,5 +1,10 @@
 # CLAUDE.md
 
+## Communication
+- Avoid metaphors, use active voice unless absolutely necessary, avoid ambiguity.
+- Ambiguity of language does not include uncertainty of results.
+- If an instruction here conflicts with the task at hand, say so. Do not narrow it silently.
+
 ## Environment
 
 - Machines are managed by a Nix flake (NixOS on Linux, nix-darwin on
@@ -47,3 +52,4 @@ After writing or editing code, check LSP diagnostics and fix errors before proce
 - Don't explain *what* the code does — well-named identifiers already do that.
 - Don't reference the current task, PR, or caller ("added for X flow", "used by Y") — that belongs in the commit message and rots in code.
 - One comment per fact. If the same explanation fits in two places, put it where a reader is most likely to need it (usually the definition, not the call site).
+- Prefer ASD-STE100 Simplified Technical English for comments. Short declarative sentences, active voice, one instruction per sentence, explicit negation, no metaphor.
