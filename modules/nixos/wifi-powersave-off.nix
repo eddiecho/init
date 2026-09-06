@@ -20,6 +20,15 @@ in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [pkgs.iw];
 
+    # TLP hooks sleep.target too, in tlp-sleep.service. Systemd does not
+    # order tlp-sleep.service and wifi-powersave-off-resume relative to
+    # each other at resume. tlp-sleep.service runs `tlp resume` on stop.
+    # `tlp resume` turns WiFi power save back on by default. This can
+    # undo wifi-powersave-off-resume, at random, after every resume.
+    # Force TLP off. This module is then the only service that sets
+    # WiFi power save.
+    services.tlp.enable = lib.mkForce false;
+
     # retarded mongrel dogshit
     # IN WHAT UNIVERSE IS IT A GOOD IDEA TO TURN OFF WIFI
     # ON A FUCKING LAPTOP TO SAVE POWER???????????????
