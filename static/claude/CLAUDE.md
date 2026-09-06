@@ -27,6 +27,8 @@
 - Search: `rg` instead of `grep`
 - Find: `fd` instead of `find`
 - Visualization: `tree`
+- Never reach out to Python for editing files
+- Prefer not using sed or awk
 
 ### Code Intelligence
 

@@ -24,7 +24,7 @@ const vec3[24] samples = {
   vec3(3.8639122286635708, -2.6589814382925123, 0.21320071635561041),
   vec3(3.3486228404946234, 3.4331800232609, 0.20851441405707477),
   vec3(-2.8769733643574344, 3.9652268864187157, 0.20412414523193154)
-  };
+};
 
 float lum(vec4 c) {
   return 0.299 * c.r + 0.587 * c.g + 0.114 * c.b;
@@ -42,7 +42,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec4 c = texture(iChannel0, uv + s.xy * step);
     float l = lum(c);
     if (l > 0.2) {
-      color += l * s.z * c * 0.2;
+      color += l * s.z * c * 0.12;
     }
   }
 

@@ -12,6 +12,14 @@ clean: gc
 nvim:
     ln -sfn {{ justfile_directory() }}/static/nvim ~/.config/nvim
 
+claude:
+    #!/usr/bin/env bash
+    mkdir -p "$HOME/.claude"
+    # we do this per file because claude dumps a ton of stuff by default
+    for f in {{ justfile_directory() }}/static/claude/*; do
+        ln -sfn "$f" "$HOME/.claude/$(basename "$f")"
+    done
+
 hypr-luarc:
     #!/usr/bin/env bash
     if [ -e "$HOME/.config/hypr/.luarc.json" ]; then
@@ -26,7 +34,7 @@ sync-nvim-to-win:
         cp -r static/nvim "$WIN_HOME_DIR/AppData/Local"
     fi
 
-nixos: nvim sync-nvim-to-win && hypr-luarc
+nixos: nvim claude sync-nvim-to-win && hypr-luarc
     git update-index --skip-worktree config.json
     sudo {{ nixos_cmd }}-rebuild switch --flake .#${NIXOS_FLAKE_NAME}
 
