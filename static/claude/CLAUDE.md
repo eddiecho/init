@@ -6,7 +6,6 @@
 - If an instruction here conflicts with the task at hand, say so. Do not narrow it silently.
 
 ## Environment
-
 - Machines are managed by a Nix flake (NixOS on Linux, nix-darwin on
   macOS, home-manager for user config). Prefer editing that flake's
   modules over imperative installs (`nix-env -i`, `brew install`,
@@ -14,29 +13,16 @@
   `nix run nixpkgs#<pkg>` is usually the right ask rather than a
   permanent install.
 
-### Git conventions
-
-- History is kept rebase-clean: `pull.rebase`, `rebase.autoStash`, and
-  `rebase.autoSquash` are all on, `push.default` is `current` with
-  `autoSetupRemote`. Prefer `fixup!`/`squash!` commits over amending
-  shared history, and don't add merge commits where a rebase works.
-- `commit.cleanup = scissors` — trailing comment lines in a commit
-  message template are stripped, don't rely on them surviving.
-- `merge.conflictstyle = diff3` — conflict markers include the common
-  ancestor hunk; use it to understand *why* sides diverged, not just
-  *what* they changed.
-- `git diff` is difftastic (`difft`); expect structural, not line-based,
-  diff output when reviewing changes.
-
 ### Tool Preferences
 - Search: `rg` instead of `grep`
 - Find: `fd` instead of `find`
 - Visualization: `tree`
-- Never reach out to Python for editing files
+- `git diff` is difftastic (`difft`); expect structural, not line-based, diff output when reviewing changes.
 - Prefer not using sed or awk
+- Never reach out to Python for editing files
+- Never commit or stage code, never prompt to automatically commit code 
 
 ### Code Intelligence
-
 Use LSP over Grep/Read for code navigation — it's faster, precise, and avoids reading entire files:
 - `workspaceSymbol` to find where something is defined
 - `findReferences` to see all usages across the codebase
