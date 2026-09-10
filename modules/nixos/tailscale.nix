@@ -12,11 +12,6 @@ in {
     tailnetDomain = lib.mkOption {
       type = lib.types.str;
       example = "azules-stargazer.ts.net";
-      description = ''
-        The MagicDNS domain of your tailnet (e.g. `azules-stargazer.ts.net`),
-        without leading dot or hostname. Used to build the Caddy vhost as
-        `<hostname>.<tailnetDomain>`.
-      '';
     };
   };
 

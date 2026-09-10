@@ -11,10 +11,8 @@ in {
   };
 
   # Entries under static/claude/ (CLAUDE.md, skills, commands, ...) are
-  # symlinked individually into ~/.claude/ by the `claude` target in the
-  # top-level justfile, not by home-manager: ~/.claude also holds runtime
-  # state (sessions, memory, settings.local.json) that must stay unmanaged.
+  # symlinked individually into ~/.claude/
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ claude-code ];
+    home.packages = with pkgs; [claude-code];
   };
 }

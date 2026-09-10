@@ -86,8 +86,7 @@ in
     };
 
     # Standalone home-manager, no useGlobalPkgs/useUserPackages, no shared system generation.
-    # Only for hosts/home/ hosts; never point this at an already NixOS/darwin-
-    # managed host (see hosts/home/README.md).
+    # (see hosts/home/README.md).
     buildHome = {
       system,
       modules,

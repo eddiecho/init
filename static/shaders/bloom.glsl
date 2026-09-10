@@ -30,6 +30,8 @@ float lum(vec4 c) {
   return 0.299 * c.r + 0.587 * c.g + 0.114 * c.b;
 }
 
+const float intensity = 0.12;
+
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   vec2 uv = fragCoord.xy / iResolution.xy;
 
@@ -42,7 +44,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec4 c = texture(iChannel0, uv + s.xy * step);
     float l = lum(c);
     if (l > 0.2) {
-      color += l * s.z * c * 0.12;
+      color += l * s.z * c * intensity;
     }
   }
 

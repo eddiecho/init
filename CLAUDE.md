@@ -1,13 +1,9 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## What this is
-
 Personal system configuration (NixOS, nix-darwin, home-manager) for Eddie Cho, managed with Nix flakes and structured as "Dendritic Nix" — every `.nix` file under `hosts/`, `modules/`, and `overlays/` is auto-discovered by convention rather than manually imported/listed.
 
 ## Commands
-
 Commands are run via [`just`](https://github.com/casey/just) (`justfile` at repo root; provided by the flake's `devShells.default`, picked up automatically via direnv).
 
 - `just` (default recipe, aliases to `nixos`) — rebuild and switch the system config for the current host. Runs `sudo nixos-rebuild switch` (or `darwin-rebuild switch` on macOS, chosen via `just`'s `os()` builtin) against `.#$NIXOS_FLAKE_NAME`. `$NIXOS_FLAKE_NAME` is set automatically after the first successful switch (see `environment.sessionVariables` / `environment.variables` in `lib/default.nix`), or pass it explicitly: `NIXOS_FLAKE_NAME=window just`.
@@ -22,7 +18,6 @@ Commands are run via [`just`](https://github.com/casey/just) (`justfile` at repo
 There is no test suite; correctness is checked via `nix flake check` and `just build` (eval + build without applying).
 
 ## Architecture
-
 **Discovery, not registration.** `lib/default.nix` provides the core helpers (`nixFiles`, `defaultFilesToAttrset`, `buildHome`, `buildNixos`, `buildDarwin`, `hosts`, `pkgsBySystem`, etc.) that everything else is built from. Adding a new host, module, or overlay is just adding a file in the right directory — nothing needs to be wired up in `flake.nix`.
 
 - `hosts/<system>/<name>/default.nix` — one flake output per host: `nixosConfigurations.<name>` (Linux) or `darwinConfigurations.<name>` (macOS). Home-manager is always embedded as a system module here (`home-manager.users.<username> = {...}`, with `useGlobalPkgs`/`useUserPackages = true` set in `lib/default.nix`) rather than built standalone — see `window/default.nix` for the shape: `home-manager.users.<username>`, `nixos.*` module toggles, plus normal NixOS options like `networking.hostName`. Always apply changes via `just`/`just build` for these hosts, never a separate home-manager invocation: this integration is activated by a systemd service tied to the *system* generation that reruns at every boot, so a standalone home-manager profile built separately for the same host would silently get overwritten on the next reboot.
@@ -36,6 +31,5 @@ There is no test suite; correctness is checked via `nix flake check` and `just b
 Two host platforms exist today: `x86_64-linux` (NixOS, e.g. `window` — WSL, `framework` — bare metal with `hardware-configuration.nix`) and `aarch64-darwin` (nix-darwin, `work`).
 
 ## Notes
-
 - Binary/font assets (`*.otf`, `*.jpg`, `*.gif`, `*.png`, `*.webm`) are tracked via Git LFS (`.gitattributes`).
 - `.envrc` uses `use flake` (direnv); an optional untracked `.envrc.private` is sourced if present for machine-local env vars.

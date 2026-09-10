@@ -22,17 +22,11 @@ in {
       withRuby = false;
       withPython3 = false;
 
-      # Keep HM from writing ~/.config/nvim/init.lua — it auto-merges
-      # wrappedNeovim'.luaRcContent into initLua, which conflicts with
-      # our Makefile-managed symlink to static/nvim/. With sideloadInitLua
-      # the wrapper passes its init via `nvim -u <path>` instead.
+      # Keep HM from writing ~/.config/nvim/init.lua
+      # mkOutOfStoreSymlink routes through /nix/store/ which is read-only
+      # and blocks nvim's plugin lockfile writes
       sideloadInitLua = true;
     };
-
-    # NOTE: ~/.config/nvim is symlinked to static/nvim/ by the `nvim` target
-    # in the top-level Makefile, not by home-manager. mkOutOfStoreSymlink
-    # routes through /nix/store/ which is read-only and blocks nvim's
-    # plugin lockfile writes; a `home.activation` ln also did not work.
 
     home.packages = with pkgs; [
       tree-sitter
