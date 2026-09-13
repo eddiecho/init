@@ -26,7 +26,7 @@ if utils.is_unix_like() then
 end
 
 if utils.is_neovide() then
-	ensure_installed[#ensure_installed + 1] = "csharp_ls"
+	ensure_installed[#ensure_installed + 1] = "roslyn_ls"
 end
 
 require("mason-lspconfig").setup({

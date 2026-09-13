@@ -31,6 +31,14 @@ in {
               };
             };
           }
+          {
+            condition = "gitdir/i:/mnt/c/**";
+            contents = {
+              core = {
+                autocrl = "false";
+              };
+            };
+          }
         ]
         ++ lib.optional (config.settings.anonEmail != null)
         {
@@ -47,6 +55,7 @@ in {
         core = {
           editor = lib.mkDefault "vi";
           pager = "less -X -F";
+          autocrlf = "input";
         };
 
         commit = {
