@@ -47,7 +47,6 @@
     };
     moonlight.enable = true;
     steam.enable = true;
-    wifiPowersaveOff.enable = true;
   };
 
   catppuccin = {
@@ -66,7 +65,10 @@
 
   # iwctl station wlan0 connect "wifi-name"
   networking.hostName = "framework";
-  networking.wireless.iwd.enable = true;
+  networking.wireless.iwd = {
+    enable = true;
+    settings.DriverQuirks.PowerSaveDisable = "*";
+  };
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
