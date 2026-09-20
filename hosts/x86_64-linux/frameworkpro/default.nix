@@ -3,6 +3,7 @@
   nixos-hardware,
   pkgs,
   vals,
+  lib,
   ...
 }: rec {
   imports = [
@@ -47,6 +48,10 @@
     };
     moonlight.enable = true;
     steam.enable = true;
+    disableWakeSources = {
+      enable = true;
+      devices = ["XHCI" "TXHC" "TDM0" "TDM1" "TRP0" "TRP1" "TRP2" "TRP3"];
+    };
   };
 
   catppuccin = {
@@ -73,6 +78,8 @@
   nixpkgs.hostPlatform = "x86_64-linux";
 
   security.polkit.enable = true;
+
+  services.tlp.enable = lib.mkForce false;
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.graphics = {

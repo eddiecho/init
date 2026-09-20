@@ -3,6 +3,7 @@
   nixos-hardware,
   pkgs,
   vals,
+  lib,
   ...
 }: rec {
   imports = [
@@ -73,6 +74,12 @@
   nixpkgs.hostPlatform = "x86_64-linux";
 
   security.polkit.enable = true;
+
+  # nixos-hardware sets tlp.enable to the negation of
+  # power-profiles-daemon.enable, resolved at build time. That value does
+  # not reliably match power-profiles-daemon.enable's own build-time
+  # value on this host. Do not trust it. Force tlp off here instead.
+  services.tlp.enable = lib.mkForce false;
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.graphics = {
