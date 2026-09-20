@@ -10,6 +10,7 @@ clean: gc
     nix-store --optimize
 
 nvim:
+    git update-index --skip-worktree static/nvim/nvim-pack-lock.json
     ln -sfn {{ justfile_directory() }}/static/nvim ~/.config/nvim
 
 claude:
