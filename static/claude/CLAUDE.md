@@ -20,7 +20,8 @@
 - `git diff` is difftastic (`difft`); expect structural, not line-based, diff output when reviewing changes.
 - Prefer not using sed or awk
 - Never reach out to Python for editing files
-- Never commit or stage code, never prompt to automatically commit code 
+- Never git commit or stage code, never prompt to automatically commit code 
+- NEVER git push code
 
 ### Code Intelligence
 Use LSP over Grep/Read for code navigation — it's faster, precise, and avoids reading entire files:
