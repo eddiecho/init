@@ -64,6 +64,12 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    # nixos-hardware's framework/13-inch/common/intel.nix adds
+    # nvme.noacpi=1. That flag makes the kernel ignore the firmware's
+    # StorageD3Enable hint, so the NVMe drive stays in D0 during s2idle.
+    # The kernel applies the last value of a repeated module parameter.
+    # mkAfter puts this value after the nixos-hardware value.
+    kernelParams = lib.mkAfter ["nvme.noacpi=0"];
   };
 
   users.mutableUsers = true;
