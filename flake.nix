@@ -94,6 +94,7 @@
             direnv
             just
             git-lfs
+            jq
           ];
         };
       }

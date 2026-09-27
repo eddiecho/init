@@ -21,6 +21,21 @@ claude:
         ln -sfn "$f" "$HOME/.claude/$(basename "$f")"
     done
 
+wallpaper_id := replace_regex(read(justfile_directory() / "static/hypr/parts/wallpaper.lua"), '(?s).*return "([0-9]+)".*', '$1')
+
+# Download Wallpaper Engine (for its assets folder) and the wallpaper set in
+# static/hypr/parts/wallpaper.lua. The steamUsername account in config.json
+# must own Wallpaper Engine.
+wallpaper:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    user=$(jq -r '.steamUsername // ""' "{{ justfile_directory() }}/config.json")
+    if [ -z "$user" ]; then
+        echo "error: set steamUsername in config.json" >&2
+        exit 1
+    fi
+    steamcmd +@sSteamCmdForcePlatformType windows +login "$user" +app_update 431960 +workshop_download_item 431960 {{ wallpaper_id }} +quit
+
 hypr-luarc:
     #!/usr/bin/env bash
     if [ -e "$HOME/.config/hypr/.luarc.json" ]; then

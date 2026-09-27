@@ -8,7 +8,6 @@
 in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      awww # wallpaper manager, for loading images because this is hard for some reason????
       hyprland
       xwayland
       waybar # status bar
@@ -16,6 +15,7 @@ in {
       hyprlock # lock screen
       hypridle # idle daemon (whatever that means?)
       linux-wallpaperengine
+      steamcmd # for wallpaper engine assets
       swaynotificationcenter # swaync
       vicinae # command pallete
     ];
