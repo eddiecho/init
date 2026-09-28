@@ -9,6 +9,11 @@ in {
   options.modules.common.enable = lib.mkEnableOption "Enable base";
 
   config = lib.mkIf cfg.enable {
+    # Prevents activation failure: without nix.package set, home-manager falls
+    # back to `type -p nix-env` to find nix binaries, which fails when PATH is
+    # restricted during darwin-rebuild system activation.
+    nix.package = pkgs.nix;
+
     news.display = "silent";
 
     home.username = config.settings.username;

@@ -1,4 +1,4 @@
-nixos_cmd := if os() == "macos" { "darwin" } else { "nixos" }
+nixos_cmd := if os() == "macos" { "darwin-rebuild" } else { "nixos-rebuild" }
 
 default: nixos
 
@@ -52,10 +52,10 @@ sync-nvim-to-win:
 
 nixos: nvim claude sync-nvim-to-win && hypr-luarc
     git update-index --skip-worktree config.json
-    sudo {{ nixos_cmd }}-rebuild switch --flake .#${NIXOS_FLAKE_NAME}
+    sudo env "PATH=$PATH" {{ nixos_cmd }} switch --flake .#${NIXOS_FLAKE_NAME}
 
 build:
-    sudo {{ nixos_cmd }}-rebuild build --flake .#${NIXOS_FLAKE_NAME}
+    sudo env "PATH=$PATH" {{ nixos_cmd }} build --flake .#${NIXOS_FLAKE_NAME}
 
 fmt:
     nix fmt .
