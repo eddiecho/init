@@ -30,6 +30,9 @@ in {
         quit-after-last-window-closed = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin true;
         background-opacity = 0.8;
         fullscreen = pkgs.stdenv.hostPlatform.isDarwin;
+        # Hyprland sends Shift+Insert for SUPER+V. Ghostty binds Shift+Insert
+        # to the primary selection by default, not to the clipboard.
+        keybind = ["shift+insert=paste_from_clipboard"];
         custom-shader = [
           "${root}/static/shaders/bloom.glsl"
           "${root}/static/shaders/smear-cursor.glsl"

@@ -34,6 +34,7 @@ in {
       direnv.enable = lib.mkDefault true;
       shell.enable = lib.mkDefault true;
       claude.enable = lib.mkDefault true;
+      yazi.enable = lib.mkDefault false;
     };
   };
 }

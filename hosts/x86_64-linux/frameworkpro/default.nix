@@ -31,6 +31,7 @@
 
       apps = {
         ghostty.enable = true;
+        yazi.enable = true;
       };
     };
 

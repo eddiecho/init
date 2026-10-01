@@ -1,0 +1,17 @@
+{
+  "name": "init",
+  "description": "Claude Code plugins for this system configuration",
+  "owner": {
+    "name": "Eddie Cho"
+  },
+  "plugins": [
+    {
+      "name": "mason-lsp",
+      "description": "Language servers installed by Neovim's Mason",
+      "source": {
+        "source": "command",
+        "command": "\"$HOME/init/static/claude-marketplace/plugins/mason-lsp/generate.sh\""
+      }
+    }
+  ]
+}
