@@ -4,6 +4,7 @@ vim.filetype.add({
 		fx = "glsl",
 		fxh = "glsl",
 		tofu = "opentofu",
+		tf = "terraform",
 	},
 })
 
