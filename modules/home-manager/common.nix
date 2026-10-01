@@ -11,8 +11,9 @@ in {
   config = lib.mkIf cfg.enable {
     # Prevents activation failure: without nix.package set, home-manager falls
     # back to `type -p nix-env` to find nix binaries, which fails when PATH is
-    # restricted during darwin-rebuild system activation.
-    nix.package = pkgs.nix;
+    # restricted during darwin-rebuild system activation. On NixOS the
+    # Determinate module sets this option too, and its value must win.
+    nix.package = lib.mkDefault pkgs.nix;
 
     news.display = "silent";
 
