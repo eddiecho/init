@@ -10,7 +10,7 @@ Commands are run via [`just`](https://github.com/casey/just) (`justfile` at repo
 - `just build` — dry-build the config (`nixos-rebuild build` / `darwin-rebuild build`) without switching. Use this to validate changes before a full switch.
 - `just home <name>` — standalone home-manager switch for a `hosts/home/<system>/<name>` host (a machine with no NixOS/nix-darwin system config of its own). Not for `framework`/`window`/`work` — see `hosts/home/README.md`.
 - `just fmt` — format the repo (`nix fmt .`, wired to treefmt: alejandra for Nix, stylua for Lua, shfmt for shell, jsonfmt for JSON).
-- `just update` — `git pull --rebase` then `nix flake update`. Requires being on HEAD (won't update flake inputs on a dirty/behind branch).
+- `just update [inputs...]` — `git pull --rebase` then `nix flake update`. With input names (e.g. `just update claude-code`), only those flake inputs are updated. Requires being on HEAD (won't update flake inputs on a dirty/behind branch).
 - `just gc` / `just clean` / `just repair` — Nix store maintenance (garbage collect, delete old system generations + optimize, verify/repair store contents).
 - `nix flake check` — validate the flake without building/switching; good for catching eval errors from Claude-made changes without needing sudo or a real switch.
 - Host names come from the `default.nix` filename's parent directory under `hosts/<system>/<name>/` (e.g. `hosts/x86_64-linux/window` → `.#window`). List available configs with `nix flake show`.

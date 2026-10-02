@@ -76,9 +76,9 @@ run TOOL_NAME:
     nix run .#tools.x86_64-linux.${{ TOOL_NAME }}
 
 # no updates without being on HEAD
-update:
+update *inputs:
     git pull --rebase
-    nix flake update
+    nix flake update {{ inputs }}
 
 repair:
     sudo nix-store --verify --check-contents --repair
