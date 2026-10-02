@@ -75,8 +75,8 @@ home HOME_CONFIG:
 run TOOL_NAME:
     nix run .#tools.x86_64-linux.${{ TOOL_NAME }}
 
-# no updates without being on HEAD
 update *inputs:
+    # no updates without being on HEAD
     git pull --rebase
     nix flake update {{ inputs }}
 
