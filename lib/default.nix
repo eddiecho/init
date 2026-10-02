@@ -77,7 +77,9 @@ in
 
     homeModule = {
       home-manager = {
-        sharedModules = nixFiles ../modules/home-manager;
+        sharedModules =
+          [inputs.catppuccin.homeModules.catppuccin]
+          ++ nixFiles ../modules/home-manager;
         # use system level nixpkgs instead of home-manager's
         useGlobalPkgs = lib.mkDefault true;
         # install packages to /etc/profiles instead of ~/.nix-profile
@@ -96,7 +98,7 @@ in
         pkgs = pkgsBySystem.${system};
         modules =
           [
-            {imports = nixFiles ../modules/home-manager;}
+            {imports = [inputs.catppuccin.homeModules.catppuccin] ++ nixFiles ../modules/home-manager;}
           ]
           ++ modules;
         extraSpecialArgs = {} // specialArgs;

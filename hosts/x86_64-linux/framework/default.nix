@@ -34,6 +34,12 @@
       };
     };
 
+    catppuccin = {
+      flavor = "mocha";
+      enable = true;
+      autoEnable = true;
+    };
+
     home.stateVersion = vals.stateVersion;
   };
 

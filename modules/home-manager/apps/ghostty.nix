@@ -21,7 +21,9 @@ in {
       enableZshIntegration = true;
 
       settings = {
-        theme = "Catppuccin Mocha";
+        # The catppuccin port sets its own theme. Two definitions make two
+        # theme lines in the config.
+        theme = lib.mkIf (!config.catppuccin.ghostty.enable) "Catppuccin Mocha";
         font-family = "SFMono";
         font-size = 16;
         macos-titlebar-style = "hidden";

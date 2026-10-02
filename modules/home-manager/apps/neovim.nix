@@ -28,6 +28,10 @@ in {
       sideloadInitLua = true;
     };
 
+    # static/nvim installs and configures catppuccin with vim.pack.
+    # The catppuccin port adds a second copy and calls setup() again.
+    catppuccin.nvim.enable = false;
+
     home.packages = with pkgs; [
       tree-sitter
     ];

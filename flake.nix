@@ -150,7 +150,6 @@
               lib.buildHome {
                 inherit system;
                 modules = [
-                  inputs.catppuccin.homeModules.catppuccin
                   module
                 ];
                 specialArgs = {
