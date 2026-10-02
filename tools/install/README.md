@@ -35,13 +35,13 @@ Only the disk device and `hardware-configuration.nix` need the target machine.
    mkdir -p hosts/x86_64-linux/<name>
    ```
 
-   - `default.nix`: copy `hosts/x86_64-linux/framework/default.nix`.
-     Change `networking.hostName` and the `nixos.*` toggles.
+   - `default.nix`: copy `hosts/x86_64-linux/frameworkpro/default.nix`.
+     Change `networking.hostName`, the `nixos-hardware` module and the `nixos.*` toggles.
      Keep `./disko.nix` in `imports`.
-   - `disko.nix`: copy `hosts/x86_64-linux/framework/disko.nix`, or an example from
+   - `disko.nix`: copy `hosts/x86_64-linux/frameworkpro/disko.nix`, or an example from
      https://github.com/nix-community/disko/tree/master/example.
-     If you copy the framework file, delete the `label` lines and the header comment.
-     They match the partitions on the framework disk only.
+     If you copy the frameworkpro file, delete the `label` lines and the header comment.
+     They match the partitions on the frameworkpro disk only.
      Set the swap size. For hibernation, swap must be at least the size of RAM.
 
 4. Generate the hardware config:

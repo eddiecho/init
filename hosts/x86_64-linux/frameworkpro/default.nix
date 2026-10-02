@@ -8,6 +8,7 @@
 }: rec {
   imports = [
     ./hardware-configuration.nix
+    ./disko.nix
     nixos-hardware.nixosModules.framework-intel-core-ultra-series3
   ];
 
@@ -76,7 +77,7 @@
   users.mutableUsers = true;
 
   # iwctl station wlan0 connect "wifi-name"
-  networking.hostName = "framework";
+  networking.hostName = "frameworkpro";
   networking.wireless.iwd = {
     enable = true;
     settings.DriverQuirks.PowerSaveDisable = "*";
@@ -88,7 +89,6 @@
 
   services.tlp.enable = lib.mkForce false;
 
-  hardware.cpu.amd.updateMicrocode = true;
   hardware.graphics = {
     enable = true;
   };
