@@ -47,6 +47,11 @@
       url = "github:NixOS/nixos-hardware/master";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -126,6 +131,7 @@
                   inputs.determinate.nixosModules.default
                   inputs.catppuccin.nixosModules.catppuccin
                   inputs.nix-index-database.nixosModules.default
+                  inputs.disko.nixosModules.disko
                   {
                     programs.nix-index-database.comma.enable = true;
                     environment.sessionVariables = {

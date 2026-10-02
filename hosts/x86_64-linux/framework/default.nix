@@ -8,6 +8,7 @@
 }: rec {
   imports = [
     ./hardware-configuration.nix
+    ./disko.nix
     nixos-hardware.nixosModules.framework-13-7040-amd
   ];
 
