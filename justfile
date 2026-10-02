@@ -67,6 +67,10 @@ build:
 fmt:
     nix fmt .
 
+# Installer ISO from hosts/x86_64-linux/iso. The image is at result/iso/*.iso.
+iso:
+    nix build .#nixosConfigurations.iso.config.system.build.isoImage
+
 # Standalone home-manager only — for hosts/home/<system>/<name> machines
 # with no NixOS/darwin system config of their own. See hosts/home/README.md.
 home HOME_CONFIG:

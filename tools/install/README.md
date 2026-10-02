@@ -8,7 +8,9 @@ Installs a NixOS host from this flake onto a fresh machine, from the NixOS insta
 You can write `default.nix` and `disko.nix` on any machine before the install.
 Only the disk device and `hardware-configuration.nix` need the target machine.
 
-1. Boot the NixOS installer ISO.
+1. Boot an installer ISO. `just iso` builds one from `hosts/x86_64-linux/iso`.
+   That ISO has flakes, `git` and `install` included, so the `--extra-experimental-features` flags below are not necessary.
+   The commands below also work on the stock NixOS ISO.
 
 2. Clone this repo:
 
@@ -16,6 +18,16 @@ Only the disk device and `hardware-configuration.nix` need the target machine.
    nix shell nixpkgs#git          # if the ISO has no git
    git clone https://github.com/eddiecho/init && cd init
    ```
+
+   On the `just iso` ISO, `/etc/init` has a copy of the repo from build time, without `.git`.
+   `/etc/init` is a symlink into the read-only ISO store. To use it, copy the files and make them writable:
+
+   ```sh
+   cp -rL /etc/init ~/init && chmod -R u+w ~/init && cd ~/init
+   ```
+
+   Without `-L`, `cp` copies the symlink and not the files.
+   Do not install from `/etc/init` directly. The copy to the new disk does not follow the symlink.
 
 3. Create the host directory:
 
