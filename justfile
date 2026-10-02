@@ -20,6 +20,13 @@ claude:
     for f in {{ justfile_directory() }}/static/claude/*; do
         ln -sfn "$f" "$HOME/.claude/$(basename "$f")"
     done
+    ln -sfn {{ justfile_directory() }}/static/claude-marketplace "$HOME/.claude/init-marketplace"
+    # The claude home-manager module registers the marketplace. Run `just` before this recipe.
+    claude plugin marketplace update init
+    for p in $(jq -r '.plugins[].name' {{ justfile_directory() }}/static/claude-marketplace/.claude-plugin/marketplace.json); do
+        claude plugin install -y "$p@init"
+        claude plugin update -y "$p@init"
+    done
 
 wallpaper_id := replace_regex(read(justfile_directory() / "static/hypr/parts/wallpaper.lua"), '(?s).*return "([0-9]+)".*', '$1')
 
