@@ -18,8 +18,3 @@ If for whatever reason someone else decides to copy this, just update the values
 
 Why Just instead of Make or something? Because Make sucks and I hate it. Proper dependency tracking please.
 
-
-## TODO
-OK, I recently tried installing on my new Framework 13 Pro. It mostly worked, but some pain points:
-1. still have to manually create the disk partitions
-2. nix STILL hides flakes behind that stupid --extra-experimental-features flag
