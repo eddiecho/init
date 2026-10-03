@@ -20,13 +20,12 @@ claude:
     for f in {{ justfile_directory() }}/static/claude/*; do
         ln -sfn "$f" "$HOME/.claude/$(basename "$f")"
     done
-    ln -sfn {{ justfile_directory() }}/static/claude-marketplace "$HOME/.claude/init-marketplace"
-    # The claude home-manager module registers the marketplace. Run `just` before this recipe.
-    claude plugin marketplace update init
-    for p in $(jq -r '.plugins[].name' {{ justfile_directory() }}/static/claude-marketplace/.claude-plugin/marketplace.json); do
-        claude plugin install -y "$p@init"
-        claude plugin update -y "$p@init"
-    done
+    # Must run before `nixos-rebuild switch`: the claude home-manager module's
+    # activation registers the marketplace and installs/updates its plugins,
+    # and it needs this symlink in place first. The name must match
+    # claudeMarketplaceName in config.json, which the module also reads.
+    marketplace_name=$(jq -r '.claudeMarketplaceName' {{ justfile_directory() }}/config.json)
+    ln -sfn {{ justfile_directory() }}/static/claude-marketplace "$HOME/.claude/${marketplace_name}-marketplace"
 
 wallpaper_id := replace_regex(read(justfile_directory() / "static/hypr/parts/wallpaper.lua"), '(?s).*return "([0-9]+)".*', '$1')
 
