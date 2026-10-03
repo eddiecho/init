@@ -1,8 +1,5 @@
 {
   inputs = {
-    # nixos-unstable currently rolls into the 26.05 release ("Yarara",
-    # expected end of May 2026). Once 26.05 ships, switching this to
-    # `nixos-26.05` would pin to the stable release branch.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     determinate = {
@@ -11,7 +8,6 @@
     };
 
     darwin = {
-      # No nix-darwin-26.05 branch yet; track master until it lands.
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -22,8 +18,6 @@
     };
 
     home-manager = {
-      # On github (not flakehub) so we get the `configType = "lua"` option
-      # for hyprland, which flakehub releases lag behind on.
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -48,8 +42,6 @@
     };
 
     catppuccin = {
-      # Tracks main until a release-26.05 branch exists; bump to that
-      # branch once nixpkgs is also pinned to nixos-26.05.
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
