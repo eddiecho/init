@@ -1,5 +1,8 @@
 -- Monitors
-hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
+-- home-manager generates host.lua from modules.hyprland.scale.
+local ok, host = pcall(require, "host")
+local scale = ok and host.scale or 1
+hl.monitor({ output = "", mode = "preferred", position = "auto", scale = scale })
 
 -- Settings
 hl.config({

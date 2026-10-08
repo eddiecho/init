@@ -27,7 +27,10 @@
     settings = settings;
     modules = {
       common.enable = true;
-      hyprland.enable = true;
+      hyprland = {
+        enable = true;
+        scale = 1.6;
+      };
       display.enable = true;
 
       apps = {

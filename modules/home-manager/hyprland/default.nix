@@ -1,5 +1,12 @@
 {lib, ...}: {
-  options.modules.hyprland.enable = lib.mkEnableOption "Enable Hyprland";
+  options.modules.hyprland = {
+    enable = lib.mkEnableOption "Enable Hyprland";
+    scale = lib.mkOption {
+      type = lib.types.number;
+      default = 1;
+      description = "Scale for all monitors. Hyprland rejects a scale that does not divide the resolution evenly.";
+    };
+  };
 
   imports = [
     ./pkgs.nix

@@ -21,6 +21,7 @@ in {
           config.lib.file.mkOutOfStoreSymlink
           (builtins.toPath "${root}/static/hypr/parts");
       };
+      ".config/hypr/host.lua".text = "return ${lib.generators.toLua {} {inherit (cfg) scale;}}\n";
     };
 
     home.sessionVariables = {
