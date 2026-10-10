@@ -29,10 +29,22 @@ in {
       AQ_NO_MODIFIERS = "1";
     };
 
+    # XWayland apps render at scale 1 (xwayland.force_zero_scaling in settings.lua).
+    # Steam and other X apps read Xft.dpi to scale their own UI.
+    # init.lua loads ~/.Xresources with xrdb when Hyprland starts.
+    xresources.properties = lib.mkIf (cfg.scale != 1) {
+      "Xft.dpi" = builtins.floor (96 * cfg.scale + 0.5);
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
-      systemd.enable = true;
+      systemd = {
+        enable = true;
+        # Apps launched from vicinae are children of a systemd user service.
+        # Import all session variables so that these apps get them.
+        variables = ["--all"];
+      };
       configType = "lua";
 
       # I don't know why I need this

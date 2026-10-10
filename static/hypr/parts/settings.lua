@@ -84,6 +84,11 @@ hl.config({
 	ecosystem = {
 		no_update_news = true,
 	},
+	-- Do not stretch XWayland windows to the monitor scale. Stretched windows are blurry.
+	-- An XWayland app that does not scale its own UI shows small at a scale above 1.
+	xwayland = {
+		force_zero_scaling = true,
+	},
 	gestures = {
 		workspace_swipe_invert = true,
 		workspace_swipe_distance = 700,

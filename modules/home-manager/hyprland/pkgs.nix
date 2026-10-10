@@ -10,6 +10,7 @@ in {
     home.packages = with pkgs; [
       hyprland
       xwayland
+      xrdb # load ~/.Xresources into XWayland
       waybar # status bar
       hyprshot # take screenshots
       hyprlock # lock screen
