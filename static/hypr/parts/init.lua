@@ -42,7 +42,6 @@ end
 -- emitted automatically by HM's systemd.enable = true).
 hl.on("hyprland.start", function()
 	start_wallpaper()
-	hl.exec_cmd("[ -f ~/.Xresources ] && xrdb -merge ~/.Xresources")
 	hl.exec_cmd("swaync")
 	hl.exec_cmd("hyprctl setcursor catppuccin-mocha-dark-cursors 24")
 	hl.exec_cmd("vicinae server")
