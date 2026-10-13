@@ -24,11 +24,12 @@
     wsl = {
       enable = true;
       windowsUsername = vals.windowsUsername;
-      wslconfig.wsl2 = {
-        networkingMode = "mirrored";
-        # The SSH server must stay reachable when no Windows terminal is open.
-        vmIdleTimeout = -1;
-      };
+      # The SSH server must stay reachable when no Windows terminal is open.
+      wslconfig.wsl2.vmIdleTimeout = -1;
+    };
+    tailscale = {
+      enable = true;
+      caddy.enable = false;
     };
   };
 
