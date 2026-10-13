@@ -24,8 +24,20 @@
     wsl = {
       enable = true;
       windowsUsername = vals.windowsUsername;
+      wslconfig.wsl2 = {
+        networkingMode = "mirrored";
+        # The SSH server must stay reachable when no Windows terminal is open.
+        vmIdleTimeout = -1;
+      };
     };
   };
+
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
+
+  users.users.${vals.username}.openssh.authorizedKeys.keys = vals.sshAuthorizedKeys or [];
 
   catppuccin = {
     enable = false;

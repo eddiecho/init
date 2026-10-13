@@ -37,6 +37,7 @@
         ghostty.enable = true;
         yazi.enable = true;
         sioyek.enable = true;
+        ssh.enable = true;
       };
     };
 
