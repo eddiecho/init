@@ -20,23 +20,11 @@ gs.setup({
 	status_formatter = nil,
 	on_attach = function(bufnr)
 		vim.keymap.set("n", "<leader>c", function()
-			if vim.wo.diff then
-				return "<leader>c"
-			end
-			vim.schedule(function()
-				gs.nav_hunk("next")
-			end)
-			return "<Ignore>"
-		end, { expr = true, buffer = bufnr })
+			gs.nav_hunk("next")
+		end, { buffer = bufnr })
 
 		vim.keymap.set("n", "<leader>C", function()
-			if vim.wo.diff then
-				return "<leader>C"
-			end
-			vim.schedule(function()
-				gs.nav_hunk("prev")
-			end)
-			return "<Ignore>"
-		end, { expr = true, buffer = bufnr })
+			gs.nav_hunk("prev")
+		end, { buffer = bufnr })
 	end,
 })

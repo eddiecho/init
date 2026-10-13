@@ -1,14 +1,12 @@
 -- General key mappings
 
--- vim.api.nvim_set_keymap is a C function
--- vim.key_map.set is a lua function
--- use the former if you don't need to use lua functions
-
 -- Move vertically by visual line
-vim.api.nvim_set_keymap("", "j", "gj", { noremap = true })
-vim.api.nvim_set_keymap("", "k", "gk", { noremap = true })
-vim.api.nvim_set_keymap("", "<Down>", "gj", { noremap = true })
-vim.api.nvim_set_keymap("", "<Up>", "gk", { noremap = true })
+-- A count moves by real lines so that relative jumps stay correct.
+-- Operator-pending mode keeps the linewise j and k.
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 -- Center search results
 vim.api.nvim_set_keymap("n", "n", "nzz", { noremap = true })
@@ -18,19 +16,31 @@ vim.api.nvim_set_keymap("n", "N", "Nzz", { noremap = true })
 vim.api.nvim_set_keymap("n", "<CR>", ":noh<CR><CR>", { noremap = true })
 
 -- Because I'm a bad typist
-vim.api.nvim_set_keymap("c", "Q", "q", { noremap = true })
-vim.api.nvim_set_keymap("c", "W", "w", { noremap = true })
-vim.api.nvim_set_keymap("c", "Wq", "wq", { noremap = true })
-vim.api.nvim_set_keymap("c", "WQ", "wq", { noremap = true })
-vim.api.nvim_set_keymap("c", "Qa", "qa", { noremap = true })
-vim.api.nvim_set_keymap("c", "Wqa", "wqa", { noremap = true })
-vim.api.nvim_set_keymap("c", "WQa", "wqa", { noremap = true })
-vim.api.nvim_set_keymap("c", "Wa", "wa", { noremap = true })
-vim.api.nvim_set_keymap("c", "WA", "wa", { noremap = true })
-vim.api.nvim_set_keymap("c", "qw", "wq", { noremap = true })
-vim.api.nvim_set_keymap("c", "qwa", "wqa", { noremap = true })
-vim.api.nvim_set_keymap("c", "Qw", "wq", { noremap = true })
-vim.api.nvim_set_keymap("c", "Qwa", "wqa", { noremap = true })
+-- Expand only when the typo is the whole ':' command line.
+-- A search, a :s pattern, or a command argument stays unchanged.
+local typos = {
+	Q = "q",
+	W = "w",
+	Wq = "wq",
+	WQ = "wq",
+	Qa = "qa",
+	Wqa = "wqa",
+	WQa = "wqa",
+	Wa = "wa",
+	WA = "wa",
+	qw = "wq",
+	qwa = "wqa",
+	Qw = "wq",
+	Qwa = "wqa",
+}
+for typo, command in pairs(typos) do
+	vim.keymap.set("ca", typo, function()
+		if vim.fn.getcmdtype() == ":" and vim.fn.getcmdline() == typo then
+			return command
+		end
+		return typo
+	end, { expr = true })
+end
 
 -- Esc map
 vim.api.nvim_set_keymap("i", "kj", "<Esc>", { noremap = true })
