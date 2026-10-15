@@ -35,14 +35,15 @@ in {
       file = lib.escapeShellArg "/mnt/c/Users/${cfg.windowsUsername}/.wslconfig";
       # Records the keys that the last activation set, one "section key" per line.
       state = "/var/lib/nixos-wslconfig-keys";
-      entries = lib.flatten (lib.mapAttrsToList (section: lib.mapAttrsToList (key: value: {
+      entries = lib.flatten (lib.mapAttrsToList (section:
+        lib.mapAttrsToList (key: value: {
           inherit section key;
           value =
             if builtins.isBool value
             then lib.boolToString value
             else toString value;
         }))
-        cfg.wslconfig);
+      cfg.wslconfig);
       id = e: "${e.section} ${e.key}";
     in ''
       if [ -d "$(dirname ${file})" ]; then

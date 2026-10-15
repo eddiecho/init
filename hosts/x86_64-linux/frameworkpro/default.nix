@@ -36,7 +36,8 @@
       apps = {
         ghostty.enable = true;
         yazi.enable = true;
-        sioyek.enable = true;      };
+        sioyek.enable = true;
+      };
     };
 
     catppuccin = {
