@@ -115,6 +115,7 @@
                   inputs.disko.nixosModules.disko
                   {
                     programs.nix-index-database.comma.enable = true;
+                    networking.hostName = name;
                     environment.sessionVariables = {
                       NIXOS_FLAKE_NAME = name;
                       LESS = "-X -F -R";

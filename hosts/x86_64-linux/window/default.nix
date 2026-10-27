@@ -47,7 +47,5 @@
 
   users.mutableUsers = true;
 
-  networking.hostName = "window";
-
   system.stateVersion = vals.stateVersion;
 }

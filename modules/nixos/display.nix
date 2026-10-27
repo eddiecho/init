@@ -28,10 +28,12 @@ in {
       };
     };
 
-    programs.hyprland.enable = true;
-    # The module overrides the package with this value. The nixpkgs default is true.
-    # A false value gives a build that cache.nixos.org does not have.
-    programs.hyprland.withUWSM = true;
+    programs.hyprland = {
+      enable = true;
+      # The module overrides the package with this value. The nixpkgs default is true.
+      # A false value gives a build that cache.nixos.org does not have.
+      withUWSM = true;
+    };
 
     environment.systemPackages = with pkgs; [
       networkmanagerapplet

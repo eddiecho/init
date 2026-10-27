@@ -71,7 +71,6 @@
   users.mutableUsers = true;
 
   # iwctl station wlan0 connect "wifi-name"
-  networking.hostName = "framework";
   networking.wireless.iwd = {
     enable = true;
     settings.DriverQuirks.PowerSaveDisable = "*";
