@@ -22,6 +22,11 @@
       hyprland.enable = false;
     };
 
+    catppuccin = {
+      enable = true;
+      autoEnable = false;
+    };
+
     home.stateVersion = vals.stateVersion;
   };
 

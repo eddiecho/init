@@ -15,6 +15,11 @@
       common.enable = true;
     };
 
+    catppuccin = {
+      enable = true;
+      autoEnable = false;
+    };
+
     home.stateVersion = vals.stateVersion;
   };
 
