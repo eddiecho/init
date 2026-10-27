@@ -41,10 +41,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Do not make nixpkgs follow ours. catppuccin.cachix.org only has
+    # builds from catppuccin's own nixpkgs, so a follow compiles whiskers.
+    catppuccin.url = "github:catppuccin/nix";
 
     # nix-locate
     nix-index-database = {
