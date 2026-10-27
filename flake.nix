@@ -56,6 +56,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Do not make nixpkgs follow ours. Our nixpkgs marks fastmcp-slim as
+    # broken, and upstream pins a working fastmcp.
+    mcp-nixos.url = "github:utensils/mcp-nixos";
+
     sfmono = {
       url = "path:./static/fonts/SFMono";
       flake = false;

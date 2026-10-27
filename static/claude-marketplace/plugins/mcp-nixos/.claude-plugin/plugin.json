@@ -1,0 +1,4 @@
+{
+  "name": "mcp-nixos",
+  "description": "MCP server for NixOS, Home Manager, and nix-darwin options and packages"
+}

@@ -25,7 +25,7 @@ in {
   # Entries under static/claude/ (CLAUDE.md, skills, commands, ...) are
   # symlinked individually into ~/.claude/
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [claude-code];
+    home.packages = with pkgs; [claude-code mcp-nixos];
 
     # Claude Code writes to settings.json itself, so merge the key instead of
     # managing the file. `just claude` links the checkout's

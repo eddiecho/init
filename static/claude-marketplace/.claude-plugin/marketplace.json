@@ -12,6 +12,11 @@
         "source": "command",
         "command": "\"$HOME/.claude/init-marketplace/plugins/mason-lsp/generate.sh\""
       }
+    },
+    {
+      "name": "mcp-nixos",
+      "description": "MCP server for NixOS, Home Manager, and nix-darwin options and packages",
+      "source": "./plugins/mcp-nixos"
     }
   ]
 }
