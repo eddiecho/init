@@ -81,12 +81,35 @@ blink.setup({
 
 local building = false
 
+-- blink.cmp writes one library per commit as lib/lib<name><ext>.<hash> and does not remove old ones.
+-- Remove all of them except the library for the current commit.
+local function prune_libraries()
+	local native = require("blink.lib.native")
+	local root = blink.get_repo_root()
+	local commit = root and native.try_git_commit(root)
+	if not commit then
+		return
+	end
+	local prefix = "lib" .. blink.get_library_name() .. native.platform().lib_extension .. "."
+	local keep = prefix .. commit:sub(1, 7)
+	for name, type in vim.fs.dir(root .. "/lib") do
+		if type == "file" and name ~= keep and vim.startswith(name, prefix) then
+			-- A library that a running session has loaded can be locked on Windows. Ignore that error.
+			vim.uv.fs_unlink(root .. "/lib/" .. name)
+		end
+	end
+end
+
 -- Build in the background. Until the build ends, blink.cmp uses the Lua matcher.
 -- library_available() checks the commit that was current when blink.cmp loaded.
 -- After an update in a running session, that check is incorrect. Set `force` to skip it.
 ---@param force? boolean
 local function build_library(force)
-	if building or (not force and blink.library_available()) then
+	if building then
+		return
+	end
+	if not force and blink.library_available() then
+		prune_libraries()
 		return
 	end
 	building = true
@@ -112,6 +135,7 @@ local function build_library(force)
 			report(msg, status)
 			if status == "success" then
 				require("blink.cmp.fuzzy").set_implementation("rust")
+				prune_libraries()
 			end
 		end)
 	end
@@ -129,6 +153,7 @@ end
 build_library()
 
 vim.api.nvim_create_autocmd("PackChanged", {
+	group = vim.api.nvim_create_augroup("blink-cmp-build", { clear = true }),
 	callback = function(ev)
 		local kind = ev.data.kind
 		if ev.data.spec.name == "blink.cmp" and (kind == "install" or kind == "update") then

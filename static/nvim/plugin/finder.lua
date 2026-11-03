@@ -48,6 +48,7 @@ local function install_binary()
 end
 
 vim.api.nvim_create_autocmd("PackChanged", {
+	group = vim.api.nvim_create_augroup("fff-build", { clear = true }),
 	callback = function(ev)
 		local name, kind = ev.data.spec.name, ev.data.kind
 		if name == "fff.nvim" and (kind == "install" or kind == "update") then

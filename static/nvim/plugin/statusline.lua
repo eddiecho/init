@@ -15,6 +15,18 @@ end
 
 local utils = require("utils")
 
+local function progress()
+	return vim.trim(vim.ui.progress_status())
+end
+
+-- lualine refreshes the statusline only every 1000 ms by default. Refresh it on each progress message.
+vim.api.nvim_create_autocmd("Progress", {
+	group = vim.api.nvim_create_augroup("lualine-progress", { clear = true }),
+	callback = function()
+		require("lualine").refresh({ place = { "statusline" } })
+	end,
+})
+
 require("lualine").setup({
 	sections = {
 		lualine_a = {
@@ -46,5 +58,7 @@ require("lualine").setup({
 				always_visible = false, -- Show diagnostics even if there are none.
 			},
 		},
+		-- lualine_x replaces the default list, so the default components are repeated here.
+		lualine_x = { progress, "encoding", "fileformat", "filetype" },
 	},
 })
