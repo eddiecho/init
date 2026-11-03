@@ -61,4 +61,23 @@ function M.dialog_win()
 	})
 end
 
+--- Return a function that writes one progress message and replaces it on each call.
+--- The function redraws the screen, because a blocking caller stops automatic redraws.
+---@param id string Global message id. Use a qualified name, for example "plugin.task".
+---@param title string
+---@return fun(msg: string, status?: "running"|"success"|"failed")
+function M.progress(id, title)
+	return function(msg, status)
+		status = status or "running"
+		vim.api.nvim_echo({ { msg } }, status ~= "running", {
+			id = id,
+			kind = "progress",
+			source = title,
+			title = title,
+			status = status,
+		})
+		vim.cmd.redraw()
+	end
+end
+
 return M

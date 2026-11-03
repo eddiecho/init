@@ -4,8 +4,7 @@
   lib,
   ...
 }: let
-  # I don't know why we need this
-  session = "${pkgs.hyprland}/bin/start-hyprland --path /run/wrappers/bin/Hyprland";
+  session = "${config.programs.hyprland.package}/bin/start-hyprland";
   cfg = config.nixos.display;
 in {
   options.nixos.display.enable = lib.mkEnableOption "Enable display";

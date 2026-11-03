@@ -74,8 +74,68 @@ blink.setup({
 		},
 	},
 	fuzzy = {
-		implementation = "prefer_rust_with_warning",
+		-- build_library() reports a missing library, so the setup warning is not necessary.
+		implementation = "prefer_rust",
 	},
 })
 
-blink.build():wait()
+local building = false
+
+-- Build in the background. Until the build ends, blink.cmp uses the Lua matcher.
+-- library_available() checks the commit that was current when blink.cmp loaded.
+-- After an update in a running session, that check is incorrect. Set `force` to skip it.
+---@param force? boolean
+local function build_library(force)
+	if building or (not force and blink.library_available()) then
+		return
+	end
+	building = true
+
+	local report = require("ui").progress("blink.cmp.build", "blink.cmp")
+	local start = vim.uv.hrtime()
+	local timer = assert(vim.uv.new_timer())
+	timer:start(
+		0,
+		1000,
+		vim.schedule_wrap(function()
+			if building then
+				report(("Building native library (%ds)"):format(math.floor((vim.uv.hrtime() - start) / 1e9)))
+			end
+		end)
+	)
+
+	local function finish(msg, status)
+		vim.schedule(function()
+			building = false
+			timer:stop()
+			timer:close()
+			report(msg, status)
+			if status == "success" then
+				require("blink.cmp.fuzzy").set_implementation("rust")
+			end
+		end)
+	end
+
+	blink
+		.build()
+		:on_resolve(function()
+			finish("Native library ready", "success")
+		end)
+		:on_reject(function(err)
+			finish("Build failed: " .. tostring(err), "failed")
+		end)
+end
+
+build_library()
+
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local kind = ev.data.kind
+		if ev.data.spec.name == "blink.cmp" and (kind == "install" or kind == "update") then
+			-- Wait until vim.pack has checked out the new commit and loaded the plugin.
+			vim.schedule(function()
+				build_library(true)
+			end)
+		end
+	end,
+})
