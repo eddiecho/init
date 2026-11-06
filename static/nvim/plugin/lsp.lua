@@ -5,7 +5,7 @@ vim.pack.add({
 	"https://github.com/folke/lazydev.nvim",
 	"https://github.com/folke/trouble.nvim",
 	"https://github.com/rachartier/tiny-inline-diagnostic.nvim",
-	"https://github.com/esmuellert/codediff.nvim",
+  "https://github.com/CoreyKaylor/diffbandit.nvim",
 })
 
 require("lsp")
@@ -80,3 +80,5 @@ require("tiny-inline-diagnostic").setup({
 })
 
 vim.diagnostic.config({ virtual_text = false })
+
+require("diffbandit").setup()
