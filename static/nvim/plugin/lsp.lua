@@ -21,7 +21,8 @@ require("lsp_signature").setup({
 -- Give lua_ls every plugin at attach time.
 -- Without this, lazydev adds a plugin when a buffer first requires it, and lua_ls reloads the full workspace each time.
 local library = { { path = "${3rd}/luv/library", words = { "vim%.uv" } } }
-for _, plugin in ipairs(vim.pack.get()) do
+-- Do not request info here. It runs git for each plugin during startup.
+for _, plugin in ipairs(vim.pack.get(nil, { info = false })) do
 	table.insert(library, plugin.path)
 end
 require("lazydev").setup({
